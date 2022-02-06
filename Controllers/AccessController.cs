@@ -135,7 +135,7 @@ namespace SSIP.Controllers
                 //  string script = File.ReadAllText(@"C:\Users\home pc\source\repos\RFBDesktopSystem\RFBScript.sql");
 
 
-                string script = File.ReadAllText(@"\RFBDesktopSystem\sql_script\9421RFBScript.sql");
+                string script = File.ReadAllText(@"\SSIP\sql_script\9421RFBScript.sql");
 
                 IEnumerable<string> commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
 
