@@ -15,9 +15,17 @@ namespace SSIP
         [STAThread]
         static void Main()
         {
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Dashboard());
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+
+            Login frmMain = new Login();
+            frmMain.Show();
+
+            Application.Run();
         }
     }
 }
