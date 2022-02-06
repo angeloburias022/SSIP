@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SpGetNoOfDispatched" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpNCRChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpServicesChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DashboardModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DashboardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DashboardEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SpNCRChart" ReturnType="Collection(DashboardModel.SpNCRChart_Result)" />
+          <FunctionImport Name="SpServicesChart" ReturnType="Collection(DashboardModel.SpServicesChart_Result)" />
+          <FunctionImport Name="SpGetNoOfDispatched" ReturnType="Collection(Int32)" />
+        </EntityContainer>
+        <ComplexType Name="SpNCRChart_Result">
+          <Property Type="Int32" Name="caloocan" Nullable="true" />
+          <Property Type="Int32" Name="laspinas" Nullable="true" />
+          <Property Type="Int32" Name="mandaluyong" Nullable="true" />
+          <Property Type="Int32" Name="makati" Nullable="true" />
+          <Property Type="Int32" Name="muntinlupa" Nullable="true" />
+          <Property Type="Int32" Name="manila" Nullable="true" />
+          <Property Type="Int32" Name="malabon" Nullable="true" />
+          <Property Type="Int32" Name="navotas" Nullable="true" />
+          <Property Type="Int32" Name="pasig" Nullable="true" />
+          <Property Type="Int32" Name="pasay" Nullable="true" />
+          <Property Type="Int32" Name="pateros" Nullable="true" />
+          <Property Type="Int32" Name="paranaque" Nullable="true" />
+          <Property Type="Int32" Name="quezon" Nullable="true" />
+          <Property Type="Int32" Name="sanjuan" Nullable="true" />
+          <Property Type="Int32" Name="taguig" Nullable="true" />
+          <Property Type="Int32" Name="valenzuela" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SpServicesChart_Result">
+          <Property Type="Int32" Name="clea" Nullable="true" />
+          <Property Type="Int32" Name="rep" Nullable="true" />
+          <Property Type="Int32" Name="che" Nullable="true" />
+          <Property Type="Int32" Name="ins" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DashboardModelStoreContainer" CdmEntityContainer="DashboardEntities" >
+          <FunctionImportMapping FunctionImportName="SpNCRChart" FunctionName="DashboardModel.Store.SpNCRChart">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.SpNCRChart_Result">
+                <ScalarProperty Name="caloocan" ColumnName="caloocan" />
+                <ScalarProperty Name="laspinas" ColumnName="laspinas" />
+                <ScalarProperty Name="mandaluyong" ColumnName="mandaluyong" />
+                <ScalarProperty Name="makati" ColumnName="makati" />
+                <ScalarProperty Name="muntinlupa" ColumnName="muntinlupa" />
+                <ScalarProperty Name="manila" ColumnName="manila" />
+                <ScalarProperty Name="malabon" ColumnName="malabon" />
+                <ScalarProperty Name="navotas" ColumnName="navotas" />
+                <ScalarProperty Name="pasig" ColumnName="pasig" />
+                <ScalarProperty Name="pasay" ColumnName="pasay" />
+                <ScalarProperty Name="pateros" ColumnName="pateros" />
+                <ScalarProperty Name="paranaque" ColumnName="paranaque" />
+                <ScalarProperty Name="quezon" ColumnName="quezon" />
+                <ScalarProperty Name="sanjuan" ColumnName="sanjuan" />
+                <ScalarProperty Name="taguig" ColumnName="taguig" />
+                <ScalarProperty Name="valenzuela" ColumnName="valenzuela" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpServicesChart" FunctionName="DashboardModel.Store.SpServicesChart">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.SpServicesChart_Result">
+                <ScalarProperty Name="clea" ColumnName="clea" />
+                <ScalarProperty Name="rep" ColumnName="rep" />
+                <ScalarProperty Name="che" ColumnName="che" />
+                <ScalarProperty Name="ins" ColumnName="ins" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpGetNoOfDispatched" FunctionName="DashboardModel.Store.SpGetNoOfDispatched" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
