@@ -19,100 +19,112 @@ namespace SSIP.Controllers
 {
     public class AccessController
     {
-        #region declrations
+        #region declations
         private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         PasswordEncryptor enc = new PasswordEncryptor();
+        AuditController aud = new AuditController();
+        Dashboard dboard = new Dashboard();
         #endregion
 
         #region Login
         public bool Login(User user)
         {
             try
-            {
-                if (user.Username == "" && user.Password == "")
+            {      
+                using (SqlConnection con = new SqlConnection(ConString))
                 {
-                    MessageBox.Show("Please Check your username and password");
-                }
-                else
-                {
-                    using (SqlConnection con = new SqlConnection(ConString))
+                    // it will check the device if there is an existing database
+                    if (CheckDatabaseExists(con, "RFBDesktopApp"))
                     {
-                        // it will check the device if there is an existing database
-                        if (CheckDatabaseExists(con, "RFBDesktopApp"))
+                        using (SqlCommand cmd = new SqlCommand("[SpLoginUser]", con))
                         {
-                            using (SqlCommand cmd = new SqlCommand("[SpLoginUser]", con))
+                             
+                            cmd.CommandType = CommandType.StoredProcedure;                       
+                            cmd.Parameters.Add("@Uname", SqlDbType.VarChar).Value = user.Username;
+                            var pwdEncrypt = enc.PassWordEncryptor(user.Password);
+                            cmd.Parameters.Add("@Pwd", SqlDbType.VarChar).Value = pwdEncrypt;
+                            
+                            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                             {
-                                // Transaction tr = new Transaction();
-                                Dashboard db = new Dashboard();
-                                Login lgg = new Login();
-                                cmd.CommandType = CommandType.StoredProcedure;
-                                con.Open();
-                                cmd.Parameters.Add("@Uname", SqlDbType.VarChar).Value = user.Username;
-                                var pwdEncrypt = enc.PassWordEncryptor(user.Password);
-                                cmd.Parameters.Add("@Pwd", SqlDbType.VarChar).Value = pwdEncrypt;
-
-                                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                                DataTable dt = new DataTable();
-                                da.Fill(dt);
-
-                                if (dt.Rows.Count > 0)
+                                using (DataTable dt = new DataTable())
                                 {
-                                   // db.ShowDialog();
-                                    return true;
+                                    adapter.Fill(dt);
+                                    if (dt.Rows.Count > 0)
+                                    {
+
+                                        var loginLogs = new AuditTrails
+                                        {
+                                            Username = user.Username,
+                                            AuditActionTypeENUM = (Enums.ActionTypes)1,
+                                            DateTimeStamp = DateTime.Now.ToString(),
+                                            Result = "Succeed"
+                                        };
+
+                                        aud.Logs(loginLogs);
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        var loginLogs = new AuditTrails
+                                        {
+                                            Username = user.Username,
+                                            AuditActionTypeENUM = (Enums.ActionTypes)1,
+                                            DateTimeStamp = DateTime.Now.ToString(),
+                                            Result = "Failed"
+                                        };
+
+                                        aud.Logs(loginLogs);
+                                        return false;
+                                    }
                                 }
-                                else
-                                {
-                                    MessageBox.Show("Your password or Username might incorrect. Please input it again. Thank you!");
-                                }
-
-
-                                con.Close();
-                            }
-                        }
-                        else
-                        {
-                            CreateDatabase(con, "RFBDesktopApp");
-
-                            using (SqlCommand cmd = new SqlCommand("[SpLoginUser]", con))
-                            {
-                                // Transaction tr = new Transaction();
-                                Dashboard db = new Dashboard();
-                                Login lgg = new Login();
-                                cmd.CommandType = CommandType.StoredProcedure;
-                                con.Open();
-                                cmd.Parameters.Add("@Uname", SqlDbType.VarChar).Value = user.Username;
-                                var pwdEncrypt = enc.PassWordEncryptor(user.Password);
-                                cmd.Parameters.Add("@Pwd", SqlDbType.VarChar).Value = pwdEncrypt;
-
-                                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                                DataTable dt = new DataTable();
-                                da.Fill(dt);
-
-                                if (dt.Rows.Count > 0)
-                                {
-                                    MessageBox.Show("Access Granted");
-                                    db.Show();
-                                    lgg.Close();
-
-                                    return true;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Your password or Username might incorrect. Please input it again. Thank you!");
-                                }
-
-                                con.Close();
                             }
                         }
                     }
-                }
+                    else
+                    {
+                        CreateDatabase(con, "RFBDesktopApp");
+
+                        using (SqlCommand cmd = new SqlCommand("[SpLoginUser]", con))
+                        {
+                                           
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            con.Open();
+                            cmd.Parameters.Add("@Uname", SqlDbType.VarChar).Value = user.Username;
+                            var pwdEncrypt = enc.PassWordEncryptor(user.Password);
+                            cmd.Parameters.Add("@Pwd", SqlDbType.VarChar).Value = pwdEncrypt;
+
+                            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                            {
+                                using (DataTable dt = new DataTable())
+                                {
+                                    adapter.Fill(dt);
+                                    if (dt.Rows.Count > 0)
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }   
             }
             catch (Exception error)
             {
                 MessageBox.Show("Something went wrong" + error);
             }
 
-            return true;
+            return false;
+        }
+        #endregion
+
+        #region current user
+        public string CurrentUser(string firstname, string lastname)
+        {
+            return "";
         }
         #endregion
 

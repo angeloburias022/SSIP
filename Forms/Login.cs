@@ -16,22 +16,14 @@ namespace SSIP.Forms
     public partial class Login : Form
     {
         Dashboard dboard = new Dashboard();
-        private readonly Dashboard _dboard;
-     
+       
+
         public Login()
         {
             InitializeComponent();
         }
 
-        public  Login(Dashboard dboard)
-        {
-            _dboard = dboard;
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-          
-        }
+        
 
         private void btn_login_Click(object sender, EventArgs e)
         {
@@ -41,17 +33,40 @@ namespace SSIP.Forms
                 Password = tb_pwd.Text
             };
 
-            var acc = new AccessController();
-
-            var result = acc.Login(creds);
-
-            if(result == true)
+            if (!Valid())
             {
-                this.Close();
-          
-                dboard.Show();
+                MessageBox.Show("Check your fields");
+                
+            } else
+            {
+                var acc = new AccessController();
+                var result = acc.Login(creds);
+
+                if (result != false)
+                {
+                    this.Close();
+                    dboard.Show();
+                }else
+                {
+                    MessageBox.Show("Your password or Username might incorrect.");
+                }
             }
+        }
+
+
+        #region login field validation
+        public bool Valid()
+        {
+
+            if (tb_pwd.Text != "" && tb_uname.Text != "")
+            {
+                return true;
+            }
+            else
+                return false;
 
         }
+        #endregion
+
     }
 }
