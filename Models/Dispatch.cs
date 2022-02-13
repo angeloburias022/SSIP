@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace SSIP.Models
 {
-    class Dispatch
+    public class Dispatch
     {
+        public DateTime dispatchdate { get; set; }
+        public string AssignTeam { get; set; }
+        public string TimeIn { get; set; }
+        public string TimeOut { get; set; }
     }
 }

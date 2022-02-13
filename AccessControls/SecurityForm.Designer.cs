@@ -113,7 +113,7 @@ namespace SSIP.AccessControls
             this.login_panel.Controls.Add(this.tb_uname);
             this.login_panel.Controls.Add(this.tb_password);
             this.login_panel.Controls.Add(this.btn_access);
-            this.login_panel.Location = new System.Drawing.Point(160, 69);
+            this.login_panel.Location = new System.Drawing.Point(66, 41);
             this.login_panel.Name = "login_panel";
             this.login_panel.Size = new System.Drawing.Size(461, 348);
             this.login_panel.TabIndex = 2;
@@ -126,7 +126,7 @@ namespace SSIP.AccessControls
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.login_panel);
             this.Name = "SecurityForm";
-            this.Size = new System.Drawing.Size(764, 472);
+            this.Size = new System.Drawing.Size(665, 452);
             this.login_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -135,8 +135,8 @@ namespace SSIP.AccessControls
         #endregion
 
         private Guna.UI2.WinForms.Guna2Button btn_access;
-        private Guna.UI2.WinForms.Guna2TextBox tb_uname;
-        private Guna.UI2.WinForms.Guna2TextBox tb_password;
         private System.Windows.Forms.Panel login_panel;
+        public Guna.UI2.WinForms.Guna2TextBox tb_uname;
+        public Guna.UI2.WinForms.Guna2TextBox tb_password;
     }
 }

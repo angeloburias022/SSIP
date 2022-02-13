@@ -1,6 +1,8 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
 using SSIP.AccessControls;
+using SSIP.Models;
+using SSIP.UserForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,12 +18,17 @@ namespace SSIP.Forms
     public partial class Dashboard : Form
     {
         public Dashboard()
-        {
+        { 
             InitializeComponent();
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+          
+          //this.dispatchControl1.Visible = false;
+          //this.mainServiceControl.BringToFront();
+          this.mainServiceControl.Visible = false;
+
             try
             {
                 #region NCR chart
@@ -272,5 +279,7 @@ namespace SSIP.Forms
                 MessageBox.Show("Something went wrong" + error);
             }
         }
+
+    
     }
 }

@@ -37,6 +37,7 @@ namespace SSIP.Forms
             this.CityChart = new LiveCharts.WinForms.CartesianChart();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.mainServiceControl = new SSIP.UserForms.MainServiceControl();
             this.SuspendLayout();
             // 
             // nav_panel
@@ -44,7 +45,7 @@ namespace SSIP.Forms
             this.nav_panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.nav_panel.Location = new System.Drawing.Point(0, 0);
             this.nav_panel.Name = "nav_panel";
-            this.nav_panel.Size = new System.Drawing.Size(200, 696);
+            this.nav_panel.Size = new System.Drawing.Size(200, 536);
             this.nav_panel.TabIndex = 1;
             // 
             // Services_pie_chart
@@ -103,19 +104,32 @@ namespace SSIP.Forms
             this.label1.TabIndex = 11;
             this.label1.Text = "RFB\'s Performance";
             // 
+            // mainServiceControl
+            // 
+            this.mainServiceControl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainServiceControl.BackgroundImage")));
+            this.mainServiceControl.Location = new System.Drawing.Point(997, 16);
+            this.mainServiceControl.Name = "mainServiceControl";
+            this.mainServiceControl.Size = new System.Drawing.Size(139, 111);
+            this.mainServiceControl.TabIndex = 15;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1153, 696);
+            this.ClientSize = new System.Drawing.Size(1158, 536);
+            this.Controls.Add(this.mainServiceControl);
             this.Controls.Add(this.Services_pie_chart);
             this.Controls.Add(this.DispatchedChart);
             this.Controls.Add(this.CityChart);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nav_panel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Dashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.ResumeLayout(false);
@@ -132,5 +146,6 @@ namespace SSIP.Forms
         private LiveCharts.WinForms.CartesianChart CityChart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private UserForms.MainServiceControl mainServiceControl;
     }
 }

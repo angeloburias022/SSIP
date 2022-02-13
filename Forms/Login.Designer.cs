@@ -30,23 +30,10 @@ namespace SSIP.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.lbl_requestacc = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.tb_pwd = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_uname = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_login = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
-            // 
-            // lbl_requestacc
-            // 
-            this.lbl_requestacc.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_requestacc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_requestacc.ForeColor = System.Drawing.Color.Linen;
-            this.lbl_requestacc.Location = new System.Drawing.Point(183, 351);
-            this.lbl_requestacc.Name = "lbl_requestacc";
-            this.lbl_requestacc.Size = new System.Drawing.Size(150, 22);
-            this.lbl_requestacc.TabIndex = 9;
-            this.lbl_requestacc.Text = "Request account?";
-            this.lbl_requestacc.UseSystemCursors = true;
             // 
             // tb_pwd
             // 
@@ -64,7 +51,7 @@ namespace SSIP.Forms
             this.tb_pwd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.tb_pwd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_pwd.HoverState.Parent = this.tb_pwd;
-            this.tb_pwd.Location = new System.Drawing.Point(129, 193);
+            this.tb_pwd.Location = new System.Drawing.Point(136, 213);
             this.tb_pwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_pwd.Name = "tb_pwd";
             this.tb_pwd.PasswordChar = '*';
@@ -92,7 +79,7 @@ namespace SSIP.Forms
             this.tb_uname.ForeColor = System.Drawing.Color.Black;
             this.tb_uname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_uname.HoverState.Parent = this.tb_uname;
-            this.tb_uname.Location = new System.Drawing.Point(129, 114);
+            this.tb_uname.Location = new System.Drawing.Point(136, 149);
             this.tb_uname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_uname.Name = "tb_uname";
             this.tb_uname.PasswordChar = '\0';
@@ -121,7 +108,7 @@ namespace SSIP.Forms
             this.btn_login.ForeColor = System.Drawing.Color.Black;
             this.btn_login.HoverState.Parent = this.btn_login;
             this.btn_login.IndicateFocus = true;
-            this.btn_login.Location = new System.Drawing.Point(180, 278);
+            this.btn_login.Location = new System.Drawing.Point(188, 308);
             this.btn_login.Name = "btn_login";
             this.btn_login.ShadowDecoration.Parent = this.btn_login;
             this.btn_login.Size = new System.Drawing.Size(153, 54);
@@ -136,22 +123,18 @@ namespace SSIP.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(514, 475);
-            this.Controls.Add(this.lbl_requestacc);
             this.Controls.Add(this.tb_pwd);
             this.Controls.Add(this.tb_uname);
             this.Controls.Add(this.btn_login);
+            this.KeyPreview = true;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_requestacc;
         private Guna.UI2.WinForms.Guna2TextBox tb_pwd;
         private Guna.UI2.WinForms.Guna2TextBox tb_uname;
         private Guna.UI2.WinForms.Guna2Button btn_login;

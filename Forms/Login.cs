@@ -32,7 +32,7 @@ namespace SSIP.Forms
                 Username = tb_uname.Text,
                 Password = tb_pwd.Text
             };
-
+           
             if (!Valid())
             {
                 MessageBox.Show("Check your fields");

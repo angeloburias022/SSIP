@@ -121,10 +121,35 @@ namespace SSIP.Controllers
         }
         #endregion
 
-        #region current user
-        public string CurrentUser(string firstname, string lastname)
+        #region Check username
+        public bool CheckUsername(User user)
         {
-            return "";
+            using (var con = new SqlConnection(ConString))
+            {
+                con.Open();
+                var query = "SELECT UserName FROM Users WHERE UserName = '"+user.Username+"'";
+
+                using (var com = new SqlCommand(query, con))
+                {
+
+                    var read = com.ExecuteReader();
+
+                    while (read.Read())
+                    {
+                        if(read.HasRows)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                con.Close();
+            }
+
+            return false;
         }
         #endregion
 

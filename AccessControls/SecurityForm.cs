@@ -1,5 +1,6 @@
 ﻿using SSIP.Controllers;
 using SSIP.Models;
+using SSIP.UserForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +15,11 @@ namespace SSIP.AccessControls
 {
     public partial class SecurityForm : UserControl
     {
-     
-
+        public int ActionType { get; set; }
         public SecurityForm()
         {
             InitializeComponent();
         }
-
-       
 
         private void btn_access_Click(object sender, EventArgs e)
         {
@@ -38,17 +36,44 @@ namespace SSIP.AccessControls
             
             if(logs == true)
             {
-                login_panel.Hide();
+                this.Hide();
+                Clear();
+                EnableTxtBox();
+            }else
+            {
+                DisableTxtBox();
             }
 
         }
+
+        public void DisableTxtBox()
+        {
+
+          //  ms.tb_fname.Enabled = false;
+        }
+
+        public void EnableTxtBox()
+        {
+
+         //   ms.tb_fname.Enabled = true;
+        }
+
+
 
 
         private void login_panel_Paint(object sender, PaintEventArgs e)
         {
             login_panel.Left = (this.ClientSize.Width - login_panel.Width) / 2;
             login_panel.Top = (this.ClientSize.Height - login_panel.Height) / 2;
-
         }
+
+        #region Clear fields
+        void Clear()
+        {
+            tb_uname.Clear();
+            tb_password.Clear();
+        }
+        #endregion
+
     }
 }
