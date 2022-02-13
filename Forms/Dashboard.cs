@@ -20,6 +20,7 @@ namespace SSIP.Forms
         public Dashboard()
         { 
             InitializeComponent();
+            CustomizeDesign();
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -280,6 +281,137 @@ namespace SSIP.Forms
             }
         }
 
-    
+
+        private void btn_menu_cust_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(Customers_panel);
+        }
+
+        private void btn_dispatch_sub_Click(object sender, EventArgs e)
+        {
+            // logic here
+            HideSubMenu();
+        }
+
+        private void btn_mangecus_sub_Click(object sender, EventArgs e)
+        {
+            // logic here
+            HideSubMenu();
+        }
+
+        private void btn_managecus_sub_Click(object sender, EventArgs e)
+        {
+            // logic here
+            HideSubMenu();
+        }
+
+        private void btn_menu_employees_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(emp_panel);
+        }
+
+
+        private void CustomizeDesign()
+        {
+
+            Customers_panel.Visible = false;
+            emp_panel.Visible = false;
+            inventory_panel.Visible = false;
+            services_panel.Visible = false;
+            settings_panel.Visible = false;
+
+
+            //btn_dispatch_sub.Visible = false;
+            //btn_sched_sub.Visible = false;
+            //btn_managecus_sub.Visible = false;
+
+
+            //btn_attendance_sub.Visible = false;
+            //btn_manageEmp_sub.Visible = false;
+            //btn_payroll_sub.Visible = false;
+
+
+            //btn_sales_sub.Visible = false;
+            //btn_equip_sub.Visible = false;
+
+            //btn_cus_archived_sub.Visible = false;
+            //btn_audit_sub.Visible = false;
+        }
+        private void HideSubMenu()
+        {
+            if (Customers_panel.Visible == true)
+                Customers_panel.Visible = false;
+
+            if (emp_panel.Visible == true)
+                emp_panel.Visible = false;
+
+            if (inventory_panel.Visible == true)
+                inventory_panel.Visible = false;
+
+            if (services_panel.Visible == true)
+                services_panel.Visible = false;
+
+            if (settings_panel.Visible == true)
+                settings_panel.Visible = false;
+
+        }
+
+        private void ShowSubMenu(Panel subMenu)
+        {
+
+            if (subMenu.Visible == false)
+            {
+                HideSubMenu();
+                subMenu.Visible = true;
+            }
+            else
+                subMenu.Visible = false;
+
+        }
+
+        //private void btn_menu_employees_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private void btn_manageEmp_sub_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_main_invent_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(inventory_panel);
+        }
+
+        private void btn_main_services_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(services_panel);
+        }
+
+        private void btb_cus_archived_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_equip_inv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_sales_inv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inventory_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_main_settings_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(services_panel);
+        }
     }
 }
