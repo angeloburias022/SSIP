@@ -189,5 +189,16 @@ namespace SSIP.UserForms
             }
         }
         #endregion
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_viewDispatches_Click(object sender, EventArgs e)
+        {
+            dispatchList_panel.Visible = true;
+            dispatchList_panel.Dock = DockStyle.Fill;
+        }
     }
 }

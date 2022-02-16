@@ -79,7 +79,11 @@ namespace SSIP.UserForms
             this.tb_recorded = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmb_City = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btn_viewDispatches = new Guna.UI2.WinForms.Guna2Button();
+            this.dispatchList_panel = new System.Windows.Forms.Panel();
+            this.dispatchListControl1 = new SSIP.UserformControls.DispatchListControl();
             this.securityForm1 = new SSIP.AccessControls.SecurityForm();
+            this.dispatchList_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label22
@@ -384,6 +388,7 @@ namespace SSIP.UserForms
             this.label21.Size = new System.Drawing.Size(220, 31);
             this.label21.TabIndex = 94;
             this.label21.Text = "Service Details:";
+            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // tb_fname
             // 
@@ -982,6 +987,47 @@ namespace SSIP.UserForms
             this.tb_pass.Visible = false;
             this.tb_pass.Leave += new System.EventHandler(this.tb_pass_Leave);
             // 
+            // btn_viewDispatches
+            // 
+            this.btn_viewDispatches.BackColor = System.Drawing.Color.Transparent;
+            this.btn_viewDispatches.BorderRadius = 4;
+            this.btn_viewDispatches.CheckedState.Parent = this.btn_viewDispatches;
+            this.btn_viewDispatches.CustomImages.Parent = this.btn_viewDispatches;
+            this.btn_viewDispatches.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_viewDispatches.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_viewDispatches.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_viewDispatches.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_viewDispatches.DisabledState.Parent = this.btn_viewDispatches;
+            this.btn_viewDispatches.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_viewDispatches.ForeColor = System.Drawing.Color.White;
+            this.btn_viewDispatches.HoverState.Parent = this.btn_viewDispatches;
+            this.btn_viewDispatches.Location = new System.Drawing.Point(795, 56);
+            this.btn_viewDispatches.Name = "btn_viewDispatches";
+            this.btn_viewDispatches.ShadowDecoration.Parent = this.btn_viewDispatches;
+            this.btn_viewDispatches.Size = new System.Drawing.Size(120, 45);
+            this.btn_viewDispatches.TabIndex = 105;
+            this.btn_viewDispatches.Text = "VIEW DISPATCHES";
+            this.btn_viewDispatches.UseTransparentBackground = true;
+            this.btn_viewDispatches.Click += new System.EventHandler(this.btn_viewDispatches_Click);
+            // 
+            // dispatchList_panel
+            // 
+            this.dispatchList_panel.Controls.Add(this.dispatchListControl1);
+            this.dispatchList_panel.Location = new System.Drawing.Point(775, 125);
+            this.dispatchList_panel.Name = "dispatchList_panel";
+            this.dispatchList_panel.Size = new System.Drawing.Size(140, 81);
+            this.dispatchList_panel.TabIndex = 107;
+            this.dispatchList_panel.Visible = false;
+            // 
+            // dispatchListControl1
+            // 
+            this.dispatchListControl1.BackColor = System.Drawing.Color.White;
+            this.dispatchListControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dispatchListControl1.Location = new System.Drawing.Point(0, 0);
+            this.dispatchListControl1.Name = "dispatchListControl1";
+            this.dispatchListControl1.Size = new System.Drawing.Size(140, 81);
+            this.dispatchListControl1.TabIndex = 108;
+            // 
             // securityForm1
             // 
             this.securityForm1.ActionType = 0;
@@ -996,7 +1042,9 @@ namespace SSIP.UserForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.Controls.Add(this.dispatchList_panel);
             this.Controls.Add(this.securityForm1);
+            this.Controls.Add(this.btn_viewDispatches);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.dispatchDate);
@@ -1049,6 +1097,7 @@ namespace SSIP.UserForms
             this.Name = "MainServiceControl";
             this.Size = new System.Drawing.Size(957, 505);
             this.Load += new System.EventHandler(this.MainServiceControl_Load);
+            this.dispatchList_panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1108,5 +1157,8 @@ namespace SSIP.UserForms
         private AccessControls.SecurityForm securityForm1;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_City;
         private Guna.UI2.WinForms.Guna2TextBox tb_pass;
+        private Guna.UI2.WinForms.Guna2Button btn_viewDispatches;
+        private UserformControls.DispatchListControl dispatchListControl1;
+        public System.Windows.Forms.Panel dispatchList_panel;
     }
 }

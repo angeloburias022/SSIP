@@ -411,7 +411,15 @@ namespace SSIP.Forms
 
         private void btn_main_settings_Click(object sender, EventArgs e)
         {
-            ShowSubMenu(services_panel);
+            ShowSubMenu(settings_panel);
+        }
+
+        private void btn_dispatch_sub_Click_1(object sender, EventArgs e)
+        {
+            mainServiceControl.Show();
+
+            dispatchFormPanel.Visible = true;
+            dispatchFormPanel.Dock = DockStyle.Fill;
         }
     }
 }
