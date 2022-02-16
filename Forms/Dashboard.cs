@@ -17,6 +17,8 @@ namespace SSIP.Forms
 {
     public partial class Dashboard : Form
     {
+
+        MainServiceControl ms = new MainServiceControl();
         public Dashboard()
         { 
             InitializeComponent();
@@ -25,10 +27,10 @@ namespace SSIP.Forms
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-          
-          //this.dispatchControl1.Visible = false;
-          //this.mainServiceControl.BringToFront();
-          this.mainServiceControl.Visible = false;
+
+            //this.dispatchControl1.Visible = false;
+            //this.mainServiceControl.BringToFront();
+        //   this.mainServiceControl.Visible = false;
 
             try
             {
@@ -416,10 +418,20 @@ namespace SSIP.Forms
 
         private void btn_dispatch_sub_Click_1(object sender, EventArgs e)
         {
-            mainServiceControl.Show();
+            this.mainServiceControl1.Show();
 
             dispatchFormPanel.Visible = true;
             dispatchFormPanel.Dock = DockStyle.Fill;
+        }
+
+        private void dispatchFormPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CityChart_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
         }
     }
 }

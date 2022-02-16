@@ -157,12 +157,6 @@
     <Compile Include="SpServicesChart_Result.cs">
       <DependentUpon>Dashboard.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserformControls\DispatchListControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserformControls\DispatchListControl.Designer.cs">
-      <DependentUpon>DispatchListControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserformControls\MainServiceControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,9 +183,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserformControls\DispatchListControl.resx">
-      <DependentUpon>DispatchListControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\MainServiceControl.resx">
       <DependentUpon>MainServiceControl.cs</DependentUpon>
     </EmbeddedResource>

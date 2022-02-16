@@ -81,9 +81,23 @@ namespace SSIP.UserForms
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_viewDispatches = new Guna.UI2.WinForms.Guna2Button();
             this.dispatchList_panel = new System.Windows.Forms.Panel();
-            this.dispatchListControl1 = new SSIP.UserformControls.DispatchListControl();
+            this.DispatchListPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.dispatchListgrid = new System.Windows.Forms.DataGridView();
+            this.btn_addDispatch = new Guna.UI2.WinForms.Guna2Button();
+            this.schedMainPanel = new System.Windows.Forms.Panel();
+            this.schedListTablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.schedgrid = new System.Windows.Forms.DataGridView();
+            this.btn_addsched = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_viewScheds = new Guna.UI2.WinForms.Guna2Button();
+            this.tb_dispatchID = new System.Windows.Forms.TextBox();
+            this.lbl_dispatchID = new System.Windows.Forms.Label();
             this.securityForm1 = new SSIP.AccessControls.SecurityForm();
             this.dispatchList_panel.SuspendLayout();
+            this.DispatchListPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dispatchListgrid)).BeginInit();
+            this.schedMainPanel.SuspendLayout();
+            this.schedListTablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.schedgrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label22
@@ -1012,21 +1026,184 @@ namespace SSIP.UserForms
             // 
             // dispatchList_panel
             // 
-            this.dispatchList_panel.Controls.Add(this.dispatchListControl1);
-            this.dispatchList_panel.Location = new System.Drawing.Point(775, 125);
+            this.dispatchList_panel.Controls.Add(this.DispatchListPanel);
+            this.dispatchList_panel.Location = new System.Drawing.Point(3, 170);
             this.dispatchList_panel.Name = "dispatchList_panel";
-            this.dispatchList_panel.Size = new System.Drawing.Size(140, 81);
+            this.dispatchList_panel.Size = new System.Drawing.Size(415, 328);
             this.dispatchList_panel.TabIndex = 107;
             this.dispatchList_panel.Visible = false;
             // 
-            // dispatchListControl1
+            // DispatchListPanel
             // 
-            this.dispatchListControl1.BackColor = System.Drawing.Color.White;
-            this.dispatchListControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dispatchListControl1.Location = new System.Drawing.Point(0, 0);
-            this.dispatchListControl1.Name = "dispatchListControl1";
-            this.dispatchListControl1.Size = new System.Drawing.Size(140, 81);
-            this.dispatchListControl1.TabIndex = 108;
+            this.DispatchListPanel.ColumnCount = 3;
+            this.DispatchListPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.542169F));
+            this.DispatchListPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.15662F));
+            this.DispatchListPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.542169F));
+            this.DispatchListPanel.Controls.Add(this.dispatchListgrid, 1, 1);
+            this.DispatchListPanel.Controls.Add(this.btn_addDispatch, 1, 2);
+            this.DispatchListPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DispatchListPanel.Location = new System.Drawing.Point(0, 0);
+            this.DispatchListPanel.Name = "DispatchListPanel";
+            this.DispatchListPanel.RowCount = 3;
+            this.DispatchListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
+            this.DispatchListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.67513F));
+            this.DispatchListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.33503F));
+            this.DispatchListPanel.Size = new System.Drawing.Size(415, 328);
+            this.DispatchListPanel.TabIndex = 0;
+            // 
+            // dispatchListgrid
+            // 
+            this.dispatchListgrid.AllowUserToAddRows = false;
+            this.dispatchListgrid.AllowUserToDeleteRows = false;
+            this.dispatchListgrid.AllowUserToOrderColumns = true;
+            this.dispatchListgrid.AllowUserToResizeColumns = false;
+            this.dispatchListgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dispatchListgrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dispatchListgrid.Location = new System.Drawing.Point(25, 56);
+            this.dispatchListgrid.Name = "dispatchListgrid";
+            this.dispatchListgrid.ReadOnly = true;
+            this.dispatchListgrid.Size = new System.Drawing.Size(363, 195);
+            this.dispatchListgrid.TabIndex = 0;
+            this.dispatchListgrid.Visible = false;
+            this.dispatchListgrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dispatchListgrid_CellDoubleClick);
+            // 
+            // btn_addDispatch
+            // 
+            this.btn_addDispatch.BackColor = System.Drawing.Color.Transparent;
+            this.btn_addDispatch.BorderRadius = 4;
+            this.btn_addDispatch.CheckedState.Parent = this.btn_addDispatch;
+            this.btn_addDispatch.CustomImages.Parent = this.btn_addDispatch;
+            this.btn_addDispatch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addDispatch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addDispatch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_addDispatch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_addDispatch.DisabledState.Parent = this.btn_addDispatch;
+            this.btn_addDispatch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_addDispatch.ForeColor = System.Drawing.Color.White;
+            this.btn_addDispatch.HoverState.Parent = this.btn_addDispatch;
+            this.btn_addDispatch.Location = new System.Drawing.Point(25, 257);
+            this.btn_addDispatch.Name = "btn_addDispatch";
+            this.btn_addDispatch.ShadowDecoration.Parent = this.btn_addDispatch;
+            this.btn_addDispatch.Size = new System.Drawing.Size(120, 45);
+            this.btn_addDispatch.TabIndex = 105;
+            this.btn_addDispatch.Text = "ADD DISPATCH";
+            this.btn_addDispatch.UseTransparentBackground = true;
+            this.btn_addDispatch.Click += new System.EventHandler(this.btn_addDispatch_Click);
+            // 
+            // schedMainPanel
+            // 
+            this.schedMainPanel.Controls.Add(this.schedListTablePanel);
+            this.schedMainPanel.Location = new System.Drawing.Point(440, 200);
+            this.schedMainPanel.Name = "schedMainPanel";
+            this.schedMainPanel.Size = new System.Drawing.Size(450, 328);
+            this.schedMainPanel.TabIndex = 107;
+            this.schedMainPanel.Visible = false;
+            // 
+            // schedListTablePanel
+            // 
+            this.schedListTablePanel.ColumnCount = 3;
+            this.schedListTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.333333F));
+            this.schedListTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.22222F));
+            this.schedListTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.666667F));
+            this.schedListTablePanel.Controls.Add(this.schedgrid, 1, 1);
+            this.schedListTablePanel.Controls.Add(this.btn_addsched, 1, 2);
+            this.schedListTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.schedListTablePanel.Location = new System.Drawing.Point(0, 0);
+            this.schedListTablePanel.Name = "schedListTablePanel";
+            this.schedListTablePanel.RowCount = 3;
+            this.schedListTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
+            this.schedListTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.67513F));
+            this.schedListTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.33503F));
+            this.schedListTablePanel.Size = new System.Drawing.Size(450, 328);
+            this.schedListTablePanel.TabIndex = 0;
+            this.schedListTablePanel.Visible = false;
+            // 
+            // schedgrid
+            // 
+            this.schedgrid.AllowUserToAddRows = false;
+            this.schedgrid.AllowUserToDeleteRows = false;
+            this.schedgrid.AllowUserToOrderColumns = true;
+            this.schedgrid.AllowUserToResizeColumns = false;
+            this.schedgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.schedgrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.schedgrid.Location = new System.Drawing.Point(26, 56);
+            this.schedgrid.Name = "schedgrid";
+            this.schedgrid.ReadOnly = true;
+            this.schedgrid.Size = new System.Drawing.Size(399, 195);
+            this.schedgrid.TabIndex = 0;
+            this.schedgrid.Visible = false;
+            this.schedgrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.schedgrid_CellDoubleClick);
+            // 
+            // btn_addsched
+            // 
+            this.btn_addsched.BackColor = System.Drawing.Color.Transparent;
+            this.btn_addsched.BorderRadius = 4;
+            this.btn_addsched.CheckedState.Parent = this.btn_addsched;
+            this.btn_addsched.CustomImages.Parent = this.btn_addsched;
+            this.btn_addsched.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addsched.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addsched.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_addsched.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_addsched.DisabledState.Parent = this.btn_addsched;
+            this.btn_addsched.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_addsched.ForeColor = System.Drawing.Color.White;
+            this.btn_addsched.HoverState.Parent = this.btn_addsched;
+            this.btn_addsched.Location = new System.Drawing.Point(26, 257);
+            this.btn_addsched.Name = "btn_addsched";
+            this.btn_addsched.ShadowDecoration.Parent = this.btn_addsched;
+            this.btn_addsched.Size = new System.Drawing.Size(112, 43);
+            this.btn_addsched.TabIndex = 105;
+            this.btn_addsched.Text = "ADD SCHEDULE";
+            this.btn_addsched.UseTransparentBackground = true;
+            this.btn_addsched.Click += new System.EventHandler(this.btn_addsched_Click);
+            // 
+            // btn_viewScheds
+            // 
+            this.btn_viewScheds.BackColor = System.Drawing.Color.Transparent;
+            this.btn_viewScheds.BorderRadius = 4;
+            this.btn_viewScheds.CheckedState.Parent = this.btn_viewScheds;
+            this.btn_viewScheds.CustomImages.Parent = this.btn_viewScheds;
+            this.btn_viewScheds.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_viewScheds.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_viewScheds.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_viewScheds.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_viewScheds.DisabledState.Parent = this.btn_viewScheds;
+            this.btn_viewScheds.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_viewScheds.ForeColor = System.Drawing.Color.White;
+            this.btn_viewScheds.HoverState.Parent = this.btn_viewScheds;
+            this.btn_viewScheds.Location = new System.Drawing.Point(795, 107);
+            this.btn_viewScheds.Name = "btn_viewScheds";
+            this.btn_viewScheds.ShadowDecoration.Parent = this.btn_viewScheds;
+            this.btn_viewScheds.Size = new System.Drawing.Size(120, 45);
+            this.btn_viewScheds.TabIndex = 105;
+            this.btn_viewScheds.Text = "VIEW SCHEDULES";
+            this.btn_viewScheds.UseTransparentBackground = true;
+            this.btn_viewScheds.Click += new System.EventHandler(this.btn_viewScheds_Click);
+            // 
+            // tb_dispatchID
+            // 
+            this.tb_dispatchID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_dispatchID.Location = new System.Drawing.Point(517, 34);
+            this.tb_dispatchID.Multiline = true;
+            this.tb_dispatchID.Name = "tb_dispatchID";
+            this.tb_dispatchID.ReadOnly = true;
+            this.tb_dispatchID.Size = new System.Drawing.Size(100, 33);
+            this.tb_dispatchID.TabIndex = 68;
+            this.tb_dispatchID.Text = "0";
+            this.tb_dispatchID.Visible = false;
+            // 
+            // lbl_dispatchID
+            // 
+            this.lbl_dispatchID.AutoSize = true;
+            this.lbl_dispatchID.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_dispatchID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dispatchID.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_dispatchID.Location = new System.Drawing.Point(513, 9);
+            this.lbl_dispatchID.Name = "lbl_dispatchID";
+            this.lbl_dispatchID.Size = new System.Drawing.Size(109, 20);
+            this.lbl_dispatchID.TabIndex = 80;
+            this.lbl_dispatchID.Text = "Dispatch ID:";
+            this.lbl_dispatchID.Visible = false;
             // 
             // securityForm1
             // 
@@ -1042,8 +1219,10 @@ namespace SSIP.UserForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.Controls.Add(this.schedMainPanel);
             this.Controls.Add(this.dispatchList_panel);
             this.Controls.Add(this.securityForm1);
+            this.Controls.Add(this.btn_viewScheds);
             this.Controls.Add(this.btn_viewDispatches);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btn_save);
@@ -1073,6 +1252,7 @@ namespace SSIP.UserForms
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.lbl_dispatchID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
@@ -1084,6 +1264,7 @@ namespace SSIP.UserForms
             this.Controls.Add(this.lbl_timeout);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.tb_dispatchID);
             this.Controls.Add(this.tb_customerID);
             this.Controls.Add(this.lbl_timein);
             this.Controls.Add(this.tb_schedID);
@@ -1098,6 +1279,11 @@ namespace SSIP.UserForms
             this.Size = new System.Drawing.Size(957, 505);
             this.Load += new System.EventHandler(this.MainServiceControl_Load);
             this.dispatchList_panel.ResumeLayout(false);
+            this.DispatchListPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dispatchListgrid)).EndInit();
+            this.schedMainPanel.ResumeLayout(false);
+            this.schedListTablePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.schedgrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1158,7 +1344,17 @@ namespace SSIP.UserForms
         private Guna.UI2.WinForms.Guna2ComboBox cmb_City;
         private Guna.UI2.WinForms.Guna2TextBox tb_pass;
         private Guna.UI2.WinForms.Guna2Button btn_viewDispatches;
-        private UserformControls.DispatchListControl dispatchListControl1;
+       
         public System.Windows.Forms.Panel dispatchList_panel;
+        private System.Windows.Forms.DataGridView dispatchListgrid;
+        private System.Windows.Forms.TableLayoutPanel DispatchListPanel;
+        public System.Windows.Forms.Panel schedMainPanel;
+        private System.Windows.Forms.TableLayoutPanel schedListTablePanel;
+        private System.Windows.Forms.DataGridView schedgrid;
+        private Guna.UI2.WinForms.Guna2Button btn_viewScheds;
+        private Guna.UI2.WinForms.Guna2Button btn_addDispatch;
+        private Guna.UI2.WinForms.Guna2Button btn_addsched;
+        private System.Windows.Forms.TextBox tb_dispatchID;
+        private System.Windows.Forms.Label lbl_dispatchID;
     }
 }

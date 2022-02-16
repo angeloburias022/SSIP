@@ -18,14 +18,25 @@ namespace SSIP.UserForms
 {
     public partial class MainServiceControl : UserControl
     {
-      
         public MainServiceControl()
         {
             InitializeComponent();
+
             this.securityForm1.Visible = false;
             this.btn_save.Enabled = false;
         }
 
+        #region private fields
+
+        //protected static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+
+        //protected DataTable dt = new DataTable();
+
+        //protected DataSet ds = new DataSet();
+
+        #endregion
+
+        #region save service (dispatch/schedule)
         private void btn_save_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("CONFIRM?",
@@ -36,7 +47,7 @@ namespace SSIP.UserForms
 
                 cusID = Convert.ToInt32(tb_customerID.Text);
                 schedID = Convert.ToInt32(tb_schedID.Text);
-               
+
                 var cus = new User
                 {
                     Username = tb_recorded.Text,
@@ -73,17 +84,18 @@ namespace SSIP.UserForms
                     Street = tb_street.Text,
                     HouseNo = tb_houseNo.Text,
                     Barangay = tb_barangay.Text,
-                    City = cmb_City.Text                   
+                    City = cmb_City.Text
                 };
 
                 ServicesController svcon = new ServicesController();
 
                 var result = svcon.AddService(cus, address, sched, dispatch);
 
-                if(result != true)
+                if (result != true)
                 {
                     MessageBox.Show("something went wrong");
-                }else
+                }
+                else
                 {
                     MessageBox.Show("Added successfully");
                 }
@@ -94,6 +106,8 @@ namespace SSIP.UserForms
                 MessageBox.Show("Cancelled Successfuly");
             }
         }
+        #endregion
+
         private void btn_updateSched_Click(object sender, EventArgs e)
         {
             //btn_save_Click(sender, e);
@@ -132,7 +146,8 @@ namespace SSIP.UserForms
 
         private void MainServiceControl_Load(object sender, EventArgs e)
         {
-
+           dispatchListgrid.DataSource = GetDispatches();
+           schedgrid.DataSource = GetSchedules();
         }
 
         #region credentials confirmation
@@ -198,7 +213,198 @@ namespace SSIP.UserForms
         private void btn_viewDispatches_Click(object sender, EventArgs e)
         {
             dispatchList_panel.Visible = true;
-            dispatchList_panel.Dock = DockStyle.Fill;
+            dispatchListgrid.Visible = true;
+            DispatchListPanel.Visible = true;
+            dispatchList_panel.Dock = DockStyle.Fill;        
         }
+
+        public DataTable GetDispatches()
+        {
+
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            try
+            {
+              
+
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetDispatched]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.ToString());
+            }
+            return dt;
+        }
+
+        public DataTable GetSchedules()
+        {
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            try
+            {
+
+
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetSchedules]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.ToString());
+            }
+
+            return dt;
+        }
+
+        private void btn_viewScheds_Click(object sender, EventArgs e)   
+        {
+            schedListTablePanel.Visible = true;
+            schedgrid.Visible = true;
+            schedMainPanel.Visible = true;
+            schedMainPanel.Dock = DockStyle.Fill;
+          
+        }
+
+        private void btn_addDispatch_Click(object sender, EventArgs e)
+        {
+            HideDispatch();        
+        }
+        private void btn_addsched_Click(object sender, EventArgs e)
+        {
+            HideSched();
+        }
+
+        private void dispatchListgrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HideDispatch();
+            try
+            {
+                MessageBox.Show("clicked");
+                tb_schedID.Text = this.dispatchListgrid.CurrentRow.Cells[0].Value.ToString();
+                //tb_svdate.Value = Convert.ToDateTime(this.schedgrid.CurrentRow.Cells[1].Value.ToString());
+                //cmb_svtype.Text = this.schedgrid.CurrentRow.Cells[2].Value.ToString();
+                //tb_fname.Text = this.schedgrid.CurrentRow.Cells[3].Value.ToString();
+                //tb_lname.Text = this.schedgrid.CurrentRow.Cells[4].Value.ToString();
+                //tb_quan.Text = this.schedgrid.CurrentRow.Cells[5].Value.ToString();
+                //tb_brand.Text = this.schedgrid.CurrentRow.Cells[6].Value.ToString();
+                //tb_actype.Text = this.schedgrid.CurrentRow.Cells[7].Value.ToString();
+                //tb_mobile.Text = this.schedgrid.CurrentRow.Cells[8].Value.ToString();
+                //tb_tel.Text = this.schedgrid.CurrentRow.Cells[9].Value.ToString();
+                //tb_houseNo.Text = this.schedgrid.CurrentRow.Cells[10].Value.ToString();
+                //tb_street.Text = this.schedgrid.CurrentRow.Cells[11].Value.ToString();
+                //tb_barangay.Text = this.schedgrid.CurrentRow.Cells[12].Value.ToString();
+                //cmb_City.Text = this.schedgrid.CurrentRow.Cells[13].Value.ToString();
+                //cmb_Status.Text = this.schedgrid.CurrentRow.Cells[14].Value.ToString();
+                //tb_svtime.Text = this.schedgrid.CurrentRow.Cells[15].Value.ToString();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("something went wrong " + error);
+            }
+        }
+
+        // Declare a new DataGridTableStyle in the  
+        // declarations area of your form.  
+        DataGridTableStyle ts = new DataGridTableStyle();
+
+        private void hideColumn()
+        {
+            // Set the DataGridTableStyle.MappingName property  
+            // to the table in the data source to map to.  
+            ts.MappingName = dispatchListgrid.DataMember;
+
+            // Add it to the datagrid's TableStyles collection  
+           // dispatchListgrid.Add(ts);
+
+            // Hide the first column (index 0)  
+           // dispatchListgrid.TableStyles[0].GridColumnStyles[0].Width = 0;
+        }
+
+        private void schedgrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HideSched();
+            try
+            {
+              
+                tb_svdate.Format = DateTimePickerFormat.Custom;
+                // Display the date as "Mon 27 Feb 2012". 
+                tb_svdate.CustomFormat = "ddd dd MMM yyyy";
+                tb_schedID.Text = this.schedgrid.CurrentRow.Cells[0].Value.ToString();
+                tb_svdate.Value = Convert.ToDateTime(this.schedgrid.CurrentRow.Cells[1].Value.ToString());
+                cmb_svtype.Text = this.schedgrid.CurrentRow.Cells[2].Value.ToString();
+                tb_fname.Text = this.schedgrid.CurrentRow.Cells[3].Value.ToString();
+                tb_lname.Text = this.schedgrid.CurrentRow.Cells[4].Value.ToString();
+                tb_quan.Text = this.schedgrid.CurrentRow.Cells[5].Value.ToString();
+                tb_brand.Text = this.schedgrid.CurrentRow.Cells[6].Value.ToString();
+                tb_actype.Text = this.schedgrid.CurrentRow.Cells[7].Value.ToString();
+                tb_mobile.Text = this.schedgrid.CurrentRow.Cells[8].Value.ToString();
+                tb_tel.Text = this.schedgrid.CurrentRow.Cells[9].Value.ToString();
+                tb_houseNo.Text = this.schedgrid.CurrentRow.Cells[10].Value.ToString();
+                tb_street.Text = this.schedgrid.CurrentRow.Cells[11].Value.ToString();
+                tb_barangay.Text = this.schedgrid.CurrentRow.Cells[12].Value.ToString();
+                cmb_City.Text = this.schedgrid.CurrentRow.Cells[13].Value.ToString();
+                cmb_Status.Text = this.schedgrid.CurrentRow.Cells[14].Value.ToString();
+                tb_svtime.Text = this.schedgrid.CurrentRow.Cells[15].Value.ToString();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("something went wrong " + error);
+            }
+        }
+
+
+        #region hide services panels
+        void HideDispatch()
+        {
+            dispatchList_panel.Visible = false;
+            DispatchListPanel.Visible = false;
+            dispatchList_panel.Visible = false;
+            DispatchListPanel.Dock = DockStyle.None;
+        }
+        void HideSched()
+        {
+            schedListTablePanel.Visible = false;
+            schedMainPanel.Visible = false;
+            schedgrid.Visible = false;
+            schedMainPanel.Dock = DockStyle.None;
+
+        }
+        #endregion
+
     }
 }

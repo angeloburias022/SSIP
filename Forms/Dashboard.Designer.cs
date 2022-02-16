@@ -59,7 +59,7 @@ namespace SSIP.Forms
             this.btn_sales_inv = new System.Windows.Forms.Button();
             this.btn_main_invent = new System.Windows.Forms.Button();
             this.dispatchFormPanel = new System.Windows.Forms.Panel();
-            this.mainServiceControl = new SSIP.UserForms.MainServiceControl();
+            this.mainServiceControl1 = new SSIP.UserForms.MainServiceControl();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -124,6 +124,7 @@ namespace SSIP.Forms
             this.CityChart.Size = new System.Drawing.Size(801, 204);
             this.CityChart.TabIndex = 13;
             this.CityChart.Text = "cartesianChart2";
+            this.CityChart.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.CityChart_ChildChanged);
             // 
             // logo_panel
             // 
@@ -442,21 +443,22 @@ namespace SSIP.Forms
             // 
             // dispatchFormPanel
             // 
-            this.dispatchFormPanel.Controls.Add(this.mainServiceControl);
-            this.dispatchFormPanel.Location = new System.Drawing.Point(797, 88);
+            this.dispatchFormPanel.Controls.Add(this.mainServiceControl1);
+            this.dispatchFormPanel.Location = new System.Drawing.Point(957, 49);
             this.dispatchFormPanel.Name = "dispatchFormPanel";
-            this.dispatchFormPanel.Size = new System.Drawing.Size(231, 150);
-            this.dispatchFormPanel.TabIndex = 17;
+            this.dispatchFormPanel.Size = new System.Drawing.Size(200, 100);
+            this.dispatchFormPanel.TabIndex = 18;
+            this.dispatchFormPanel.Visible = false;
             // 
-            // mainServiceControl
+            // mainServiceControl1
             // 
-            this.mainServiceControl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainServiceControl.BackgroundImage")));
-            this.mainServiceControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainServiceControl.Location = new System.Drawing.Point(0, 0);
-            this.mainServiceControl.Name = "mainServiceControl";
-            this.mainServiceControl.Size = new System.Drawing.Size(231, 150);
-            this.mainServiceControl.TabIndex = 15;
-            this.mainServiceControl.Visible = false;
+            this.mainServiceControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainServiceControl1.BackgroundImage")));
+            this.mainServiceControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainServiceControl1.Location = new System.Drawing.Point(0, 0);
+            this.mainServiceControl1.Name = "mainServiceControl1";
+            this.mainServiceControl1.Size = new System.Drawing.Size(200, 100);
+            this.mainServiceControl1.TabIndex = 17;
+            this.mainServiceControl1.Visible = false;
             // 
             // Dashboard
             // 
@@ -496,7 +498,7 @@ namespace SSIP.Forms
         private LiveCharts.WinForms.CartesianChart DispatchedChart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private UserForms.MainServiceControl mainServiceControl;
+    //    private UserForms.MainServiceControl mainServiceControl;
         private LiveCharts.WinForms.CartesianChart CityChart;
         private System.Windows.Forms.Panel logo_panel;
         private System.Windows.Forms.Button btn_menu_cust;
@@ -520,6 +522,7 @@ namespace SSIP.Forms
         private System.Windows.Forms.Panel settings_panel;
         private System.Windows.Forms.Button btn_auditLogs;
         private System.Windows.Forms.Button btn_main_settings;
+        private UserForms.MainServiceControl mainServiceControl1;
         private System.Windows.Forms.Panel dispatchFormPanel;
     }
 }
