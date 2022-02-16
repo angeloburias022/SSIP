@@ -75,7 +75,6 @@ namespace SSIP.UserForms
             this.btn_save = new Guna.UI2.WinForms.Guna2Button();
             this.tb_customerID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.tb_recorded = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmb_City = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
@@ -402,7 +401,6 @@ namespace SSIP.UserForms
             this.label21.Size = new System.Drawing.Size(220, 31);
             this.label21.TabIndex = 94;
             this.label21.Text = "Service Details:";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // tb_fname
             // 
@@ -484,7 +482,6 @@ namespace SSIP.UserForms
             this.tb_lname.ShadowDecoration.Parent = this.tb_lname;
             this.tb_lname.Size = new System.Drawing.Size(165, 36);
             this.tb_lname.TabIndex = 102;
-            this.tb_lname.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
             // 
             // tb_street
             // 
@@ -892,29 +889,6 @@ namespace SSIP.UserForms
             this.label1.Text = "CustomerID";
             this.label1.Visible = false;
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 4;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.DisabledState.Parent = this.guna2Button1;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(795, 363);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(120, 45);
-            this.guna2Button1.TabIndex = 105;
-            this.guna2Button1.Text = "UPDATE";
-            this.guna2Button1.UseTransparentBackground = true;
-            this.guna2Button1.Click += new System.EventHandler(this.btn_updateSched_Click);
-            // 
             // tb_recorded
             // 
             this.tb_recorded.BackColor = System.Drawing.Color.Transparent;
@@ -1027,7 +1001,7 @@ namespace SSIP.UserForms
             // dispatchList_panel
             // 
             this.dispatchList_panel.Controls.Add(this.DispatchListPanel);
-            this.dispatchList_panel.Location = new System.Drawing.Point(3, 170);
+            this.dispatchList_panel.Location = new System.Drawing.Point(921, 376);
             this.dispatchList_panel.Name = "dispatchList_panel";
             this.dispatchList_panel.Size = new System.Drawing.Size(415, 328);
             this.dispatchList_panel.TabIndex = 107;
@@ -1093,7 +1067,7 @@ namespace SSIP.UserForms
             // schedMainPanel
             // 
             this.schedMainPanel.Controls.Add(this.schedListTablePanel);
-            this.schedMainPanel.Location = new System.Drawing.Point(440, 200);
+            this.schedMainPanel.Location = new System.Drawing.Point(921, 31);
             this.schedMainPanel.Name = "schedMainPanel";
             this.schedMainPanel.Size = new System.Drawing.Size(450, 328);
             this.schedMainPanel.TabIndex = 107;
@@ -1224,7 +1198,6 @@ namespace SSIP.UserForms
             this.Controls.Add(this.securityForm1);
             this.Controls.Add(this.btn_viewScheds);
             this.Controls.Add(this.btn_viewDispatches);
-            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.dispatchDate);
             this.Controls.Add(this.tb_svdate);
@@ -1336,7 +1309,6 @@ namespace SSIP.UserForms
         private Guna.UI2.WinForms.Guna2TextBox tb_timeout;
         private Guna.UI2.WinForms.Guna2DateTimePicker dispatchDate;
         private Guna.UI2.WinForms.Guna2Button btn_save;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2TextBox tb_recorded;
         private System.Windows.Forms.Label label22;
         private Guna.UI2.WinForms.Guna2DateTimePicker tb_svdate;

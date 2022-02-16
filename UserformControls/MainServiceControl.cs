@@ -18,6 +18,8 @@ namespace SSIP.UserForms
 {
     public partial class MainServiceControl : UserControl
     {
+
+        #region initiliazer
         public MainServiceControl()
         {
             InitializeComponent();
@@ -25,6 +27,14 @@ namespace SSIP.UserForms
             this.securityForm1.Visible = false;
             this.btn_save.Enabled = false;
         }
+
+        private void MainServiceControl_Load(object sender, EventArgs e)
+        {
+            dispatchListgrid.DataSource = GetDispatches();
+            schedgrid.DataSource = GetSchedules();
+        }
+
+        #endregion
 
         #region private fields
 
@@ -108,48 +118,6 @@ namespace SSIP.UserForms
         }
         #endregion
 
-        private void btn_updateSched_Click(object sender, EventArgs e)
-        {
-            //btn_save_Click(sender, e);
-        }
-
-        private void cmb_Status_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cmb_Status.Text == "Dispatch")
-            {
-                tb_assign1.Visible = true;
-                lbl_assign.Visible = true;
-                lbl_timein.Visible = true;
-                lbl_timeout.Visible = true;
-                tb_timein.Visible = true;
-                tb_timeout.Visible = true;
-                dispatchDate.Visible = true;
-                lbl_dispatchDate.Visible = true;
-            }else
-            {
-                tb_assign1.Visible = false;
-                lbl_assign.Visible = false;
-                lbl_timein.Visible = false;
-                lbl_timeout.Visible = false;
-                tb_timein.Visible = false;
-                tb_timeout.Visible = false;
-                dispatchDate.Visible = false;
-                lbl_dispatchDate.Visible = false;
-            }
-        }
-
-
-        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainServiceControl_Load(object sender, EventArgs e)
-        {
-           dispatchListgrid.DataSource = GetDispatches();
-           schedgrid.DataSource = GetSchedules();
-        }
-
         #region credentials confirmation
         private void tb_recorded_Leave(object sender, EventArgs e)
         {
@@ -166,13 +134,14 @@ namespace SSIP.UserForms
 
             var result = acc.CheckUsername(user);
 
-            if(result == true)
+            if (result == true)
             {
                 this.tb_pass.Show();
-          
-            }else
+
+            }
+            else
             {
-        
+
                 this.tb_pass.Hide();
 
                 MessageBox.Show("Make sure you inputted your corrent Username");
@@ -205,19 +174,36 @@ namespace SSIP.UserForms
         }
         #endregion
 
-        private void label21_Click(object sender, EventArgs e)
+        #region show and hide based on service status
+        private void cmb_Status_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cmb_Status.Text == "Dispatch")
+            {
+                tb_assign1.Visible = true;
+                lbl_assign.Visible = true;
+                lbl_timein.Visible = true;
+                lbl_timeout.Visible = true;
+                tb_timein.Visible = true;
+                tb_timeout.Visible = true;
+                dispatchDate.Visible = true;
+                lbl_dispatchDate.Visible = true;
+            }
+            else
+            {
+                tb_assign1.Visible = false;
+                lbl_assign.Visible = false;
+                lbl_timein.Visible = false;
+                lbl_timeout.Visible = false;
+                tb_timein.Visible = false;
+                tb_timeout.Visible = false;
+                dispatchDate.Visible = false;
+                lbl_dispatchDate.Visible = false;
+            }
         }
 
-        private void btn_viewDispatches_Click(object sender, EventArgs e)
-        {
-            dispatchList_panel.Visible = true;
-            dispatchListgrid.Visible = true;
-            DispatchListPanel.Visible = true;
-            dispatchList_panel.Dock = DockStyle.Fill;        
-        }
+        #endregion
 
+        #region Get sched and dispatch 
         public DataTable GetDispatches()
         {
 
@@ -227,7 +213,7 @@ namespace SSIP.UserForms
 
             try
             {
-              
+
 
                 using (SqlConnection con = new SqlConnection(ConString))
                 {
@@ -290,25 +276,40 @@ namespace SSIP.UserForms
 
             return dt;
         }
+        #endregion
 
-        private void btn_viewScheds_Click(object sender, EventArgs e)   
-        {
-            schedListTablePanel.Visible = true;
-            schedgrid.Visible = true;
-            schedMainPanel.Visible = true;
-            schedMainPanel.Dock = DockStyle.Fill;
-          
-        }
-
-        private void btn_addDispatch_Click(object sender, EventArgs e)
-        {
-            HideDispatch();        
-        }
-        private void btn_addsched_Click(object sender, EventArgs e)
+        #region cell double click
+        private void schedgrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             HideSched();
-        }
+            try
+            {
 
+                tb_svdate.Format = DateTimePickerFormat.Custom;
+                // Display the date as "Mon 27 Feb 2012". 
+                tb_svdate.CustomFormat = "ddd dd MMM yyyy";
+                tb_schedID.Text = this.schedgrid.CurrentRow.Cells[0].Value.ToString();
+                tb_svdate.Value = Convert.ToDateTime(this.schedgrid.CurrentRow.Cells[1].Value.ToString());
+                cmb_svtype.Text = this.schedgrid.CurrentRow.Cells[2].Value.ToString();
+                tb_fname.Text = this.schedgrid.CurrentRow.Cells[3].Value.ToString();
+                tb_lname.Text = this.schedgrid.CurrentRow.Cells[4].Value.ToString();
+                tb_quan.Text = this.schedgrid.CurrentRow.Cells[5].Value.ToString();
+                tb_brand.Text = this.schedgrid.CurrentRow.Cells[6].Value.ToString();
+                tb_actype.Text = this.schedgrid.CurrentRow.Cells[7].Value.ToString();
+                tb_mobile.Text = this.schedgrid.CurrentRow.Cells[8].Value.ToString();
+                tb_tel.Text = this.schedgrid.CurrentRow.Cells[9].Value.ToString();
+                tb_houseNo.Text = this.schedgrid.CurrentRow.Cells[10].Value.ToString();
+                tb_street.Text = this.schedgrid.CurrentRow.Cells[11].Value.ToString();
+                tb_barangay.Text = this.schedgrid.CurrentRow.Cells[12].Value.ToString();
+                cmb_City.Text = this.schedgrid.CurrentRow.Cells[13].Value.ToString();
+                cmb_Status.Text = this.schedgrid.CurrentRow.Cells[14].Value.ToString();
+                tb_svtime.Text = this.schedgrid.CurrentRow.Cells[15].Value.ToString();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("something went wrong " + error);
+            }
+        }
         private void dispatchListgrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             HideDispatch();
@@ -338,57 +339,43 @@ namespace SSIP.UserForms
             }
         }
 
-        // Declare a new DataGridTableStyle in the  
-        // declarations area of your form.  
-        DataGridTableStyle ts = new DataGridTableStyle();
+        #endregion
 
-        private void hideColumn()
+        #region Add new sched and dispatch
+        private void btn_addDispatch_Click(object sender, EventArgs e)
         {
-            // Set the DataGridTableStyle.MappingName property  
-            // to the table in the data source to map to.  
-            ts.MappingName = dispatchListgrid.DataMember;
-
-            // Add it to the datagrid's TableStyles collection  
-           // dispatchListgrid.Add(ts);
-
-            // Hide the first column (index 0)  
-           // dispatchListgrid.TableStyles[0].GridColumnStyles[0].Width = 0;
+            HideDispatch();
         }
-
-        private void schedgrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_addsched_Click(object sender, EventArgs e)
         {
             HideSched();
-            try
-            {
-              
-                tb_svdate.Format = DateTimePickerFormat.Custom;
-                // Display the date as "Mon 27 Feb 2012". 
-                tb_svdate.CustomFormat = "ddd dd MMM yyyy";
-                tb_schedID.Text = this.schedgrid.CurrentRow.Cells[0].Value.ToString();
-                tb_svdate.Value = Convert.ToDateTime(this.schedgrid.CurrentRow.Cells[1].Value.ToString());
-                cmb_svtype.Text = this.schedgrid.CurrentRow.Cells[2].Value.ToString();
-                tb_fname.Text = this.schedgrid.CurrentRow.Cells[3].Value.ToString();
-                tb_lname.Text = this.schedgrid.CurrentRow.Cells[4].Value.ToString();
-                tb_quan.Text = this.schedgrid.CurrentRow.Cells[5].Value.ToString();
-                tb_brand.Text = this.schedgrid.CurrentRow.Cells[6].Value.ToString();
-                tb_actype.Text = this.schedgrid.CurrentRow.Cells[7].Value.ToString();
-                tb_mobile.Text = this.schedgrid.CurrentRow.Cells[8].Value.ToString();
-                tb_tel.Text = this.schedgrid.CurrentRow.Cells[9].Value.ToString();
-                tb_houseNo.Text = this.schedgrid.CurrentRow.Cells[10].Value.ToString();
-                tb_street.Text = this.schedgrid.CurrentRow.Cells[11].Value.ToString();
-                tb_barangay.Text = this.schedgrid.CurrentRow.Cells[12].Value.ToString();
-                cmb_City.Text = this.schedgrid.CurrentRow.Cells[13].Value.ToString();
-                cmb_Status.Text = this.schedgrid.CurrentRow.Cells[14].Value.ToString();
-                tb_svtime.Text = this.schedgrid.CurrentRow.Cells[15].Value.ToString();
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("something went wrong " + error);
-            }
+        }
+        #endregion
+
+        #region hide and view services panels
+        private void btn_viewDispatches_Click(object sender, EventArgs e)
+        {
+            ViewDispatches();
         }
 
-
-        #region hide services panels
+        private void btn_viewScheds_Click(object sender, EventArgs e)
+        {
+            ViewSchedules();
+        }
+        void ViewSchedules()
+        {
+            schedListTablePanel.Visible = true;
+            schedgrid.Visible = true;
+            schedMainPanel.Visible = true;
+            schedMainPanel.Dock = DockStyle.Fill;
+        }
+        void ViewDispatches()
+        {
+            dispatchList_panel.Visible = true;
+            dispatchListgrid.Visible = true;
+            DispatchListPanel.Visible = true;
+            dispatchList_panel.Dock = DockStyle.Fill;         
+        }
         void HideDispatch()
         {
             dispatchList_panel.Visible = false;
