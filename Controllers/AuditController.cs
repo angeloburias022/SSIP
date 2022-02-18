@@ -41,6 +41,7 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@ValueBefore", audit.ValueBefore);
                         com.Parameters.AddWithValue("@ValueAfter", audit.ValueAfter);
                         com.Parameters.AddWithValue("@Result", audit.Result);
+                        com.Parameters.AddWithValue("@Description", audit.Description);
                         com.ExecuteNonQuery();
                     }           
                 }

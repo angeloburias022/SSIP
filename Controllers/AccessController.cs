@@ -57,7 +57,8 @@ namespace SSIP.Controllers
                                             Username = user.Username,
                                             AuditActionTypeENUM = (Enums.ActionTypes)1,
                                             DateTimeStamp = DateTime.Now.ToString(),
-                                            Result = "Succeed"
+                                            Result = "Succeed",
+                                            Description = "'"+user.Username+"' Successfully Log in"
                                         };
 
                                         aud.Logs(loginLogs);
@@ -70,7 +71,8 @@ namespace SSIP.Controllers
                                             Username = user.Username,
                                             AuditActionTypeENUM = (Enums.ActionTypes)1,
                                             DateTimeStamp = DateTime.Now.ToString(),
-                                            Result = "Failed"
+                                            Result = "Failed",
+                                            Description = "'" + user.Username + "' Failed to Log in"
                                         };
 
                                         aud.Logs(loginLogs);
