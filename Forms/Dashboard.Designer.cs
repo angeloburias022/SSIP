@@ -39,7 +39,6 @@ namespace SSIP.Forms
             this.logo_panel = new System.Windows.Forms.Panel();
             this.btn_menu_cust = new System.Windows.Forms.Button();
             this.Customers_panel = new System.Windows.Forms.Panel();
-            this.btn_sched_sub = new System.Windows.Forms.Button();
             this.btn_dispatch_sub = new System.Windows.Forms.Button();
             this.btn_managecus_sub = new System.Windows.Forms.Button();
             this.btn_menu_employees = new System.Windows.Forms.Button();
@@ -128,10 +127,12 @@ namespace SSIP.Forms
             // 
             // logo_panel
             // 
+            this.logo_panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logo_panel.BackgroundImage")));
+            this.logo_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.logo_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.logo_panel.Location = new System.Drawing.Point(0, 0);
             this.logo_panel.Name = "logo_panel";
-            this.logo_panel.Size = new System.Drawing.Size(180, 99);
+            this.logo_panel.Size = new System.Drawing.Size(180, 136);
             this.logo_panel.TabIndex = 0;
             // 
             // btn_menu_cust
@@ -140,7 +141,7 @@ namespace SSIP.Forms
             this.btn_menu_cust.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_menu_cust.FlatAppearance.BorderSize = 0;
             this.btn_menu_cust.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_menu_cust.Location = new System.Drawing.Point(0, 99);
+            this.btn_menu_cust.Location = new System.Drawing.Point(0, 136);
             this.btn_menu_cust.Name = "btn_menu_cust";
             this.btn_menu_cust.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_menu_cust.Size = new System.Drawing.Size(180, 50);
@@ -152,29 +153,13 @@ namespace SSIP.Forms
             // 
             // Customers_panel
             // 
-            this.Customers_panel.Controls.Add(this.btn_sched_sub);
             this.Customers_panel.Controls.Add(this.btn_dispatch_sub);
             this.Customers_panel.Controls.Add(this.btn_managecus_sub);
             this.Customers_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Customers_panel.Location = new System.Drawing.Point(0, 149);
+            this.Customers_panel.Location = new System.Drawing.Point(0, 186);
             this.Customers_panel.Name = "Customers_panel";
-            this.Customers_panel.Size = new System.Drawing.Size(180, 153);
+            this.Customers_panel.Size = new System.Drawing.Size(180, 102);
             this.Customers_panel.TabIndex = 5;
-            // 
-            // btn_sched_sub
-            // 
-            this.btn_sched_sub.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_sched_sub.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_sched_sub.FlatAppearance.BorderSize = 0;
-            this.btn_sched_sub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_sched_sub.Location = new System.Drawing.Point(0, 100);
-            this.btn_sched_sub.Name = "btn_sched_sub";
-            this.btn_sched_sub.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_sched_sub.Size = new System.Drawing.Size(180, 53);
-            this.btn_sched_sub.TabIndex = 2;
-            this.btn_sched_sub.Text = "Schedule";
-            this.btn_sched_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_sched_sub.UseVisualStyleBackColor = false;
             // 
             // btn_dispatch_sub
             // 
@@ -187,7 +172,7 @@ namespace SSIP.Forms
             this.btn_dispatch_sub.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btn_dispatch_sub.Size = new System.Drawing.Size(180, 50);
             this.btn_dispatch_sub.TabIndex = 1;
-            this.btn_dispatch_sub.Text = "Dispatch";
+            this.btn_dispatch_sub.Text = "Dispatch / Schedule";
             this.btn_dispatch_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_dispatch_sub.UseVisualStyleBackColor = false;
             this.btn_dispatch_sub.Click += new System.EventHandler(this.btn_dispatch_sub_Click_1);
@@ -215,7 +200,7 @@ namespace SSIP.Forms
             this.btn_menu_employees.FlatAppearance.BorderSize = 0;
             this.btn_menu_employees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_menu_employees.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_menu_employees.Location = new System.Drawing.Point(0, 302);
+            this.btn_menu_employees.Location = new System.Drawing.Point(0, 288);
             this.btn_menu_employees.Name = "btn_menu_employees";
             this.btn_menu_employees.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_menu_employees.Size = new System.Drawing.Size(180, 50);
@@ -231,7 +216,7 @@ namespace SSIP.Forms
             this.emp_panel.Controls.Add(this.btn_manageEmp_sub);
             this.emp_panel.Controls.Add(this.btn_payroll_sub);
             this.emp_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.emp_panel.Location = new System.Drawing.Point(0, 352);
+            this.emp_panel.Location = new System.Drawing.Point(0, 338);
             this.emp_panel.Name = "emp_panel";
             this.emp_panel.Size = new System.Drawing.Size(180, 118);
             this.emp_panel.TabIndex = 5;
@@ -306,7 +291,7 @@ namespace SSIP.Forms
             // 
             this.settings_panel.Controls.Add(this.btn_auditLogs);
             this.settings_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.settings_panel.Location = new System.Drawing.Point(0, 753);
+            this.settings_panel.Location = new System.Drawing.Point(0, 739);
             this.settings_panel.Name = "settings_panel";
             this.settings_panel.Size = new System.Drawing.Size(180, 57);
             this.settings_panel.TabIndex = 17;
@@ -332,7 +317,7 @@ namespace SSIP.Forms
             this.btn_main_settings.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_main_settings.FlatAppearance.BorderSize = 0;
             this.btn_main_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_main_settings.Location = new System.Drawing.Point(0, 703);
+            this.btn_main_settings.Location = new System.Drawing.Point(0, 689);
             this.btn_main_settings.Name = "btn_main_settings";
             this.btn_main_settings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_main_settings.Size = new System.Drawing.Size(180, 50);
@@ -346,7 +331,7 @@ namespace SSIP.Forms
             // 
             this.services_panel.Controls.Add(this.button1);
             this.services_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.services_panel.Location = new System.Drawing.Point(0, 658);
+            this.services_panel.Location = new System.Drawing.Point(0, 644);
             this.services_panel.Name = "services_panel";
             this.services_panel.Size = new System.Drawing.Size(180, 45);
             this.services_panel.TabIndex = 17;
@@ -372,7 +357,7 @@ namespace SSIP.Forms
             this.btn_main_services.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_main_services.FlatAppearance.BorderSize = 0;
             this.btn_main_services.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_main_services.Location = new System.Drawing.Point(0, 608);
+            this.btn_main_services.Location = new System.Drawing.Point(0, 594);
             this.btn_main_services.Name = "btn_main_services";
             this.btn_main_services.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_main_services.Size = new System.Drawing.Size(180, 50);
@@ -387,7 +372,7 @@ namespace SSIP.Forms
             this.inventory_panel.Controls.Add(this.btn_equip_inv);
             this.inventory_panel.Controls.Add(this.btn_sales_inv);
             this.inventory_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.inventory_panel.Location = new System.Drawing.Point(0, 520);
+            this.inventory_panel.Location = new System.Drawing.Point(0, 506);
             this.inventory_panel.Name = "inventory_panel";
             this.inventory_panel.Size = new System.Drawing.Size(180, 88);
             this.inventory_panel.TabIndex = 23;
@@ -431,7 +416,7 @@ namespace SSIP.Forms
             this.btn_main_invent.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_main_invent.FlatAppearance.BorderSize = 0;
             this.btn_main_invent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_main_invent.Location = new System.Drawing.Point(0, 470);
+            this.btn_main_invent.Location = new System.Drawing.Point(0, 456);
             this.btn_main_invent.Name = "btn_main_invent";
             this.btn_main_invent.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_main_invent.Size = new System.Drawing.Size(180, 50);
@@ -473,6 +458,7 @@ namespace SSIP.Forms
             this.Controls.Add(this.CityChart);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -503,7 +489,6 @@ namespace SSIP.Forms
         private System.Windows.Forms.Panel logo_panel;
         private System.Windows.Forms.Button btn_menu_cust;
         private System.Windows.Forms.Panel Customers_panel;
-        private System.Windows.Forms.Button btn_sched_sub;
         private System.Windows.Forms.Button btn_dispatch_sub;
         private System.Windows.Forms.Button btn_managecus_sub;
         private System.Windows.Forms.Button btn_menu_employees;

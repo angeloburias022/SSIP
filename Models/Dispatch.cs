@@ -8,6 +8,8 @@ namespace SSIP.Models
 {
     public class Dispatch
     {
+
+        public int DispatchID { get; set; }
         public DateTime dispatchdate { get; set; }
         public string AssignTeam { get; set; }
         public string TimeIn { get; set; }

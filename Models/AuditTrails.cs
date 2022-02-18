@@ -19,6 +19,8 @@ namespace SSIP.Models
         public string ValueBefore { get; set; }
         public string ValueAfter { get; set; }
         public string Result { get; set; }
+        public string Description { get; set; }
+
 
     }
 }

@@ -212,5 +212,152 @@ namespace SSIP.Controllers
             return false;
         }
 
+
+        public bool UpdateService(User user,Customer cus, Address address, Schedule sched, Dispatch dis)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConString))
+                {
+                    conn.Open();
+
+                    if (sched.Status == "Dispatch") // add dispatch
+                    {
+                        try
+                        {
+                            using (SqlCommand cmd = new SqlCommand("[spUpdateDispatch]", conn))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                                cmd.Parameters.Add("@DispatchID", SqlDbType.VarChar).Value = dis.DispatchID;
+                                cmd.Parameters.Add("@ScheduleID", SqlDbType.VarChar).Value = sched.ScheduleID;
+                                cmd.Parameters.Add("@CustomerID", SqlDbType.VarChar).Value = cus.CustomerID;
+                       
+                                // Customer's Details
+                                //cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = user.Firstname;
+                                //cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = user.Lastname;
+                                //cmd.Parameters.Add("@MobileNo", SqlDbType.VarChar).Value = user.ContactNumber;
+                                //cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar).Value = user.TelephoneNo;
+
+                                // address	
+                                cmd.Parameters.Add("@HouseNo", SqlDbType.Int).Value = address.HouseNo;
+                                cmd.Parameters.Add("@Street", SqlDbType.VarChar).Value = address.Street;
+                                cmd.Parameters.Add("@Barangay", SqlDbType.VarChar).Value = address.Barangay;
+                                cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = address.City;
+
+                                // Service Details
+                                cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = sched.Quantity;
+                                cmd.Parameters.Add("@ServiceType", SqlDbType.VarChar).Value = sched.ServiceType;
+                                cmd.Parameters.Add("@Brand", SqlDbType.VarChar).Value = sched.Brand;
+                                cmd.Parameters.Add("@AcType", SqlDbType.VarChar).Value = sched.AirconType;
+
+                                cmd.Parameters.Add("@ServiceTime", SqlDbType.VarChar).Value = sched.ServiceTime;
+                                cmd.Parameters.Add("@RecordedBy", SqlDbType.VarChar).Value = sched.RecordedBy;
+                                cmd.Parameters.Add("@ServiceDate", SqlDbType.DateTime).Value = sched.ScheduleDate;
+                                cmd.Parameters.Add("@ServiceStatus", SqlDbType.VarChar).Value = sched.Status;
+
+                                cmd.Parameters.Add("@TimeIn", SqlDbType.VarChar).Value = dis.TimeOut;
+                                cmd.Parameters.Add("@TimeOut", SqlDbType.VarChar).Value = dis.TimeOut;
+                                cmd.Parameters.Add("@Team1", SqlDbType.VarChar).Value = dis.AssignTeam;
+                                cmd.Parameters.Add("@DispatchDate", SqlDbType.DateTime).Value = dis.dispatchdate;
+
+                                cmd.ExecuteNonQuery();
+
+                                var updatedispatch = new AuditTrails
+                                {
+                                    Username = user.Username,
+                                    AuditActionTypeENUM = (Enums.ActionTypes)4,
+                                    DateTimeStamp = DateTime.Now.ToString(),
+                                    Result = "Succeed",
+                                    Description = "Updated dispatch no. '"+dis.DispatchID+"' "
+                                };
+
+                                aud.Logs(updatedispatch);
+                                return true;
+                            }
+                        }
+                        catch (Exception error)
+                        {
+                            error.ToString();
+
+                            var failedUpdateWithError = new AuditTrails
+                            {
+                                Username = user.Username,
+                                AuditActionTypeENUM = (Enums.ActionTypes)4,
+                                DateTimeStamp = DateTime.Now.ToString(),
+                                Result = "Failed",
+                                Description = "Failed Attempt Update due to error on Dispatch no. '" + dis.DispatchID + "' "
+                            };
+
+                            aud.Logs(failedUpdateWithError);
+                        }
+
+                        var failedUpdate = new AuditTrails
+                        {
+                            Username = user.Username,
+                            AuditActionTypeENUM = (Enums.ActionTypes)4,
+                            DateTimeStamp = DateTime.Now.ToString(),
+                            Result = "Failed",
+                            Description = "Failed Attempt Update on dispatch no. '" + dis.DispatchID + "' "
+                        };
+
+                        aud.Logs(failedUpdate);
+
+                        return false;
+                    }
+                    else if (sched.Status == "Schedule")
+                    {
+                        try
+                        {
+                            using (SqlCommand cmd = new SqlCommand("[SpUpdateSchedule]", conn))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+
+                                cmd.Parameters.Add("@ExistingCustomerID", SqlDbType.Int).Value = user.UserID;
+
+                                // Customer's Details
+                                cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = user.Firstname;
+                                cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = user.Lastname;
+                                cmd.Parameters.Add("@MobileNo", SqlDbType.VarChar).Value = user.ContactNumber;
+                                cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar).Value = user.TelephoneNo;
+
+                                // address	
+                                cmd.Parameters.Add("@HouseNo", SqlDbType.Int).Value = address.HouseNo;
+                                cmd.Parameters.Add("@Street", SqlDbType.VarChar).Value = address.Street;
+                                cmd.Parameters.Add("@Barangay", SqlDbType.VarChar).Value = address.Barangay;
+                                cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = address.City;
+
+                                // Service Details
+                                cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = sched.Quantity;
+                                cmd.Parameters.Add("@ServiceType", SqlDbType.VarChar).Value = sched.ServiceType;
+                                cmd.Parameters.Add("@Brand", SqlDbType.VarChar).Value = sched.Brand;
+                                cmd.Parameters.Add("@AcType", SqlDbType.VarChar).Value = sched.AirconType;
+
+                                cmd.Parameters.Add("@ServiceTime", SqlDbType.VarChar).Value = sched.ServiceTime;
+                                cmd.Parameters.Add("@RecordedBy", SqlDbType.VarChar).Value = sched.RecordedBy;
+                                cmd.Parameters.Add("@ServiceDate", SqlDbType.DateTime).Value = sched.ScheduleDate;
+                                cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = sched.Status;
+
+                                cmd.ExecuteNonQuery();
+
+                                return true;
+                            }
+                        }
+                        catch (Exception error)
+                        {
+                            error.ToString();
+                        }
+                    }
+
+                    conn.Close();
+                }
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return false;
+        }
     }
 }
