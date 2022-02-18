@@ -123,6 +123,42 @@ namespace SSIP.Controllers
         }
         #endregion
 
+        #region Confirm access
+        public bool ConfirmAccess(User user, AuditTrails audit)
+        {
+            using (SqlConnection con = new SqlConnection(ConString))
+            {
+                using (SqlCommand cmd = new SqlCommand("[SpLoginUser]", con))
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@Uname", SqlDbType.VarChar).Value = user.Username;
+                    var pwdEncrypt = enc.PassWordEncryptor(user.Password);
+                    cmd.Parameters.Add("@Pwd", SqlDbType.VarChar).Value = pwdEncrypt;
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            adapter.Fill(dt);
+                            if (dt.Rows.Count > 0)
+                            {
+                                aud.Logs(audit);
+                                return true;
+                            }
+                            else
+                            {
+                                aud.Logs(audit);
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+           
+        }
+        #endregion
+
         #region Check username
         public bool CheckUsername(User user)
         {

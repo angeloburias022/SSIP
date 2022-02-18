@@ -25,6 +25,14 @@ namespace SSIP.UserForms
 
             this.securityForm1.Visible = false;
             this.btn_save.Enabled = false;
+            this.btn_updateChanges.Enabled = false;
+            if(tb_schedID.Text != "0" && tb_customerID.Text != "0")
+            {
+                this.btn_addDispatch.Visible = true;
+            }else
+            {
+
+            }
         }
 
         private void MainServiceControl_Load(object sender, EventArgs e)
@@ -54,6 +62,12 @@ namespace SSIP.UserForms
                 int cusID = 0;
                 int schedID = 0;
 
+
+                tb_customerID.Text= "0";
+                tb_schedID.Text = "0";
+
+                var sched = new Schedule();
+
                 cusID = Convert.ToInt32(tb_customerID.Text);
                 schedID = Convert.ToInt32(tb_schedID.Text);
 
@@ -75,18 +89,27 @@ namespace SSIP.UserForms
                     AssignTeam = tb_assign1.Text
                 };
 
-                var sched = new Schedule
+
+
+                try
                 {
-                    Quantity = Convert.ToInt32(tb_quan.Text),
-                    Brand = tb_brand.Text,
-                    AirconType = tb_actype.Text,
-                    ServiceType = cmb_svtype.Text,
-                    ServiceTime = tb_svtime.Text,
-                    RecordedBy = tb_recorded.Text,
-                    ScheduleDate = tb_svdate.Text,
-                    ScheduleID = schedID,
-                    Status = cmb_Status.Text
-                };
+                    sched = new Schedule
+                    {
+                        Quantity = Convert.ToInt32(tb_quan.Text),
+                        Brand = tb_brand.Text,
+                        AirconType = tb_actype.Text,
+                        ServiceType = cmb_svtype.Text,
+                        ServiceTime = tb_svtime.Text,
+                        RecordedBy = tb_recorded.Text,
+                        ScheduleDate = tb_svdate.Text,
+                        ScheduleID = schedID,
+                        Status = cmb_Status.Text
+                    };
+                }
+                catch (Exception error)
+                {
+                    error.ToString();
+                }
 
                 var address = new Address
                 {
@@ -158,11 +181,20 @@ namespace SSIP.UserForms
 
             var acc = new AccessController();
 
-            var result = acc.Login(user);
+            var accesslog = new AuditTrails
+            {
+                Username = user.Username,
+                AuditActionTypeENUM = (Enums.ActionTypes)1,
+                DateTimeStamp = DateTime.Now.ToString(),
+                Result = "Succeed",
+                Description = "'" + user.Username + "' accessed main services feature"
+            };
+
+            var result = acc.ConfirmAccess(user, accesslog);
 
             if (result == true)
             {
-                if (tb_dispatchID.Text != "0")
+                if (tb_dispatchID.Text != "0" || tb_schedID.Text != "0")
                 {
                     this.btn_save.Visible = false;
                     this.btn_updateChanges.Visible = true;
@@ -173,7 +205,7 @@ namespace SSIP.UserForms
             }
             else
             {
-                if(tb_dispatchID.Text != "0")
+                if(tb_dispatchID.Text != "0" || tb_schedID.Text != "0")
                 {
                     this.btn_updateChanges.Visible = false;
                     this.btn_updateChanges.Enabled = true;
@@ -415,11 +447,12 @@ namespace SSIP.UserForms
         #region hide and view services panels
         private void btn_viewDispatches_Click(object sender, EventArgs e)
         {
+            ClearBoxes();
             ViewDispatches();
         }
-
         private void btn_viewScheds_Click(object sender, EventArgs e)
         {
+            ClearBoxes();
             ViewSchedules();
         }
         void ViewSchedules()
@@ -453,6 +486,7 @@ namespace SSIP.UserForms
         }
         #endregion
 
+        #region update schedule/dispatch
         private void btn_updateChanges_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("CONFIRM?",
@@ -464,6 +498,8 @@ namespace SSIP.UserForms
                 cusID = Convert.ToInt32(tb_customerID.Text);
                 schedID = Convert.ToInt32(tb_schedID.Text);
 
+                var dispatch = new Dispatch();
+
                 var cus = new User
                 {
                     Username = tb_recorded.Text,
@@ -472,7 +508,7 @@ namespace SSIP.UserForms
                     Lastname = tb_lname.Text,
                     ContactNumber = tb_mobile.Text,
                     TelephoneNo = tb_tel.Text,
-                    
+
                 };
 
                 var per = new Customer
@@ -480,14 +516,27 @@ namespace SSIP.UserForms
                     CustomerID = Convert.ToInt32(tb_customerID.Text)
                 };
 
-                var dispatch = new Dispatch
+                tb_dispatchID.Text = "0";
+
+                if (tb_dispatchID.Text != "0")
                 {
-                    DispatchID  = Convert.ToInt32(tb_dispatchID.Text),
-                    dispatchdate = Convert.ToDateTime(dispatchDate.Text),
-                    TimeIn = tb_timein.Text,
-                    TimeOut = tb_timeout.Text,
-                    AssignTeam = tb_assign1.Text
-                };
+                    try
+                    {
+                        dispatch = new Dispatch
+                        {
+                            DispatchID = Convert.ToInt32(tb_dispatchID.Text),
+                            dispatchdate = Convert.ToDateTime(dispatchDate.Text),
+                            TimeIn = tb_timein.Text,
+                            TimeOut = tb_timeout.Text,
+                            AssignTeam = tb_assign1.Text
+                        };
+                    }
+                    catch (Exception error)
+                    {
+                        error.ToString();
+                    }
+                }
+
 
                 var sched = new Schedule
                 {
@@ -520,7 +569,7 @@ namespace SSIP.UserForms
                 }
                 else
                 {
-                    MessageBox.Show("Update successfully");
+                    MessageBox.Show("Updated successfully");
                     UpdateGrids();
                 }
 
@@ -531,6 +580,9 @@ namespace SSIP.UserForms
             }
         }
 
+        #endregion
+
+        #region disable fields, clear txtboxes and update grid
         void DisabledPersonInfoFields()
         {
             tb_fname.Enabled = false;
@@ -546,7 +598,6 @@ namespace SSIP.UserForms
             dispatchListgrid.DataSource = GetDispatches();
             dispatchListgrid.Update();
         }
-
         void ClearBoxes()
         {
             tb_fname.Clear();
@@ -584,7 +635,9 @@ namespace SSIP.UserForms
             tb_dispatchID.Clear();
             tb_schedID.Clear();
 
-          
+
         }
+        #endregion
+
     }
 }
