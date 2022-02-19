@@ -65,7 +65,6 @@ namespace SSIP.UserForms
             this.tb_svtime = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_timein = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_quan = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tb_actype = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_brand = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmb_svtype = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tb_svdate = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -92,6 +91,7 @@ namespace SSIP.UserForms
             this.lbl_dispatchID = new System.Windows.Forms.Label();
             this.btn_updateChanges = new Guna.UI2.WinForms.Guna2Button();
             this.securityForm1 = new SSIP.AccessControls.SecurityForm();
+            this.tb_actype = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dispatchList_panel.SuspendLayout();
             this.DispatchListPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dispatchListgrid)).BeginInit();
@@ -673,33 +673,6 @@ namespace SSIP.UserForms
             this.tb_quan.Size = new System.Drawing.Size(165, 36);
             this.tb_quan.TabIndex = 102;
             // 
-            // tb_actype
-            // 
-            this.tb_actype.BackColor = System.Drawing.Color.Transparent;
-            this.tb_actype.BorderRadius = 4;
-            this.tb_actype.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_actype.DefaultText = "";
-            this.tb_actype.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_actype.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_actype.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_actype.DisabledState.Parent = this.tb_actype;
-            this.tb_actype.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_actype.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.tb_actype.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_actype.FocusedState.Parent = this.tb_actype;
-            this.tb_actype.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_actype.ForeColor = System.Drawing.Color.Black;
-            this.tb_actype.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_actype.HoverState.Parent = this.tb_actype;
-            this.tb_actype.Location = new System.Drawing.Point(203, 446);
-            this.tb_actype.Name = "tb_actype";
-            this.tb_actype.PasswordChar = '\0';
-            this.tb_actype.PlaceholderText = "Aircon Type";
-            this.tb_actype.SelectedText = "";
-            this.tb_actype.ShadowDecoration.Parent = this.tb_actype;
-            this.tb_actype.Size = new System.Drawing.Size(165, 36);
-            this.tb_actype.TabIndex = 102;
-            // 
             // tb_brand
             // 
             this.tb_brand.BackColor = System.Drawing.Color.Transparent;
@@ -786,7 +759,8 @@ namespace SSIP.UserForms
             this.cmb_Status.Items.AddRange(new object[] {
             "Schedule",
             "Dispatch",
-            "Done"});
+            "Done / Not-paid",
+            "Done / Paid"});
             this.cmb_Status.ItemsAppearance.Parent = this.cmb_Status;
             this.cmb_Status.Location = new System.Drawing.Point(379, 306);
             this.cmb_Status.Name = "cmb_Status";
@@ -1212,6 +1186,33 @@ namespace SSIP.UserForms
             this.securityForm1.Size = new System.Drawing.Size(50, 53);
             this.securityForm1.TabIndex = 106;
             // 
+            // tb_actype
+            // 
+            this.tb_actype.BackColor = System.Drawing.Color.Transparent;
+            this.tb_actype.BorderRadius = 4;
+            this.tb_actype.DisabledState.Parent = this.tb_actype;
+            this.tb_actype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.tb_actype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tb_actype.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_actype.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_actype.FocusedState.Parent = this.tb_actype;
+            this.tb_actype.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tb_actype.ForeColor = System.Drawing.Color.Black;
+            this.tb_actype.HoverState.Parent = this.tb_actype;
+            this.tb_actype.ItemHeight = 30;
+            this.tb_actype.Items.AddRange(new object[] {
+            "Window-type",
+            "Split-Type",
+            "Wall-mounted",
+            "Floor-mounted"});
+            this.tb_actype.ItemsAppearance.Parent = this.tb_actype;
+            this.tb_actype.Location = new System.Drawing.Point(199, 445);
+            this.tb_actype.Name = "tb_actype";
+            this.tb_actype.ShadowDecoration.Parent = this.tb_actype;
+            this.tb_actype.Size = new System.Drawing.Size(168, 36);
+            this.tb_actype.TabIndex = 103;
+            this.tb_actype.SelectedValueChanged += new System.EventHandler(this.cmb_Status_SelectedIndexChanged);
+            // 
             // MainServiceControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1228,6 +1229,7 @@ namespace SSIP.UserForms
             this.Controls.Add(this.tb_svdate);
             this.Controls.Add(this.cmb_svtype);
             this.Controls.Add(this.cmb_City);
+            this.Controls.Add(this.tb_actype);
             this.Controls.Add(this.cmb_Status);
             this.Controls.Add(this.tb_tel);
             this.Controls.Add(this.tb_barangay);
@@ -1235,7 +1237,6 @@ namespace SSIP.UserForms
             this.Controls.Add(this.tb_street);
             this.Controls.Add(this.tb_lname);
             this.Controls.Add(this.tb_brand);
-            this.Controls.Add(this.tb_actype);
             this.Controls.Add(this.tb_quan);
             this.Controls.Add(this.tb_timeout);
             this.Controls.Add(this.tb_pass);
@@ -1326,7 +1327,6 @@ namespace SSIP.UserForms
         private Guna.UI2.WinForms.Guna2TextBox tb_svtime;
         private Guna.UI2.WinForms.Guna2TextBox tb_timein;
         private Guna.UI2.WinForms.Guna2TextBox tb_quan;
-        private Guna.UI2.WinForms.Guna2TextBox tb_actype;
         private Guna.UI2.WinForms.Guna2TextBox tb_brand;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_svtype;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_Status;
@@ -1354,5 +1354,6 @@ namespace SSIP.UserForms
         private System.Windows.Forms.TextBox tb_dispatchID;
         private System.Windows.Forms.Label lbl_dispatchID;
         private Guna.UI2.WinForms.Guna2Button btn_updateChanges;
+        private Guna.UI2.WinForms.Guna2ComboBox tb_actype;
     }
 }

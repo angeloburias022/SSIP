@@ -126,10 +126,14 @@ namespace SSIP.UserForms
                 if (result != true)
                 {
                     MessageBox.Show("something went wrong");
+
+                    UpdateGrids();
                 }
                 else
                 {
                     MessageBox.Show("Added successfully");
+
+                    UpdateGrids();
                 }
 
             }
@@ -433,12 +437,18 @@ namespace SSIP.UserForms
         private void btn_addDispatch_Click(object sender, EventArgs e)
         {
             cmb_Status.SelectedValue = "Dispatch";
+            btn_updateChanges.Visible = false;
+            btn_save.Visible = true;
+            ShowAssign();
             ClearBoxes();
             HideDispatch();
         }
         private void btn_addsched_Click(object sender, EventArgs e)
         {
             cmb_Status.SelectedValue = "Schedule";
+            btn_updateChanges.Visible = false;
+            btn_save.Visible = true;
+            HideAssign();
             ClearBoxes();
             HideSched();
         }
@@ -566,6 +576,7 @@ namespace SSIP.UserForms
                 if (result != true)
                 {
                     MessageBox.Show("something went wrong");
+                    UpdateGrids();
                 }
                 else
                 {
@@ -621,7 +632,7 @@ namespace SSIP.UserForms
             cmb_svtype.SelectedText = "--select--";
 
 
-            tb_actype.Clear();
+            tb_actype.ResetText();
             tb_quan.Clear();
             tb_svdate.ResetText();
             tb_brand.Clear();
