@@ -939,7 +939,7 @@ namespace SSIP.UserForms
             this.tb_pass.HoverState.Parent = this.tb_pass;
             this.tb_pass.Location = new System.Drawing.Point(764, 309);
             this.tb_pass.Name = "tb_pass";
-            this.tb_pass.PasswordChar = '\0';
+            this.tb_pass.PasswordChar = '*';
             this.tb_pass.PlaceholderText = "Password";
             this.tb_pass.SelectedText = "";
             this.tb_pass.ShadowDecoration.Parent = this.tb_pass;
