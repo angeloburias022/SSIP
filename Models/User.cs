@@ -15,7 +15,7 @@ namespace SSIP.Models
         public string Lastname { get; set; }
         public string ContactNumber { get; set; }
         public string TelephoneNo { get; set; }
-        public string EmailAddress { get; set; }
+     //   public string EmailAddress { get; set; }
         public Address Address { get; set; }
         public string IsActive { get; set; }
         public void UserDetails(Address address)

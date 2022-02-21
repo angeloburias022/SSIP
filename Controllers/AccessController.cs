@@ -148,7 +148,17 @@ namespace SSIP.Controllers
                             }
                             else
                             {
-                                aud.Logs(audit);
+                                var failedaudit = new AuditTrails
+                                {
+                                    Username = audit.Username,
+                                    AuditActionTypeENUM = (Enums.ActionTypes)1,
+                                    DateTimeStamp = DateTime.Now.ToString(),
+                                    Result = "Failed",
+                                    Description = audit.Description
+                                };
+
+
+                                aud.Logs(failedaudit);
                                 return false;
                             }
                         }

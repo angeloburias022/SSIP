@@ -2,6 +2,7 @@
 using LiveCharts.Wpf;
 using SSIP.AccessControls;
 using SSIP.Models;
+using SSIP.UserformControls;
 using SSIP.UserForms;
 using System;
 using System.Collections.Generic;
@@ -25,12 +26,13 @@ namespace SSIP.Forms
             CustomizeDesign();
         }
 
+        #region load charts
         private void Dashboard_Load(object sender, EventArgs e)
         {
 
             //this.dispatchControl1.Visible = false;
             //this.mainServiceControl.BringToFront();
-        //   this.mainServiceControl.Visible = false;
+            //   this.mainServiceControl.Visible = false;
 
             try
             {
@@ -156,7 +158,7 @@ namespace SSIP.Forms
 
                 #region Dispatch Chart
 
-              
+
                 // Dispatched chart
                 using (DashboardEntities db = new DashboardEntities())
                 {
@@ -284,6 +286,8 @@ namespace SSIP.Forms
         }
 
 
+        #endregion
+
         private void btn_menu_cust_Click(object sender, EventArgs e)
         {
             ShowSubMenu(Customers_panel);
@@ -302,8 +306,11 @@ namespace SSIP.Forms
         }
 
         private void btn_managecus_sub_Click(object sender, EventArgs e)
-        {
-            // logic here
+        {           
+            HideMainServicesPanelControl();
+            HideEmployeesPanelControl();
+
+            ShowEmployeesPanelControl();
             HideSubMenu();
         }
 
@@ -339,6 +346,8 @@ namespace SSIP.Forms
             //btn_cus_archived_sub.Visible = false;
             //btn_audit_sub.Visible = false;
         }
+
+        #region Hide and show sub menu
         private void HideSubMenu()
         {
             if (Customers_panel.Visible == true)
@@ -370,16 +379,8 @@ namespace SSIP.Forms
                 subMenu.Visible = false;
 
         }
+        #endregion
 
-        //private void btn_menu_employees_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        private void btn_manageEmp_sub_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_main_invent_Click(object sender, EventArgs e)
         {
@@ -398,17 +399,31 @@ namespace SSIP.Forms
 
         private void btn_equip_inv_Click(object sender, EventArgs e)
         {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
 
+
+
+            HideSubMenu();
         }
 
         private void btn_sales_inv_Click(object sender, EventArgs e)
         {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
 
+
+            HideSubMenu();
         }
 
         private void inventory_panel_Paint(object sender, PaintEventArgs e)
         {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
 
+
+
+            HideSubMenu();
         }
 
         private void btn_main_settings_Click(object sender, EventArgs e)
@@ -416,22 +431,53 @@ namespace SSIP.Forms
             ShowSubMenu(settings_panel);
         }
 
-        private void btn_dispatch_sub_Click_1(object sender, EventArgs e)
+
+        private void btn_manageEmp_sub_Click(object sender, EventArgs e)
         {
+
+            HideMainServicesPanelControl();
+            HideEmployeesPanelControl();
+
+            ShowEmployeesPanelControl();
+            HideSubMenu();
+        }
+
+        private void btn_dispatch_sub_Click_2(object sender, EventArgs e)
+        {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
+
+            ShowMainServicesControl();
+            HideSubMenu();
+        }
+
+        #region Hide and Show control panel
+        public void ShowMainServicesControl()
+        {
+            dispatchFormPanel.Dock = DockStyle.Fill;
+            this.mainServiceControl1.BringToFront();
             this.mainServiceControl1.Show();
 
             dispatchFormPanel.Visible = true;
             dispatchFormPanel.Dock = DockStyle.Fill;
         }
-
-        private void dispatchFormPanel_Paint(object sender, PaintEventArgs e)
+        public void HideMainServicesPanelControl()
         {
-
+            dispatchFormPanel.Hide();
+            dispatchFormPanel.Dock = DockStyle.None;
         }
-
-        private void CityChart_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        public void ShowEmployeesPanelControl()
         {
-
+            this.employeesControl1.BringToFront();
+            this.employeesControl1.Show();
+            this.employeePanel.Visible = true;
+            this.employeePanel.Dock = DockStyle.Fill;
         }
+        public void HideEmployeesPanelControl()
+        {
+            employeePanel.Hide();
+            employeePanel.Dock = DockStyle.None;
+        }
+        #endregion
     }
 }

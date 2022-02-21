@@ -59,6 +59,8 @@ namespace SSIP.Forms
             this.btn_main_invent = new System.Windows.Forms.Button();
             this.dispatchFormPanel = new System.Windows.Forms.Panel();
             this.mainServiceControl1 = new SSIP.UserForms.MainServiceControl();
+            this.employeePanel = new System.Windows.Forms.Panel();
+            this.employeesControl1 = new SSIP.UserformControls.EmployeeControl();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -66,6 +68,7 @@ namespace SSIP.Forms
             this.services_panel.SuspendLayout();
             this.inventory_panel.SuspendLayout();
             this.dispatchFormPanel.SuspendLayout();
+            this.employeePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Services_pie_chart
@@ -123,7 +126,6 @@ namespace SSIP.Forms
             this.CityChart.Size = new System.Drawing.Size(801, 204);
             this.CityChart.TabIndex = 13;
             this.CityChart.Text = "cartesianChart2";
-            this.CityChart.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.CityChart_ChildChanged);
             // 
             // logo_panel
             // 
@@ -175,7 +177,7 @@ namespace SSIP.Forms
             this.btn_dispatch_sub.Text = "Dispatch / Schedule";
             this.btn_dispatch_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_dispatch_sub.UseVisualStyleBackColor = false;
-            this.btn_dispatch_sub.Click += new System.EventHandler(this.btn_dispatch_sub_Click_1);
+            this.btn_dispatch_sub.Click += new System.EventHandler(this.btn_dispatch_sub_Click_2);
             // 
             // btn_managecus_sub
             // 
@@ -250,6 +252,7 @@ namespace SSIP.Forms
             this.btn_manageEmp_sub.Text = "Manage Employees";
             this.btn_manageEmp_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_manageEmp_sub.UseVisualStyleBackColor = false;
+            this.btn_manageEmp_sub.Click += new System.EventHandler(this.btn_manageEmp_sub_Click);
             // 
             // btn_payroll_sub
             // 
@@ -429,9 +432,9 @@ namespace SSIP.Forms
             // dispatchFormPanel
             // 
             this.dispatchFormPanel.Controls.Add(this.mainServiceControl1);
-            this.dispatchFormPanel.Location = new System.Drawing.Point(957, 49);
+            this.dispatchFormPanel.Location = new System.Drawing.Point(1062, 48);
             this.dispatchFormPanel.Name = "dispatchFormPanel";
-            this.dispatchFormPanel.Size = new System.Drawing.Size(200, 100);
+            this.dispatchFormPanel.Size = new System.Drawing.Size(85, 68);
             this.dispatchFormPanel.TabIndex = 18;
             this.dispatchFormPanel.Visible = false;
             // 
@@ -441,9 +444,29 @@ namespace SSIP.Forms
             this.mainServiceControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainServiceControl1.Location = new System.Drawing.Point(0, 0);
             this.mainServiceControl1.Name = "mainServiceControl1";
-            this.mainServiceControl1.Size = new System.Drawing.Size(200, 100);
+            this.mainServiceControl1.Size = new System.Drawing.Size(85, 68);
             this.mainServiceControl1.TabIndex = 17;
             this.mainServiceControl1.Visible = false;
+            // 
+            // employeePanel
+            // 
+            this.employeePanel.BackColor = System.Drawing.Color.Transparent;
+            this.employeePanel.Controls.Add(this.employeesControl1);
+            this.employeePanel.Location = new System.Drawing.Point(1074, 148);
+            this.employeePanel.Name = "employeePanel";
+            this.employeePanel.Size = new System.Drawing.Size(73, 67);
+            this.employeePanel.TabIndex = 19;
+            this.employeePanel.Visible = false;
+            // 
+            // employeesControl1
+            // 
+            this.employeesControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("employeesControl1.BackgroundImage")));
+            this.employeesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeesControl1.emp_setter = false;
+            this.employeesControl1.Location = new System.Drawing.Point(0, 0);
+            this.employeesControl1.Name = "employeesControl1";
+            this.employeesControl1.Size = new System.Drawing.Size(73, 67);
+            this.employeesControl1.TabIndex = 0;
             // 
             // Dashboard
             // 
@@ -451,6 +474,7 @@ namespace SSIP.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1185, 526);
+            this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.dispatchFormPanel);
             this.Controls.Add(this.nav_panel);
             this.Controls.Add(this.Services_pie_chart);
@@ -473,6 +497,7 @@ namespace SSIP.Forms
             this.services_panel.ResumeLayout(false);
             this.inventory_panel.ResumeLayout(false);
             this.dispatchFormPanel.ResumeLayout(false);
+            this.employeePanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -509,5 +534,7 @@ namespace SSIP.Forms
         private System.Windows.Forms.Button btn_main_settings;
         private UserForms.MainServiceControl mainServiceControl1;
         private System.Windows.Forms.Panel dispatchFormPanel;
+        private System.Windows.Forms.Panel employeePanel;
+        private UserformControls.EmployeeControl employeesControl1;
     }
 }
