@@ -14,22 +14,24 @@ namespace SSIP.Controllers
     public class EmployeesController
     {
         #region private fields
-        private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-        #endregion
+            private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            #endregion
 
-    #region declarations
-        PasswordEncryptor enc = new PasswordEncryptor();
-        #endregion
+        #region declarations
         public EmployeesController()
         {
         }
 
+        PasswordEncryptor enc = new PasswordEncryptor();
+        #endregion
+
+        #region employee operations
         public bool AddEmployee(Employee emp, User user, Address addr, Email email)
         {
             try
             {
                 using (var con = new SqlConnection(ConString))
-                {                 
+                {
                     using (var com = new SqlCommand("[SpAddEmployee]", con))
                     {
                         con.Open();
@@ -63,9 +65,9 @@ namespace SSIP.Controllers
                         // audit here
                         return true;
                     }
-                 
+
                 }
-             
+
             }
             catch (Exception error)
             {
@@ -73,10 +75,8 @@ namespace SSIP.Controllers
                 // audit here
                 return false;
             }
-      
+
         }
-
-
         public bool UpdateEmployee(Employee emp, User user, Address addr, Email email)
         {
             try
@@ -127,5 +127,7 @@ namespace SSIP.Controllers
             // audit here
             return false;
         }
+        #endregion
+
     }
 }
