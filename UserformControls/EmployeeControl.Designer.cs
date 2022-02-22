@@ -73,8 +73,13 @@ namespace SSIP.UserformControls
             this.tb_personID = new System.Windows.Forms.TextBox();
             this.tb_empID = new System.Windows.Forms.TextBox();
             this.lbl_empID = new System.Windows.Forms.Label();
+            this.employeeMainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.employeeGrid = new System.Windows.Forms.DataGridView();
+            this.btn_addEmployee = new Guna.UI2.WinForms.Guna2Button();
             this.employee_panel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
+            this.employeeMainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // cmb_City
@@ -423,6 +428,7 @@ namespace SSIP.UserformControls
             this.btn_viewEmp.TabIndex = 126;
             this.btn_viewEmp.Text = "VIEW EMPLOYEES";
             this.btn_viewEmp.UseTransparentBackground = true;
+            this.btn_viewEmp.Click += new System.EventHandler(this.btn_viewEmp_Click);
             // 
             // btn_updateAccount
             // 
@@ -446,6 +452,7 @@ namespace SSIP.UserformControls
             this.btn_updateAccount.Text = "UPDATE";
             this.btn_updateAccount.UseTransparentBackground = true;
             this.btn_updateAccount.Visible = false;
+            this.btn_updateAccount.Click += new System.EventHandler(this.btn_updateAccount_Click);
             // 
             // btn_saveAcc
             // 
@@ -896,11 +903,69 @@ namespace SSIP.UserformControls
             this.lbl_empID.Text = "Employee  ID";
             this.lbl_empID.Visible = false;
             // 
+            // employeeMainPanel
+            // 
+            this.employeeMainPanel.BackgroundImage = global::SSIP.Properties.Resources.bg;
+            this.employeeMainPanel.ColumnCount = 3;
+            this.employeeMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.333333F));
+            this.employeeMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.22222F));
+            this.employeeMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.666667F));
+            this.employeeMainPanel.Controls.Add(this.employeeGrid, 1, 1);
+            this.employeeMainPanel.Controls.Add(this.btn_addEmployee, 1, 2);
+            this.employeeMainPanel.Location = new System.Drawing.Point(832, 22);
+            this.employeeMainPanel.Name = "employeeMainPanel";
+            this.employeeMainPanel.RowCount = 3;
+            this.employeeMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
+            this.employeeMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.67513F));
+            this.employeeMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.33503F));
+            this.employeeMainPanel.Size = new System.Drawing.Size(450, 328);
+            this.employeeMainPanel.TabIndex = 139;
+            this.employeeMainPanel.Visible = false;
+            // 
+            // employeeGrid
+            // 
+            this.employeeGrid.AllowUserToAddRows = false;
+            this.employeeGrid.AllowUserToDeleteRows = false;
+            this.employeeGrid.AllowUserToOrderColumns = true;
+            this.employeeGrid.AllowUserToResizeColumns = false;
+            this.employeeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeeGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeeGrid.Location = new System.Drawing.Point(26, 56);
+            this.employeeGrid.Name = "employeeGrid";
+            this.employeeGrid.ReadOnly = true;
+            this.employeeGrid.Size = new System.Drawing.Size(399, 195);
+            this.employeeGrid.TabIndex = 0;
+            this.employeeGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeeGrid_CellDoubleClick);
+            // 
+            // btn_addEmployee
+            // 
+            this.btn_addEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.btn_addEmployee.BorderRadius = 4;
+            this.btn_addEmployee.CheckedState.Parent = this.btn_addEmployee;
+            this.btn_addEmployee.CustomImages.Parent = this.btn_addEmployee;
+            this.btn_addEmployee.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addEmployee.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addEmployee.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_addEmployee.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_addEmployee.DisabledState.Parent = this.btn_addEmployee;
+            this.btn_addEmployee.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_addEmployee.ForeColor = System.Drawing.Color.White;
+            this.btn_addEmployee.HoverState.Parent = this.btn_addEmployee;
+            this.btn_addEmployee.Location = new System.Drawing.Point(26, 257);
+            this.btn_addEmployee.Name = "btn_addEmployee";
+            this.btn_addEmployee.ShadowDecoration.Parent = this.btn_addEmployee;
+            this.btn_addEmployee.Size = new System.Drawing.Size(112, 43);
+            this.btn_addEmployee.TabIndex = 105;
+            this.btn_addEmployee.Text = "ADD EMPLOYEE";
+            this.btn_addEmployee.UseTransparentBackground = true;
+            this.btn_addEmployee.Click += new System.EventHandler(this.btn_addEmployee_Click);
+            // 
             // EmployeeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SSIP.Properties.Resources.bg;
+            this.Controls.Add(this.employeeMainPanel);
             this.Controls.Add(this.lbl_empID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_empID);
@@ -934,10 +999,13 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.label4);
             this.Name = "EmployeeControl";
             this.Size = new System.Drawing.Size(886, 490);
+            this.Load += new System.EventHandler(this.EmployeeControl_Load);
             this.employee_panel.ResumeLayout(false);
             this.employee_panel.PerformLayout();
             this.confirmAccessPanel.ResumeLayout(false);
             this.confirmAccessPanel.PerformLayout();
+            this.employeeMainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.employeeGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -989,5 +1057,8 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.TextBox tb_personID;
         private System.Windows.Forms.TextBox tb_empID;
         private System.Windows.Forms.Label lbl_empID;
+        private System.Windows.Forms.TableLayoutPanel employeeMainPanel;
+        private System.Windows.Forms.DataGridView employeeGrid;
+        private Guna.UI2.WinForms.Guna2Button btn_addEmployee;
     }
 }

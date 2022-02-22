@@ -14,8 +14,9 @@ namespace SSIP.Controllers
     public class EmployeesController
     {
         #region private fields
-            private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            #endregion
+        private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        AuditController aud = new AuditController();    
+        #endregion
 
         #region declarations
         public EmployeesController()
@@ -26,7 +27,7 @@ namespace SSIP.Controllers
         #endregion
 
         #region employee operations
-        public bool AddEmployee(Employee emp, User user, Address addr, Email email)
+        public bool AddEmployee(Employee emp, User user, Address addr, Email email, string Operatorusername)
         {
             try
             {
@@ -62,6 +63,16 @@ namespace SSIP.Controllers
                         con.Close();
 
 
+                        var addEmployee = new AuditTrails
+                        {
+                            Username = Operatorusername,
+                            AuditActionTypeENUM = (Enums.ActionTypes)3,
+                            DateTimeStamp = DateTime.Now.ToString(),
+                            Result = "Succeed",
+                            Description = "Added new Employee ID"
+                        };
+
+                        aud.Logs(addEmployee);
                         // audit here
                         return true;
                     }
@@ -77,18 +88,19 @@ namespace SSIP.Controllers
             }
 
         }
-        public bool UpdateEmployee(Employee emp, User user, Address addr, Email email)
+        public bool UpdateEmployee(Employee emp, User user, Address addr, Email email, string username)
         {
             try
             {
                 using (var con = new SqlConnection(ConString))
                 {
                     con.Open();
-                    using (var com = new SqlCommand("SpUpdateEmployee", con))
+                    using (var com = new SqlCommand("SpUpdateEmployeeByID", con))
                     {
                         com.CommandType = CommandType.StoredProcedure;
 
                         com.Parameters.AddWithValue("@EmployeeID", emp.EmployeeID);
+                        com.Parameters.AddWithValue("@PersonID", user.UserID);
 
                         com.Parameters.AddWithValue("@FirstName", user.Firstname);
                         com.Parameters.AddWithValue("@LastName", user.Lastname);
@@ -103,29 +115,87 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@DateHired", emp.DateHired);
                         com.Parameters.AddWithValue("@Status", emp.EmployeeStatus);
                         com.Parameters.AddWithValue("@Position", emp.Position);
-                        com.Parameters.AddWithValue("@TypeOfContract", emp.TypeOfContract);
+                        com.Parameters.AddWithValue("@TypeOfContract", "none");
 
-                        com.Parameters.AddWithValue("@Username", user.Username);
-                        com.Parameters.AddWithValue("@Password", enc.PassWordEncryptor(user.Password));
+                 //       com.Parameters.AddWithValue("@Username", user.Username);
+                 //       com.Parameters.AddWithValue("@Password", enc.PassWordEncryptor(user.Password));
                         com.Parameters.AddWithValue("@Email", email.EmailAddress);
                         com.Parameters.AddWithValue("@AccTypeID", emp.AccountTypeID);
 
                         com.ExecuteNonQuery();
 
+
+
                     }
                     con.Close();
+
+                    var updateEmployee = new AuditTrails
+                    {
+                        Username = username,
+                        AuditActionTypeENUM = (Enums.ActionTypes)4,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Succeed",
+                        Description = "Updated Employee ID: " + emp.EmployeeID + " "
+                    };
+
+                    aud.Logs(updateEmployee);
+
+                    // audit here
+                    return true;
                 }
 
-                // audit here
-                return true;
+               
             }
             catch (Exception error)
             {
-                error.ToString();
+                error.ToString();           
                 // audit here
             }
+            var failedUpdate = new AuditTrails
+            {
+                Username = username,
+                AuditActionTypeENUM = (Enums.ActionTypes)4,
+                DateTimeStamp = DateTime.Now.ToString(),
+                Result = "Failed",
+                Description = "Failed Update on Employee ID: " + emp.EmployeeID + " "
+            };
+
+            aud.Logs(failedUpdate);
             // audit here
             return false;
+        }
+        public DataTable GetEmployees()
+        {
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+      //      string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetEmployees]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+               error.ToString();
+            }
+            return dt;
         }
         #endregion
 
