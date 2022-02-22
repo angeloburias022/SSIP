@@ -35,21 +35,12 @@ namespace SSIP.UserForms
             }
         }
 
+        ServicesController sv = new ServicesController();
         private void MainServiceControl_Load(object sender, EventArgs e)
         {
-            dispatchListgrid.DataSource = GetDispatches();
-            schedgrid.DataSource = GetSchedules();
+            dispatchListgrid.DataSource = sv.GetDispatches();
+            schedgrid.DataSource = sv.GetSchedules();
         }
-
-        #endregion
-
-        #region private fields
-
-        //protected static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-
-        //protected DataTable dt = new DataTable();
-
-        //protected DataSet ds = new DataSet();
 
         #endregion
 
@@ -261,81 +252,6 @@ namespace SSIP.UserForms
             lbl_dispatchDate.Visible = true;
         }
 
-        #endregion
-
-        #region Get sched and dispatch 
-        public DataTable GetDispatches()
-        {
-
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-            try
-            {
-
-
-                using (SqlConnection con = new SqlConnection(ConString))
-                {
-                    using (SqlCommand com = new SqlCommand("[SpGetDispatched]", con))
-                    {
-                        com.CommandType = CommandType.StoredProcedure;
-
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
-                        {
-                            ds.Clear();
-                            adapter.Fill(ds);
-
-                            dt = ds.Tables[0];
-                            con.Close();
-
-                        }
-                    }
-                }
-                return dt;
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.ToString());
-            }
-            return dt;
-        }
-
-        public DataTable GetSchedules()
-        {
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-            try
-            {
-
-
-                using (SqlConnection con = new SqlConnection(ConString))
-                {
-                    using (SqlCommand com = new SqlCommand("[SpGetSchedules]", con))
-                    {
-                        com.CommandType = CommandType.StoredProcedure;
-
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
-                        {
-                            ds.Clear();
-                            adapter.Fill(ds);
-
-                            dt = ds.Tables[0];
-                            con.Close();
-                        }
-                    }
-                }
-                return dt;
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.ToString());
-            }
-
-            return dt;
-        }
         #endregion
 
         #region cell double click
@@ -603,10 +519,10 @@ namespace SSIP.UserForms
         }
         void UpdateGrids()
         {
-            schedgrid.DataSource = GetSchedules();
+            schedgrid.DataSource = sv.GetSchedules();
             schedgrid.Update();
 
-            dispatchListgrid.DataSource = GetDispatches();
+            dispatchListgrid.DataSource = sv.GetDispatches();
             dispatchListgrid.Update();
         }
         void ClearBoxes()

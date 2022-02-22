@@ -12,21 +12,30 @@ namespace SSIP.Controllers
 {
     public class ServicesController
     {
-
+        #region private fields
         private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+
+        #endregion
+
+        #region declarations
         AuditController aud = new AuditController();
+        DataSet ds = new DataSet();
+        DataTable dt = new DataTable();
+
         public ServicesController()
         {
         }
+        #endregion
 
-        public bool AddService(User user,Address address, Schedule sched, Dispatch dis)
+        #region Services operation
+        public bool AddService(User user, Address address, Schedule sched, Dispatch dis)
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(ConString))
                 {
                     conn.Open();
-   
+
                     if (sched.Status == "Dispatch") // add dispatch
                     {
                         if (sched.ScheduleID != 0) // new dispatch for a existing schedule
@@ -66,7 +75,7 @@ namespace SSIP.Controllers
                                         AuditActionTypeENUM = (Enums.ActionTypes)3,
                                         DateTimeStamp = DateTime.Now.ToString(),
                                         Result = "Succeed",
-                                        Description = "Added Successfully on Schedule ID: "+sched.ScheduleID+" "
+                                        Description = "Added Successfully on Schedule ID: " + sched.ScheduleID + " "
                                     };
 
                                     aud.Logs(addDispatch);
@@ -77,16 +86,6 @@ namespace SSIP.Controllers
                             catch (Exception error)
                             {
                                 error.ToString();
-
-                                var errorAdding = new AuditTrails
-                                {
-                                    Username = user.Username,
-                                    AuditActionTypeENUM = (Enums.ActionTypes)3,
-                                    DateTimeStamp = DateTime.Now.ToString(),
-                                    Result = "Failed",
-                                    Description = "Failed Adding dispatch due to error in Schedule ID: " + sched.ScheduleID + " "
-                                };
-                                aud.Logs(errorAdding);
                             }
 
                             var failedDispatch = new AuditTrails
@@ -95,7 +94,7 @@ namespace SSIP.Controllers
                                 AuditActionTypeENUM = (Enums.ActionTypes)3,
                                 DateTimeStamp = DateTime.Now.ToString(),
                                 Result = "Failed",
-                                Description = "Failed Adding dispatch in Schedule ID: "+sched.ScheduleID+" "
+                                Description = "Failed Adding dispatch in Schedule ID: " + sched.ScheduleID + " "
                             };
 
                             aud.Logs(failedDispatch);
@@ -139,7 +138,7 @@ namespace SSIP.Controllers
                                     cmd.Parameters.Add("@DispatchDate", SqlDbType.DateTime).Value = dis.dispatchdate;
 
                                     cmd.ExecuteNonQuery();
-                                      
+
                                     var newddispatch = new AuditTrails
                                     {
                                         Username = user.Username,
@@ -232,8 +231,8 @@ namespace SSIP.Controllers
                         };
 
                         aud.Logs(failedDispatch);
-                    }  
-                        
+                    }
+
                     conn.Close();
                 }
             }
@@ -244,7 +243,7 @@ namespace SSIP.Controllers
             return false;
         }
 
-        public bool UpdateService(User user,Customer cus, Address address, Schedule sched, Dispatch dis)
+        public bool UpdateService(User user, Customer cus, Address address, Schedule sched, Dispatch dis)
         {
             try
             {
@@ -264,7 +263,7 @@ namespace SSIP.Controllers
                                 cmd.Parameters.Add("@DispatchID", SqlDbType.VarChar).Value = dis.DispatchID;
                                 cmd.Parameters.Add("@ScheduleID", SqlDbType.VarChar).Value = sched.ScheduleID;
                                 cmd.Parameters.Add("@CustomerID", SqlDbType.VarChar).Value = cus.CustomerID;
-                       
+
                                 // Customer's Details
                                 //cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = user.Firstname;
                                 //cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = user.Lastname;
@@ -301,7 +300,7 @@ namespace SSIP.Controllers
                                     AuditActionTypeENUM = (Enums.ActionTypes)4,
                                     DateTimeStamp = DateTime.Now.ToString(),
                                     Result = "Succeed",
-                                    Description = "Updated Dispatch ID: "+dis.DispatchID+" "
+                                    Description = "Updated Dispatch ID: " + dis.DispatchID + " "
                                 };
 
                                 aud.Logs(updatedispatch);
@@ -311,17 +310,6 @@ namespace SSIP.Controllers
                         catch (Exception error)
                         {
                             error.ToString();
-
-                            var failedUpdateWithError = new AuditTrails
-                            {
-                                Username = user.Username,
-                                AuditActionTypeENUM = (Enums.ActionTypes)4,
-                                DateTimeStamp = DateTime.Now.ToString(),
-                                Result = "Failed",
-                                Description = "Failed Attempt Update due to error on Dispatch ID: " + dis.DispatchID + " "
-                            };
-
-                            aud.Logs(failedUpdateWithError);
                         }
 
                         var failedUpdate = new AuditTrails
@@ -345,7 +333,7 @@ namespace SSIP.Controllers
                             {
                                 cmd.CommandType = CommandType.StoredProcedure;
 
-                            
+
                                 cmd.Parameters.Add("@ScheduleID", SqlDbType.VarChar).Value = sched.ScheduleID;
                                 cmd.Parameters.Add("@CustomerID", SqlDbType.VarChar).Value = cus.CustomerID;
 
@@ -390,17 +378,6 @@ namespace SSIP.Controllers
                         catch (Exception error)
                         {
                             error.ToString();
-
-                            var errorupdate = new AuditTrails
-                            {
-                                Username = user.Username,
-                                AuditActionTypeENUM = (Enums.ActionTypes)4,
-                                DateTimeStamp = DateTime.Now.ToString(),
-                                Result = "Failed",
-                                Description = "Failed update due to error of Schedule ID: " + sched.ScheduleID + " "
-                            };
-
-                            aud.Logs(errorupdate);
                         }
                     }
 
@@ -425,5 +402,69 @@ namespace SSIP.Controllers
             aud.Logs(failedupdate);
             return false;
         }
+
+        public DataTable GetDispatches()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetDispatched]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
+
+        public DataTable GetSchedules()
+        {
+           try
+            {
+
+
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetSchedules]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+               error.ToString();
+            }
+
+            return dt;
+        }
+
+        #endregion
     }
 }
