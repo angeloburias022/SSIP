@@ -1294,7 +1294,7 @@ namespace SSIP.UserForms
             this.Controls.Add(this.lbl_assign);
             this.Controls.Add(this.tb_assign1);
             this.Name = "MainServiceControl";
-            this.Size = new System.Drawing.Size(957, 505);
+            this.Size = new System.Drawing.Size(1063, 505);
             this.Load += new System.EventHandler(this.MainServiceControl_Load);
             this.dispatchList_panel.ResumeLayout(false);
             this.DispatchListPanel.ResumeLayout(false);

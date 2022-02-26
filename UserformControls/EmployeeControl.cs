@@ -364,6 +364,7 @@ namespace SSIP.UserformControls
         private void btn_addEmployee_Click(object sender, EventArgs e)
         {
             HideEmployeeGrid();
+            btn_updateAccount.Visible = false;
         }
 
         private void btn_viewEmp_Click(object sender, EventArgs e)

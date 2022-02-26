@@ -185,6 +185,8 @@ namespace SSIP.UserformControls
         {
             HideCustomersGrid();
             ClearBoxes();
+            btn_saveCus.Visible = true;
+            btn_updateCus.Enabled = false;
         }
         #endregion
 
@@ -365,6 +367,12 @@ namespace SSIP.UserformControls
             customersMainPanel.Visible = false;
             customersMainPanel.Dock = DockStyle.None;
         }
+
+
         #endregion
+
+        private void tb_search_TextChanged(object sender, EventArgs e)
+        {
+        }
     }
 }
