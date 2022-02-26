@@ -13,8 +13,8 @@ namespace SSIP.Controllers
     public class ServicesController
     {
         #region private fields
-        private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-
+        //  private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         #endregion
 
         #region declarations

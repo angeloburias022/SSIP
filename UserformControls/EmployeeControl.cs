@@ -4,7 +4,9 @@ using SSIP.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -103,7 +105,41 @@ namespace SSIP.UserformControls
         }
         private void EmployeeControl_Load(object sender, EventArgs e)
         {
-            employeeGrid.DataSource = emp.GetEmployees();
+           employeeGrid.DataSource = GetEmployees();
+        }
+
+        public DataTable GetEmployees()
+        {
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetEmployees]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
         }
         private void employeeGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -261,7 +297,7 @@ namespace SSIP.UserformControls
         }
         void UpdateGrids()
         {
-            employeeGrid.DataSource = emp.GetEmployees();
+            employeeGrid.DataSource = GetEmployees();
             employeeGrid.Update();
 
             //dispatchListgrid.DataSource = GetDispatches();
@@ -324,6 +360,5 @@ namespace SSIP.UserformControls
             employeeMainPanel.Dock = DockStyle.None;
         }
         #endregion
-
     }
 }

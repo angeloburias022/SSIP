@@ -38,8 +38,8 @@ namespace SSIP.UserForms
         ServicesController sv = new ServicesController();
         private void MainServiceControl_Load(object sender, EventArgs e)
         {
-            dispatchListgrid.DataSource = sv.GetDispatches();
-            schedgrid.DataSource = sv.GetSchedules();
+           dispatchListgrid.DataSource = sv.GetDispatches();
+             schedgrid.DataSource = sv.GetSchedules();
         }
 
         #endregion

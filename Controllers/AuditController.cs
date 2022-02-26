@@ -1,4 +1,5 @@
-﻿using SSIP.Models;
+﻿using SSIP.DbAccess;
+using SSIP.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,17 +14,19 @@ namespace SSIP.Controllers
 {
     public class AuditController
     {
-        private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-
+        //    private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        private string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        
         public AuditController()
         {
            
         }
-
+      
         public void Logs(AuditTrails audit)
         {
             try
             {
+                
                 using (SqlConnection con = new SqlConnection(ConString))
                 {
                     if (con.State == ConnectionState.Open)
