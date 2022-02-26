@@ -23,6 +23,7 @@ namespace SSIP.UserformControls
         #region Declaration 
 
         EmployeesController emp = new EmployeesController();
+        AuditController aud = new AuditController();
         public EmployeeControl()
         {
             InitializeComponent();
@@ -50,10 +51,16 @@ namespace SSIP.UserformControls
             if (result != true)
             {
                 MessageBox.Show("Make sure your credentials is correct");
+                btn_saveAcc.Enabled = false;
+                btn_updateAccount.Enabled = false;
+                btn_viewEmp.Enabled = false;
 
             }
             else
             {
+                btn_viewEmp.Enabled = true;
+                btn_saveAcc.Enabled = true;
+                btn_updateAccount.Enabled = true;
                 tb_unameAccess.ReadOnly = true;
                 tb_pass.ReadOnly = true;
             }
@@ -66,31 +73,44 @@ namespace SSIP.UserformControls
                 Password = users.Password
             };
 
-            var accesslog = new AuditTrails
-            {
-                Username = user.Username,
-                AuditActionTypeENUM = (Enums.ActionTypes)1,
-                DateTimeStamp = DateTime.Now.ToString(),
-                Result = "Succeed",
-                Description = "'" + user.Username + "' accessed manager customer feature"
-            };
-
-
+    
             var cfirm = new AccessController();
 
-            var result = cfirm.ConfirmAccess(user, accesslog);
+            var result = cfirm.ConfirmAccess(user);
 
             if (result == true)
             {
                 btn_saveAcc.Enabled = true;
                 btn_updateAccount.Enabled = true;
 
+                var accesslog = new AuditTrails
+                {
+                    Username = user.Username,
+                    AuditActionTypeENUM = (Enums.ActionTypes)1,
+                    DateTimeStamp = DateTime.Now.ToString(),
+                    Result = "Succeed",
+                    Description = "'" + user.Username + "' accessed manager customer feature"
+                };
+                aud.Logs(accesslog);
                 return true;
             }
-
-            return false;
+            else
+            {
+                var accesslog = new AuditTrails
+                {
+                    Username = user.Username,
+                    AuditActionTypeENUM = (Enums.ActionTypes)1,
+                    DateTimeStamp = DateTime.Now.ToString(),
+                    Result = "Failed",
+                    Description = "'" + user.Username + "'Failed to access manager customer feature"
+                };
+                aud.Logs(accesslog);
+                return false;
+            }           
         }
         #endregion
+
+        #region others
 
         private void cmb_acctype_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -103,44 +123,7 @@ namespace SSIP.UserformControls
                 employee_panel.Visible = false;
             }
         }
-        private void EmployeeControl_Load(object sender, EventArgs e)
-        {
-           employeeGrid.DataSource = GetEmployees();
-        }
 
-        public DataTable GetEmployees()
-        {
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
-            string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-            try
-            {
-                using (SqlConnection con = new SqlConnection(ConString))
-                {
-                    using (SqlCommand com = new SqlCommand("[SpGetEmployees]", con))
-                    {
-                        com.CommandType = CommandType.StoredProcedure;
-
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
-                        {
-                            ds.Clear();
-                            adapter.Fill(ds);
-
-                            dt = ds.Tables[0];
-                            con.Close();
-
-                        }
-                    }
-                }
-                return dt;
-            }
-            catch (Exception error)
-            {
-                error.ToString();
-            }
-            return dt;
-        }
         private void employeeGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -174,8 +157,9 @@ namespace SSIP.UserformControls
                 error.ToString();
             }
         }
-     
-        #region main operation: add, update employee
+        #endregion
+
+        #region main operation: add, update employee, get employees
         private void btn_saveAcc_Click(object sender, EventArgs e)
         {
             btn_saveAcc.Enabled = false;
@@ -285,8 +269,47 @@ namespace SSIP.UserformControls
                 MessageBox.Show("Updated Successfully");
             }
         }
+
+        private void EmployeeControl_Load(object sender, EventArgs e)
+        {
+            employeeGrid.DataSource = GetEmployees();
+        }
+
+        public DataTable GetEmployees()
+        {
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetEmployees]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
         #endregion
-      
+
         #region disable fields, clear txtboxes and update grid
         void DisabledPersonInfoFields()
         {
@@ -360,5 +383,10 @@ namespace SSIP.UserformControls
             employeeMainPanel.Dock = DockStyle.None;
         }
         #endregion
+
+        private void btn_viewUsers_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -124,7 +124,7 @@ namespace SSIP.Controllers
         #endregion
 
         #region Confirm access
-        public bool ConfirmAccess(User user, AuditTrails audit)
+        public bool ConfirmAccess(User user)
         {
             using (SqlConnection con = new SqlConnection(ConString))
             {
@@ -143,22 +143,10 @@ namespace SSIP.Controllers
                             adapter.Fill(dt);
                             if (dt.Rows.Count > 0)
                             {
-                                aud.Logs(audit);
                                 return true;
                             }
                             else
                             {
-                                var failedaudit = new AuditTrails
-                                {
-                                    Username = audit.Username,
-                                    AuditActionTypeENUM = (Enums.ActionTypes)1,
-                                    DateTimeStamp = DateTime.Now.ToString(),
-                                    Result = "Failed",
-                                    Description = audit.Description
-                                };
-
-
-                                aud.Logs(failedaudit);
                                 return false;
                             }
                         }

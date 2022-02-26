@@ -309,8 +309,9 @@ namespace SSIP.Forms
         {           
             HideMainServicesPanelControl();
             HideEmployeesPanelControl();
+            
 
-            ShowEmployeesPanelControl();
+            ShowCustomersPanelControl();
             HideSubMenu();
         }
 
@@ -401,7 +402,7 @@ namespace SSIP.Forms
         {
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
-
+            HideCustomersPanelControl();
 
 
             HideSubMenu();
@@ -420,6 +421,7 @@ namespace SSIP.Forms
         {
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
+            HideCustomersPanelControl();
 
 
 
@@ -437,6 +439,9 @@ namespace SSIP.Forms
 
             HideMainServicesPanelControl();
             HideEmployeesPanelControl();
+            HideCustomersPanelControl();
+
+
 
             ShowEmployeesPanelControl();
             HideSubMenu();
@@ -446,6 +451,7 @@ namespace SSIP.Forms
         {
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
+            HideCustomersPanelControl();
 
             ShowMainServicesControl();
             HideSubMenu();
@@ -477,6 +483,20 @@ namespace SSIP.Forms
         {
             employeePanel.Hide();
             employeePanel.Dock = DockStyle.None;
+        }
+
+        public void ShowCustomersPanelControl()
+        {
+            this.customersControl1.BringToFront();
+            this.customersControl1.Show();
+            this.customersControl1Panel.Visible = true;
+            this.customersControl1Panel.Dock = DockStyle.Fill;
+        }
+
+        public void HideCustomersPanelControl()
+        {
+            customersControl1Panel.Hide();
+            customersControl1Panel.Dock = DockStyle.None;
         }
         #endregion
     }

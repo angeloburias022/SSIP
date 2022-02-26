@@ -44,6 +44,10 @@ namespace SSIP.UserForms
 
         #endregion
 
+        #region declaration
+        AuditController aud = new AuditController();
+        #endregion
+
         #region save service (dispatch/schedule)
         private void btn_save_Click(object sender, EventArgs e)
         {
@@ -142,27 +146,27 @@ namespace SSIP.UserForms
             //this.securityForm1.BringToFront();
             //this.securityForm1.Visible = true;
             //this.securityForm1.Dock = DockStyle.Fill;
-            var user = new User
-            {
-                Username = tb_recorded.Text
-            };
+            //var user = new User
+            //{
+            //    Username = tb_recorded.Text
+            //};
 
-            var acc = new AccessController();
+            //var acc = new AccessController();
 
-            var result = acc.CheckUsername(user);
+            //var result = acc.CheckUsername(user);
 
-            if (result == true)
-            {
-                this.tb_pass.Show();
+            //if (result == true)
+            //{
+            //    this.tb_pass.Show();
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
 
-                this.tb_pass.Hide();
+            ////    this.tb_pass.Hide();
 
-                MessageBox.Show("Make sure you inputted your corrent Username");
-            }
+            //    MessageBox.Show("Make sure you inputted your corrent Username");
+            //}
 
         }
 
@@ -176,16 +180,9 @@ namespace SSIP.UserForms
 
             var acc = new AccessController();
 
-            var accesslog = new AuditTrails
-            {
-                Username = user.Username,
-                AuditActionTypeENUM = (Enums.ActionTypes)1,
-                DateTimeStamp = DateTime.Now.ToString(),
-                Result = "Succeed",
-                Description = "'" + user.Username + "' accessed main services feature"
-            };
 
-            var result = acc.ConfirmAccess(user, accesslog);
+            var result = acc.ConfirmAccess(user);
+
 
             if (result == true)
             {
@@ -194,20 +191,55 @@ namespace SSIP.UserForms
                     this.btn_save.Visible = false;
                     this.btn_updateChanges.Visible = true;
                     this.btn_updateChanges.Enabled = true;
-                } 
-                else 
-                this.btn_save.Enabled = true;
+                    this.btn_viewDispatches.Enabled = true;
+                    this.btn_viewScheds.Enabled = true;
+                }
+                else
+                {
+                    this.btn_save.Enabled = true;
+                    this.btn_viewDispatches.Enabled = true;
+                    this.btn_viewScheds.Enabled = true;
+
+                }
+                var accesslog = new AuditTrails
+                {
+                    Username = user.Username,
+                    AuditActionTypeENUM = (Enums.ActionTypes)1,
+                    DateTimeStamp = DateTime.Now.ToString(),
+                    Result = "Succeed",
+                    Description = "'" + user.Username + "' accessed main services feature"
+                };
+
+                aud.Logs(accesslog);          
             }
             else
             {
-                if(tb_dispatchID.Text != "0" || tb_schedID.Text != "0")
+                if (tb_dispatchID.Text != "0" || tb_schedID.Text != "0")
                 {
                     this.btn_updateChanges.Visible = false;
                     this.btn_updateChanges.Enabled = true;
+                    this.btn_viewDispatches.Enabled = false;
+                    this.btn_viewScheds.Enabled = false;
                 }
                 else
-                this.btn_save.Enabled = false;
-                this.btn_updateChanges.Enabled = false;
+                {
+                    this.btn_save.Enabled = false;
+                    this.btn_updateChanges.Enabled = false;
+                    this.btn_viewDispatches.Enabled = false;
+                    this.btn_viewScheds.Enabled = false;
+                }
+                var failedaudit = new AuditTrails
+                {
+                    Username = tb_recorded.Text,
+                    AuditActionTypeENUM = (Enums.ActionTypes)1,
+                    DateTimeStamp = DateTime.Now.ToString(),
+                    Result = "Failed",
+                    Description = "'" + user.Username + "'failed to accessed main services feature"
+                };
+
+
+                aud.Logs(failedaudit);
+
                 MessageBox.Show("Wrong password");
             }
         }
@@ -566,5 +598,9 @@ namespace SSIP.UserForms
         }
         #endregion
 
+        private void tb_recorded_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

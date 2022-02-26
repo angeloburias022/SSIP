@@ -61,6 +61,8 @@ namespace SSIP.Forms
             this.mainServiceControl1 = new SSIP.UserForms.MainServiceControl();
             this.employeePanel = new System.Windows.Forms.Panel();
             this.employeesControl1 = new SSIP.UserformControls.EmployeeControl();
+            this.customersControl1 = new SSIP.UserformControls.CustomersControl();
+            this.customersControl1Panel = new System.Windows.Forms.Panel();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -69,6 +71,7 @@ namespace SSIP.Forms
             this.inventory_panel.SuspendLayout();
             this.dispatchFormPanel.SuspendLayout();
             this.employeePanel.SuspendLayout();
+            this.customersControl1Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Services_pie_chart
@@ -468,12 +471,31 @@ namespace SSIP.Forms
             this.employeesControl1.Size = new System.Drawing.Size(73, 67);
             this.employeesControl1.TabIndex = 0;
             // 
+            // customersControl1
+            // 
+            this.customersControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customersControl1.BackgroundImage")));
+            this.customersControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customersControl1.Location = new System.Drawing.Point(0, 0);
+            this.customersControl1.Name = "customersControl1";
+            this.customersControl1.Size = new System.Drawing.Size(85, 90);
+            this.customersControl1.TabIndex = 20;
+            this.customersControl1.Visible = false;
+            // 
+            // customersControl1Panel
+            // 
+            this.customersControl1Panel.Controls.Add(this.customersControl1);
+            this.customersControl1Panel.Location = new System.Drawing.Point(1062, 288);
+            this.customersControl1Panel.Name = "customersControl1Panel";
+            this.customersControl1Panel.Size = new System.Drawing.Size(85, 90);
+            this.customersControl1Panel.TabIndex = 21;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1185, 526);
+            this.Controls.Add(this.customersControl1Panel);
             this.Controls.Add(this.employeePanel);
             this.Controls.Add(this.dispatchFormPanel);
             this.Controls.Add(this.nav_panel);
@@ -498,6 +520,7 @@ namespace SSIP.Forms
             this.inventory_panel.ResumeLayout(false);
             this.dispatchFormPanel.ResumeLayout(false);
             this.employeePanel.ResumeLayout(false);
+            this.customersControl1Panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,5 +559,7 @@ namespace SSIP.Forms
         private System.Windows.Forms.Panel dispatchFormPanel;
         private System.Windows.Forms.Panel employeePanel;
         private UserformControls.EmployeeControl employeesControl1;
+        private UserformControls.CustomersControl customersControl1;
+        private System.Windows.Forms.Panel customersControl1Panel;
     }
 }

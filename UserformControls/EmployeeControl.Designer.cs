@@ -54,18 +54,17 @@ namespace SSIP.UserformControls
             this.lbl_confirmAccess = new System.Windows.Forms.Label();
             this.cmb_acctype = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbl_acctype = new System.Windows.Forms.Label();
-            this.btn_viewUsers = new Guna.UI2.WinForms.Guna2Button();
             this.tb_datehired = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.lbl_datehired = new System.Windows.Forms.Label();
             this.employee_panel = new System.Windows.Forms.Panel();
             this.tb_password = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tb_uname = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_password = new System.Windows.Forms.Label();
-            this.lbl_username = new System.Windows.Forms.Label();
-            this.tb_position = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_position = new System.Windows.Forms.Label();
-            this.cmb_empStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbl_empStatus = new System.Windows.Forms.Label();
+            this.tb_uname = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cmb_empStatus = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lbl_password = new System.Windows.Forms.Label();
+            this.lbl_position = new System.Windows.Forms.Label();
+            this.tb_position = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lbl_username = new System.Windows.Forms.Label();
             this.confirmAccessPanel = new System.Windows.Forms.Panel();
             this.tb_email = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_email = new System.Windows.Forms.Label();
@@ -76,6 +75,7 @@ namespace SSIP.UserformControls
             this.employeeMainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.employeeGrid = new System.Windows.Forms.DataGridView();
             this.btn_addEmployee = new Guna.UI2.WinForms.Guna2Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.employee_panel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
             this.employeeMainPanel.SuspendLayout();
@@ -104,7 +104,7 @@ namespace SSIP.UserformControls
             "Mandaluyong",
             "Muntinlupa"});
             this.cmb_City.ItemsAppearance.Parent = this.cmb_City;
-            this.cmb_City.Location = new System.Drawing.Point(217, 331);
+            this.cmb_City.Location = new System.Drawing.Point(214, 356);
             this.cmb_City.Name = "cmb_City";
             this.cmb_City.ShadowDecoration.Parent = this.cmb_City;
             this.cmb_City.Size = new System.Drawing.Size(165, 36);
@@ -128,7 +128,7 @@ namespace SSIP.UserformControls
             this.tb_tel.ForeColor = System.Drawing.Color.Black;
             this.tb_tel.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_tel.HoverState.Parent = this.tb_tel;
-            this.tb_tel.Location = new System.Drawing.Point(216, 169);
+            this.tb_tel.Location = new System.Drawing.Point(213, 237);
             this.tb_tel.Name = "tb_tel";
             this.tb_tel.PasswordChar = '\0';
             this.tb_tel.PlaceholderText = "Tel #";
@@ -155,7 +155,7 @@ namespace SSIP.UserformControls
             this.tb_barangay.ForeColor = System.Drawing.Color.Black;
             this.tb_barangay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_barangay.HoverState.Parent = this.tb_barangay;
-            this.tb_barangay.Location = new System.Drawing.Point(32, 331);
+            this.tb_barangay.Location = new System.Drawing.Point(29, 356);
             this.tb_barangay.Name = "tb_barangay";
             this.tb_barangay.PasswordChar = '\0';
             this.tb_barangay.PlaceholderText = "Barangay";
@@ -182,7 +182,7 @@ namespace SSIP.UserformControls
             this.tb_mobile.ForeColor = System.Drawing.Color.Black;
             this.tb_mobile.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_mobile.HoverState.Parent = this.tb_mobile;
-            this.tb_mobile.Location = new System.Drawing.Point(32, 169);
+            this.tb_mobile.Location = new System.Drawing.Point(29, 237);
             this.tb_mobile.Name = "tb_mobile";
             this.tb_mobile.PasswordChar = '\0';
             this.tb_mobile.PlaceholderText = "Mobile #";
@@ -209,7 +209,7 @@ namespace SSIP.UserformControls
             this.tb_street.ForeColor = System.Drawing.Color.Black;
             this.tb_street.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_street.HoverState.Parent = this.tb_street;
-            this.tb_street.Location = new System.Drawing.Point(217, 248);
+            this.tb_street.Location = new System.Drawing.Point(214, 295);
             this.tb_street.Name = "tb_street";
             this.tb_street.PasswordChar = '\0';
             this.tb_street.PlaceholderText = "Street";
@@ -236,7 +236,7 @@ namespace SSIP.UserformControls
             this.tb_lname.ForeColor = System.Drawing.Color.Black;
             this.tb_lname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_lname.HoverState.Parent = this.tb_lname;
-            this.tb_lname.Location = new System.Drawing.Point(215, 93);
+            this.tb_lname.Location = new System.Drawing.Point(211, 177);
             this.tb_lname.Name = "tb_lname";
             this.tb_lname.PasswordChar = '\0';
             this.tb_lname.PlaceholderText = "Lastname";
@@ -263,7 +263,7 @@ namespace SSIP.UserformControls
             this.tb_houseNo.ForeColor = System.Drawing.Color.Black;
             this.tb_houseNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_houseNo.HoverState.Parent = this.tb_houseNo;
-            this.tb_houseNo.Location = new System.Drawing.Point(32, 248);
+            this.tb_houseNo.Location = new System.Drawing.Point(29, 295);
             this.tb_houseNo.Name = "tb_houseNo";
             this.tb_houseNo.PasswordChar = '\0';
             this.tb_houseNo.PlaceholderText = "House #";
@@ -290,7 +290,7 @@ namespace SSIP.UserformControls
             this.tb_fname.ForeColor = System.Drawing.Color.Black;
             this.tb_fname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_fname.HoverState.Parent = this.tb_fname;
-            this.tb_fname.Location = new System.Drawing.Point(29, 93);
+            this.tb_fname.Location = new System.Drawing.Point(32, 177);
             this.tb_fname.Name = "tb_fname";
             this.tb_fname.PasswordChar = '\0';
             this.tb_fname.PlaceholderText = "Firstname";
@@ -305,7 +305,7 @@ namespace SSIP.UserformControls
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Honeydew;
-            this.label15.Location = new System.Drawing.Point(213, 308);
+            this.label15.Location = new System.Drawing.Point(210, 333);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(44, 20);
             this.label15.TabIndex = 105;
@@ -317,7 +317,7 @@ namespace SSIP.UserformControls
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Honeydew;
-            this.label10.Location = new System.Drawing.Point(31, 308);
+            this.label10.Location = new System.Drawing.Point(28, 333);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 20);
             this.label10.TabIndex = 106;
@@ -329,7 +329,7 @@ namespace SSIP.UserformControls
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Honeydew;
-            this.label6.Location = new System.Drawing.Point(212, 225);
+            this.label6.Location = new System.Drawing.Point(209, 272);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 20);
             this.label6.TabIndex = 104;
@@ -341,7 +341,7 @@ namespace SSIP.UserformControls
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Honeydew;
-            this.label9.Location = new System.Drawing.Point(210, 146);
+            this.label9.Location = new System.Drawing.Point(207, 214);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 20);
             this.label9.TabIndex = 108;
@@ -353,7 +353,7 @@ namespace SSIP.UserformControls
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Honeydew;
-            this.label5.Location = new System.Drawing.Point(213, 70);
+            this.label5.Location = new System.Drawing.Point(209, 154);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 20);
             this.label5.TabIndex = 107;
@@ -365,7 +365,7 @@ namespace SSIP.UserformControls
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Honeydew;
-            this.label8.Location = new System.Drawing.Point(28, 146);
+            this.label8.Location = new System.Drawing.Point(25, 214);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 20);
             this.label8.TabIndex = 109;
@@ -377,7 +377,7 @@ namespace SSIP.UserformControls
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Honeydew;
-            this.label12.Location = new System.Drawing.Point(28, 225);
+            this.label12.Location = new System.Drawing.Point(25, 272);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 20);
             this.label12.TabIndex = 111;
@@ -389,7 +389,7 @@ namespace SSIP.UserformControls
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Honeydew;
-            this.label4.Location = new System.Drawing.Point(25, 70);
+            this.label4.Location = new System.Drawing.Point(21, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 20);
             this.label4.TabIndex = 110;
@@ -401,7 +401,7 @@ namespace SSIP.UserformControls
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label20.Location = new System.Drawing.Point(23, 24);
+            this.label20.Location = new System.Drawing.Point(17, 110);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(237, 31);
             this.label20.TabIndex = 121;
@@ -418,10 +418,11 @@ namespace SSIP.UserformControls
             this.btn_viewEmp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewEmp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewEmp.DisabledState.Parent = this.btn_viewEmp;
+            this.btn_viewEmp.Enabled = false;
             this.btn_viewEmp.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_viewEmp.ForeColor = System.Drawing.Color.White;
             this.btn_viewEmp.HoverState.Parent = this.btn_viewEmp;
-            this.btn_viewEmp.Location = new System.Drawing.Point(681, 84);
+            this.btn_viewEmp.Location = new System.Drawing.Point(634, 177);
             this.btn_viewEmp.Name = "btn_viewEmp";
             this.btn_viewEmp.ShadowDecoration.Parent = this.btn_viewEmp;
             this.btn_viewEmp.Size = new System.Drawing.Size(120, 45);
@@ -444,14 +445,13 @@ namespace SSIP.UserformControls
             this.btn_updateAccount.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_updateAccount.ForeColor = System.Drawing.Color.White;
             this.btn_updateAccount.HoverState.Parent = this.btn_updateAccount;
-            this.btn_updateAccount.Location = new System.Drawing.Point(681, 362);
+            this.btn_updateAccount.Location = new System.Drawing.Point(636, 356);
             this.btn_updateAccount.Name = "btn_updateAccount";
             this.btn_updateAccount.ShadowDecoration.Parent = this.btn_updateAccount;
             this.btn_updateAccount.Size = new System.Drawing.Size(120, 45);
             this.btn_updateAccount.TabIndex = 127;
             this.btn_updateAccount.Text = "UPDATE";
             this.btn_updateAccount.UseTransparentBackground = true;
-            this.btn_updateAccount.Visible = false;
             this.btn_updateAccount.Click += new System.EventHandler(this.btn_updateAccount_Click);
             // 
             // btn_saveAcc
@@ -465,10 +465,11 @@ namespace SSIP.UserformControls
             this.btn_saveAcc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_saveAcc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_saveAcc.DisabledState.Parent = this.btn_saveAcc;
+            this.btn_saveAcc.Enabled = false;
             this.btn_saveAcc.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_saveAcc.ForeColor = System.Drawing.Color.White;
             this.btn_saveAcc.HoverState.Parent = this.btn_saveAcc;
-            this.btn_saveAcc.Location = new System.Drawing.Point(681, 413);
+            this.btn_saveAcc.Location = new System.Drawing.Point(636, 407);
             this.btn_saveAcc.Name = "btn_saveAcc";
             this.btn_saveAcc.ShadowDecoration.Parent = this.btn_saveAcc;
             this.btn_saveAcc.Size = new System.Drawing.Size(120, 45);
@@ -563,7 +564,7 @@ namespace SSIP.UserformControls
             "User",
             "Admin"});
             this.cmb_acctype.ItemsAppearance.Parent = this.cmb_acctype;
-            this.cmb_acctype.Location = new System.Drawing.Point(33, 413);
+            this.cmb_acctype.Location = new System.Drawing.Point(30, 421);
             this.cmb_acctype.Name = "cmb_acctype";
             this.cmb_acctype.ShadowDecoration.Parent = this.cmb_acctype;
             this.cmb_acctype.Size = new System.Drawing.Size(168, 36);
@@ -576,33 +577,11 @@ namespace SSIP.UserformControls
             this.lbl_acctype.BackColor = System.Drawing.Color.Transparent;
             this.lbl_acctype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_acctype.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_acctype.Location = new System.Drawing.Point(31, 390);
+            this.lbl_acctype.Location = new System.Drawing.Point(28, 398);
             this.lbl_acctype.Name = "lbl_acctype";
             this.lbl_acctype.Size = new System.Drawing.Size(123, 20);
             this.lbl_acctype.TabIndex = 129;
             this.lbl_acctype.Text = "Account Type:";
-            // 
-            // btn_viewUsers
-            // 
-            this.btn_viewUsers.BackColor = System.Drawing.Color.Transparent;
-            this.btn_viewUsers.BorderRadius = 4;
-            this.btn_viewUsers.CheckedState.Parent = this.btn_viewUsers;
-            this.btn_viewUsers.CustomImages.Parent = this.btn_viewUsers;
-            this.btn_viewUsers.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_viewUsers.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_viewUsers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_viewUsers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_viewUsers.DisabledState.Parent = this.btn_viewUsers;
-            this.btn_viewUsers.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_viewUsers.ForeColor = System.Drawing.Color.White;
-            this.btn_viewUsers.HoverState.Parent = this.btn_viewUsers;
-            this.btn_viewUsers.Location = new System.Drawing.Point(681, 135);
-            this.btn_viewUsers.Name = "btn_viewUsers";
-            this.btn_viewUsers.ShadowDecoration.Parent = this.btn_viewUsers;
-            this.btn_viewUsers.Size = new System.Drawing.Size(120, 45);
-            this.btn_viewUsers.TabIndex = 125;
-            this.btn_viewUsers.Text = "VIEW USERS";
-            this.btn_viewUsers.UseTransparentBackground = true;
             // 
             // tb_datehired
             // 
@@ -612,7 +591,7 @@ namespace SSIP.UserformControls
             this.tb_datehired.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_datehired.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.tb_datehired.HoverState.Parent = this.tb_datehired;
-            this.tb_datehired.Location = new System.Drawing.Point(7, 35);
+            this.tb_datehired.Location = new System.Drawing.Point(10, 23);
             this.tb_datehired.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.tb_datehired.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.tb_datehired.Name = "tb_datehired";
@@ -627,7 +606,7 @@ namespace SSIP.UserformControls
             this.lbl_datehired.BackColor = System.Drawing.Color.Transparent;
             this.lbl_datehired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_datehired.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_datehired.Location = new System.Drawing.Point(3, 12);
+            this.lbl_datehired.Location = new System.Drawing.Point(6, 0);
             this.lbl_datehired.Name = "lbl_datehired";
             this.lbl_datehired.Size = new System.Drawing.Size(98, 20);
             this.lbl_datehired.TabIndex = 131;
@@ -637,18 +616,18 @@ namespace SSIP.UserformControls
             // 
             this.employee_panel.BackColor = System.Drawing.Color.Transparent;
             this.employee_panel.Controls.Add(this.tb_password);
-            this.employee_panel.Controls.Add(this.tb_uname);
-            this.employee_panel.Controls.Add(this.lbl_password);
-            this.employee_panel.Controls.Add(this.lbl_username);
-            this.employee_panel.Controls.Add(this.tb_position);
-            this.employee_panel.Controls.Add(this.lbl_position);
             this.employee_panel.Controls.Add(this.lbl_datehired);
-            this.employee_panel.Controls.Add(this.tb_datehired);
-            this.employee_panel.Controls.Add(this.cmb_empStatus);
             this.employee_panel.Controls.Add(this.lbl_empStatus);
-            this.employee_panel.Location = new System.Drawing.Point(387, 58);
+            this.employee_panel.Controls.Add(this.tb_uname);
+            this.employee_panel.Controls.Add(this.cmb_empStatus);
+            this.employee_panel.Controls.Add(this.tb_datehired);
+            this.employee_panel.Controls.Add(this.lbl_password);
+            this.employee_panel.Controls.Add(this.lbl_position);
+            this.employee_panel.Controls.Add(this.tb_position);
+            this.employee_panel.Controls.Add(this.lbl_username);
+            this.employee_panel.Location = new System.Drawing.Point(385, 154);
             this.employee_panel.Name = "employee_panel";
-            this.employee_panel.Size = new System.Drawing.Size(194, 403);
+            this.employee_panel.Size = new System.Drawing.Size(194, 303);
             this.employee_panel.TabIndex = 133;
             this.employee_panel.Visible = false;
             // 
@@ -670,7 +649,7 @@ namespace SSIP.UserformControls
             this.tb_password.ForeColor = System.Drawing.Color.Black;
             this.tb_password.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_password.HoverState.Parent = this.tb_password;
-            this.tb_password.Location = new System.Drawing.Point(9, 352);
+            this.tb_password.Location = new System.Drawing.Point(12, 264);
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
             this.tb_password.PlaceholderText = "Password";
@@ -678,6 +657,18 @@ namespace SSIP.UserformControls
             this.tb_password.ShadowDecoration.Parent = this.tb_password;
             this.tb_password.Size = new System.Drawing.Size(165, 36);
             this.tb_password.TabIndex = 136;
+            // 
+            // lbl_empStatus
+            // 
+            this.lbl_empStatus.AutoSize = true;
+            this.lbl_empStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_empStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_empStatus.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_empStatus.Location = new System.Drawing.Point(9, 116);
+            this.lbl_empStatus.Name = "lbl_empStatus";
+            this.lbl_empStatus.Size = new System.Drawing.Size(67, 20);
+            this.lbl_empStatus.TabIndex = 105;
+            this.lbl_empStatus.Text = "Status:";
             // 
             // tb_uname
             // 
@@ -697,7 +688,7 @@ namespace SSIP.UserformControls
             this.tb_uname.ForeColor = System.Drawing.Color.Black;
             this.tb_uname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_uname.HoverState.Parent = this.tb_uname;
-            this.tb_uname.Location = new System.Drawing.Point(9, 273);
+            this.tb_uname.Location = new System.Drawing.Point(13, 202);
             this.tb_uname.Name = "tb_uname";
             this.tb_uname.PasswordChar = '\0';
             this.tb_uname.PlaceholderText = "Username";
@@ -705,69 +696,6 @@ namespace SSIP.UserformControls
             this.tb_uname.ShadowDecoration.Parent = this.tb_uname;
             this.tb_uname.Size = new System.Drawing.Size(165, 36);
             this.tb_uname.TabIndex = 137;
-            // 
-            // lbl_password
-            // 
-            this.lbl_password.AutoSize = true;
-            this.lbl_password.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_password.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_password.Location = new System.Drawing.Point(5, 329);
-            this.lbl_password.Name = "lbl_password";
-            this.lbl_password.Size = new System.Drawing.Size(86, 20);
-            this.lbl_password.TabIndex = 135;
-            this.lbl_password.Text = "Password";
-            // 
-            // lbl_username
-            // 
-            this.lbl_username.AutoSize = true;
-            this.lbl_username.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_username.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_username.Location = new System.Drawing.Point(5, 250);
-            this.lbl_username.Name = "lbl_username";
-            this.lbl_username.Size = new System.Drawing.Size(96, 20);
-            this.lbl_username.TabIndex = 135;
-            this.lbl_username.Text = "Username:";
-            // 
-            // tb_position
-            // 
-            this.tb_position.BackColor = System.Drawing.Color.Transparent;
-            this.tb_position.BorderRadius = 4;
-            this.tb_position.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_position.DefaultText = "";
-            this.tb_position.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_position.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_position.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_position.DisabledState.Parent = this.tb_position;
-            this.tb_position.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_position.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.tb_position.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_position.FocusedState.Parent = this.tb_position;
-            this.tb_position.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_position.ForeColor = System.Drawing.Color.Black;
-            this.tb_position.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_position.HoverState.Parent = this.tb_position;
-            this.tb_position.Location = new System.Drawing.Point(9, 111);
-            this.tb_position.Name = "tb_position";
-            this.tb_position.PasswordChar = '\0';
-            this.tb_position.PlaceholderText = "Position";
-            this.tb_position.SelectedText = "";
-            this.tb_position.ShadowDecoration.Parent = this.tb_position;
-            this.tb_position.Size = new System.Drawing.Size(165, 36);
-            this.tb_position.TabIndex = 134;
-            // 
-            // lbl_position
-            // 
-            this.lbl_position.AutoSize = true;
-            this.lbl_position.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_position.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_position.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_position.Location = new System.Drawing.Point(5, 88);
-            this.lbl_position.Name = "lbl_position";
-            this.lbl_position.Size = new System.Drawing.Size(78, 20);
-            this.lbl_position.TabIndex = 133;
-            this.lbl_position.Text = "Position:";
             // 
             // cmb_empStatus
             // 
@@ -787,23 +715,74 @@ namespace SSIP.UserformControls
             "Active",
             "In-Active"});
             this.cmb_empStatus.ItemsAppearance.Parent = this.cmb_empStatus;
-            this.cmb_empStatus.Location = new System.Drawing.Point(11, 190);
+            this.cmb_empStatus.Location = new System.Drawing.Point(13, 139);
             this.cmb_empStatus.Name = "cmb_empStatus";
             this.cmb_empStatus.ShadowDecoration.Parent = this.cmb_empStatus;
             this.cmb_empStatus.Size = new System.Drawing.Size(165, 36);
             this.cmb_empStatus.TabIndex = 120;
             // 
-            // lbl_empStatus
+            // lbl_password
             // 
-            this.lbl_empStatus.AutoSize = true;
-            this.lbl_empStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_empStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_empStatus.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_empStatus.Location = new System.Drawing.Point(7, 167);
-            this.lbl_empStatus.Name = "lbl_empStatus";
-            this.lbl_empStatus.Size = new System.Drawing.Size(67, 20);
-            this.lbl_empStatus.TabIndex = 105;
-            this.lbl_empStatus.Text = "Status:";
+            this.lbl_password.AutoSize = true;
+            this.lbl_password.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_password.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_password.Location = new System.Drawing.Point(8, 241);
+            this.lbl_password.Name = "lbl_password";
+            this.lbl_password.Size = new System.Drawing.Size(86, 20);
+            this.lbl_password.TabIndex = 135;
+            this.lbl_password.Text = "Password";
+            // 
+            // lbl_position
+            // 
+            this.lbl_position.AutoSize = true;
+            this.lbl_position.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_position.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_position.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_position.Location = new System.Drawing.Point(8, 60);
+            this.lbl_position.Name = "lbl_position";
+            this.lbl_position.Size = new System.Drawing.Size(78, 20);
+            this.lbl_position.TabIndex = 133;
+            this.lbl_position.Text = "Position:";
+            // 
+            // tb_position
+            // 
+            this.tb_position.BackColor = System.Drawing.Color.Transparent;
+            this.tb_position.BorderRadius = 4;
+            this.tb_position.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_position.DefaultText = "";
+            this.tb_position.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_position.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_position.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_position.DisabledState.Parent = this.tb_position;
+            this.tb_position.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_position.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_position.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_position.FocusedState.Parent = this.tb_position;
+            this.tb_position.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_position.ForeColor = System.Drawing.Color.Black;
+            this.tb_position.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_position.HoverState.Parent = this.tb_position;
+            this.tb_position.Location = new System.Drawing.Point(13, 83);
+            this.tb_position.Name = "tb_position";
+            this.tb_position.PasswordChar = '\0';
+            this.tb_position.PlaceholderText = "Position";
+            this.tb_position.SelectedText = "";
+            this.tb_position.ShadowDecoration.Parent = this.tb_position;
+            this.tb_position.Size = new System.Drawing.Size(165, 36);
+            this.tb_position.TabIndex = 134;
+            // 
+            // lbl_username
+            // 
+            this.lbl_username.AutoSize = true;
+            this.lbl_username.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_username.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_username.Location = new System.Drawing.Point(9, 179);
+            this.lbl_username.Name = "lbl_username";
+            this.lbl_username.Size = new System.Drawing.Size(96, 20);
+            this.lbl_username.TabIndex = 135;
+            this.lbl_username.Text = "Username:";
             // 
             // confirmAccessPanel
             // 
@@ -811,9 +790,9 @@ namespace SSIP.UserformControls
             this.confirmAccessPanel.Controls.Add(this.lbl_confirmAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_unameAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_pass);
-            this.confirmAccessPanel.Location = new System.Drawing.Point(637, 202);
+            this.confirmAccessPanel.Location = new System.Drawing.Point(590, 234);
             this.confirmAccessPanel.Name = "confirmAccessPanel";
-            this.confirmAccessPanel.Size = new System.Drawing.Size(214, 135);
+            this.confirmAccessPanel.Size = new System.Drawing.Size(214, 116);
             this.confirmAccessPanel.TabIndex = 134;
             // 
             // tb_email
@@ -834,7 +813,7 @@ namespace SSIP.UserformControls
             this.tb_email.ForeColor = System.Drawing.Color.Black;
             this.tb_email.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_email.HoverState.Parent = this.tb_email;
-            this.tb_email.Location = new System.Drawing.Point(214, 410);
+            this.tb_email.Location = new System.Drawing.Point(211, 418);
             this.tb_email.Name = "tb_email";
             this.tb_email.PasswordChar = '\0';
             this.tb_email.PlaceholderText = "Email Address";
@@ -849,7 +828,7 @@ namespace SSIP.UserformControls
             this.lbl_email.BackColor = System.Drawing.Color.Transparent;
             this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_email.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_email.Location = new System.Drawing.Point(213, 387);
+            this.lbl_email.Location = new System.Drawing.Point(210, 395);
             this.lbl_email.Name = "lbl_email";
             this.lbl_email.Size = new System.Drawing.Size(53, 20);
             this.lbl_email.TabIndex = 135;
@@ -861,7 +840,7 @@ namespace SSIP.UserformControls
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Honeydew;
-            this.label1.Location = new System.Drawing.Point(277, 0);
+            this.label1.Location = new System.Drawing.Point(271, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 138;
@@ -871,24 +850,26 @@ namespace SSIP.UserformControls
             // tb_personID
             // 
             this.tb_personID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_personID.Location = new System.Drawing.Point(282, 22);
+            this.tb_personID.Location = new System.Drawing.Point(276, 108);
             this.tb_personID.Multiline = true;
             this.tb_personID.Name = "tb_personID";
             this.tb_personID.ReadOnly = true;
             this.tb_personID.Size = new System.Drawing.Size(100, 33);
             this.tb_personID.TabIndex = 137;
             this.tb_personID.Text = "0";
+            this.tb_personID.Visible = false;
             // 
             // tb_empID
             // 
             this.tb_empID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_empID.Location = new System.Drawing.Point(398, 22);
+            this.tb_empID.Location = new System.Drawing.Point(399, 108);
             this.tb_empID.Multiline = true;
             this.tb_empID.Name = "tb_empID";
             this.tb_empID.ReadOnly = true;
             this.tb_empID.Size = new System.Drawing.Size(100, 33);
             this.tb_empID.TabIndex = 137;
             this.tb_empID.Text = "0";
+            this.tb_empID.Visible = false;
             // 
             // lbl_empID
             // 
@@ -896,7 +877,7 @@ namespace SSIP.UserformControls
             this.lbl_empID.BackColor = System.Drawing.Color.Transparent;
             this.lbl_empID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_empID.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_empID.Location = new System.Drawing.Point(393, 0);
+            this.lbl_empID.Location = new System.Drawing.Point(394, 86);
             this.lbl_empID.Name = "lbl_empID";
             this.lbl_empID.Size = new System.Drawing.Size(116, 20);
             this.lbl_empID.TabIndex = 138;
@@ -912,7 +893,7 @@ namespace SSIP.UserformControls
             this.employeeMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.666667F));
             this.employeeMainPanel.Controls.Add(this.employeeGrid, 1, 1);
             this.employeeMainPanel.Controls.Add(this.btn_addEmployee, 1, 2);
-            this.employeeMainPanel.Location = new System.Drawing.Point(832, 22);
+            this.employeeMainPanel.Location = new System.Drawing.Point(813, 74);
             this.employeeMainPanel.Name = "employeeMainPanel";
             this.employeeMainPanel.RowCount = 3;
             this.employeeMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
@@ -960,6 +941,18 @@ namespace SSIP.UserformControls
             this.btn_addEmployee.UseTransparentBackground = true;
             this.btn_addEmployee.Click += new System.EventHandler(this.btn_addEmployee_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label2.Location = new System.Drawing.Point(357, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(192, 42);
+            this.label2.TabIndex = 121;
+            this.label2.Text = "Employee";
+            // 
             // EmployeeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,10 +969,10 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.employee_panel);
             this.Controls.Add(this.cmb_acctype);
             this.Controls.Add(this.lbl_acctype);
-            this.Controls.Add(this.btn_viewUsers);
             this.Controls.Add(this.btn_viewEmp);
             this.Controls.Add(this.btn_updateAccount);
             this.Controls.Add(this.btn_saveAcc);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cmb_City);
             this.Controls.Add(this.tb_tel);
@@ -1038,7 +1031,6 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label lbl_confirmAccess;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_acctype;
         private System.Windows.Forms.Label lbl_acctype;
-        private Guna.UI2.WinForms.Guna2Button btn_viewUsers;
         private Guna.UI2.WinForms.Guna2DateTimePicker tb_datehired;
         private System.Windows.Forms.Label lbl_datehired;
         private System.Windows.Forms.Panel employee_panel;
@@ -1060,5 +1052,6 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.TableLayoutPanel employeeMainPanel;
         private System.Windows.Forms.DataGridView employeeGrid;
         private Guna.UI2.WinForms.Guna2Button btn_addEmployee;
+        private System.Windows.Forms.Label label2;
     }
 }
