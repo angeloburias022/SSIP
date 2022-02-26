@@ -138,6 +138,12 @@ namespace SSIP.Controllers
             }
             return dt;
         }
+
+        public void Search(string search)
+        {
+
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

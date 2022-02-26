@@ -3,6 +3,7 @@ using SSIP.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace SSIP.UserformControls
         }
 
         private void btn_saveCus_Click(object sender, EventArgs e)
-        {
+        {         
             #region fields
             var cus = new User
             {
@@ -67,45 +68,68 @@ namespace SSIP.UserformControls
 
             #endregion
 
-            var result = cusControl.AddCustomer(emp, cus, adds, em);
+            #region validations
+            var customerValidCon = new ValidationContext(cus, null, null);
+            var addsValidCon = new ValidationContext(adds, null, null);
+            var empValidCon = new ValidationContext(emp, null, null);
+            var emailValidCon = new ValidationContext(em, null, null);
+            IList<ValidationResult> errors = new List<ValidationResult>();
 
-            if (result != true) 
+            if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
+                !Validator.TryValidateObject(adds, addsValidCon, errors, true) ||
+                !Validator.TryValidateObject(emp, empValidCon, errors, true) ||
+                !Validator.TryValidateObject(em, emailValidCon, errors, true))
             {
-                MessageBox.Show("Add failed");
-                
-                // audit here
-                var failed = new AuditTrails
+                foreach (ValidationResult val in errors)
                 {
-                    Username = tb_unameAccess.Text,
-                    AuditActionTypeENUM = (Enums.ActionTypes)3,
-                    DateTimeStamp = DateTime.Now.ToString(),
-                    Result = "Failed",
-                    Description = "Failed to add new Customer"
-                };
-
-                aud.Logs(failed);
+                    MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
             else
             {
-                MessageBox.Show("Successfully Added");
 
-                // audit here
-                var addEmployee = new AuditTrails
+                var result = cusControl.AddCustomer(emp, cus, adds, em);
+
+                if (result != true)
                 {
-                    Username = tb_unameAccess.Text,
-                    AuditActionTypeENUM = (Enums.ActionTypes)3,
-                    DateTimeStamp = DateTime.Now.ToString(),
-                    Result = "Succeed",
-                    Description = "Added new Customer"
-                };
+                    MessageBox.Show("Add failed");
 
-                aud.Logs(addEmployee);
+                    // audit here
+                    var failed = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)3,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Failed",
+                        Description = "Failed to add new Customer"
+                    };
 
-                tb_unameAccess.ReadOnly = true;
-                tb_pass.ReadOnly = true;
-                UpdateGrid();
+                    aud.Logs(failed);
+                }
+                else
+                {
+                    MessageBox.Show("Successfully Added");
+
+                    // audit here
+                    var addEmployee = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)3,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Succeed",
+                        Description = "Added new Customer"
+                    };
+
+                    aud.Logs(addEmployee);
+
+                    tb_unameAccess.ReadOnly = true;
+                    tb_pass.ReadOnly = true;
+                    UpdateGrid();
+                }
+
             }
-
+            #endregion
         }
 
         private void btn_updateCus_Click(object sender, EventArgs e)
@@ -140,45 +164,68 @@ namespace SSIP.UserformControls
             };
             #endregion
 
-            var result = cusControl.UpdateCustomer(emp, cus, adds, em);
+            #region validations
 
-            if (result != true)
+            var customerValidCon = new ValidationContext(cus, null, null);
+            var addsValidCon = new ValidationContext(adds, null, null);
+            var empValidCon = new ValidationContext(emp, null, null);
+            var emailValidCon = new ValidationContext(em, null, null);
+            IList<ValidationResult> errors = new List<ValidationResult>();
+
+            if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
+                !Validator.TryValidateObject(adds, addsValidCon, errors, true) ||
+                !Validator.TryValidateObject(emp, empValidCon, errors, true) ||
+                !Validator.TryValidateObject(em, emailValidCon, errors, true))
             {
-                MessageBox.Show("Update failed");
-
-                // audit here
-                var failed = new AuditTrails
+                foreach (ValidationResult val in errors)
                 {
-                    Username = tb_unameAccess.Text,
-                    AuditActionTypeENUM = (Enums.ActionTypes)3,
-                    DateTimeStamp = DateTime.Now.ToString(),
-                    Result = "Failed",
-                    Description = "Failed to Update Customer"
-                };
-
-                aud.Logs(failed);
-
+                    MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
             else
             {
-                MessageBox.Show("Successfully Updated");
+                var result = cusControl.UpdateCustomer(emp, cus, adds, em);
 
-                // audit here
-                var addEmployee = new AuditTrails
+                if (result != true)
                 {
-                    Username = tb_unameAccess.Text,
-                    AuditActionTypeENUM = (Enums.ActionTypes)3,
-                    DateTimeStamp = DateTime.Now.ToString(),
-                    Result = "Succeed",
-                    Description = "Updated Customer ID: "+tb_personID.Text+" "
-                };
+                    MessageBox.Show("Update failed");
 
-                aud.Logs(addEmployee);
+                    // audit here
+                    var failed = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)3,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Failed",
+                        Description = "Failed to Update Customer"
+                    };
 
-                tb_unameAccess.ReadOnly = true;
-                tb_pass.ReadOnly = true;
-                UpdateGrid();
+                    aud.Logs(failed);
+
+                }
+                else
+                {
+                    MessageBox.Show("Successfully Updated");
+
+                    // audit here
+                    var addEmployee = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)3,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Succeed",
+                        Description = "Updated Customer ID: " + tb_personID.Text + " "
+                    };
+
+                    aud.Logs(addEmployee);
+
+                    tb_unameAccess.ReadOnly = true;
+                    tb_pass.ReadOnly = true;
+                    UpdateGrid();
+                }
             }
+            #endregion
         }
 
         private void btn_addCus_Click(object sender, EventArgs e)
@@ -373,6 +420,15 @@ namespace SSIP.UserformControls
 
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
+
+
+
+        }
+
+        public void Validation()
+        {
+
+           
         }
     }
 }
