@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace SSIP.DbAccess
 {
-    class dbContext
+    public class DbContext
     {
+        protected static string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        public static string AccessDb { get; set; }
+       
+        public DbContext()
+        {
+            AccessDb = ConString;
+        }
     }
 }
