@@ -4,6 +4,7 @@ using SSIP.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -28,11 +29,7 @@ namespace SSIP.UserformControls
         {
             InitializeComponent();
 
-            btn_saveAcc.Visible = true;
-            btn_updateAccount.Visible = true;
-            btn_saveAcc.Enabled = false;
-            btn_updateAccount.Enabled = false;
-
+            btn_saveAcc.Visible = true;          
         }
 
         #endregion
@@ -58,9 +55,10 @@ namespace SSIP.UserformControls
             }
             else
             {
+                btn_newEmp.Enabled = true;
                 btn_viewEmp.Enabled = true;
                 btn_saveAcc.Enabled = true;
-                btn_updateAccount.Enabled = true;
+           
                 tb_unameAccess.ReadOnly = true;
                 tb_pass.ReadOnly = true;
             }
@@ -151,6 +149,8 @@ namespace SSIP.UserformControls
                 tb_personID.Text = this.employeeGrid.CurrentRow.Cells[14].Value.ToString();
 
                 HideEmployeeGrid();
+                btn_updateAccount.Enabled = true;
+                btn_saveAcc.Enabled = false;
             }
             catch (Exception error)
             {
@@ -162,7 +162,6 @@ namespace SSIP.UserformControls
         #region main operation: add, update employee, get employees
         private void btn_saveAcc_Click(object sender, EventArgs e)
         {
-            btn_saveAcc.Enabled = false;
             #region fields
             var user = new User
             {
@@ -194,26 +193,73 @@ namespace SSIP.UserformControls
                 Position = tb_position.Text,
                 TypeOfContract = "none",
                 AccountTypeID = cmb_acctype.SelectedIndex,
-                EmployeeStatus = cmb_empStatus.Text
+                EmployeeStatus =cmb_empStatus.Text
             };
             #endregion
 
-            var empController = new EmployeesController();
+            #region validations
 
-            var result = empController.AddEmployee(emp, user, address, email, tb_unameAccess.Text);
+            var customerValidCon = new ValidationContext(user, null, null);
+            var addsValidCon = new ValidationContext(address, null, null);
+            var empValidCon = new ValidationContext(emp, null, null);
+            var emailValidCon = new ValidationContext(email, null, null);
+            IList<ValidationResult> errors = new List<ValidationResult>();
 
-            if (result != true)
+            if (!Validator.TryValidateObject(user, customerValidCon, errors, true) ||
+                !Validator.TryValidateObject(address, addsValidCon, errors, true) ||
+                !Validator.TryValidateObject(emp, empValidCon, errors, true) ||
+                !Validator.TryValidateObject(email, emailValidCon, errors, true))
             {
-                MessageBox.Show("Something went wrong");
+                foreach (ValidationResult val in errors)
+                {
+                    MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
             else
             {
-                MessageBox.Show("Added Successfully!");
-                tb_unameAccess.ReadOnly = true;
-                tb_pass.ReadOnly = true;
-                btn_saveAcc.Enabled = true;
-                ClearBoxes();
+                var empController = new EmployeesController();
+
+                var result = empController.AddEmployee(emp, user, address, email);
+
+                if (result != true)
+                {
+                    MessageBox.Show("Something went wrong");
+
+                    var failed = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)3,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Failed",
+                        Description = "Failed to add new Employee"
+                    };
+
+                    aud.Logs(failed);
+                }
+                else
+                {
+                    MessageBox.Show("Added Successfully!");
+                    tb_unameAccess.ReadOnly = true;
+                    tb_pass.ReadOnly = true;
+                    btn_saveAcc.Enabled = true;
+
+                    var addEmployee = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)3,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Succeed",
+                        Description = "Added new Employee"
+                    };
+
+                    aud.Logs(addEmployee);
+                    UpdateGrids();
+                    ClearBoxes();
+                }
             }
+
+            #endregion
 
         }
 
@@ -256,18 +302,65 @@ namespace SSIP.UserformControls
             };
             #endregion
 
-            var result = update.UpdateEmployee(empdetails, personal, adds, email, tb_unameAccess.Text);
 
-            if (result != true)
+            #region validations
+            var customerValidCon = new ValidationContext(personal, null, null);
+            var addsValidCon = new ValidationContext(adds, null, null);
+            var empValidCon = new ValidationContext(empdetails, null, null);
+            var emailValidCon = new ValidationContext(email, null, null);
+            IList<ValidationResult> errors = new List<ValidationResult>();
+
+            if (!Validator.TryValidateObject(personal, customerValidCon, errors, true) ||
+                !Validator.TryValidateObject(adds, addsValidCon, errors, true) ||
+                !Validator.TryValidateObject(empdetails, empValidCon, errors, true) ||
+                !Validator.TryValidateObject(email, emailValidCon, errors, true))
             {
-                MessageBox.Show("Check your fields");
+                foreach (ValidationResult val in errors)
+                {
+                    MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
             else
             {
+                var result = update.UpdateEmployee(empdetails, personal, adds, email, tb_unameAccess.Text);
 
-                UpdateGrids();
-                MessageBox.Show("Updated Successfully");
+                if (result != true)
+                {
+                    MessageBox.Show("Failed to update");
+
+                    var addEmployee = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)4,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Failed",
+                        Description = "Failed to Update Employee ID: "+tb_empID.Text+" "
+                    };
+
+                    aud.Logs(addEmployee);
+                }
+                else
+                {
+
+                    UpdateGrids();
+                    MessageBox.Show("Updated Successfully");
+
+                    var addEmployee = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)4,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Succeed",
+                        Description = "Updated Employee ID:"+tb_empID.Text+" "
+                    };
+
+                    aud.Logs(addEmployee);
+                }
             }
+            #endregion
+
+           
         }
 
         private void EmployeeControl_Load(object sender, EventArgs e)
@@ -364,7 +457,8 @@ namespace SSIP.UserformControls
         private void btn_addEmployee_Click(object sender, EventArgs e)
         {
             HideEmployeeGrid();
-            btn_updateAccount.Visible = false;
+            btn_updateAccount.Enabled = false;
+            btn_saveAcc.Enabled = true;
         }
 
         private void btn_viewEmp_Click(object sender, EventArgs e)
@@ -388,6 +482,13 @@ namespace SSIP.UserformControls
         private void btn_viewUsers_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_newEmp_Click(object sender, EventArgs e)
+        {
+            ClearBoxes();
+            btn_updateAccount.Enabled = false;
+            btn_saveAcc.Enabled = true;
         }
     }
 }

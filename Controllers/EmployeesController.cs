@@ -30,7 +30,7 @@ namespace SSIP.Controllers
         #endregion
 
         #region employee operations
-        public bool AddEmployee(Employee emp, User user, Address addr, Email email, string Operatorusername)
+        public bool AddEmployee(Employee emp, User user, Address addr, Email email)
         {
             try
             {
@@ -65,18 +65,6 @@ namespace SSIP.Controllers
 
                         con.Close();
 
-
-                        var addEmployee = new AuditTrails
-                        {
-                            Username = Operatorusername,
-                            AuditActionTypeENUM = (Enums.ActionTypes)3,
-                            DateTimeStamp = DateTime.Now.ToString(),
-                            Result = "Succeed",
-                            Description = "Added new Employee ID"
-                        };
-
-                        aud.Logs(addEmployee);
-                        // audit here
                         return true;
                     }
 
@@ -86,10 +74,10 @@ namespace SSIP.Controllers
             catch (Exception error)
             {
                 error.ToString();
-                // audit here
-                return false;
+              
             }
-
+            
+            return false;
         }
         public bool UpdateEmployee(Employee emp, User user, Address addr, Email email, string username)
         {
@@ -120,8 +108,8 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@Position", emp.Position);
                         com.Parameters.AddWithValue("@TypeOfContract", "none");
 
-                 //       com.Parameters.AddWithValue("@Username", user.Username);
-                 //       com.Parameters.AddWithValue("@Password", enc.PassWordEncryptor(user.Password));
+                  //      com.Parameters.AddWithValue("@Username", user.Username);
+                  //      com.Parameters.AddWithValue("@Password", enc.PassWordEncryptor(user.Password));
                         com.Parameters.AddWithValue("@Email", email.EmailAddress);
                         com.Parameters.AddWithValue("@AccTypeID", emp.AccountTypeID);
 
@@ -131,19 +119,6 @@ namespace SSIP.Controllers
 
                     }
                     con.Close();
-
-                    var updateEmployee = new AuditTrails
-                    {
-                        Username = username,
-                        AuditActionTypeENUM = (Enums.ActionTypes)4,
-                        DateTimeStamp = DateTime.Now.ToString(),
-                        Result = "Succeed",
-                        Description = "Updated Employee ID: " + emp.EmployeeID + " "
-                    };
-
-                    aud.Logs(updateEmployee);
-
-                    // audit here
                     return true;
                 }
 
@@ -152,19 +127,9 @@ namespace SSIP.Controllers
             catch (Exception error)
             {
                 error.ToString();           
-                // audit here
+               
             }
-            var failedUpdate = new AuditTrails
-            {
-                Username = username,
-                AuditActionTypeENUM = (Enums.ActionTypes)4,
-                DateTimeStamp = DateTime.Now.ToString(),
-                Result = "Failed",
-                Description = "Failed Update on Employee ID: " + emp.EmployeeID + " "
-            };
-
-            aud.Logs(failedUpdate);
-            // audit here
+           
             return false;
         }
         public DataTable GetEmployees()
