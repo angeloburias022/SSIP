@@ -490,5 +490,24 @@ namespace SSIP.UserformControls
             btn_updateAccount.Enabled = false;
             btn_saveAcc.Enabled = true;
         }
+
+        private void tb_searchEmployees_TextChanged(object sender, EventArgs e)
+        {
+            var tool = new EmployeesController();
+
+            var result = tool.FindEmployees(tb_searchEmployees.Text);
+
+            employeeGrid.DataSource = result;
+
+            if(tb_searchEmployees.Text == "")
+            {
+                UpdateGrids();
+            }
+        }
+
+        private void tb_searchEmployees_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
     }
 }

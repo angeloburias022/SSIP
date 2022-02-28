@@ -58,13 +58,13 @@ namespace SSIP.UserformControls
             this.lbl_datehired = new System.Windows.Forms.Label();
             this.employee_panel = new System.Windows.Forms.Panel();
             this.tb_password = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_empStatus = new System.Windows.Forms.Label();
-            this.tb_uname = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cmb_empStatus = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lbl_username = new System.Windows.Forms.Label();
             this.lbl_password = new System.Windows.Forms.Label();
+            this.tb_uname = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lbl_empStatus = new System.Windows.Forms.Label();
+            this.cmb_empStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbl_position = new System.Windows.Forms.Label();
             this.tb_position = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_username = new System.Windows.Forms.Label();
             this.confirmAccessPanel = new System.Windows.Forms.Panel();
             this.tb_email = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_email = new System.Windows.Forms.Label();
@@ -77,6 +77,7 @@ namespace SSIP.UserformControls
             this.btn_addEmployee = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_newEmp = new Guna.UI2.WinForms.Guna2Button();
+            this.tb_searchEmployees = new Guna.UI2.WinForms.Guna2TextBox();
             this.employee_panel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
             this.employeeMainPanel.SuspendLayout();
@@ -656,17 +657,29 @@ namespace SSIP.UserformControls
             this.tb_password.Size = new System.Drawing.Size(165, 36);
             this.tb_password.TabIndex = 136;
             // 
-            // lbl_empStatus
+            // lbl_username
             // 
-            this.lbl_empStatus.AutoSize = true;
-            this.lbl_empStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_empStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_empStatus.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_empStatus.Location = new System.Drawing.Point(397, 265);
-            this.lbl_empStatus.Name = "lbl_empStatus";
-            this.lbl_empStatus.Size = new System.Drawing.Size(67, 20);
-            this.lbl_empStatus.TabIndex = 105;
-            this.lbl_empStatus.Text = "Status:";
+            this.lbl_username.AutoSize = true;
+            this.lbl_username.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_username.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_username.Location = new System.Drawing.Point(11, 1);
+            this.lbl_username.Name = "lbl_username";
+            this.lbl_username.Size = new System.Drawing.Size(96, 20);
+            this.lbl_username.TabIndex = 135;
+            this.lbl_username.Text = "Username:";
+            // 
+            // lbl_password
+            // 
+            this.lbl_password.AutoSize = true;
+            this.lbl_password.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_password.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_password.Location = new System.Drawing.Point(9, 65);
+            this.lbl_password.Name = "lbl_password";
+            this.lbl_password.Size = new System.Drawing.Size(86, 20);
+            this.lbl_password.TabIndex = 135;
+            this.lbl_password.Text = "Password";
             // 
             // tb_uname
             // 
@@ -695,6 +708,18 @@ namespace SSIP.UserformControls
             this.tb_uname.Size = new System.Drawing.Size(165, 36);
             this.tb_uname.TabIndex = 137;
             // 
+            // lbl_empStatus
+            // 
+            this.lbl_empStatus.AutoSize = true;
+            this.lbl_empStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_empStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_empStatus.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_empStatus.Location = new System.Drawing.Point(397, 265);
+            this.lbl_empStatus.Name = "lbl_empStatus";
+            this.lbl_empStatus.Size = new System.Drawing.Size(67, 20);
+            this.lbl_empStatus.TabIndex = 105;
+            this.lbl_empStatus.Text = "Status:";
+            // 
             // cmb_empStatus
             // 
             this.cmb_empStatus.BackColor = System.Drawing.Color.Transparent;
@@ -718,18 +743,6 @@ namespace SSIP.UserformControls
             this.cmb_empStatus.ShadowDecoration.Parent = this.cmb_empStatus;
             this.cmb_empStatus.Size = new System.Drawing.Size(165, 36);
             this.cmb_empStatus.TabIndex = 120;
-            // 
-            // lbl_password
-            // 
-            this.lbl_password.AutoSize = true;
-            this.lbl_password.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_password.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_password.Location = new System.Drawing.Point(9, 65);
-            this.lbl_password.Name = "lbl_password";
-            this.lbl_password.Size = new System.Drawing.Size(86, 20);
-            this.lbl_password.TabIndex = 135;
-            this.lbl_password.Text = "Password";
             // 
             // lbl_position
             // 
@@ -769,18 +782,6 @@ namespace SSIP.UserformControls
             this.tb_position.ShadowDecoration.Parent = this.tb_position;
             this.tb_position.Size = new System.Drawing.Size(165, 36);
             this.tb_position.TabIndex = 134;
-            // 
-            // lbl_username
-            // 
-            this.lbl_username.AutoSize = true;
-            this.lbl_username.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_username.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_username.Location = new System.Drawing.Point(11, 1);
-            this.lbl_username.Name = "lbl_username";
-            this.lbl_username.Size = new System.Drawing.Size(96, 20);
-            this.lbl_username.TabIndex = 135;
-            this.lbl_username.Text = "Username:";
             // 
             // confirmAccessPanel
             // 
@@ -889,6 +890,7 @@ namespace SSIP.UserformControls
             this.employeeMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.333333F));
             this.employeeMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.22222F));
             this.employeeMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.666667F));
+            this.employeeMainPanel.Controls.Add(this.tb_searchEmployees, 1, 0);
             this.employeeMainPanel.Controls.Add(this.employeeGrid, 1, 1);
             this.employeeMainPanel.Controls.Add(this.btn_addEmployee, 1, 2);
             this.employeeMainPanel.Location = new System.Drawing.Point(813, 74);
@@ -974,6 +976,35 @@ namespace SSIP.UserformControls
             this.btn_newEmp.Text = "ADD NEW EMPLOYEE";
             this.btn_newEmp.UseTransparentBackground = true;
             this.btn_newEmp.Click += new System.EventHandler(this.btn_newEmp_Click);
+            // 
+            // tb_searchEmployees
+            // 
+            this.tb_searchEmployees.BackColor = System.Drawing.Color.Transparent;
+            this.tb_searchEmployees.BorderRadius = 4;
+            this.tb_searchEmployees.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_searchEmployees.DefaultText = "";
+            this.tb_searchEmployees.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_searchEmployees.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_searchEmployees.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_searchEmployees.DisabledState.Parent = this.tb_searchEmployees;
+            this.tb_searchEmployees.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_searchEmployees.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_searchEmployees.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_searchEmployees.FocusedState.Parent = this.tb_searchEmployees;
+            this.tb_searchEmployees.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_searchEmployees.ForeColor = System.Drawing.Color.Black;
+            this.tb_searchEmployees.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_searchEmployees.HoverState.Parent = this.tb_searchEmployees;
+            this.tb_searchEmployees.Location = new System.Drawing.Point(26, 3);
+            this.tb_searchEmployees.Name = "tb_searchEmployees";
+            this.tb_searchEmployees.PasswordChar = '\0';
+            this.tb_searchEmployees.PlaceholderText = "Search";
+            this.tb_searchEmployees.SelectedText = "";
+            this.tb_searchEmployees.ShadowDecoration.Parent = this.tb_searchEmployees;
+            this.tb_searchEmployees.Size = new System.Drawing.Size(165, 36);
+            this.tb_searchEmployees.TabIndex = 140;
+            this.tb_searchEmployees.TextChanged += new System.EventHandler(this.tb_searchEmployees_TextChanged);
+            this.tb_searchEmployees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchEmployees_KeyPress);
             // 
             // EmployeeControl
             // 
@@ -1083,5 +1114,6 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2Button btn_addEmployee;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button btn_newEmp;
+        private Guna.UI2.WinForms.Guna2TextBox tb_searchEmployees;
     }
 }

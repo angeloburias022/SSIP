@@ -36,13 +36,13 @@ namespace SSIP.Controllers
                 {
                     conn.Open();
 
-                    if (sched.Status == "Dispatch") // add dispatch
+                    if (sched.Status == "Dispatch" || sched.Status == "Done / Paid") // add dispatch
                     {
                         if (sched.ScheduleID != 0) // new dispatch for a existing schedule
                         {
                             try
                             {
-                                using (SqlCommand cmd = new SqlCommand("[SpInsertDispatch]", conn))
+                                using (SqlCommand cmd = new SqlCommand("[SpAddDispatch]", conn))
                                 {
                                     cmd.CommandType = CommandType.StoredProcedure;
                                     // Customer's Details
@@ -65,6 +65,7 @@ namespace SSIP.Controllers
                                     cmd.Parameters.Add("@DispatchDate", SqlDbType.DateTime).Value = dis.dispatchdate;
                                     cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = sched.Status;
                                     cmd.Parameters.Add("@SchedID", SqlDbType.Int).Value = sched.ScheduleID;
+                                    cmd.Parameters.Add("@Amount", SqlDbType.VarChar).Value = dis.PaidAmount;
 
 
                                     cmd.ExecuteNonQuery();
@@ -116,7 +117,7 @@ namespace SSIP.Controllers
                                     cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar).Value = user.TelephoneNo;
 
                                     // address	
-                                    cmd.Parameters.Add("@HouseNo", SqlDbType.Int).Value = address.HouseNo;
+                                    cmd.Parameters.Add("@HouseNo", SqlDbType.VarChar).Value = address.HouseNo;
                                     cmd.Parameters.Add("@Street", SqlDbType.VarChar).Value = address.Street;
                                     cmd.Parameters.Add("@Barangay", SqlDbType.VarChar).Value = address.Barangay;
                                     cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = address.City;
@@ -136,6 +137,8 @@ namespace SSIP.Controllers
                                     cmd.Parameters.Add("@TimeOut", SqlDbType.VarChar).Value = dis.TimeOut;
                                     cmd.Parameters.Add("@Team1", SqlDbType.VarChar).Value = dis.AssignTeam;
                                     cmd.Parameters.Add("@DispatchDate", SqlDbType.DateTime).Value = dis.dispatchdate;
+
+                                    cmd.Parameters.Add("@Amount", SqlDbType.VarChar).Value = dis.PaidAmount;
 
                                     cmd.ExecuteNonQuery();
 
@@ -251,7 +254,7 @@ namespace SSIP.Controllers
                 {
                     conn.Open();
 
-                    if (sched.Status == "Dispatch") // add dispatch
+                    if (sched.Status == "Dispatch" || sched.Status == "Done / Paid") // add dispatch
                     {
                         try
                         {
@@ -291,6 +294,9 @@ namespace SSIP.Controllers
                                 cmd.Parameters.Add("@TimeOut", SqlDbType.VarChar).Value = dis.TimeOut;
                                 cmd.Parameters.Add("@Team1", SqlDbType.VarChar).Value = dis.AssignTeam;
                                 cmd.Parameters.Add("@DispatchDate", SqlDbType.DateTime).Value = dis.dispatchdate;
+
+                                cmd.Parameters.Add("@Amount", SqlDbType.VarChar).Value = dis.PaidAmount;
+
 
                                 cmd.ExecuteNonQuery();
 
@@ -463,6 +469,68 @@ namespace SSIP.Controllers
             }
 
             return dt;
+        }
+
+        public DataTable FindSchedule(string searched)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(ConString))
+            {
+                try
+                {
+
+                    using (SqlCommand com = new SqlCommand("[SpSearchSchedules]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@Search", searched);
+                        SqlDataAdapter sds = new SqlDataAdapter(com); // passes the desired query
+
+                        sds.Fill(dt);
+                        con.Close();
+                        return dt;
+                    }
+                }
+                catch (Exception error)
+                {
+
+                    error.ToString();
+                }
+                return dt;
+            }
+           
+        }
+
+        public DataTable FindDispatch(string searched)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(ConString))
+            {
+
+                try
+                {
+
+                    using (SqlCommand com = new SqlCommand("[SpSearchDispatches]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@Search", searched);
+                        SqlDataAdapter sds = new SqlDataAdapter(com); // passes the desired query
+
+                        sds.Fill(dt);
+                        con.Close();
+                        return dt;
+                    }
+                }
+                catch (Exception error)
+                {
+
+                    error.ToString();
+                }
+                return dt;
+             
+            }
+
         }
 
         #endregion

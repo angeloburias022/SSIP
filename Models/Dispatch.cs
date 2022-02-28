@@ -14,5 +14,6 @@ namespace SSIP.Models
         public string AssignTeam { get; set; }
         public string TimeIn { get; set; }
         public string TimeOut { get; set; }
+        public string PaidAmount { get; set; }
     }
 }

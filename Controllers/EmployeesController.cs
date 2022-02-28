@@ -165,6 +165,37 @@ namespace SSIP.Controllers
             }
             return dt;
         }
+        public DataTable FindEmployees(string searched)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(ConString))
+            {
+                try
+                {
+
+                    using (SqlCommand com = new SqlCommand("[SpSearchSchedules]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@Search", searched);
+                        SqlDataAdapter sds = new SqlDataAdapter(com); // passes the desired query
+
+                        sds.Fill(dt);
+                        con.Close();
+                        return dt;
+                    }
+                }
+                catch (Exception error)
+                {
+
+                    error.ToString();
+                }
+                return dt;
+            }
+
+        }
+
+
         #endregion
 
     }

@@ -30,6 +30,7 @@ namespace SSIP.UserformControls
         private void InitializeComponent()
         {
             this.customersMainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.tb_searchCustomers = new Guna.UI2.WinForms.Guna2TextBox();
             this.customersGrid = new System.Windows.Forms.DataGridView();
             this.btn_addCus = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_confirmAccess = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@ namespace SSIP.UserformControls
             this.cmb_status = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tb_search = new Guna.UI2.WinForms.Guna2TextBox();
             this.customersMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
@@ -76,7 +76,7 @@ namespace SSIP.UserformControls
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.333333F));
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.22222F));
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.666667F));
-            this.customersMainPanel.Controls.Add(this.tb_search, 1, 0);
+            this.customersMainPanel.Controls.Add(this.tb_searchCustomers, 1, 0);
             this.customersMainPanel.Controls.Add(this.customersGrid, 1, 1);
             this.customersMainPanel.Controls.Add(this.btn_addCus, 1, 2);
             this.customersMainPanel.Location = new System.Drawing.Point(972, 100);
@@ -88,6 +88,35 @@ namespace SSIP.UserformControls
             this.customersMainPanel.Size = new System.Drawing.Size(450, 328);
             this.customersMainPanel.TabIndex = 165;
             this.customersMainPanel.Visible = false;
+            // 
+            // tb_searchCustomers
+            // 
+            this.tb_searchCustomers.BackColor = System.Drawing.Color.Transparent;
+            this.tb_searchCustomers.BorderRadius = 4;
+            this.tb_searchCustomers.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_searchCustomers.DefaultText = "";
+            this.tb_searchCustomers.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_searchCustomers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_searchCustomers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_searchCustomers.DisabledState.Parent = this.tb_searchCustomers;
+            this.tb_searchCustomers.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_searchCustomers.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_searchCustomers.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_searchCustomers.FocusedState.Parent = this.tb_searchCustomers;
+            this.tb_searchCustomers.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_searchCustomers.ForeColor = System.Drawing.Color.Black;
+            this.tb_searchCustomers.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_searchCustomers.HoverState.Parent = this.tb_searchCustomers;
+            this.tb_searchCustomers.Location = new System.Drawing.Point(26, 3);
+            this.tb_searchCustomers.Name = "tb_searchCustomers";
+            this.tb_searchCustomers.PasswordChar = '\0';
+            this.tb_searchCustomers.PlaceholderText = "Search:";
+            this.tb_searchCustomers.SelectedText = "";
+            this.tb_searchCustomers.ShadowDecoration.Parent = this.tb_searchCustomers;
+            this.tb_searchCustomers.Size = new System.Drawing.Size(165, 36);
+            this.tb_searchCustomers.TabIndex = 170;
+            this.tb_searchCustomers.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
+            this.tb_searchCustomers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchCustomers_KeyPress);
             // 
             // customersGrid
             // 
@@ -715,34 +744,6 @@ namespace SSIP.UserformControls
             this.label1.TabIndex = 168;
             this.label1.Text = "Customer";
             // 
-            // tb_search
-            // 
-            this.tb_search.BackColor = System.Drawing.Color.Transparent;
-            this.tb_search.BorderRadius = 4;
-            this.tb_search.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_search.DefaultText = "";
-            this.tb_search.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_search.DisabledState.Parent = this.tb_search;
-            this.tb_search.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_search.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.tb_search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_search.FocusedState.Parent = this.tb_search;
-            this.tb_search.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_search.ForeColor = System.Drawing.Color.Black;
-            this.tb_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_search.HoverState.Parent = this.tb_search;
-            this.tb_search.Location = new System.Drawing.Point(26, 3);
-            this.tb_search.Name = "tb_search";
-            this.tb_search.PasswordChar = '\0';
-            this.tb_search.PlaceholderText = "Search:";
-            this.tb_search.SelectedText = "";
-            this.tb_search.ShadowDecoration.Parent = this.tb_search;
-            this.tb_search.Size = new System.Drawing.Size(165, 36);
-            this.tb_search.TabIndex = 170;
-            this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
-            // 
             // CustomersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -825,6 +826,6 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2ComboBox cmb_status;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox tb_search;
+        private Guna.UI2.WinForms.Guna2TextBox tb_searchCustomers;
     }
 }
