@@ -155,6 +155,37 @@ namespace SSIP.Controllers
             }
           
         }
+
+        public bool ConfirmAuthority(User user)
+        {
+            using (SqlConnection con = new SqlConnection(ConString))
+            {
+                using (SqlCommand cmd = new SqlCommand("[SpCheckAuthority]", con))
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@Uname", SqlDbType.VarChar).Value = user.Username;
+                    var pwdEncrypt = enc.PassWordEncryptor(user.Password);
+                    cmd.Parameters.Add("@Pwd", SqlDbType.VarChar).Value = pwdEncrypt;
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            adapter.Fill(dt);
+                            if (dt.Rows.Count > 0)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Check username

@@ -163,6 +163,12 @@ namespace SSIP.UserformControls
         private void btn_saveAcc_Click(object sender, EventArgs e)
         {
             #region fields
+
+            QRCodeControl qr = new QRCodeControl();
+
+     
+          
+
             var user = new User
             {
                 Firstname = tb_fname.Text,
@@ -187,14 +193,23 @@ namespace SSIP.UserformControls
                 City = cmb_City.Text
             };
 
+            string randomCode = GenerateCode.Code(10);
+
+            this.qrCodeControl1.GetDetails(randomCode, tb_fname.Text, tb_lname.Text, tb_position.Text);
+
+            tb_qrcode.Text = randomCode;
+         //   btn_genQR.Enabled = true;
+
             var emp = new Employee
             {
                 DateHired = Convert.ToDateTime(tb_datehired.Text),
                 Position = tb_position.Text,
                 TypeOfContract = "none",
                 AccountTypeID = cmb_acctype.SelectedIndex,
-                EmployeeStatus =cmb_empStatus.Text
+                EmployeeStatus =cmb_empStatus.Text,
+                code = tb_qrcode.Text
             };
+
             #endregion
 
             #region validations
@@ -221,6 +236,8 @@ namespace SSIP.UserformControls
                 var empController = new EmployeesController();
 
                 var result = empController.AddEmployee(emp, user, address, email);
+
+            
 
                 if (result != true)
                 {
@@ -252,6 +269,11 @@ namespace SSIP.UserformControls
                         Result = "Succeed",
                         Description = "Added new Employee"
                     };
+      
+
+                    this.qrCodeControl1.Visible = true;
+                    this.qrCodeControl1.Dock = DockStyle.Fill;
+                    this.qrCodeControl1.BringToFront();
 
                     aud.Logs(addEmployee);
                     UpdateGrids();
@@ -509,5 +531,7 @@ namespace SSIP.UserformControls
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
+
+     
     }
 }

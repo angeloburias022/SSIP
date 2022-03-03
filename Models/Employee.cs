@@ -22,7 +22,7 @@ namespace SSIP.Models
         [Required(ErrorMessage ="Account Type is required")]
         [Display(Name = "Account Type")]
         public int AccountTypeID { get; set; }
-
+        public string code { get; set; }
         public string TypeOfContract { get; set; }
         public DateTime DateHired { get; set; }
         public string Total_hrs { get; set; }

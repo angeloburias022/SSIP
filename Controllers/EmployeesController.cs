@@ -25,7 +25,8 @@ namespace SSIP.Controllers
         public EmployeesController()
         {
         }
-
+        DataSet ds = new DataSet();
+        DataTable dt = new DataTable();
         PasswordEncryptor enc = new PasswordEncryptor();
         #endregion
 
@@ -60,6 +61,7 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@Password", enc.PassWordEncryptor(user.Password));
                         com.Parameters.AddWithValue("@Email", email.EmailAddress);
                         com.Parameters.AddWithValue("@AccTypeID", emp.AccountTypeID);
+                        com.Parameters.AddWithValue("@code", emp.code);
 
                         com.ExecuteNonQuery();
 
@@ -134,8 +136,7 @@ namespace SSIP.Controllers
         }
         public DataTable GetEmployees()
         {
-            DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
+         
       //      string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
             try
@@ -194,8 +195,140 @@ namespace SSIP.Controllers
             }
 
         }
+        #endregion
 
+        #region attendace ops
+        public List<string> GetEmployeeName(string code)
+        {
 
+            var details = new List<string>();
+
+            using (var con = new SqlConnection(ConString))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetEmployeeNameByCode]", con))
+                {
+                    if (code != null)
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@code", code);
+
+                        var reader = com.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            details.Add(reader["FirstName"].ToString());
+                            details.Add(reader["LastName"].ToString());
+                            details.Add(reader["EmployeeID"].ToString());
+                        }
+                        con.Close();
+                        return details;
+                    }
+                    else
+                    {
+                        return details;
+                    }
+                }
+
+            }
+        }
+        public bool AddAttendance(string id, string timein, string timeout, DateTime workdate, string workhrs)
+        {
+            using (var con = new SqlConnection(ConString))
+            {
+               
+                using (var com = new SqlCommand("[SpAddAttendance]", con))
+                {
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    com.Parameters.AddWithValue("@employeeID", id);
+                    com.Parameters.AddWithValue("@timein", timein);
+                    com.Parameters.AddWithValue("@timeout", timeout);
+                    com.Parameters.AddWithValue("@Workdate", workdate);
+                    com.Parameters.AddWithValue("@workhrs", workhrs);
+                    com.ExecuteNonQuery();
+
+                    con.Close();
+                    return true;
+
+                }
+            }
+        }
+        public bool UpdateAttendance(string id, string timein, string timeout, string workhrs, DateTime workdate)
+        {
+            using (var con = new SqlConnection(ConString))
+            {
+
+                using (var com = new SqlCommand("[SpUpdateAttendance]", con))
+                {
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    com.Parameters.AddWithValue("@employeeID", id);
+                    com.Parameters.AddWithValue("@timein", timein);
+                    com.Parameters.AddWithValue("@timeout", timeout);
+                    com.Parameters.AddWithValue("@Workdate", workdate);
+                    com.Parameters.AddWithValue("@workhrs", workhrs);
+                    com.ExecuteNonQuery();
+
+                    con.Close();
+                    return true;
+
+                }
+            }
+        }
+        public DataTable GetAttendance()
+        {
+            using (var con = new SqlConnection(ConString))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand("[SpGetAttendances]", con))
+                {
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                    {
+                        ds.Clear();
+                        adapter.Fill(ds);
+
+                        dt = ds.Tables[0];
+                        con.Close();
+
+                        return dt;
+                    }
+                }
+            }
+        }
+        public DataTable FindAttendance(string searched)
+        {
+          
+            using (SqlConnection con = new SqlConnection(ConString))
+            {
+                try
+                {
+
+                    using (SqlCommand com = new SqlCommand("[SpSearchAttendances]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@Search", searched);
+                        SqlDataAdapter sds = new SqlDataAdapter(com); // passes the desired query
+                        dt.Clear();
+                        sds.Fill(dt);
+                        con.Close();
+                        return dt;
+                    }
+                }
+                catch (Exception error)
+                {
+
+                    error.ToString();
+                }
+                return dt;
+            }
+        }
         #endregion
 
     }

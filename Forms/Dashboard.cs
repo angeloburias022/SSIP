@@ -309,7 +309,7 @@ namespace SSIP.Forms
         {           
             HideMainServicesPanelControl();
             HideEmployeesPanelControl();
-            
+            HideAttendanceControl();
 
             ShowCustomersPanelControl();
             HideSubMenu();
@@ -403,7 +403,7 @@ namespace SSIP.Forms
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
             HideCustomersPanelControl();
-
+            HideAttendanceControl();
 
             HideSubMenu();
         }
@@ -422,7 +422,7 @@ namespace SSIP.Forms
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
             HideCustomersPanelControl();
-
+            HideAttendanceControl();
 
 
             HideSubMenu();
@@ -440,7 +440,7 @@ namespace SSIP.Forms
             HideMainServicesPanelControl();
             HideEmployeesPanelControl();
             HideCustomersPanelControl();
-
+            HideAttendanceControl();
 
 
             ShowEmployeesPanelControl();
@@ -452,6 +452,8 @@ namespace SSIP.Forms
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
             HideCustomersPanelControl();
+            HideAttendanceControl();
+
 
             ShowMainServicesControl();
             HideSubMenu();
@@ -498,6 +500,32 @@ namespace SSIP.Forms
             customersControl1Panel.Hide();
             customersControl1Panel.Dock = DockStyle.None;
         }
+
+        public void ShowAttendanceControl()
+        {
+            attendanceControlpanel.Dock = DockStyle.Fill;
+            this.attendanceControl1.BringToFront();
+            this.attendanceControl1.Show();
+
+            attendanceControlpanel.Visible = true;
+            attendanceControlpanel.Dock = DockStyle.Fill;
+        }
+
+        public void HideAttendanceControl()
+        {
+            attendanceControlpanel.Hide();
+            attendanceControlpanel.Dock = DockStyle.None;
+        }
         #endregion
+
+        private void btn_attendance_sub_Click(object sender, EventArgs e)
+        {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
+            HideCustomersPanelControl();
+
+            ShowAttendanceControl();
+            HideSubMenu();
+        }
     }
 }
