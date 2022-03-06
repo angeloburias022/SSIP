@@ -310,6 +310,7 @@ namespace SSIP.Forms
             HideMainServicesPanelControl();
             HideEmployeesPanelControl();
             HideAttendanceControl();
+            HidePayRollControl();
 
             ShowCustomersPanelControl();
             HideSubMenu();
@@ -412,7 +413,9 @@ namespace SSIP.Forms
         {
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
-
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
 
             HideSubMenu();
         }
@@ -423,7 +426,7 @@ namespace SSIP.Forms
             HideMainServicesPanelControl();
             HideCustomersPanelControl();
             HideAttendanceControl();
-
+            HidePayRollControl();
 
             HideSubMenu();
         }
@@ -441,7 +444,7 @@ namespace SSIP.Forms
             HideEmployeesPanelControl();
             HideCustomersPanelControl();
             HideAttendanceControl();
-
+            HidePayRollControl();
 
             ShowEmployeesPanelControl();
             HideSubMenu();
@@ -453,7 +456,7 @@ namespace SSIP.Forms
             HideMainServicesPanelControl();
             HideCustomersPanelControl();
             HideAttendanceControl();
-
+            HidePayRollControl();
 
             ShowMainServicesControl();
             HideSubMenu();
@@ -486,7 +489,6 @@ namespace SSIP.Forms
             employeePanel.Hide();
             employeePanel.Dock = DockStyle.None;
         }
-
         public void ShowCustomersPanelControl()
         {
             this.customersControl1.BringToFront();
@@ -494,13 +496,11 @@ namespace SSIP.Forms
             this.customersControl1Panel.Visible = true;
             this.customersControl1Panel.Dock = DockStyle.Fill;
         }
-
         public void HideCustomersPanelControl()
         {
             customersControl1Panel.Hide();
             customersControl1Panel.Dock = DockStyle.None;
         }
-
         public void ShowAttendanceControl()
         {
             attendanceControlpanel.Dock = DockStyle.Fill;
@@ -510,11 +510,22 @@ namespace SSIP.Forms
             attendanceControlpanel.Visible = true;
             attendanceControlpanel.Dock = DockStyle.Fill;
         }
-
         public void HideAttendanceControl()
         {
             attendanceControlpanel.Hide();
             attendanceControlpanel.Dock = DockStyle.None;
+        }
+
+        public void ShowPayRollControl()
+        {
+            this.payroll_mainPanel.Visible = true;
+            this.payroll_mainPanel.Dock = DockStyle.Fill;
+           
+        }
+        public void HidePayRollControl()
+        {
+            this.payroll_mainPanel.Visible = false;
+            this.payroll_mainPanel.Dock = DockStyle.None;
         }
         #endregion
 
@@ -525,6 +536,17 @@ namespace SSIP.Forms
             HideCustomersPanelControl();
 
             ShowAttendanceControl();
+            HideSubMenu();
+        }
+
+        private void btn_payroll_sub_Click(object sender, EventArgs e)
+        {
+            HideMainServicesPanelControl();
+            HideEmployeesPanelControl();
+            HideAttendanceControl();
+
+
+            ShowPayRollControl();
             HideSubMenu();
         }
     }

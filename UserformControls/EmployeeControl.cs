@@ -482,13 +482,11 @@ namespace SSIP.UserformControls
             btn_updateAccount.Enabled = false;
             btn_saveAcc.Enabled = true;
         }
-
         private void btn_viewEmp_Click(object sender, EventArgs e)
         {
             ShowEmployeeGrid();
             ClearBoxes();
         }
-
         void ShowEmployeeGrid()
         {
             employeeMainPanel.Visible = true;
@@ -505,14 +503,12 @@ namespace SSIP.UserformControls
         {
 
         }
-
         private void btn_newEmp_Click(object sender, EventArgs e)
         {
             ClearBoxes();
             btn_updateAccount.Enabled = false;
             btn_saveAcc.Enabled = true;
         }
-
         private void tb_searchEmployees_TextChanged(object sender, EventArgs e)
         {
             var tool = new EmployeesController();

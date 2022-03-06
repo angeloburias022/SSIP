@@ -65,6 +65,8 @@ namespace SSIP.Forms
             this.customersControl1 = new SSIP.UserformControls.CustomersControl();
             this.attendanceControl1 = new SSIP.UserformControls.AttendanceControl();
             this.attendanceControlpanel = new System.Windows.Forms.Panel();
+            this.payroll_mainPanel = new System.Windows.Forms.Panel();
+            this.payrollControl1 = new SSIP.UserformControls.PayrollControl();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -75,6 +77,7 @@ namespace SSIP.Forms
             this.employeePanel.SuspendLayout();
             this.customersControl1Panel.SuspendLayout();
             this.attendanceControlpanel.SuspendLayout();
+            this.payroll_mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Services_pie_chart
@@ -275,6 +278,7 @@ namespace SSIP.Forms
             this.btn_payroll_sub.Text = "PayRoll";
             this.btn_payroll_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_payroll_sub.UseVisualStyleBackColor = false;
+            this.btn_payroll_sub.Click += new System.EventHandler(this.btn_payroll_sub_Click);
             // 
             // nav_panel
             // 
@@ -512,12 +516,31 @@ namespace SSIP.Forms
             this.attendanceControlpanel.Size = new System.Drawing.Size(69, 100);
             this.attendanceControlpanel.TabIndex = 22;
             // 
+            // payroll_mainPanel
+            // 
+            this.payroll_mainPanel.Controls.Add(this.payrollControl1);
+            this.payroll_mainPanel.Location = new System.Drawing.Point(212, 311);
+            this.payroll_mainPanel.Name = "payroll_mainPanel";
+            this.payroll_mainPanel.Size = new System.Drawing.Size(156, 103);
+            this.payroll_mainPanel.TabIndex = 23;
+            this.payroll_mainPanel.Visible = false;
+            // 
+            // payrollControl1
+            // 
+            this.payrollControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("payrollControl1.BackgroundImage")));
+            this.payrollControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.payrollControl1.Location = new System.Drawing.Point(0, 0);
+            this.payrollControl1.Name = "payrollControl1";
+            this.payrollControl1.Size = new System.Drawing.Size(156, 103);
+            this.payrollControl1.TabIndex = 24;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1185, 526);
+            this.Controls.Add(this.payroll_mainPanel);
             this.Controls.Add(this.attendanceControlpanel);
             this.Controls.Add(this.customersControl1Panel);
             this.Controls.Add(this.employeePanel);
@@ -546,6 +569,7 @@ namespace SSIP.Forms
             this.employeePanel.ResumeLayout(false);
             this.customersControl1Panel.ResumeLayout(false);
             this.attendanceControlpanel.ResumeLayout(false);
+            this.payroll_mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -588,5 +612,7 @@ namespace SSIP.Forms
         private System.Windows.Forms.Panel customersControl1Panel;
         private UserformControls.AttendanceControl attendanceControl1;
         private System.Windows.Forms.Panel attendanceControlpanel;
+        private System.Windows.Forms.Panel payroll_mainPanel;
+        private UserformControls.PayrollControl payrollControl1;
     }
 }
