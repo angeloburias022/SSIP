@@ -12,6 +12,9 @@ namespace SSIP.Enums
         Logout = 2, 
         Create = 3,
         Update = 4, 
-        Delete = 5
+        Delete = 5,
+        Print = 6,
+        Compute = 7,
+        access = 8
     }
 }
