@@ -188,6 +188,7 @@
       <DependentUpon>Layouting.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Aircon.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Dispatch.cs" />
     <Compile Include="Models\Email.cs" />
@@ -260,6 +261,12 @@
     <Compile Include="UserformControls\QRCodeControl.Designer.cs">
       <DependentUpon>QRCodeControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserformControls\SalesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserformControls\SalesControl.Designer.cs">
+      <DependentUpon>SalesControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AccessControls\SecurityForm.resx">
       <DependentUpon>SecurityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -303,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\QRCodeControl.resx">
       <DependentUpon>QRCodeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserformControls\SalesControl.resx">
+      <DependentUpon>SalesControl.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Dashboard.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

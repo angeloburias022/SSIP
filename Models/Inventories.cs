@@ -18,7 +18,7 @@ namespace SSIP.Models
             [Required(ErrorMessage = "Unit price is required")]
             public decimal UnitPrice { get; set; }
             public string RecordedBy { get; set; }
-
+            public int quantity { get; set; }
             public string ProductCode { get; set; }
 
             [Required(ErrorMessage = "Category is required")]
@@ -33,8 +33,12 @@ namespace SSIP.Models
         public class ProductInventory : Inventory
         {
             public int productID { get; set; }
-          
+            public Aircon aircondetails { get; set; }
 
+            public ProductInventory()
+            {
+                aircondetails = new Aircon();
+            }
         }
 
         public class EquipmentInventory : Inventory

@@ -42,7 +42,14 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@code", inv.ProductCode);
                         com.Parameters.AddWithValue("@category", inv.Category);                 
                         com.Parameters.AddWithValue("@recordedBy", inv.RecordedBy);
-                       
+
+                        com.Parameters.AddWithValue("@quantity", inv.quantity);
+                        com.Parameters.AddWithValue("@height", inv.aircondetails.height);
+                        com.Parameters.AddWithValue("@length", inv.aircondetails.length);
+                        com.Parameters.AddWithValue("@width", inv.aircondetails.width);
+                        com.Parameters.AddWithValue("@Aircontype", inv.aircondetails.Aircontype);
+                        com.Parameters.AddWithValue("@horsepower", inv.aircondetails.horsepower);
+
                         com.ExecuteNonQuery();
                         con.Close();
                         return true;
@@ -73,6 +80,13 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@price", inv.UnitPrice);
                         com.Parameters.AddWithValue("@category", inv.Category);
                         com.Parameters.AddWithValue("@recordedBy", inv.RecordedBy);
+
+                        com.Parameters.AddWithValue("@quantity", inv.quantity);
+                        com.Parameters.AddWithValue("@height", inv.aircondetails.height);
+                        com.Parameters.AddWithValue("@length", inv.aircondetails.length);
+                        com.Parameters.AddWithValue("@width", inv.aircondetails.width);
+                        com.Parameters.AddWithValue("@Aircontype", inv.aircondetails.Aircontype);
+                        com.Parameters.AddWithValue("@horsepower", inv.aircondetails.horsepower);
 
                         com.ExecuteNonQuery();
                     }

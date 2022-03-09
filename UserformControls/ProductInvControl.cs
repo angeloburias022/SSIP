@@ -35,34 +35,26 @@ namespace SSIP.UserformControls
                 var details = new ProductInventory();
                 try
                 {
-                    details = new ProductInventory
-                    {
-                        Name = tb_productName.Text,
-                        Description = tb_prodDescr.Text,
-                        UnitPrice = Convert.ToDecimal(tb_prodPrice.Text),
-                        ProductCode = productCode,
-                        Category = Convert.ToString(cmb_prodCategory.SelectedIndex),
-                        RecordedBy = tb_unameAccess.Text
-                    };
+                    details.Name = tb_productName.Text;
+                    details.Description = tb_prodDescr.Text;
+                    details.UnitPrice = Convert.ToDecimal(tb_prodPrice.Text);
+                    details.ProductCode = productCode;
+                    details.Category = Convert.ToString(cmb_prodCategory.SelectedIndex);
+                    details.RecordedBy = tb_unameAccess.Text;
+
+                    details.aircondetails.Aircontype = cmb_actype.SelectedIndex.ToString();
+                    details.quantity = Convert.ToInt32(tb_quan.Text);
+                    details.aircondetails.width = Convert.ToDecimal(tb_width.Text);
+                    details.aircondetails.height = Convert.ToDecimal(tb_height.Text);
+                    details.aircondetails.length = Convert.ToDecimal(tb_length.Text);
+                    details.aircondetails.horsepower = Convert.ToString(cmb_Hp.SelectedIndex);
                 }
                 catch (Exception error)
                 {
                     error.ToString();
                 }
-               
-                var detailsValidCon = new ValidationContext(details, null, null);
-                
-                IList<ValidationResult> errors = new List<ValidationResult>();
 
-                if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(details, detailsValidCon, errors, true))
-                {
-                    foreach (ValidationResult val in errors)
-                    {
-                        MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                }
-                else
+                if (Valid.ValidateFields(details))
                 {
                     var result = ic.AddProduct(details);
 
@@ -79,7 +71,7 @@ namespace SSIP.UserformControls
 
                         aud.Logs(success);
                         MessageBox.Show("Product Added");
-                        UpdateGrid();                    
+                        UpdateGrid();
                     }
                     else
                     {
@@ -93,39 +85,35 @@ namespace SSIP.UserformControls
                         };
 
                         aud.Logs(failed);
-                        MessageBox.Show("Something went wrong");                    
+                        MessageBox.Show("Something went wrong");
                     }
                 }
-               
+                
             }
         return true;
         }
         private bool UpdateProduct()
         {
+            var details = new ProductInventory();
             if (Authorized())
-            {      
-                var details = new ProductInventory
-                {
-                    productID = Convert.ToInt32(tb_id.Text),
-                    Name = tb_productName.Text,
-                    Description = tb_prodDescr.Text,
-                    UnitPrice = Convert.ToDecimal(tb_prodPrice.Text),                   
-                    Category = Convert.ToString(cmb_prodCategory.SelectedIndex),
-                    RecordedBy = tb_unameAccess.Text
-                };
-               
-                var detailsValidCon = new ValidationContext(details, null, null);
-                IList<ValidationResult> errors = new List<ValidationResult>();
+            {
+                details.productID = Convert.ToInt32(tb_id.Text);
+                details.Name = tb_productName.Text;
+                details.Description = tb_prodDescr.Text;
+                details.UnitPrice = Convert.ToDecimal(tb_prodPrice.Text);
+                details.ProductCode = tb_code.Text;
+                details.Category = Convert.ToString(cmb_prodCategory.SelectedIndex);
+                details.RecordedBy = tb_unameAccess.Text;
 
-                if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(details, detailsValidCon, errors, true))
+                details.aircondetails.Aircontype = Convert.ToString(cmb_actype.SelectedIndex);
+                details.quantity = Convert.ToInt32(tb_quan.Text);
+                details.aircondetails.width = Convert.ToDecimal(tb_width.Text);
+                details.aircondetails.height = Convert.ToDecimal(tb_height.Text);
+                details.aircondetails.length = Convert.ToDecimal(tb_length.Text);
+                details.aircondetails.horsepower = Convert.ToString(cmb_Hp.SelectedIndex);
+
+                if (Valid.ValidateFields(details))
                 {
-                    foreach (ValidationResult val in errors)
-                    {
-                        MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                }
-                else {
                     var result = ic.UpdateProduct(details);
 
                     if (result != false)
@@ -171,7 +159,8 @@ namespace SSIP.UserformControls
         {
             ProductGrid.DataSource = ic.GetProducts();
             ProductGrid.Update();
-
+            this.ProductGrid.Columns["AirconType"].Visible = false;
+            this.ProductGrid.Columns["Horsepower"].Visible = false;
             this.ProductGrid.Columns["CategoryID"].Visible = false;
             this.ProductGrid.Columns["ProductID"].Visible = false;
         }
@@ -190,7 +179,76 @@ namespace SSIP.UserformControls
                     MessageBox.Show("Something went wrong");
                 }
             }
-        }     
+        }
+        private void ShowAirconDetailFields()
+        {
+            if (cmb_prodCategory.Text != "Parts")
+            {
+                lbl_actype.Visible = true;
+                cmb_actype.Visible = true;
+
+                lbl_hp.Visible = true;
+                cmb_Hp.Visible = true;
+
+                //lbl_width.Visible = true;
+                //tb_width.Visible = true;
+
+                //lbl_length.Visible = true;
+                //tb_length.Visible = true;
+            }
+            else
+            {
+                lbl_actype.Visible = false;
+                cmb_actype.Visible = false;
+
+                lbl_hp.Visible = false;
+                cmb_Hp.Visible = false;
+
+                //lbl_width.Visible = false;
+                //tb_width.Visible = false;
+
+                //lbl_length.Visible = false;
+                //tb_length.Visible = false;
+            }
+        }
+        private void UnitPriceField()
+        {
+            if (tb_prodPrice.Text == "")
+            {
+                tb_prodPrice.Text = "0";
+                MessageBox.Show("Dont leave Unit price blank");
+                tb_prodPrice.FillColor = Color.Red;
+            }
+            else
+            {
+                tb_prodPrice.FillColor = Color.White;
+            }
+        }
+        private void DoubleClickGrid()
+        {
+            try
+            {
+                tb_productName.Text = this.ProductGrid.CurrentRow.Cells[0].Value.ToString();
+                tb_prodDescr.Text = this.ProductGrid.CurrentRow.Cells[1].Value.ToString();
+                tb_code.Text = this.ProductGrid.CurrentRow.Cells[2].Value.ToString();
+                tb_prodPrice.Text = this.ProductGrid.CurrentRow.Cells[3].Value.ToString();
+
+                tb_quan.Text = this.ProductGrid.CurrentRow.Cells[4].Value.ToString();
+                cmb_actype.SelectedIndex = Convert.ToInt32(this.ProductGrid.CurrentRow.Cells[5].Value.ToString());
+                cmb_Hp.SelectedIndex = Convert.ToInt32(this.ProductGrid.CurrentRow.Cells[6].Value.ToString());
+                tb_height.Text = this.ProductGrid.CurrentRow.Cells[7].Value.ToString();
+                tb_length.Text = this.ProductGrid.CurrentRow.Cells[8].Value.ToString();
+                tb_width.Text = this.ProductGrid.CurrentRow.Cells[9].Value.ToString();
+                cmb_prodCategory.SelectedIndex = Convert.ToInt32(this.ProductGrid.CurrentRow.Cells[10].Value.ToString());
+
+
+                tb_id.Text = this.ProductGrid.CurrentRow.Cells[12].Value.ToString();
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+        }
         #endregion
 
         #region event handler
@@ -267,13 +325,7 @@ namespace SSIP.UserformControls
         }
         private void ProductGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-            tb_productName.Text = this.ProductGrid.CurrentRow.Cells[0].Value.ToString();
-            tb_prodDescr.Text = this.ProductGrid.CurrentRow.Cells[1].Value.ToString();
-            tb_code.Text = this.ProductGrid.CurrentRow.Cells[2].Value.ToString();
-            tb_prodPrice.Text = this.ProductGrid.CurrentRow.Cells[3].Value.ToString();
-            cmb_prodCategory.SelectedIndex = Convert.ToInt32(this.ProductGrid.CurrentRow.Cells[4].Value.ToString());
-            tb_id.Text = this.ProductGrid.CurrentRow.Cells[6].Value.ToString();
+            DoubleClickGrid();
         }
         private void btn_viewProducts_Click(object sender, EventArgs e)
         {
@@ -290,6 +342,27 @@ namespace SSIP.UserformControls
             ProductGrid.Rows.RemoveAt(rowToDelete);
             ProductGrid.ClearSelection();
             DeactivateProduct(id);
+        }
+        private void ProductGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hti = ProductGrid.HitTest(e.X, e.Y);
+                ProductGrid.ClearSelection();
+                ProductGrid.Rows[hti.RowIndex].Selected = true;
+            }
+        }
+        private void tb_prodPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+        private void tb_prodPrice_TextChanged(object sender, EventArgs e)
+        {
+            UnitPriceField();
+        }
+        private void cmb_prodCategory_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ShowAirconDetailFields();
         }
         #endregion
 
@@ -400,31 +473,6 @@ namespace SSIP.UserformControls
             }
         }
 
-        #endregion
-
-        private void ProductGrid_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                var hti = ProductGrid.HitTest(e.X, e.Y);
-                ProductGrid.ClearSelection();
-                ProductGrid.Rows[hti.RowIndex].Selected = true;
-            }
-        }
-
-        private void tb_prodPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == (char)Keys.Back);
-        }
-
-        private void tb_prodPrice_TextChanged(object sender, EventArgs e)
-        {
-            if(tb_prodPrice.Text == "")
-            {
-                tb_prodPrice.Text = "0";
-                MessageBox.Show("Dont leave Unit price blank");
-                tb_prodPrice.FillColor = Color.Red;
-            }
-        }
+        #endregion      
     }
 }
