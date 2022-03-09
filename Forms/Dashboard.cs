@@ -422,13 +422,13 @@ namespace SSIP.Forms
 
         private void inventory_panel_Paint(object sender, PaintEventArgs e)
         {
-            HideEmployeesPanelControl();
-            HideMainServicesPanelControl();
-            HideCustomersPanelControl();
-            HideAttendanceControl();
-            HidePayRollControl();
+            //HideEmployeesPanelControl();
+            //HideMainServicesPanelControl();
+            //HideCustomersPanelControl();
+            //HideAttendanceControl();
+            //HidePayRollControl();
 
-            HideSubMenu();
+            //HideSubMenu();
         }
 
         private void btn_main_settings_Click(object sender, EventArgs e)
@@ -457,12 +457,26 @@ namespace SSIP.Forms
             HideCustomersPanelControl();
             HideAttendanceControl();
             HidePayRollControl();
+            HideProductInvControl();
 
             ShowMainServicesControl();
             HideSubMenu();
         }
 
         #region Hide and Show control panel
+        public void ShowProductInvControl()
+        {
+            productInvPanel.Dock = DockStyle.Fill;
+            productInvPanel.Visible = true;
+            this.payrollControl1.BringToFront();
+            this.payrollControl1.Show();
+
+        }
+        public void HideProductInvControl()
+        {
+            productInvPanel.Hide();
+            productInvPanel.Dock = DockStyle.None;
+        }
         public void ShowMainServicesControl()
         {
             dispatchFormPanel.Dock = DockStyle.Fill;
@@ -534,6 +548,7 @@ namespace SSIP.Forms
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
             HideCustomersPanelControl();
+            HideProductInvControl();
 
             ShowAttendanceControl();
             HideSubMenu();
@@ -544,9 +559,23 @@ namespace SSIP.Forms
             HideMainServicesPanelControl();
             HideEmployeesPanelControl();
             HideAttendanceControl();
-
+            HideCustomersPanelControl();
+            HideProductInvControl();
 
             ShowPayRollControl();
+            HideSubMenu();
+        }
+
+        private void btn_prodInventory_Click(object sender, EventArgs e)
+        {
+            HideMainServicesPanelControl();
+            HideEmployeesPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideAttendanceControl();
+
+
+            ShowProductInvControl();
             HideSubMenu();
         }
     }

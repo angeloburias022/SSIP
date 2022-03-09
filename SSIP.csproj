@@ -146,6 +146,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\AuditController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\PayRollController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Dashboard.Context.cs">
@@ -191,6 +192,7 @@
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\AuditTrails.cs" />
+    <Compile Include="Models\Inventories.cs" />
     <Compile Include="Models\Payroll.cs" />
     <Compile Include="Models\Sales.cs" />
     <Compile Include="Models\Schedule.cs" />
@@ -226,6 +228,12 @@
     </Compile>
     <Compile Include="UserformControls\EmployeeControl.Designer.cs">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserformControls\ProductInvControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserformControls\ProductInvControl.Designer.cs">
+      <DependentUpon>ProductInvControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserformControls\MainServiceControl.cs">
       <SubType>UserControl</SubType>
@@ -273,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\EmployeeControl.resx">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserformControls\ProductInvControl.resx">
+      <DependentUpon>ProductInvControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\MainServiceControl.resx">
       <DependentUpon>MainServiceControl.cs</DependentUpon>

@@ -26,65 +26,96 @@ namespace SSIP.UserformControls
         #endregion
 
         #region main operations    
-        private void btn_filter_Click(object sender, EventArgs e)
+        private bool SavePayRoll()
         {
-            if (Authorized())
+            #region fields
+            var details = new Payroll
             {
-                tb_workhrs.Text = "0";
-                var tool = new PayRollController();
+                empID = Convert.ToInt32(tb_empID.Text),
+                hrly_rate = Convert.ToDecimal(tb_hourlyRate.Text),
+                total_hrs = Convert.ToDecimal(tb_workhrs.Text),
+                cashAdvance = Convert.ToDecimal(tb_cashAdvance.Text),
+                sss = Convert.ToDecimal(tb_sss.Text),
+                pagibig = Convert.ToDecimal(tb_pagIbig.Text),
+                philhealth = Convert.ToDecimal(tb_philHealth.Text),
+                other_deduc = Convert.ToDecimal(tb_otherAmount.Text),
+                payRollDate = payroll_date.Value,
+                DateFrom = date_from.Value,
+                DateTo = date_to.Value,
+                total_amount = Convert.ToDecimal(tb_totalAmount.Text)
+            };
 
-                var result = tool.Filter(cmb_empname.SelectedValue.ToString(), date_from.Value, date_to.Value);
+            #endregion
 
-                empGrid.DataSource = result;
-            }
-            else
+            var tools = new PayRollController();
+
+            var results = tools.SavePayRoll(details, tb_unameAccess.Text);
+
+            if (results != true)
             {
-                NotAuthorized();
-            }
-        }
-        private void btn_viewPayrolls_Click(object sender, EventArgs e)
-        {
-            if (HighAuthority())
-            {
-                payrollMainPanel.Dock = DockStyle.Fill;
-                payrollMainPanel.Visible = true;
-
-                payrollGrid.DataSource = pr.GetPayRolls();
-            }
-            else
-            {
-                NotHighAuthorized();
-            }
-        }
-        private void btn_compute_Click(object sender, EventArgs e)
-        {
-            if (Authorized())
-            {
-
-                int hrlyrate = Convert.ToInt32(tb_hourlyRate.Text);
-                int hrs = Convert.ToInt32(tb_workhrs.Text);
-                int cashAdv = Convert.ToInt32(tb_cashAdvance.Text);
-
-                if(hrlyrate != 0)
+                var failed = new AuditTrails
                 {
-                    ComputeWage(hrlyrate, hrs, cashAdv);
-                    tb_hourlyRate.BackColor = Color.White;
-                        
-                }
-                else
-                {
-                    MessageBox.Show("Hourly rate value is invalid");
-                    tb_hourlyRate.FillColor = Color.Red;
-                }
+                    Username = tb_unameAccess.Text,
+                    AuditActionTypeENUM = (Enums.ActionTypes)3,
+                    DateTimeStamp = DateTime.Now.ToString(),
+                    Result = "Failed",
+                    Description = "Failed to add new payroll"
+                };
 
-              
+                aud.Logs(failed);
+                return false;
             }
             else
             {
-                NotHighAuthorized();
+                UpdateGrid();
+
+                var success = new AuditTrails
+                {
+                    Username = tb_unameAccess.Text,
+                    AuditActionTypeENUM = (Enums.ActionTypes)3,
+                    DateTimeStamp = DateTime.Now.ToString(),
+                    Result = "Succeed",
+                    Description = "Added a new Payroll"
+                };
+
+                aud.Logs(success);
+                return true;
+
+            }
+
+        }
+        private bool UpdateChanges()
+        {
+            var details = new Payroll
+            {
+                payrollID = Convert.ToInt32(tb_id.Text),
+                hrly_rate = Convert.ToDecimal(tb_hourlyRate.Text),
+                total_hrs = Convert.ToDecimal(tb_workhrs.Text),
+                cashAdvance = Convert.ToDecimal(tb_cashAdvance.Text),
+                sss = Convert.ToDecimal(tb_sss.Text),
+                pagibig = Convert.ToDecimal(tb_pagIbig.Text),
+                philhealth = Convert.ToDecimal(tb_philHealth.Text),
+                other_deduc = Convert.ToDecimal(tb_otherAmount.Text),
+                payRollDate = payroll_date.Value,
+                DateFrom = date_from.Value,
+                DateTo = date_to.Value,
+                total_amount = Convert.ToDecimal(tb_totalAmount.Text)
+            };
+
+            var tools = new PayRollController();
+
+            var results = tools.UpdatePayroll(details, tb_unameAccess.Text);
+
+            if (results != true)
+            {                
+                return false;
+            }
+            else
+            {                
+                return true;
             }
         }
-        public void ComputeWage(int Hrly_rate, int Total_hrs, int ca)
+        private void ComputeWage(int Hrly_rate, int Total_hrs, int ca)
         {
             try
             {
@@ -117,6 +148,17 @@ namespace SSIP.UserformControls
                         tb_workhrs.Text = Convert.ToString(Total_hrs);
                         tb_totalAmount.Text = Convert.ToString(result);
                         tb_cashAdvance.Text = Convert.ToString(ca);
+
+                        var success = new AuditTrails
+                        {
+                            Username = tb_unameAccess.Text,
+                            AuditActionTypeENUM = (Enums.ActionTypes)7,
+                            DateTimeStamp = DateTime.Now.ToString(),
+                            Result = "Succeed",
+                            Description = "Computed a Payroll"
+                        };
+
+                        aud.Logs(success);
                     }
                     else
                     {
@@ -129,48 +171,74 @@ namespace SSIP.UserformControls
                 error.ToString();
             }
         }
-        public bool SavePayRoll()
-        {
-            var details = new Payroll
-            {
-                empID = Convert.ToInt32(tb_empID.Text),
-                hrly_rate = Convert.ToDecimal(tb_hourlyRate.Text),
-                total_hrs = Convert.ToDecimal(tb_workhrs.Text),
-                cashAdvance = Convert.ToDecimal(tb_cashAdvance.Text),
-                sss = Convert.ToDecimal(tb_sss.Text),
-                pagibig = Convert.ToDecimal(tb_pagIbig.Text),
-                philhealth = Convert.ToDecimal(tb_philHealth.Text),
-                other_deduc = Convert.ToDecimal(tb_otherAmount.Text),
-                payRollDate = payroll_date.Value,
-                DateFrom = date_from.Value,
-                DateTo = date_to.Value,
-                total_amount = Convert.ToDecimal(tb_totalAmount.Text)
-            };
-
-            var tools = new PayRollController();
-
-            var results = tools.SavePayRoll(details, tb_unameAccess.Text);
-
-            if (results != true)
-            {
-                return false;
-            }else
-            {
-                UpdateGrid();
-                return true;           
-            }
-           
-        }
-        private void btn_generateLayout_Click(object sender, EventArgs e)
+        private void Filter()
         {
             if (Authorized())
-            {                
+            {
+                tb_workhrs.Text = "0";
+                var tool = new PayRollController();
+
+                var result = tool.Filter(cmb_empname.SelectedValue.ToString(), date_from.Value, date_to.Value);
+
+                empGrid.DataSource = result;
+            }
+            else
+            {
+                NotAuthorized();
+            }
+        }
+        private void ViewPayrollList()
+        {
+            if (HighAuthority())
+            {
+                payrollMainPanel.Dock = DockStyle.Fill;
+                payrollMainPanel.Visible = true;
+
+                payrollGrid.DataSource = pr.GetPayRolls();
+            }
+            else
+            {
+                NotHighAuthorized();
+            }
+        }
+        private void StartCompute()
+        {
+            if (Authorized())
+            {
+
+                int hrlyrate = Convert.ToInt32(tb_hourlyRate.Text);
+                int hrs = Convert.ToInt32(tb_workhrs.Text);
+                int cashAdv = Convert.ToInt32(tb_cashAdvance.Text);
+
+                if (hrlyrate != 0)
+                {
+                    ComputeWage(hrlyrate, hrs, cashAdv);
+                    tb_hourlyRate.BackColor = Color.White;
+
+                }
+                else
+                {
+                    MessageBox.Show("Hourly rate value is invalid");
+                    tb_hourlyRate.FillColor = Color.Red;
+                }
+
+
+            }
+            else
+            {
+                NotHighAuthorized();
+            }
+        }
+        private void GenerateLayout()
+        {
+            if (Authorized())
+            {
                 if (MessageBox.Show("Generate layout?", "Confirm",
                    MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
                    == DialogResult.OK)
                 {
                     btn_printLayout.Enabled = true;
-                    
+
                     date_now.Text = Convert.ToString(DateTime.Now);
                     lbl_empN.Text = cmb_empname.Text;
                     lbl_totalwrkhrs.Text = tb_workhrs.Text;
@@ -178,7 +246,7 @@ namespace SSIP.UserformControls
                     lbl_sss_print.Text = tb_sss.Text;
                     lbl_pagibig_print.Text = tb_pagIbig.Text;
                     lbl_ph_print.Text = tb_philHealth.Text;
-              //     lbl_ph_print.Text = tb_pagibig.Text;
+                    //     lbl_ph_print.Text = tb_pagibig.Text;
                     lbl_others_print.Text = tb_otherAmount.Text;
                     lbl_wage.Text = tb_totalAmount.Text;
                     lbl_signature.Text = tb_unameAccess.Text;
@@ -193,12 +261,12 @@ namespace SSIP.UserformControls
                 NotHighAuthorized();
             }
         }
-        private void btn_printLayout_Click(object sender, EventArgs e)
+        private void PrintLayout()
         {
             if (MessageBox.Show("Print the layout?", "Confirm",
-                       MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
-                       == DialogResult.OK)
-            {              
+                               MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
+                               == DialogResult.OK)
+            {
                 if (Authorized())
                 {
                     if (tb_id.Text == "0")
@@ -213,8 +281,17 @@ namespace SSIP.UserformControls
                     {
                         printSlipDialog.Document = printSlipDocument;
                         printSlipDialog.ShowDialog();
-                    } 
-                   
+                    }
+
+                    var success = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)6,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Succeed",
+                        Description = "Printed a receipt"
+                    };
+                    aud.Logs(success);
                 }
                 else
                 {
@@ -224,66 +301,9 @@ namespace SSIP.UserformControls
             else
             {
                 MessageBox.Show("Cancelled Successfully");
-            } 
-        }
-        private void printSlipDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString(lblstar.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(100, 30));
-            e.Graphics.DrawString(lbl_title.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(180, 60));
-
-            e.Graphics.DrawString(lbl_rfb.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.LimeGreen, new Point(180, 90));
-            e.Graphics.DrawString(lbl_address.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(140, 120));
-            e.Graphics.DrawString(lbl_contactNO.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(60, 150));
-
-
-
-            e.Graphics.DrawString("Date: " + payroll_date.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 220));
-            e.Graphics.DrawString("Employee Name: " + lbl_empN.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 250));
-            e.Graphics.DrawString("Total work hrs: " + lbl_totalwrkhrs.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 280));
-            e.Graphics.DrawString("Cash-advance: " + lbl_ca.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 310));
-            e.Graphics.DrawString("SSS: " + lbl_sss_print.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 340));
-            e.Graphics.DrawString("Pag-ibig " + lbl_pagibig_print.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 370));
-            e.Graphics.DrawString("Philhealth " + lbl_ph_print.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 400));
-            e.Graphics.DrawString("Total wage: " + lbl_wage.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 430));
-            e.Graphics.DrawString("Recorded by: " + lbl_signature.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 460));
-            e.Graphics.DrawString("_____________________", new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 565));
-            e.Graphics.DrawString(" Authorized Signature:  ", new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 600));
-
-        }
-        public bool UpdateChanges()
-        {
-            var details = new Payroll
-            {
-                payrollID = Convert.ToInt32(tb_id.Text),
-                hrly_rate = Convert.ToDecimal(tb_hourlyRate.Text),
-                total_hrs = Convert.ToDecimal(tb_workhrs.Text),
-                cashAdvance = Convert.ToDecimal(tb_cashAdvance.Text),
-                sss = Convert.ToDecimal(tb_sss.Text),
-                pagibig = Convert.ToDecimal(tb_pagIbig.Text),
-                philhealth = Convert.ToDecimal(tb_philHealth.Text),
-                other_deduc = Convert.ToDecimal(tb_otherAmount.Text),
-                payRollDate = payroll_date.Value,
-                DateFrom = date_from.Value,
-                DateTo = date_to.Value,
-                total_amount = Convert.ToDecimal(tb_totalAmount.Text)
-            };
-
-            var tools = new PayRollController();
-
-            var results = tools.UpdatePayroll(details, tb_unameAccess.Text);
-
-            if (results != true)
-            {
-                return false;
-            }
-            else
-            {
-                UpdateGrid();
-                
-                return true;
             }
         }
-        private void btn_update_Click(object sender, EventArgs e)
+        private void UpdatePayroll()
         {
             if (HighAuthority())
             {
@@ -293,10 +313,31 @@ namespace SSIP.UserformControls
                 {
                     if (UpdateChanges())
                     {
+                        UpdateGrid();
+                        var success = new AuditTrails
+                        {
+                            Username = tb_unameAccess.Text,
+                            AuditActionTypeENUM = (Enums.ActionTypes)4,
+                            DateTimeStamp = DateTime.Now.ToString(),
+                            Result = "Succeed",
+                            Description = "Updated Payroll ID: " + tb_id.Text + " "
+                        };
+
+                        aud.Logs(success);
                         MessageBox.Show("Changes Applied Sucessfully");
                     }
                     else
                     {
+                        var failed = new AuditTrails
+                        {
+                            Username = tb_unameAccess.Text,
+                            AuditActionTypeENUM = (Enums.ActionTypes)4,
+                            DateTimeStamp = DateTime.Now.ToString(),
+                            Result = "Failed",
+                            Description = "Failed to update Payroll ID: " + tb_id.Text + " "
+                        };
+
+                        aud.Logs(failed);
                         MessageBox.Show("Something went wrong");
                     }
                 }
@@ -310,6 +351,34 @@ namespace SSIP.UserformControls
                 NotHighAuthorized();
             }
         }
+        private void UpdateGrid()
+        {
+            payrollGrid.DataSource = pr.GetPayRolls();
+            payrollGrid.Update();
+        }
+        private void ClearFields()
+        {
+            tb_sss.Text = "0";
+            tb_pagIbig.Text = "0";
+            tb_philHealth.Text = "0";
+
+            tb_id.Text = "0";
+            tb_empID.Text = "0";
+
+            tb_otherAmount.Text = "0";
+            tb_totalAmount.Text = "0";
+
+            tb_workhrs.Text = "0";
+            tb_hourlyRate.Text = "0";
+        }
+        private void CMB_EmployeeName()
+        {
+            cmb_empname.DataSource = emp.GetEmployeeName();
+            cmb_empname.ValueMember = "EmployeeID";
+            cmb_empname.DisplayMember = "EmployeeName";
+
+        }
+
         #endregion
 
         #region others     
@@ -333,14 +402,7 @@ namespace SSIP.UserformControls
         private void PayrollControl_Load(object sender, EventArgs e)
         {
             CMB_EmployeeName();          
-        }
-        public void CMB_EmployeeName()
-        {
-            cmb_empname.DataSource = emp.GetEmployeeName();
-            cmb_empname.ValueMember = "EmployeeID";
-            cmb_empname.DisplayMember = "EmployeeName";
-        
-        }
+        }      
         private void tb_workhrs_TextChanged(object sender, EventArgs e)
         {
             if(tb_hourlyRate.Text != "0" || tb_hourlyRate.Text != "")
@@ -463,27 +525,7 @@ namespace SSIP.UserformControls
 
             lbl_othersAmount.Visible = true;
             tb_otherAmount.Visible = true;
-        }
-        public void UpdateGrid()
-        {
-            payrollGrid.DataSource = pr.GetPayRolls();
-            payrollGrid.Update();
-        }
-        public void ClearFields()
-        {
-            tb_sss.Text = "0";
-            tb_pagIbig.Text = "0";
-            tb_philHealth.Text = "0";
-
-            tb_id.Text = "0";
-            tb_empID.Text = "0";
-
-            tb_otherAmount.Text = "0";
-            tb_totalAmount.Text = "0";
-
-            tb_workhrs.Text = "0";
-            tb_hourlyRate.Text = "0";
-        }
+        }      
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
             var tools = new PayRollController();
@@ -495,6 +537,61 @@ namespace SSIP.UserformControls
             if (tb_search.Text == "")
             {
                 UpdateGrid();
+            }
+        }
+        #endregion
+
+        #region event handlers
+        private void btn_filter_Click(object sender, EventArgs e)
+        {
+            Filter();
+        }
+        private void btn_viewPayrolls_Click(object sender, EventArgs e)
+        {
+            ViewPayrollList();
+        }
+        private void btn_compute_Click(object sender, EventArgs e)
+        {
+            StartCompute();
+        }
+        private void btn_generateLayout_Click(object sender, EventArgs e)
+        {
+            GenerateLayout();
+        }
+        private void btn_printLayout_Click(object sender, EventArgs e)
+        {
+            PrintLayout();
+        }
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            UpdatePayroll();
+        }
+        private void printSlipDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            if (Authorized())
+            {
+                e.Graphics.DrawString(lblstar.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(100, 30));
+                e.Graphics.DrawString(lbl_title.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(180, 60));
+
+                e.Graphics.DrawString(lbl_rfb.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.LimeGreen, new Point(180, 90));
+                e.Graphics.DrawString(lbl_address.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(140, 120));
+                e.Graphics.DrawString(lbl_contactNO.Text, new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(60, 150));
+
+                e.Graphics.DrawString("Date: " + payroll_date.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 220));
+                e.Graphics.DrawString("Employee Name: " + lbl_empN.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 250));
+                e.Graphics.DrawString("Total work hrs: " + lbl_totalwrkhrs.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 280));
+                e.Graphics.DrawString("Cash-advance: " + lbl_ca.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 310));
+                e.Graphics.DrawString("SSS: " + lbl_sss_print.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 340));
+                e.Graphics.DrawString("Pag-ibig " + lbl_pagibig_print.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 370));
+                e.Graphics.DrawString("Philhealth " + lbl_ph_print.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 400));
+                e.Graphics.DrawString("Total wage: " + lbl_wage.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 430));
+                e.Graphics.DrawString("Recorded by: " + lbl_signature.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 460));
+                e.Graphics.DrawString("_____________________", new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 565));
+                e.Graphics.DrawString(" Authorized Signature:  ", new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 600));
+            }
+            else
+            {
+                NotAuthorized();
             }
         }
 
@@ -537,7 +634,7 @@ namespace SSIP.UserformControls
             
             }
         }
-        public bool AccessLogin(User users)
+        private bool AccessLogin(User users)
         {
             var user = new User
             {
@@ -578,15 +675,15 @@ namespace SSIP.UserformControls
                 return false;
             }
         }
-        public void NotHighAuthorized()
+        private void NotHighAuthorized()
         {           
            MessageBox.Show("Higher Authoritization Required");              
         }
-        public void NotAuthorized()
+        private void NotAuthorized()
         {
             MessageBox.Show("Authentication Required");
         }
-        public bool HighAuthority()
+        private bool HighAuthority()
         {
             var access = new AccessController();
 
@@ -603,9 +700,11 @@ namespace SSIP.UserformControls
                 return false;
             }
             else
+            {
                 return true;
+            }           
         }
-        public bool Authorized()
+        private bool Authorized()
         {
             var user = new User
             {
