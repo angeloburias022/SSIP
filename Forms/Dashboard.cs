@@ -18,13 +18,14 @@ namespace SSIP.Forms
 {
     public partial class Dashboard : Form
     {
-
+        #region declarations
         MainServiceControl ms = new MainServiceControl();
         public Dashboard()
-        { 
+        {
             InitializeComponent();
             CustomizeDesign();
         }
+        #endregion
 
         #region load charts
         private void Dashboard_Load(object sender, EventArgs e)
@@ -284,44 +285,70 @@ namespace SSIP.Forms
                 MessageBox.Show("Something went wrong" + error);
             }
         }
-
-
         #endregion
 
+        #region main clicks event handler
         private void btn_menu_cust_Click(object sender, EventArgs e)
         {
             ShowSubMenu(Customers_panel);
         }
-
         private void btn_dispatch_sub_Click(object sender, EventArgs e)
         {
             // logic here
             HideSubMenu();
         }
-
         private void btn_mangecus_sub_Click(object sender, EventArgs e)
         {
             // logic here
             HideSubMenu();
         }
-
-        private void btn_managecus_sub_Click(object sender, EventArgs e)
-        {           
-            HideMainServicesPanelControl();
-            HideEmployeesPanelControl();
-            HideAttendanceControl();
-            HidePayRollControl();
-
-            ShowCustomersPanelControl();
-            HideSubMenu();
+        private void btn_main_invent_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(inventory_panel);
         }
+        private void btn_main_services_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(services_panel);
+        }
+        private void inventory_panel_Paint(object sender, PaintEventArgs e)
+        {
+            //HideEmployeesPanelControl();
+            //HideMainServicesPanelControl();
+            //HideCustomersPanelControl();
+            //HideAttendanceControl();
+            //HidePayRollControl();
 
+            //HideSubMenu();
+        }
         private void btn_menu_employees_Click(object sender, EventArgs e)
         {
             ShowSubMenu(emp_panel);
         }
+        private void btn_main_settings_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(settings_panel);
+        }
+        #endregion
 
+        #region Hide and show sub menu
+        private void HideSubMenu()
+        {
+            if (Customers_panel.Visible == true)
+                Customers_panel.Visible = false;
 
+            if (emp_panel.Visible == true)
+                emp_panel.Visible = false;
+
+            if (inventory_panel.Visible == true)
+                inventory_panel.Visible = false;
+
+            if (services_panel.Visible == true)
+                services_panel.Visible = false;
+
+            if (settings_panel.Visible == true)
+                settings_panel.Visible = false;
+
+        }
         private void CustomizeDesign()
         {
 
@@ -348,27 +375,6 @@ namespace SSIP.Forms
             //btn_cus_archived_sub.Visible = false;
             //btn_audit_sub.Visible = false;
         }
-
-        #region Hide and show sub menu
-        private void HideSubMenu()
-        {
-            if (Customers_panel.Visible == true)
-                Customers_panel.Visible = false;
-
-            if (emp_panel.Visible == true)
-                emp_panel.Visible = false;
-
-            if (inventory_panel.Visible == true)
-                inventory_panel.Visible = false;
-
-            if (services_panel.Visible == true)
-                services_panel.Visible = false;
-
-            if (settings_panel.Visible == true)
-                settings_panel.Visible = false;
-
-        }
-
         private void ShowSubMenu(Panel subMenu)
         {
 
@@ -381,89 +387,23 @@ namespace SSIP.Forms
                 subMenu.Visible = false;
 
         }
+
         #endregion
 
-
-        private void btn_main_invent_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(inventory_panel);
-        }
-
-        private void btn_main_services_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(services_panel);
-        }
-
-        private void btb_cus_archived_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_equip_inv_Click(object sender, EventArgs e)
-        {
-            HideEmployeesPanelControl();
-            HideMainServicesPanelControl();
-            HideCustomersPanelControl();
-            HideAttendanceControl();
-
-            HideSubMenu();
-        }
-
-        private void btn_sales_inv_Click(object sender, EventArgs e)
-        {
-            HideEmployeesPanelControl();
-            HideMainServicesPanelControl();
-            HideCustomersPanelControl();
-            HideAttendanceControl();
-            HidePayRollControl();
-
-            HideSubMenu();
-        }
-
-        private void inventory_panel_Paint(object sender, PaintEventArgs e)
-        {
-            //HideEmployeesPanelControl();
-            //HideMainServicesPanelControl();
-            //HideCustomersPanelControl();
-            //HideAttendanceControl();
-            //HidePayRollControl();
-
-            //HideSubMenu();
-        }
-
-        private void btn_main_settings_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(settings_panel);
-        }
-
-
-        private void btn_manageEmp_sub_Click(object sender, EventArgs e)
-        {
-
-            HideMainServicesPanelControl();
-            HideEmployeesPanelControl();
-            HideCustomersPanelControl();
-            HideAttendanceControl();
-            HidePayRollControl();
-
-            ShowEmployeesPanelControl();
-            HideSubMenu();
-        }
-
-        private void btn_dispatch_sub_Click_2(object sender, EventArgs e)
-        {
-            HideEmployeesPanelControl();
-            HideMainServicesPanelControl();
-            HideCustomersPanelControl();
-            HideAttendanceControl();
-            HidePayRollControl();
-            HideProductInvControl();
-
-            ShowMainServicesControl();
-            HideSubMenu();
-        }
-
         #region Hide and Show control panel
+        public void ShowEquipInvControl()
+        {
+            equipControlPanel.Dock = DockStyle.Fill;
+            equipControlPanel.Visible = true;
+            this.equipInvControl1.BringToFront();
+            this.equipInvControl1.Show();
+
+        }
+        public void HideEquipInvControl()
+        {
+            equipControlPanel.Hide();
+            equipControlPanel.Dock = DockStyle.None;
+        }
         public void ShowProductInvControl()
         {
             productInvPanel.Dock = DockStyle.Fill;
@@ -529,7 +469,6 @@ namespace SSIP.Forms
             attendanceControlpanel.Hide();
             attendanceControlpanel.Dock = DockStyle.None;
         }
-
         public void ShowPayRollControl()
         {
             this.payroll_mainPanel.Visible = true;
@@ -543,17 +482,41 @@ namespace SSIP.Forms
         }
         #endregion
 
+        #region sub clicks event handler
+        private void btn_equip_inv_Click(object sender, EventArgs e)
+        {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HideProductInvControl();
+
+            ShowEquipInvControl();
+            HideSubMenu();
+        }
+        private void btn_sales_inv_Click(object sender, EventArgs e)
+        {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideEquipInvControl();
+
+
+            HideSubMenu();
+        }
         private void btn_attendance_sub_Click(object sender, EventArgs e)
         {
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
             HideCustomersPanelControl();
             HideProductInvControl();
+            HidePayRollControl();
 
             ShowAttendanceControl();
             HideSubMenu();
         }
-
         private void btn_payroll_sub_Click(object sender, EventArgs e)
         {
             HideMainServicesPanelControl();
@@ -561,11 +524,11 @@ namespace SSIP.Forms
             HideAttendanceControl();
             HideCustomersPanelControl();
             HideProductInvControl();
+            HideEquipInvControl();
 
             ShowPayRollControl();
             HideSubMenu();
         }
-
         private void btn_prodInventory_Click(object sender, EventArgs e)
         {
             HideMainServicesPanelControl();
@@ -573,10 +536,50 @@ namespace SSIP.Forms
             HideAttendanceControl();
             HidePayRollControl();
             HideAttendanceControl();
-
+            HideEquipInvControl();
 
             ShowProductInvControl();
             HideSubMenu();
+        }     
+        private void btn_manageEmp_sub_Click(object sender, EventArgs e)
+        {
+            HideMainServicesPanelControl();
+            HideEmployeesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideProductInvControl();
+            HideEquipInvControl();
+
+            ShowEmployeesPanelControl();
+            HideSubMenu();
         }
+        private void btn_dispatch_sub_Click_2(object sender, EventArgs e)
+        {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideProductInvControl();
+            HideEquipInvControl();
+
+            ShowMainServicesControl();
+            HideSubMenu();
+        }
+        private void btn_managecus_sub_Click(object sender, EventArgs e)
+        {
+            HideMainServicesPanelControl();
+            HideEmployeesPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideProductInvControl();
+            HideEquipInvControl();
+
+
+            ShowCustomersPanelControl();
+            HideSubMenu();
+        }
+        #endregion
     }
 }

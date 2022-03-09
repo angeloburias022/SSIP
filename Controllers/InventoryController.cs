@@ -149,13 +149,10 @@ namespace SSIP.Controllers
         }
         public DataTable FindProduct(string searched)
         {
-
-            DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(ConString))
             {
                 try
                 {
-
                     using (SqlCommand com = new SqlCommand("[SpSearchProducts]", con))
                     {
                         com.CommandType = CommandType.StoredProcedure;
@@ -179,8 +176,130 @@ namespace SSIP.Controllers
         }
         #endregion
 
-        #region equipment inventory ops
+        #region equipment inventory main ops
+        public bool AddItem(EquipmentInventory inv)
+        {
+            try
+            {
+                using (var con = new SqlConnection(ConString))
+                {
+                    using (var com = new SqlCommand("[SpAddEquipment]", con))
+                    {
+                        con.Open();
+                        com.CommandType = CommandType.StoredProcedure;
 
+                        com.Parameters.AddWithValue("@Name", inv.Name);
+                        com.Parameters.AddWithValue("@desc", inv.Description);
+                        com.Parameters.AddWithValue("@price", inv.UnitPrice);
+                        com.Parameters.AddWithValue("@code", inv.ProductCode);
+                        com.Parameters.AddWithValue("@recordedBy", inv.RecordedBy);
+                        com.Parameters.AddWithValue("@datepurchased", inv.DatePurchased);
+
+                        com.ExecuteNonQuery();
+                        con.Close();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+
+            return false;
+        }
+        public bool UpdateItem(EquipmentInventory inv)
+        {
+            try
+            {
+                using (var con = new SqlConnection(ConString))
+                {
+                    con.Open();
+                    using (var com = new SqlCommand("[SpUpdateEquipByID]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@id", inv.EquipmentID);
+                        com.Parameters.AddWithValue("@Name", inv.Name);
+                        com.Parameters.AddWithValue("@desc", inv.Description);
+                        com.Parameters.AddWithValue("@price", inv.UnitPrice);
+                        com.Parameters.AddWithValue("@recordedBy", inv.RecordedBy);
+                        com.Parameters.AddWithValue("@datepurchased", inv.DatePurchased);
+                        com.ExecuteNonQuery();
+                    }
+                    con.Close();
+
+
+                    return true;
+                }
+
+
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+
+            }
+
+            return false;
+        }
+        public DataTable GetItems()
+        {
+          try
+            {
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetEquipments]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
+        public DataTable FindItem(string searched)
+        {      
+            using (SqlConnection con = new SqlConnection(ConString))
+            {
+                try
+                {
+                    using (SqlCommand com = new SqlCommand("[SpSearchEquipment]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@Search", searched);
+                        SqlDataAdapter sds = new SqlDataAdapter(com); // passes the desired query
+
+                        sds.Fill(dt);
+                        con.Close();
+                        return dt;
+                    }
+                }
+                catch (Exception error)
+                {
+
+                    error.ToString();
+                }
+                return dt;
+            }
+
+        }
         #endregion
+    
     }
 }

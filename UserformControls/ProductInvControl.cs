@@ -54,7 +54,7 @@ namespace SSIP.UserformControls
                 
                 IList<ValidationResult> errors = new List<ValidationResult>();
 
-                if (!Validator.TryValidateObject(details, detailsValidCon, errors, true))
+                if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(details, detailsValidCon, errors, true))
                 {
                     foreach (ValidationResult val in errors)
                     {
@@ -113,12 +113,11 @@ namespace SSIP.UserformControls
                     Category = Convert.ToString(cmb_prodCategory.SelectedIndex),
                     RecordedBy = tb_unameAccess.Text
                 };
-                var result = ic.UpdateProduct(details);
-
+               
                 var detailsValidCon = new ValidationContext(details, null, null);
                 IList<ValidationResult> errors = new List<ValidationResult>();
 
-                if (!Validator.TryValidateObject(details, detailsValidCon, errors, true))
+                if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(details, detailsValidCon, errors, true))
                 {
                     foreach (ValidationResult val in errors)
                     {
@@ -127,6 +126,8 @@ namespace SSIP.UserformControls
                     }
                 }
                 else {
+                    var result = ic.UpdateProduct(details);
+
                     if (result != false)
                     {
                         var success = new AuditTrails
@@ -379,7 +380,7 @@ namespace SSIP.UserformControls
                     AuditActionTypeENUM = (Enums.ActionTypes)1,
                     DateTimeStamp = DateTime.Now.ToString(),
                     Result = "Succeed",
-                    Description = "'" + user.Username + "' access payroll feature"
+                    Description = "'" + user.Username + "' access product inventory feature"
                 };
                 aud.Logs(accesslog);
                 return true;
@@ -392,7 +393,7 @@ namespace SSIP.UserformControls
                     AuditActionTypeENUM = (Enums.ActionTypes)1,
                     DateTimeStamp = DateTime.Now.ToString(),
                     Result = "Failed",
-                    Description = "'" + user.Username + "'Failed to access payroll feature"
+                    Description = "'" + user.Username + "'Failed to access product inventory feature"
                 };
                 aud.Logs(accesslog);
                 return false;

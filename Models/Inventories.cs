@@ -19,26 +19,28 @@ namespace SSIP.Models
             public decimal UnitPrice { get; set; }
             public string RecordedBy { get; set; }
 
+            public string ProductCode { get; set; }
+
             [Required(ErrorMessage = "Category is required")]
             public string Category { get; set; }
-            public DateTime DatePurchased { get; set; }
             public DateTime DateCreated { get; set; }
             public DateTime DateUpdated { get; set; }
             public DateTime DateDeleted { get; set; }
-            
 
+         
         }
 
         public class ProductInventory : Inventory
         {
             public int productID { get; set; }
-            public string ProductCode { get; set; }
+          
 
         }
 
         public class EquipmentInventory : Inventory
         {
             public int EquipmentID { get; set; }
+            public DateTime DatePurchased { get; set; }
         }
     }
 }

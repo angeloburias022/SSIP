@@ -180,6 +180,7 @@
     </Compile>
     <Compile Include="Helper\GenerateCode.cs" />
     <Compile Include="Helper\PasswordEncryptor.cs" />
+    <Compile Include="Helper\Valid.cs" />
     <Compile Include="Layouting\Layouting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +229,12 @@
     </Compile>
     <Compile Include="UserformControls\EmployeeControl.Designer.cs">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserformControls\EquipInvControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserformControls\EquipInvControl.Designer.cs">
+      <DependentUpon>EquipInvControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserformControls\ProductInvControl.cs">
       <SubType>UserControl</SubType>
@@ -281,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\EmployeeControl.resx">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserformControls\EquipInvControl.resx">
+      <DependentUpon>EquipInvControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\ProductInvControl.resx">
       <DependentUpon>ProductInvControl.cs</DependentUpon>

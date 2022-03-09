@@ -220,10 +220,10 @@ namespace SSIP.UserformControls
             var emailValidCon = new ValidationContext(email, null, null);
             IList<ValidationResult> errors = new List<ValidationResult>();
 
-            if (!Validator.TryValidateObject(user, customerValidCon, errors, true) ||
-                !Validator.TryValidateObject(address, addsValidCon, errors, true) ||
-                !Validator.TryValidateObject(emp, empValidCon, errors, true) ||
-                !Validator.TryValidateObject(email, emailValidCon, errors, true))
+            if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(user, customerValidCon, errors, true) ||
+                !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(address, addsValidCon, errors, true) ||
+                !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(emp, empValidCon, errors, true) ||
+                !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(email, emailValidCon, errors, true))
             {
                 foreach (ValidationResult val in errors)
                 {
@@ -332,10 +332,10 @@ namespace SSIP.UserformControls
             var emailValidCon = new ValidationContext(email, null, null);
             IList<ValidationResult> errors = new List<ValidationResult>();
 
-            if (!Validator.TryValidateObject(personal, customerValidCon, errors, true) ||
-                !Validator.TryValidateObject(adds, addsValidCon, errors, true) ||
-                !Validator.TryValidateObject(empdetails, empValidCon, errors, true) ||
-                !Validator.TryValidateObject(email, emailValidCon, errors, true))
+            if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(personal, customerValidCon, errors, true) ||
+                !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(adds, addsValidCon, errors, true) ||
+                !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(empdetails, empValidCon, errors, true) ||
+                !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(email, emailValidCon, errors, true))
             {
                 foreach (ValidationResult val in errors)
                 {
@@ -357,7 +357,7 @@ namespace SSIP.UserformControls
                         AuditActionTypeENUM = (Enums.ActionTypes)4,
                         DateTimeStamp = DateTime.Now.ToString(),
                         Result = "Failed",
-                        Description = "Failed to Update Employee ID: "+tb_empID.Text+" "
+                        Description = "Failed to Update Employee ID: "+ tb_empID.Text+" "
                     };
 
                     aud.Logs(addEmployee);
@@ -374,7 +374,7 @@ namespace SSIP.UserformControls
                         AuditActionTypeENUM = (Enums.ActionTypes)4,
                         DateTimeStamp = DateTime.Now.ToString(),
                         Result = "Succeed",
-                        Description = "Updated Employee ID:"+tb_empID.Text+" "
+                        Description = "Updated Employee ID:"+ tb_empID.Text+" "
                     };
 
                     aud.Logs(addEmployee);
