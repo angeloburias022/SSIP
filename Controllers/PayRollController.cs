@@ -1,4 +1,5 @@
-﻿using SSIP.Helper;
+﻿using SSIP.DbAccess;
+using SSIP.Helper;
 using SSIP.Models;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,8 @@ namespace SSIP.Controllers
 {
     public class PayRollController
     {
-        #region private fields
-        string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        #endregion
-
         #region declarations
+        ConnectionDB db = new ConnectionDB();
         PasswordEncryptor enc = new PasswordEncryptor();
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
@@ -25,7 +23,7 @@ namespace SSIP.Controllers
         #region main operations
         public DataTable Filter(string empID, DateTime frm, DateTime to)
         {
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 using (SqlCommand com = new SqlCommand("[SpFilterPayRoll]", con))
                 {
@@ -61,7 +59,7 @@ namespace SSIP.Controllers
         }
         public bool SavePayRoll(Payroll payroll, string recordedBy)
         {
-            using (var con = new SqlConnection(ConString))
+            using (var con = new SqlConnection(db.ConString()))
             {
                 
                 using (var com = new SqlCommand("[SpAddNewPayRoll]", con))
@@ -93,7 +91,7 @@ namespace SSIP.Controllers
         }
         public bool UpdatePayroll(Payroll payroll, string recordedBy)
         {
-            using (var con = new SqlConnection(ConString))
+            using (var con = new SqlConnection(db.ConString()))
             {
                 using (var com = new SqlCommand("[SpUpdatePayrollByID]", con))
                 {
@@ -125,12 +123,11 @@ namespace SSIP.Controllers
                 }
             }
         }
-
         public DataTable FindPayRoll(string searched)
         {
 
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 try
                 {
@@ -158,7 +155,7 @@ namespace SSIP.Controllers
         }
         public DataTable GetPayRolls()
         {
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetPayrollList]", con))
                     {

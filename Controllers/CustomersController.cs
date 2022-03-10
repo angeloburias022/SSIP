@@ -1,4 +1,5 @@
-﻿using SSIP.Helper;
+﻿using SSIP.DbAccess;
+using SSIP.Helper;
 using SSIP.Models;
 using System;
 using System.Collections.Generic;
@@ -12,15 +13,8 @@ namespace SSIP.Controllers
 {
     public class CustomersController
     {
-        #region private fields
-        // private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-
-        string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-     //   AuditController aud = new AuditController();
-        #endregion
-
         #region declarations
+        ConnectionDB db = new ConnectionDB();
         PasswordEncryptor enc = new PasswordEncryptor();
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
@@ -31,7 +25,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     using (var com = new SqlCommand("[SpAddNewCustomer]", con))
                     {
@@ -68,7 +62,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     con.Open();
                     using (var com = new SqlCommand("[SpUpdateCustomerByID]", con))
@@ -113,7 +107,7 @@ namespace SSIP.Controllers
             //      string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             try
             {
-                using (SqlConnection con = new SqlConnection(ConString))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetCustomers]", con))
                     {
@@ -142,7 +136,7 @@ namespace SSIP.Controllers
         {
 
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 try
                 {

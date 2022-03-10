@@ -1,4 +1,5 @@
-﻿using SSIP.Helper;
+﻿using SSIP.DbAccess;
+using SSIP.Helper;
 using SSIP.Models;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,7 @@ namespace SSIP.Controllers
     public class EmployeesController
     {
         #region private fields
-        // private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-        string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-        AuditController aud = new AuditController();    
         #endregion
 
         #region declarations
@@ -28,6 +25,8 @@ namespace SSIP.Controllers
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
         PasswordEncryptor enc = new PasswordEncryptor();
+        AuditController aud = new AuditController();
+        ConnectionDB db = new ConnectionDB();
         #endregion
 
         #region employee operations
@@ -35,7 +34,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     using (var com = new SqlCommand("[SpAddEmployee]", con))
                     {
@@ -85,7 +84,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     con.Open();
                     using (var com = new SqlCommand("SpUpdateEmployeeByID", con))
@@ -141,7 +140,7 @@ namespace SSIP.Controllers
 
             try
             {
-                using (SqlConnection con = new SqlConnection(ConString))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetEmployees]", con))
                     {
@@ -169,7 +168,7 @@ namespace SSIP.Controllers
         public DataTable FindEmployees(string searched)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 try
                 {
@@ -199,7 +198,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(ConString))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetEmployeeName]", con))
                     {
@@ -229,10 +228,9 @@ namespace SSIP.Controllers
         #region attendace ops
         public List<string> GetEmployeeName(string code)
         {
-
             var details = new List<string>();
 
-            using (var con = new SqlConnection(ConString))
+            using (var con = new SqlConnection(db.ConString()))
             {
                 con.Open();
                 using (var com = new SqlCommand("[SpGetEmployeeNameByCode]", con))
@@ -264,7 +262,7 @@ namespace SSIP.Controllers
         }
         public bool AddAttendance(string id, string timein, string timeout, DateTime workdate, string workhrs)
         {
-            using (var con = new SqlConnection(ConString))
+            using (var con = new SqlConnection(db.ConString()))
             {
                
                 using (var com = new SqlCommand("[SpAddAttendance]", con))
@@ -287,7 +285,7 @@ namespace SSIP.Controllers
         }
         public bool UpdateAttendance(string id, string timein, string timeout, string workhrs, DateTime workdate)
         {
-            using (var con = new SqlConnection(ConString))
+            using (var con = new SqlConnection(db.ConString()))
             {
 
                 using (var com = new SqlCommand("[SpUpdateAttendance]", con))
@@ -310,7 +308,7 @@ namespace SSIP.Controllers
         }
         public DataTable GetAttendance()
         {
-            using (var con = new SqlConnection(ConString))
+            using (var con = new SqlConnection(db.ConString()))
             {
                 con.Open();
                 using (SqlCommand com = new SqlCommand("[SpGetAttendances]", con))
@@ -333,7 +331,7 @@ namespace SSIP.Controllers
         public DataTable FindAttendance(string searched)
         {
           
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 try
                 {

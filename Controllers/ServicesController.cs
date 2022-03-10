@@ -1,4 +1,5 @@
-﻿using SSIP.Models;
+﻿using SSIP.DbAccess;
+using SSIP.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,16 +13,11 @@ namespace SSIP.Controllers
 {
     public class ServicesController
     {
-        #region private fields
-        //  private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-        string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        #endregion
-
         #region declarations
         AuditController aud = new AuditController();
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
-
+        ConnectionDB db = new ConnectionDB();
         public ServicesController()
         {
         }
@@ -32,7 +28,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(ConString))
+                using (SqlConnection conn = new SqlConnection(db.ConString()))
                 {
                     conn.Open();
 
@@ -250,7 +246,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(ConString))
+                using (SqlConnection conn = new SqlConnection(db.ConString()))
                 {
                     conn.Open();
 
@@ -413,7 +409,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(ConString))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetDispatched]", con))
                     {
@@ -445,7 +441,7 @@ namespace SSIP.Controllers
             {
 
 
-                using (SqlConnection con = new SqlConnection(ConString))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetSchedules]", con))
                     {
@@ -474,7 +470,7 @@ namespace SSIP.Controllers
         public DataTable FindSchedule(string searched)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 try
                 {
@@ -504,7 +500,7 @@ namespace SSIP.Controllers
         public DataTable FindDispatch(string searched)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
 
                 try

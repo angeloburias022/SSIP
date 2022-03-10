@@ -155,7 +155,6 @@ namespace SSIP.Controllers
             }
           
         }
-
         public bool ConfirmAuthority(User user)
         {
             using (SqlConnection con = new SqlConnection(ConString))

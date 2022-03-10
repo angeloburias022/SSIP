@@ -14,20 +14,23 @@ namespace SSIP.Controllers
 {
     public class AuditController
     {
-        //    private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-        private string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        
+        #region declaration
+        ConnectionDB db = new ConnectionDB();
+        DataTable dt = new DataTable();
+        DataSet ds = new DataSet();
         public AuditController()
         {
-           
+
         }
-      
+        #endregion
+
+        #region audit ops
         public void Logs(AuditTrails audit)
         {
             try
             {
-                
-                using (SqlConnection con = new SqlConnection(ConString))
+
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     if (con.State == ConnectionState.Open)
                         con.Close();
@@ -46,7 +49,7 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@Result", audit.Result);
                         com.Parameters.AddWithValue("@Description", audit.Description);
                         com.ExecuteNonQuery();
-                    }           
+                    }
                 }
             }
             catch (Exception error)
@@ -54,6 +57,37 @@ namespace SSIP.Controllers
                 MessageBox.Show("Something went wrong" + error);
             }
         }
+        public DataTable GetAudits()
+        {
+            try
+            {
+
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetAudits]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
+        #endregion
 
     }
 }

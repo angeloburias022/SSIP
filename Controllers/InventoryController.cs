@@ -1,4 +1,5 @@
-﻿using SSIP.Helper;
+﻿using SSIP.DbAccess;
+using SSIP.Helper;
 using SSIP.Models;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,11 @@ namespace SSIP.Controllers
 {
     public class InventoryController
     {
-        #region private fields
-        private string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-        #endregion
-
         #region declarations
         PasswordEncryptor enc = new PasswordEncryptor();
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
+        ConnectionDB db = new ConnectionDB();
         #endregion
 
         #region product inventory main ops
@@ -29,7 +26,7 @@ namespace SSIP.Controllers
         {        
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     using (var com = new SqlCommand("[SpAddProducts]", con))
                     {
@@ -67,7 +64,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     con.Open();
                     using (var com = new SqlCommand("[SpUpdateProductByID]", con))
@@ -110,7 +107,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     con.Open();
                     using (var com = new SqlCommand("[SpDeactivateProduct]", con))
@@ -136,7 +133,7 @@ namespace SSIP.Controllers
             //      string ConString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=RFBDesktopApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             try
             {
-                using (SqlConnection con = new SqlConnection(ConString))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetProducts]", con))
                     {
@@ -163,7 +160,7 @@ namespace SSIP.Controllers
         }
         public DataTable FindProduct(string searched)
         {
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 try
                 {
@@ -195,7 +192,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     using (var com = new SqlCommand("[SpAddEquipment]", con))
                     {
@@ -226,7 +223,7 @@ namespace SSIP.Controllers
         {
             try
             {
-                using (var con = new SqlConnection(ConString))
+                using (var con = new SqlConnection(db.ConString()))
                 {
                     con.Open();
                     using (var com = new SqlCommand("[SpUpdateEquipByID]", con))
@@ -261,7 +258,7 @@ namespace SSIP.Controllers
         {
           try
             {
-                using (SqlConnection con = new SqlConnection(ConString))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetEquipments]", con))
                     {
@@ -288,7 +285,7 @@ namespace SSIP.Controllers
         }
         public DataTable FindItem(string searched)
         {      
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 try
                 {
