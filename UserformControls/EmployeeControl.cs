@@ -87,7 +87,7 @@ namespace SSIP.UserformControls
                     AuditActionTypeENUM = (Enums.ActionTypes)1,
                     DateTimeStamp = DateTime.Now.ToString(),
                     Result = "Succeed",
-                    Description = "'" + user.Username + "' accessed manager customer feature"
+                    Description = "" + user.Username + " access manage employee feature"
                 };
                 aud.Logs(accesslog);
                 return true;
@@ -100,7 +100,7 @@ namespace SSIP.UserformControls
                     AuditActionTypeENUM = (Enums.ActionTypes)1,
                     DateTimeStamp = DateTime.Now.ToString(),
                     Result = "Failed",
-                    Description = "'" + user.Username + "'Failed to access manager customer feature"
+                    Description = "" + user.Username + "Failed to access manage employee feature"
                 };
                 aud.Logs(accesslog);
                 return false;

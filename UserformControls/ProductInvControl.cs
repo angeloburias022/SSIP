@@ -87,8 +87,7 @@ namespace SSIP.UserformControls
                         aud.Logs(failed);
                         MessageBox.Show("Something went wrong");
                     }
-                }
-                
+                }               
             }
         return true;
         }

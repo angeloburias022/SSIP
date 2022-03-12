@@ -934,6 +934,7 @@ namespace SSIP.UserForms
             this.tb_pass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_pass.DisabledState.Parent = this.tb_pass;
             this.tb_pass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_pass.Enabled = false;
             this.tb_pass.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_pass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_pass.FocusedState.Parent = this.tb_pass;
@@ -962,7 +963,6 @@ namespace SSIP.UserForms
             this.btn_viewDispatches.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewDispatches.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewDispatches.DisabledState.Parent = this.btn_viewDispatches;
-            this.btn_viewDispatches.Enabled = false;
             this.btn_viewDispatches.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_viewDispatches.ForeColor = System.Drawing.Color.White;
             this.btn_viewDispatches.HoverState.Parent = this.btn_viewDispatches;
@@ -1181,7 +1181,6 @@ namespace SSIP.UserForms
             this.btn_viewScheds.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewScheds.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewScheds.DisabledState.Parent = this.btn_viewScheds;
-            this.btn_viewScheds.Enabled = false;
             this.btn_viewScheds.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_viewScheds.ForeColor = System.Drawing.Color.White;
             this.btn_viewScheds.HoverState.Parent = this.btn_viewScheds;
@@ -1228,7 +1227,6 @@ namespace SSIP.UserForms
             this.btn_updateChanges.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_updateChanges.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_updateChanges.DisabledState.Parent = this.btn_updateChanges;
-            this.btn_updateChanges.Enabled = false;
             this.btn_updateChanges.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_updateChanges.ForeColor = System.Drawing.Color.White;
             this.btn_updateChanges.HoverState.Parent = this.btn_updateChanges;

@@ -25,7 +25,7 @@ namespace SSIP.UserForms
             InitializeComponent();
 
             this.securityForm1.Visible = false;
-            this.btn_save.Enabled = false;
+           
             if(tb_schedID.Text != "0" && tb_customerID.Text != "0")
             {
                 this.btn_addDispatch.Visible = true;
@@ -41,7 +41,6 @@ namespace SSIP.UserForms
          
          
         }
-
         #endregion
 
         #region declaration
@@ -51,142 +50,119 @@ namespace SSIP.UserForms
         #region save service (dispatch/schedule)
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("CONFIRM?",
-               "ADD NEW", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            Save();
+        }
+        private void Save()
+        {
+            if (Authorized())
             {
-                int cusID = 0;
-                int schedID = 0;
-
-
-                tb_customerID.Text= "0";
-                tb_schedID.Text = "0";
-
-                var sched = new Schedule();
-
-                cusID = Convert.ToInt32(tb_customerID.Text);
-                schedID = Convert.ToInt32(tb_schedID.Text);
-
-                var cus = new User
+                if (MessageBox.Show("CONFIRM?",
+                                "ADD NEW", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
-                    Username = tb_recorded.Text,
-                    UserID = cusID,
-                    Firstname = tb_fname.Text,
-                    Lastname = tb_lname.Text,
-                    ContactNumber = tb_mobile.Text,
-                    TelephoneNo = tb_tel.Text,
-                };
+                    int cusID = 0;
+                    int schedID = 0;
 
-                var dispatch = new Dispatch
-                {
-                    dispatchdate = Convert.ToDateTime(dispatchDate.Text),
-                    TimeIn = tb_timein.Text,
-                    TimeOut = tb_timeout.Text,
-                    AssignTeam = tb_assign1.Text
-                };
-                
-                try
-                {
-                sched = new Schedule
+
+                    tb_customerID.Text = "0";
+                    tb_schedID.Text = "0";
+
+                    var sched = new Schedule();
+
+                    cusID = Convert.ToInt32(tb_customerID.Text);
+                    schedID = Convert.ToInt32(tb_schedID.Text);
+
+                    var cus = new User
                     {
-                        Quantity = Convert.ToInt32(tb_quan.Text),
-                        Brand = tb_brand.Text,
-                        AirconType = tb_actype.Text,
-                        ServiceType = cmb_svtype.Text,
-                        ServiceTime = tb_svtime.Text,
-                        RecordedBy = tb_recorded.Text,
-                        ScheduleDate = tb_svdate.Text,
-                        ScheduleID = schedID,
-                        Status = cmb_Status.Text
+                        Username = tb_recorded.Text,
+                        UserID = cusID,
+                        Firstname = tb_fname.Text,
+                        Lastname = tb_lname.Text,
+                        ContactNumber = tb_mobile.Text,
+                        TelephoneNo = tb_tel.Text,
                     };
-                }
-                catch (Exception error)
-                {
-                    error.ToString();
-                }
 
-                var address = new Address
-                {
-                    Street = tb_street.Text,
-                    HouseNo = tb_houseNo.Text,
-                    Barangay = tb_barangay.Text,
-                    City = cmb_City.Text
-                };
-
-                var svcon = new ServicesController();
-
-                var customerValidCon = new ValidationContext(cus, null, null);
-                var addsValidCon = new ValidationContext(address, null, null);
-                var schedValidCon = new ValidationContext(sched, null, null);
-                IList<ValidationResult> errors = new List<ValidationResult>();
-
-                if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
-                    !Validator.TryValidateObject(address, addsValidCon, errors, true) ||
-                    !Validator.TryValidateObject(sched, schedValidCon, errors, true)
-                    )
-                {
-                    foreach (ValidationResult val in errors)
+                    var dispatch = new Dispatch
                     {
-                        MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
+                        dispatchdate = Convert.ToDateTime(dispatchDate.Text),
+                        TimeIn = tb_timein.Text,
+                        TimeOut = tb_timeout.Text,
+                        AssignTeam = tb_assign1.Text
+                    };
+
+                    try
+                    {
+                        sched = new Schedule
+                        {
+                            Quantity = Convert.ToInt32(tb_quan.Text),
+                            Brand = tb_brand.Text,
+                            AirconType = tb_actype.Text,
+                            ServiceType = cmb_svtype.Text,
+                            ServiceTime = tb_svtime.Text,
+                            RecordedBy = tb_recorded.Text,
+                            ScheduleDate = tb_svdate.Text,
+                            ScheduleID = schedID,
+                            Status = cmb_Status.Text
+                        };
+                    }
+                    catch (Exception error)
+                    {
+                        error.ToString();
+                    }
+
+                    var address = new Address
+                    {
+                        Street = tb_street.Text,
+                        HouseNo = tb_houseNo.Text,
+                        Barangay = tb_barangay.Text,
+                        City = cmb_City.Text
+                    };
+
+                    var svcon = new ServicesController();
+
+                    var customerValidCon = new ValidationContext(cus, null, null);
+                    var addsValidCon = new ValidationContext(address, null, null);
+                    var schedValidCon = new ValidationContext(sched, null, null);
+                    IList<ValidationResult> errors = new List<ValidationResult>();
+
+                    if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
+                        !Validator.TryValidateObject(address, addsValidCon, errors, true) ||
+                        !Validator.TryValidateObject(sched, schedValidCon, errors, true)
+                        )
+                    {
+                        foreach (ValidationResult val in errors)
+                        {
+                            MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        var result = svcon.AddService(cus, address, sched, dispatch);
+
+                        if (result != true)
+                        {
+                            MessageBox.Show("something went wrong");
+
+                            UpdateGrids();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Added successfully");
+
+                            UpdateGrids();
+                        }
                     }
                 }
                 else
                 {
-                    var result = svcon.AddService(cus, address, sched, dispatch);
-
-                    if (result != true)
-                    {
-                        MessageBox.Show("something went wrong");
-
-                        UpdateGrids();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Added successfully");
-
-                        UpdateGrids();
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Cancelled Successfuly");
+                    MessageBox.Show("Cancelled Successfuly");
+                } 
             }
         }
         #endregion
 
-        #region credentials confirmation
-        private void tb_recorded_Leave(object sender, EventArgs e)
-        {
-            //  this.dispatchControl1.Visible = false;
-            //this.securityForm1.BringToFront();
-            //this.securityForm1.Visible = true;
-            //this.securityForm1.Dock = DockStyle.Fill;
-            //var user = new User
-            //{
-            //    Username = tb_recorded.Text
-            //};
-
-            //var acc = new AccessController();
-
-            //var result = acc.CheckUsername(user);
-
-            //if (result == true)
-            //{
-            //    this.tb_pass.Show();
-
-            //}
-            //else
-            //{
-
-            ////    this.tb_pass.Hide();
-
-            //    MessageBox.Show("Make sure you inputted your corrent Username");
-            //}
-
-        }
-
-        private void tb_pass_Leave(object sender, EventArgs e)
+        #region access
+        private void PasswordField()
         {
             var user = new User
             {
@@ -194,11 +170,75 @@ namespace SSIP.UserForms
                 Password = tb_pass.Text
             };
 
-            var acc = new AccessController();
+            AccessLogin(user);
+        }
+        private bool Authorized()
+        {
+            var user = new User
+            {
+                Username = tb_recorded.Text,
+                Password = tb_pass.Text
+            };
 
 
-            var result = acc.ConfirmAccess(user);
+            var cfirm = new AccessController();
 
+            if (user.Username != "" && user.Lastname != "")
+            {
+                var result = cfirm.ConfirmAccess(user);
+
+                if (result != true)
+                {
+                    NotAuthorizedMssg();
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Authorization Access Required");
+                return false;
+            }
+        }
+        private bool HighAuthority()
+        {
+            var access = new AccessController();
+
+            var creds = new User
+            {
+                Username = tb_recorded.Text,
+                Password = tb_pass.Text
+            };
+
+            var result = access.ConfirmAuthority(creds);
+
+            if (result != true)
+            {
+                NotHighAuthorityMssg();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private void NotAuthorizedMssg()
+        {
+            MessageBox.Show("Authorization Required");
+        }
+        private void NotHighAuthorityMssg()
+        {
+            MessageBox.Show("Higher Authoritization Required");
+        }
+        private bool AccessLogin(User users)
+        {
+         
+            var cfirm = new AccessController();
+
+            var result = cfirm.ConfirmAccess(users);
 
             if (result == true)
             {
@@ -219,14 +259,15 @@ namespace SSIP.UserForms
                 }
                 var accesslog = new AuditTrails
                 {
-                    Username = user.Username,
+                    Username = users.Username,
                     AuditActionTypeENUM = (Enums.ActionTypes)1,
                     DateTimeStamp = DateTime.Now.ToString(),
                     Result = "Succeed",
-                    Description = "'" + user.Username + "' accessed main services feature"
+                    Description = "'" + users.Username + "' accessed main services feature"
                 };
 
-                aud.Logs(accesslog);          
+                aud.Logs(accesslog);
+                return true;
             }
             else
             {
@@ -250,19 +291,19 @@ namespace SSIP.UserForms
                     AuditActionTypeENUM = (Enums.ActionTypes)1,
                     DateTimeStamp = DateTime.Now.ToString(),
                     Result = "Failed",
-                    Description = "'" + user.Username + "'failed to accessed main services feature"
+                    Description = "'" + users.Username + "'failed to accessed main services feature"
                 };
-
 
                 aud.Logs(failedaudit);
 
                 MessageBox.Show("Wrong password");
+                return false;
             }
         }
         #endregion
 
         #region show and hide based on service status
-        private void cmb_Status_SelectedIndexChanged(object sender, EventArgs e)
+            private void cmb_Status_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmb_Status.Text == "Dispatch")
             {
@@ -278,8 +319,7 @@ namespace SSIP.UserForms
                 HideAssign();
             }
         }
-
-         void HideAssign()
+            void HideAssign()
         {
 
             tb_assign1.Visible = false;
@@ -293,7 +333,7 @@ namespace SSIP.UserForms
          
 
         }
-         void ShowAssign()
+            void ShowAssign()
         {
 
             tb_assign1.Visible = true;
@@ -313,10 +353,8 @@ namespace SSIP.UserForms
         private void schedgrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             HideSched();
-
             try
             {
-
                 tb_svdate.Format = DateTimePickerFormat.Custom;
                 // Display the date as "Mon 27 Feb 2012". 
                 tb_svdate.CustomFormat = "ddd dd MMM yyyy";
@@ -452,11 +490,7 @@ namespace SSIP.UserForms
             btn_save.Enabled = true;
             ShowAssign();
             ClearBoxes();
-            HideDispatch();
-
-
-          
-          
+            HideDispatch(); 
         }
         private void btn_addsched_Click(object sender, EventArgs e)
         {
@@ -466,55 +500,52 @@ namespace SSIP.UserForms
             btn_save.Enabled = true;
             HideAssign();
             ClearBoxes();
-            HideSched();
-
-
-           
-            
+            HideSched();         
         }
         #endregion
 
-        #region hide and view services panels
-        private void btn_viewDispatches_Click(object sender, EventArgs e)
+        #region hide and view services panels  
+        private void ShowScheds()
         {
-       
-            dispatchListgrid.DataSource = null;
-            schedgrid.DataSource = null;
-            schedgrid.Columns.Clear();
-            dispatchListgrid.AutoGenerateColumns = true;
-            schedgrid.AutoGenerateColumns = false;
+            if (HighAuthority())
+            {
 
-            
+                schedgrid.DataSource = null;
+                dispatchListgrid.DataSource = null;
+                dispatchListgrid.Columns.Clear();
+                schedgrid.AutoGenerateColumns = true;
+                dispatchListgrid.AutoGenerateColumns = false;
 
-            this.dispatchListgrid.DataSource = sv.GetDispatches();
-            this.dispatchListgrid.Columns["SchedID"].Visible = false;
-            this.dispatchListgrid.Columns["FirstName"].Visible = false;
-            this.dispatchListgrid.Columns["LastName"].Visible = false;
-            this.dispatchListgrid.Columns["Dispatch_ID"].Visible = false;
-            this.dispatchListgrid.Columns["PersonID"].Visible = false;
+                this.schedgrid.DataSource = sv.GetSchedules();
+                this.schedgrid.Columns["SchedID"].Visible = false;
+                this.schedgrid.Columns["FirstName"].Visible = false;
+                this.schedgrid.Columns["LastName"].Visible = false;
 
-            ClearBoxes();
-            ViewDispatches();
-
-
+                this.schedgrid.Columns["PersonID"].Visible = false;
+                ClearBoxes();
+                ViewSchedules();
+            }
         }
-        private void btn_viewScheds_Click(object sender, EventArgs e)
+        private void ShowDispatch()
         {
-            schedgrid.DataSource = null;
-            dispatchListgrid.DataSource = null;
-            dispatchListgrid.Columns.Clear();
-            schedgrid.AutoGenerateColumns = true;
-            dispatchListgrid.AutoGenerateColumns = false;
+            if (HighAuthority())
+            {
+                dispatchListgrid.DataSource = null;
+                schedgrid.DataSource = null;
+                schedgrid.Columns.Clear();
+                dispatchListgrid.AutoGenerateColumns = true;
+                schedgrid.AutoGenerateColumns = false;
 
-            this.schedgrid.DataSource = sv.GetSchedules();
-            this.schedgrid.Columns["SchedID"].Visible = false;
-            this.schedgrid.Columns["FirstName"].Visible = false;
-            this.schedgrid.Columns["LastName"].Visible = false;
-         
-            this.schedgrid.Columns["PersonID"].Visible = false;
-            ClearBoxes();
-            ViewSchedules();
-         
+                this.dispatchListgrid.DataSource = sv.GetDispatches();
+                this.dispatchListgrid.Columns["SchedID"].Visible = false;
+                this.dispatchListgrid.Columns["FirstName"].Visible = false;
+                this.dispatchListgrid.Columns["LastName"].Visible = false;
+                this.dispatchListgrid.Columns["Dispatch_ID"].Visible = false;
+                this.dispatchListgrid.Columns["PersonID"].Visible = false;
+
+                ClearBoxes();
+                ViewDispatches();
+            }
         }
         void ViewSchedules()
         {
@@ -528,7 +559,7 @@ namespace SSIP.UserForms
             dispatchList_panel.Visible = true;
             dispatchListgrid.Visible = true;
             DispatchListPanel.Visible = true;
-            dispatchList_panel.Dock = DockStyle.Fill;         
+            dispatchList_panel.Dock = DockStyle.Fill;
         }
         void HideDispatch()
         {
@@ -550,106 +581,112 @@ namespace SSIP.UserForms
         #region update schedule/dispatch
         private void btn_updateChanges_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("CONFIRM?",
-        "UPDATE CHANGES", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            UpdateChanges();
+        }
+        private void UpdateChanges()
+        {
+            if (HighAuthority())
             {
-                var dispatch = new Dispatch();
-                var sched = new Schedule();
-                var cus = new User();
-                var per = new Customer();
-                var address = new Address();
-
-                                
-                dispatch = new Dispatch
+                if (MessageBox.Show("CONFIRM?",
+                        "UPDATE CHANGES", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
-                    DispatchID = Convert.ToInt32(tb_dispatchID.Text),
-                    dispatchdate = Convert.ToDateTime(dispatchDate.Text),
-                    TimeIn = tb_timein.Text,
-                    TimeOut = tb_timeout.Text,
-                    AssignTeam = tb_assign1.Text
-                };
-                
-
-                cus = new User
-                {
-                    Username = tb_recorded.Text,
-                    UserID = Convert.ToInt32(tb_customerID.Text),
-                    Firstname = tb_fname.Text,
-                    Lastname = tb_lname.Text,
-                    ContactNumber = tb_mobile.Text,
-                    TelephoneNo = tb_tel.Text,
-
-                };
-
-                per = new Customer
-                {
-                    CustomerID = Convert.ToInt32(tb_customerID.Text)
-                };
-
-                sched = new Schedule
-                {
-                    Quantity = Convert.ToInt32(tb_quan.Text),
-                    Brand = tb_brand.Text,
-                    AirconType = tb_actype.Text,
-                    ServiceType = cmb_svtype.Text,
-                    ServiceTime = tb_svtime.Text,
-                    RecordedBy = tb_recorded.Text,
-                    ScheduleDate = tb_svdate.Text,
-                    ScheduleID = Convert.ToInt32(tb_schedID.Text),
-                    Status = cmb_Status.Text
-                };
-
-                address = new Address
-                {
-                    Street = tb_street.Text,
-                    HouseNo = tb_houseNo.Text,
-                    Barangay = tb_barangay.Text,
-                    City = cmb_City.Text
-                };
-
-                ServicesController svcon = new ServicesController();
+                    var dispatch = new Dispatch();
+                    var sched = new Schedule();
+                    var cus = new User();
+                    var per = new Customer();
+                    var address = new Address();
 
 
-                var customerValidCon = new ValidationContext(cus, null, null);
-                var addsValidCon = new ValidationContext(address, null, null);
-                var schedValidCon = new ValidationContext(sched, null, null);
-                IList<ValidationResult> errors = new List<ValidationResult>();
-
-                if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
-                    !Validator.TryValidateObject(address, addsValidCon, errors, true) ||
-                    !Validator.TryValidateObject(sched, schedValidCon, errors, true)
-                    )
-                {
-                    foreach (ValidationResult val in errors)
+                    dispatch = new Dispatch
                     {
-                        MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-                else
-                {
-                    var result = svcon.UpdateService(cus, per, address, sched, dispatch);
+                        DispatchID = Convert.ToInt32(tb_dispatchID.Text),
+                        dispatchdate = Convert.ToDateTime(dispatchDate.Text),
+                        TimeIn = tb_timein.Text,
+                        TimeOut = tb_timeout.Text,
+                        AssignTeam = tb_assign1.Text
+                    };
 
-                    if (result != true)
+
+                    cus = new User
                     {
-                        MessageBox.Show("something went wrong");
-                        UpdateGrids();
+                        Username = tb_recorded.Text,
+                        UserID = Convert.ToInt32(tb_customerID.Text),
+                        Firstname = tb_fname.Text,
+                        Lastname = tb_lname.Text,
+                        ContactNumber = tb_mobile.Text,
+                        TelephoneNo = tb_tel.Text,
+
+                    };
+
+                    per = new Customer
+                    {
+                        CustomerID = Convert.ToInt32(tb_customerID.Text)
+                    };
+
+                    sched = new Schedule
+                    {
+                        Quantity = Convert.ToInt32(tb_quan.Text),
+                        Brand = tb_brand.Text,
+                        AirconType = tb_actype.Text,
+                        ServiceType = cmb_svtype.Text,
+                        ServiceTime = tb_svtime.Text,
+                        RecordedBy = tb_recorded.Text,
+                        ScheduleDate = tb_svdate.Text,
+                        ScheduleID = Convert.ToInt32(tb_schedID.Text),
+                        Status = cmb_Status.Text
+                    };
+
+                    address = new Address
+                    {
+                        Street = tb_street.Text,
+                        HouseNo = tb_houseNo.Text,
+                        Barangay = tb_barangay.Text,
+                        City = cmb_City.Text
+                    };
+
+                    ServicesController svcon = new ServicesController();
+
+
+                    var customerValidCon = new ValidationContext(cus, null, null);
+                    var addsValidCon = new ValidationContext(address, null, null);
+                    var schedValidCon = new ValidationContext(sched, null, null);
+                    IList<ValidationResult> errors = new List<ValidationResult>();
+
+                    if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
+                        !Validator.TryValidateObject(address, addsValidCon, errors, true) ||
+                        !Validator.TryValidateObject(sched, schedValidCon, errors, true)
+                        )
+                    {
+                        foreach (ValidationResult val in errors)
+                        {
+                            MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Updated successfully");
-                        UpdateGrids();
+                        var result = svcon.UpdateService(cus, per, address, sched, dispatch);
+
+                        if (result != true)
+                        {
+                            MessageBox.Show("something went wrong");
+                            UpdateGrids();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Updated successfully");
+                            UpdateGrids();
+                        }
                     }
+
+
                 }
-
-
-            }
-            else
-            {
-                MessageBox.Show("Cancelled Successfuly");
+                else
+                {
+                    MessageBox.Show("Cancelled Successfuly");
+                } 
             }
         }
-
         #endregion
 
         #region disable fields, clear txtboxes and update grid
@@ -709,11 +746,25 @@ namespace SSIP.UserForms
         }
         #endregion
 
+        #region event handler
+        private void tb_recorded_Leave(object sender, EventArgs e)
+        {
+        }
+        private void tb_pass_Leave(object sender, EventArgs e)
+        {
+            PasswordField();
+        }
         private void tb_recorded_TextChanged(object sender, EventArgs e)
         {
-
+            if (tb_recorded.Text != "")
+            {
+                tb_pass.Enabled = true;
+            }
+            else
+            {
+                tb_pass.Enabled = false;
+            }
         }
-
         private void tb_searchScheds_TextChanged(object sender, EventArgs e)
         {
 
@@ -723,13 +774,12 @@ namespace SSIP.UserForms
 
             schedgrid.DataSource = result;
 
-            if(tb_searchScheds.Text == "")
+            if (tb_searchScheds.Text == "")
             {
                 UpdateGrids();
             }
 
         }
-
         private void tb_searchDispatchs_TextChanged(object sender, EventArgs e)
         {
             var tool = new ServicesController();
@@ -743,15 +793,23 @@ namespace SSIP.UserForms
                 UpdateGrids();
             }
         }
-
         private void tb_searchScheds_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
-
         private void tb_searchDispatchs_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
+        private void btn_viewDispatches_Click(object sender, EventArgs e)
+        {
+            ShowDispatch();
+        }
+        private void btn_viewScheds_Click(object sender, EventArgs e)
+        {
+            ShowScheds();
+        }
+        #endregion
+
     }
 }

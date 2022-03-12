@@ -391,6 +391,19 @@ namespace SSIP.Forms
         #endregion
 
         #region Hide and Show control panel
+        public void ShowAudControl()
+        {
+            auditControlPanel.Dock = DockStyle.Fill;
+            auditControlPanel.Visible = true;
+            this.auditControl1.BringToFront();
+            this.auditControl1.Show();
+
+        }
+        public void HideAudControl()
+        {
+            auditControlPanel.Hide();
+            auditControlPanel.Dock = DockStyle.None;
+        }
         public void ShowEquipInvControl()
         {
             equipControlPanel.Dock = DockStyle.Fill;
@@ -483,6 +496,33 @@ namespace SSIP.Forms
         #endregion
 
         #region sub clicks event handler
+        private void btn_auditLogs_Click(object sender, EventArgs e)
+        {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HideProductInvControl();
+            HideEquipInvControl();
+
+            ShowAudControl();
+            HideSubMenu();
+        }
+        private void btn_dispatchSched_Click(object sender, EventArgs e)
+        {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideProductInvControl();
+            HideEquipInvControl();
+            HideAudControl();
+
+
+            ShowMainServicesControl();
+            HideSubMenu();
+        }
         private void btn_equip_inv_Click(object sender, EventArgs e)
         {
             HideEmployeesPanelControl();
@@ -490,6 +530,8 @@ namespace SSIP.Forms
             HideCustomersPanelControl();
             HideAttendanceControl();
             HideProductInvControl();
+            HideAudControl();
+
 
             ShowEquipInvControl();
             HideSubMenu();
@@ -502,7 +544,7 @@ namespace SSIP.Forms
             HideAttendanceControl();
             HidePayRollControl();
             HideEquipInvControl();
-
+            HideAudControl();
 
             HideSubMenu();
         }
@@ -513,6 +555,7 @@ namespace SSIP.Forms
             HideCustomersPanelControl();
             HideProductInvControl();
             HidePayRollControl();
+            HideAudControl();
 
             ShowAttendanceControl();
             HideSubMenu();
@@ -525,6 +568,7 @@ namespace SSIP.Forms
             HideCustomersPanelControl();
             HideProductInvControl();
             HideEquipInvControl();
+            HideAudControl();
 
             ShowPayRollControl();
             HideSubMenu();
@@ -537,6 +581,7 @@ namespace SSIP.Forms
             HidePayRollControl();
             HideAttendanceControl();
             HideEquipInvControl();
+            HideAudControl();
 
             ShowProductInvControl();
             HideSubMenu();
@@ -550,21 +595,9 @@ namespace SSIP.Forms
             HidePayRollControl();
             HideProductInvControl();
             HideEquipInvControl();
+            HideAudControl();
 
             ShowEmployeesPanelControl();
-            HideSubMenu();
-        }
-        private void btn_dispatch_sub_Click_2(object sender, EventArgs e)
-        {
-            HideEmployeesPanelControl();
-            HideMainServicesPanelControl();
-            HideCustomersPanelControl();
-            HideAttendanceControl();
-            HidePayRollControl();
-            HideProductInvControl();
-            HideEquipInvControl();
-
-            ShowMainServicesControl();
             HideSubMenu();
         }
         private void btn_managecus_sub_Click(object sender, EventArgs e)
@@ -575,11 +608,13 @@ namespace SSIP.Forms
             HidePayRollControl();
             HideProductInvControl();
             HideEquipInvControl();
-
+            HideAudControl();
 
             ShowCustomersPanelControl();
             HideSubMenu();
         }
         #endregion
+
+
     }
 }

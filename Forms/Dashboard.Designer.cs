@@ -39,7 +39,7 @@ namespace SSIP.Forms
             this.logo_panel = new System.Windows.Forms.Panel();
             this.btn_menu_cust = new System.Windows.Forms.Button();
             this.Customers_panel = new System.Windows.Forms.Panel();
-            this.btn_dispatch_sub = new System.Windows.Forms.Button();
+            this.btn_cusArchived = new System.Windows.Forms.Button();
             this.btn_managecus_sub = new System.Windows.Forms.Button();
             this.btn_menu_employees = new System.Windows.Forms.Button();
             this.emp_panel = new System.Windows.Forms.Panel();
@@ -51,7 +51,7 @@ namespace SSIP.Forms
             this.btn_auditLogs = new System.Windows.Forms.Button();
             this.btn_main_settings = new System.Windows.Forms.Button();
             this.services_panel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_dispatchSched = new System.Windows.Forms.Button();
             this.btn_main_services = new System.Windows.Forms.Button();
             this.inventory_panel = new System.Windows.Forms.Panel();
             this.btn_prodInventory = new System.Windows.Forms.Button();
@@ -70,8 +70,10 @@ namespace SSIP.Forms
             this.payrollControl1 = new SSIP.UserformControls.PayrollControl();
             this.productInvPanel = new System.Windows.Forms.Panel();
             this.productInvControl1 = new SSIP.UserformControls.ProductInvControl();
-            this.equipInvControl1 = new SSIP.UserformControls.EquipInvControl();
             this.equipControlPanel = new System.Windows.Forms.Panel();
+            this.equipInvControl1 = new SSIP.UserformControls.EquipInvControl();
+            this.auditControlPanel = new System.Windows.Forms.Panel();
+            this.auditControl1 = new SSIP.UserformControls.AuditControl();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -85,6 +87,7 @@ namespace SSIP.Forms
             this.payroll_mainPanel.SuspendLayout();
             this.productInvPanel.SuspendLayout();
             this.equipControlPanel.SuspendLayout();
+            this.auditControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Services_pie_chart
@@ -171,7 +174,7 @@ namespace SSIP.Forms
             // 
             // Customers_panel
             // 
-            this.Customers_panel.Controls.Add(this.btn_dispatch_sub);
+            this.Customers_panel.Controls.Add(this.btn_cusArchived);
             this.Customers_panel.Controls.Add(this.btn_managecus_sub);
             this.Customers_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.Customers_panel.Location = new System.Drawing.Point(0, 186);
@@ -179,21 +182,20 @@ namespace SSIP.Forms
             this.Customers_panel.Size = new System.Drawing.Size(180, 102);
             this.Customers_panel.TabIndex = 5;
             // 
-            // btn_dispatch_sub
+            // btn_cusArchived
             // 
-            this.btn_dispatch_sub.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_dispatch_sub.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_dispatch_sub.FlatAppearance.BorderSize = 0;
-            this.btn_dispatch_sub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_dispatch_sub.Location = new System.Drawing.Point(0, 50);
-            this.btn_dispatch_sub.Name = "btn_dispatch_sub";
-            this.btn_dispatch_sub.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_dispatch_sub.Size = new System.Drawing.Size(180, 50);
-            this.btn_dispatch_sub.TabIndex = 1;
-            this.btn_dispatch_sub.Text = "Dispatch / Schedule";
-            this.btn_dispatch_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_dispatch_sub.UseVisualStyleBackColor = false;
-            this.btn_dispatch_sub.Click += new System.EventHandler(this.btn_dispatch_sub_Click_2);
+            this.btn_cusArchived.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_cusArchived.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_cusArchived.FlatAppearance.BorderSize = 0;
+            this.btn_cusArchived.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cusArchived.Location = new System.Drawing.Point(0, 50);
+            this.btn_cusArchived.Name = "btn_cusArchived";
+            this.btn_cusArchived.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btn_cusArchived.Size = new System.Drawing.Size(180, 50);
+            this.btn_cusArchived.TabIndex = 1;
+            this.btn_cusArchived.Text = "Customer\'s Archived";
+            this.btn_cusArchived.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cusArchived.UseVisualStyleBackColor = false;
             // 
             // btn_managecus_sub
             // 
@@ -331,6 +333,7 @@ namespace SSIP.Forms
             this.btn_auditLogs.Text = "Audit Logs";
             this.btn_auditLogs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_auditLogs.UseVisualStyleBackColor = false;
+            this.btn_auditLogs.Click += new System.EventHandler(this.btn_auditLogs_Click);
             // 
             // btn_main_settings
             // 
@@ -350,27 +353,28 @@ namespace SSIP.Forms
             // 
             // services_panel
             // 
-            this.services_panel.Controls.Add(this.button1);
+            this.services_panel.Controls.Add(this.btn_dispatchSched);
             this.services_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.services_panel.Location = new System.Drawing.Point(0, 725);
             this.services_panel.Name = "services_panel";
             this.services_panel.Size = new System.Drawing.Size(180, 45);
             this.services_panel.TabIndex = 17;
             // 
-            // button1
+            // btn_dispatchSched
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(180, 50);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Customer\'s Archived";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_dispatchSched.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_dispatchSched.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_dispatchSched.FlatAppearance.BorderSize = 0;
+            this.btn_dispatchSched.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_dispatchSched.Location = new System.Drawing.Point(0, 0);
+            this.btn_dispatchSched.Name = "btn_dispatchSched";
+            this.btn_dispatchSched.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btn_dispatchSched.Size = new System.Drawing.Size(180, 50);
+            this.btn_dispatchSched.TabIndex = 26;
+            this.btn_dispatchSched.Text = "Dispatch/Schedule";
+            this.btn_dispatchSched.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_dispatchSched.UseVisualStyleBackColor = false;
+            this.btn_dispatchSched.Click += new System.EventHandler(this.btn_dispatchSched_Click);
             // 
             // btn_main_services
             // 
@@ -576,6 +580,15 @@ namespace SSIP.Forms
             this.productInvControl1.Size = new System.Drawing.Size(85, 77);
             this.productInvControl1.TabIndex = 25;
             // 
+            // equipControlPanel
+            // 
+            this.equipControlPanel.Controls.Add(this.equipInvControl1);
+            this.equipControlPanel.Location = new System.Drawing.Point(978, 325);
+            this.equipControlPanel.Name = "equipControlPanel";
+            this.equipControlPanel.Size = new System.Drawing.Size(78, 113);
+            this.equipControlPanel.TabIndex = 26;
+            this.equipControlPanel.Visible = false;
+            // 
             // equipInvControl1
             // 
             this.equipInvControl1.BackColor = System.Drawing.Color.White;
@@ -586,14 +599,23 @@ namespace SSIP.Forms
             this.equipInvControl1.Size = new System.Drawing.Size(78, 113);
             this.equipInvControl1.TabIndex = 25;
             // 
-            // equipControlPanel
+            // auditControlPanel
             // 
-            this.equipControlPanel.Controls.Add(this.equipInvControl1);
-            this.equipControlPanel.Location = new System.Drawing.Point(978, 325);
-            this.equipControlPanel.Name = "equipControlPanel";
-            this.equipControlPanel.Size = new System.Drawing.Size(78, 113);
-            this.equipControlPanel.TabIndex = 26;
-            this.equipControlPanel.Visible = false;
+            this.auditControlPanel.Controls.Add(this.auditControl1);
+            this.auditControlPanel.Location = new System.Drawing.Point(379, 366);
+            this.auditControlPanel.Name = "auditControlPanel";
+            this.auditControlPanel.Size = new System.Drawing.Size(86, 83);
+            this.auditControlPanel.TabIndex = 27;
+            this.auditControlPanel.Visible = false;
+            // 
+            // auditControl1
+            // 
+            this.auditControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("auditControl1.BackgroundImage")));
+            this.auditControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.auditControl1.Location = new System.Drawing.Point(0, 0);
+            this.auditControl1.Name = "auditControl1";
+            this.auditControl1.Size = new System.Drawing.Size(86, 83);
+            this.auditControl1.TabIndex = 0;
             // 
             // Dashboard
             // 
@@ -601,6 +623,7 @@ namespace SSIP.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1185, 526);
+            this.Controls.Add(this.auditControlPanel);
             this.Controls.Add(this.equipControlPanel);
             this.Controls.Add(this.productInvPanel);
             this.Controls.Add(this.payroll_mainPanel);
@@ -635,6 +658,7 @@ namespace SSIP.Forms
             this.payroll_mainPanel.ResumeLayout(false);
             this.productInvPanel.ResumeLayout(false);
             this.equipControlPanel.ResumeLayout(false);
+            this.auditControlPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -651,7 +675,7 @@ namespace SSIP.Forms
         private System.Windows.Forms.Panel logo_panel;
         private System.Windows.Forms.Button btn_menu_cust;
         private System.Windows.Forms.Panel Customers_panel;
-        private System.Windows.Forms.Button btn_dispatch_sub;
+        private System.Windows.Forms.Button btn_cusArchived;
         private System.Windows.Forms.Button btn_managecus_sub;
         private System.Windows.Forms.Button btn_menu_employees;
         private System.Windows.Forms.Panel emp_panel;
@@ -665,7 +689,7 @@ namespace SSIP.Forms
         private System.Windows.Forms.Button btn_equip_inv;
         private System.Windows.Forms.Panel services_panel;
         private System.Windows.Forms.Button btn_main_services;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_dispatchSched;
         private System.Windows.Forms.Panel settings_panel;
         private System.Windows.Forms.Button btn_auditLogs;
         private System.Windows.Forms.Button btn_main_settings;
@@ -684,5 +708,7 @@ namespace SSIP.Forms
         private UserformControls.ProductInvControl productInvControl1;
         private UserformControls.EquipInvControl equipInvControl1;
         private System.Windows.Forms.Panel equipControlPanel;
+        private System.Windows.Forms.Panel auditControlPanel;
+        private UserformControls.AuditControl auditControl1;
     }
 }
