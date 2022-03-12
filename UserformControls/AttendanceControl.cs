@@ -46,31 +46,39 @@ namespace SSIP.UserformControls
         }
         private void btn_save_Click(object sender, EventArgs e)
         {
-
-            var tools = new EmployeesController();
-
-            var result = tools.AddAttendance(tb_employeeID.Text, tb_timein.Text, tb_timeout.Text, workdate.Value, tb_totalHrs.Text);
-
-            if (result != true)
+            Save();          
+        }
+        private void Save()
+        {
+            if (Authorized())
             {
-                MessageBox.Show("Something went wrong");
-            }
-            else
-            {
-                ClearFields();
-                MessageBox.Show("Attendance Recorded");
+                var tools = new EmployeesController();
 
-                // audit 
-            }
+                var result = tools.AddAttendance(tb_employeeID.Text, tb_timein.Text, tb_timeout.Text, workdate.Value, tb_totalHrs.Text);
 
+                if (result != true)
+                {
+                    MessageBox.Show("Something went wrong");
+                }
+                else
+                {
+                    ClearFields();
+                    MessageBox.Show("Attendance Recorded");
+
+                    // audit 
+                } 
+            }
         }
         private void btn_scan_Click(object sender, EventArgs e)
         {
-            captureDevice = new VideoCaptureDevice(filterinfocollection[cboDevice.SelectedIndex].MonikerString);
-            captureDevice.NewFrame += CaptureDevice_NewFrame;
-            captureDevice.Start();
-            timer1.Start();
+            if (Authorized())
+            {
+                captureDevice = new VideoCaptureDevice(filterinfocollection[cboDevice.SelectedIndex].MonikerString);
+                captureDevice.NewFrame += CaptureDevice_NewFrame;
+                captureDevice.Start();
+                timer1.Start();
 
+            }
         }
         private void btn_updateChanges_Click(object sender, EventArgs e)
         {
@@ -196,6 +204,44 @@ namespace SSIP.UserformControls
             else
                 return false;
 
+        }
+        private bool Authorized()
+        {
+            var user = new User
+            {
+                Username = tb_unameAccess.Text,
+                Password = tb_pass.Text
+            };
+
+            var cfirm = new AccessController();
+
+            if (user.Username != "" && user.Lastname != "")
+            {
+                var result = cfirm.ConfirmAccess(user);
+
+                if (result != true)
+                {
+                    NotAuthorizedMssg();
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Authorization Access Required");
+                return false;
+            }
+        }
+        private void NotAuthorizedMssg()
+        {
+            MessageBox.Show("Authorization Required");
+        }
+        private void NotHighAuthorityMssg()
+        {
+            MessageBox.Show("Higher Authoritization Required");
         }
         #endregion
 
@@ -396,5 +442,16 @@ namespace SSIP.UserformControls
 
         #endregion
 
+        private void tb_unameAccess_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_unameAccess.Text =="")
+            {
+                tb_pass.Enabled = false;
+            }
+            else
+            {
+                tb_pass.Enabled = true;
+            }
+        }
     }
 }

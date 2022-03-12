@@ -164,6 +164,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Dashboard.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DbAccess\ConnectionDB.cs" />
     <Compile Include="DbAccess\DbContext.cs" />
     <Compile Include="Enums\ActionTypes.cs" />
     <Compile Include="Forms\Dashboard.cs">
@@ -190,6 +191,7 @@
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Aircon.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\Dispatch.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -218,6 +220,12 @@
     </Compile>
     <Compile Include="UserformControls\AttendanceControl.Designer.cs">
       <DependentUpon>AttendanceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserformControls\AuditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserformControls\AuditControl.Designer.cs">
+      <DependentUpon>AuditControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserformControls\CustomersControl.cs">
       <SubType>UserControl</SubType>
@@ -289,6 +297,9 @@
     </Compile>
     <EmbeddedResource Include="UserformControls\AttendanceControl.resx">
       <DependentUpon>AttendanceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserformControls\AuditControl.resx">
+      <DependentUpon>AuditControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\CustomersControl.resx">
       <DependentUpon>CustomersControl.cs</DependentUpon>
