@@ -29,6 +29,9 @@ namespace SSIP.UserformControls
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeControl));
             this.cmb_City = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tb_tel = new Guna.UI2.WinForms.Guna2TextBox();
@@ -79,8 +82,8 @@ namespace SSIP.UserformControls
             this.label2 = new System.Windows.Forms.Label();
             this.btn_newEmp = new Guna.UI2.WinForms.Guna2Button();
             this.tb_qrcode = new Guna.UI2.WinForms.Guna2TextBox();
+            this.employeeGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.qrCodeControl1 = new SSIP.UserformControls.QRCodeControl();
-            this.employeeGrid = new System.Windows.Forms.DataGridView();
             this.employee_panel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
             this.employeeMainPanel.SuspendLayout();
@@ -423,7 +426,6 @@ namespace SSIP.UserformControls
             this.btn_viewEmp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewEmp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewEmp.DisabledState.Parent = this.btn_viewEmp;
-            this.btn_viewEmp.Enabled = false;
             this.btn_viewEmp.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_viewEmp.ForeColor = System.Drawing.Color.White;
             this.btn_viewEmp.HoverState.Parent = this.btn_viewEmp;
@@ -447,7 +449,6 @@ namespace SSIP.UserformControls
             this.btn_updateAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_updateAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_updateAccount.DisabledState.Parent = this.btn_updateAccount;
-            this.btn_updateAccount.Enabled = false;
             this.btn_updateAccount.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_updateAccount.ForeColor = System.Drawing.Color.White;
             this.btn_updateAccount.HoverState.Parent = this.btn_updateAccount;
@@ -471,7 +472,6 @@ namespace SSIP.UserformControls
             this.btn_saveAcc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_saveAcc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_saveAcc.DisabledState.Parent = this.btn_saveAcc;
-            this.btn_saveAcc.Enabled = false;
             this.btn_saveAcc.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_saveAcc.ForeColor = System.Drawing.Color.White;
             this.btn_saveAcc.HoverState.Parent = this.btn_saveAcc;
@@ -495,6 +495,7 @@ namespace SSIP.UserformControls
             this.tb_pass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_pass.DisabledState.Parent = this.tb_pass;
             this.tb_pass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_pass.Enabled = false;
             this.tb_pass.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_pass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_pass.FocusedState.Parent = this.tb_pass;
@@ -538,6 +539,7 @@ namespace SSIP.UserformControls
             this.tb_unameAccess.ShadowDecoration.Parent = this.tb_unameAccess;
             this.tb_unameAccess.Size = new System.Drawing.Size(165, 36);
             this.tb_unameAccess.TabIndex = 124;
+            this.tb_unameAccess.TextChanged += new System.EventHandler(this.tb_unameAccess_TextChanged);
             // 
             // lbl_confirmAccess
             // 
@@ -596,7 +598,7 @@ namespace SSIP.UserformControls
             this.tb_datehired.CheckedState.Parent = this.tb_datehired;
             this.tb_datehired.FillColor = System.Drawing.Color.LimeGreen;
             this.tb_datehired.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_datehired.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.tb_datehired.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.tb_datehired.HoverState.Parent = this.tb_datehired;
             this.tb_datehired.Location = new System.Drawing.Point(379, 154);
             this.tb_datehired.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -895,7 +897,7 @@ namespace SSIP.UserformControls
             this.employeeMainPanel.Controls.Add(this.tb_searchEmployees, 1, 0);
             this.employeeMainPanel.Controls.Add(this.btn_addEmployee, 1, 2);
             this.employeeMainPanel.Controls.Add(this.employeeGrid, 1, 1);
-            this.employeeMainPanel.Location = new System.Drawing.Point(751, 375);
+            this.employeeMainPanel.Location = new System.Drawing.Point(732, 395);
             this.employeeMainPanel.Name = "employeeMainPanel";
             this.employeeMainPanel.RowCount = 3;
             this.employeeMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
@@ -980,7 +982,6 @@ namespace SSIP.UserformControls
             this.btn_newEmp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_newEmp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_newEmp.DisabledState.Parent = this.btn_newEmp;
-            this.btn_newEmp.Enabled = false;
             this.btn_newEmp.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_newEmp.ForeColor = System.Drawing.Color.White;
             this.btn_newEmp.HoverState.Parent = this.btn_newEmp;
@@ -1021,6 +1022,63 @@ namespace SSIP.UserformControls
             this.tb_qrcode.TabIndex = 134;
             this.tb_qrcode.Visible = false;
             // 
+            // employeeGrid
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.employeeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.employeeGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.employeeGrid.BackgroundColor = System.Drawing.Color.White;
+            this.employeeGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.employeeGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.employeeGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeeGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.employeeGrid.ColumnHeadersHeight = 4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.employeeGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.employeeGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeeGrid.EnableHeadersVisualStyles = false;
+            this.employeeGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.employeeGrid.Location = new System.Drawing.Point(26, 56);
+            this.employeeGrid.Name = "employeeGrid";
+            this.employeeGrid.RowHeadersVisible = false;
+            this.employeeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.employeeGrid.Size = new System.Drawing.Size(399, 195);
+            this.employeeGrid.TabIndex = 141;
+            this.employeeGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.employeeGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.employeeGrid.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.employeeGrid.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.employeeGrid.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.employeeGrid.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.employeeGrid.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.employeeGrid.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.employeeGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.employeeGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.employeeGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.employeeGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.employeeGrid.ThemeStyle.HeaderStyle.Height = 4;
+            this.employeeGrid.ThemeStyle.ReadOnly = false;
+            this.employeeGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.employeeGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.employeeGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.employeeGrid.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.employeeGrid.ThemeStyle.RowsStyle.Height = 22;
+            this.employeeGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.employeeGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
             // qrCodeControl1
             // 
             this.qrCodeControl1.BackColor = System.Drawing.Color.Black;
@@ -1033,15 +1091,6 @@ namespace SSIP.UserformControls
             this.qrCodeControl1.Size = new System.Drawing.Size(78, 49);
             this.qrCodeControl1.TabIndex = 140;
             this.qrCodeControl1.Visible = false;
-            // 
-            // employeeGrid
-            // 
-            this.employeeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.employeeGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeeGrid.Location = new System.Drawing.Point(26, 56);
-            this.employeeGrid.Name = "employeeGrid";
-            this.employeeGrid.Size = new System.Drawing.Size(399, 195);
-            this.employeeGrid.TabIndex = 141;
             // 
             // EmployeeControl
             // 
@@ -1155,6 +1204,6 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2TextBox tb_searchEmployees;
         private QRCodeControl qrCodeControl1;
         private Guna.UI2.WinForms.Guna2TextBox tb_qrcode;
-        private System.Windows.Forms.DataGridView employeeGrid;
+        private Guna.UI2.WinForms.Guna2DataGridView employeeGrid;
     }
 }
