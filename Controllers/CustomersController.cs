@@ -21,7 +21,7 @@ namespace SSIP.Controllers
         #endregion
         
         #region customers operations
-        public bool AddCustomer(Employee emp, User user, Address addr, Email email)
+        public bool AddCustomer(CustomerModel cus)
         {
             try
             {
@@ -32,18 +32,18 @@ namespace SSIP.Controllers
                         con.Open();
                         com.CommandType = CommandType.StoredProcedure;
 
-                        com.Parameters.AddWithValue("@FirstName", user.Firstname);
-                        com.Parameters.AddWithValue("@LastName", user.Lastname);
-                        com.Parameters.AddWithValue("@MobileNo", user.ContactNumber);
-                        com.Parameters.AddWithValue("@TelephoneNo", user.TelephoneNo);
+                        com.Parameters.AddWithValue("@FirstName", cus.user_info.Firstname);
+                        com.Parameters.AddWithValue("@LastName", cus.user_info.Lastname);
+                        com.Parameters.AddWithValue("@MobileNo", cus.user_info.ContactNumber);
+                        com.Parameters.AddWithValue("@TelephoneNo", cus.user_info.TelephoneNo);
 
-                        com.Parameters.AddWithValue("@HouseNo", addr.HouseNo);
-                        com.Parameters.AddWithValue("@Street", addr.Street);
-                        com.Parameters.AddWithValue("@Barangay", addr.Barangay);
-                        com.Parameters.AddWithValue("@City", addr.City);
+                        com.Parameters.AddWithValue("@HouseNo", cus.address_info.HouseNo);
+                        com.Parameters.AddWithValue("@Street", cus.address_info.Street);
+                        com.Parameters.AddWithValue("@Barangay", cus.address_info.Barangay);
+                        com.Parameters.AddWithValue("@City", cus.address_info.City);
 
-                        com.Parameters.AddWithValue("@Email", email.EmailAddress);
-                        com.Parameters.AddWithValue("@Status", emp.EmployeeStatus);
+                        com.Parameters.AddWithValue("@Email", cus.email_info.EmailAddress);
+                        com.Parameters.AddWithValue("@Status", cus.employee_info.EmployeeStatus);
 
                         com.ExecuteNonQuery();
                         con.Close();                     
@@ -58,7 +58,7 @@ namespace SSIP.Controllers
             // audit here
             return false;
         }
-        public bool UpdateCustomer(Employee emp, User user, Address addr, Email email)
+        public bool UpdateCustomer(CustomerModel cus)
         {
             try
             {
@@ -69,20 +69,20 @@ namespace SSIP.Controllers
                     {
                         com.CommandType = CommandType.StoredProcedure;
 
-                        com.Parameters.AddWithValue("@PersonID", user.UserID);
+                        com.Parameters.AddWithValue("@PersonID", cus.user_info.UserID);
 
-                        com.Parameters.AddWithValue("@FirstName", user.Firstname);
-                        com.Parameters.AddWithValue("@LastName", user.Lastname);
-                        com.Parameters.AddWithValue("@MobileNo", user.ContactNumber);
-                        com.Parameters.AddWithValue("@TelephoneNo", user.TelephoneNo);
+                        com.Parameters.AddWithValue("@FirstName", cus.user_info.Firstname);
+                        com.Parameters.AddWithValue("@LastName", cus.user_info.Lastname);
+                        com.Parameters.AddWithValue("@MobileNo", cus.user_info.ContactNumber);
+                        com.Parameters.AddWithValue("@TelephoneNo", cus.user_info.TelephoneNo);
 
-                        com.Parameters.AddWithValue("@HouseNo", addr.HouseNo);
-                        com.Parameters.AddWithValue("@Street", addr.Street);
-                        com.Parameters.AddWithValue("@Barangay", addr.Barangay);
-                        com.Parameters.AddWithValue("@City", addr.City);
+                        com.Parameters.AddWithValue("@HouseNo", cus.address_info.HouseNo);
+                        com.Parameters.AddWithValue("@Street", cus.address_info.Street);
+                        com.Parameters.AddWithValue("@Barangay", cus.address_info.Barangay);
+                        com.Parameters.AddWithValue("@City", cus.address_info.City);
 
-                        com.Parameters.AddWithValue("@Email", email.EmailAddress);
-                        com.Parameters.AddWithValue("@Status", emp.EmployeeStatus);
+                        com.Parameters.AddWithValue("@Email", cus.email_info.EmailAddress);
+                        com.Parameters.AddWithValue("@Status", cus.employee_info.EmployeeStatus);
 
                         com.ExecuteNonQuery();
                     }

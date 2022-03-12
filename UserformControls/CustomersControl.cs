@@ -1,4 +1,5 @@
 ﻿using SSIP.Controllers;
+using SSIP.Helper;
 using SSIP.Models;
 using System;
 using System.Collections.Generic;
@@ -26,70 +27,32 @@ namespace SSIP.UserformControls
         }
         #endregion
 
-        #region view, add, update, new buttons
-
-        private void btn_viewCus_Click(object sender, EventArgs e)
+        #region view, add, update, new buttons     
+        private void SaveCustomer()
         {
-            customersMainPanel.Visible = true;
-            customersMainPanel.Dock = DockStyle.Fill;
-            customersMainPanel.BringToFront();
-            ClearBoxes();
-        }
-
-        private void btn_saveCus_Click(object sender, EventArgs e)
-        {         
             #region fields
-            var cus = new User
-            {
-                Username = tb_unameAccess.Text,
-                Firstname = tb_fname.Text,
-                Lastname = tb_lname.Text,
-                ContactNumber = tb_mobile.Text,
-                TelephoneNo = tb_tel.Text
-            };
+         
+            var details = new CustomerModel();
 
-            var adds = new Address
-            {
-                HouseNo = tb_houseNo.Text,
-                Street = tb_street.Text,
-                Barangay = cmb_City.Text,
-                City = cmb_City.Text
-            };
+            details.user_info.Username = tb_unameAccess.Text;
+            details.user_info.Firstname = tb_fname.Text;
+            details.user_info.Lastname = tb_lname.Text;
+            details.user_info.ContactNumber = tb_mobile.Text;
+            details.user_info.TelephoneNo = tb_tel.Text;
 
-            var emp = new Employee
-            {
-                EmployeeStatus = cmb_status.Text
-            };
+            details.address_info.HouseNo = tb_houseNo.Text;
+            details.address_info.Street = tb_street.Text;
+            details.address_info.Barangay = tb_barangay.Text;
+            details.address_info.City = cmb_City.Text;
 
-            var em = new Email
-            {
-                EmailAddress = tb_email.Text
-            };
-
+            details.employee_info.EmployeeStatus = cmb_status.Text;
+            details.email_info.EmailAddress = tb_email.Text;
+          
             #endregion
 
-            #region validations
-            var customerValidCon = new ValidationContext(cus, null, null);
-            var addsValidCon = new ValidationContext(adds, null, null);
-            var empValidCon = new ValidationContext(emp, null, null);
-            var emailValidCon = new ValidationContext(em, null, null);
-            IList<ValidationResult> errors = new List<ValidationResult>();
-
-            if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
-                !Validator.TryValidateObject(adds, addsValidCon, errors, true) ||
-                !Validator.TryValidateObject(emp, empValidCon, errors, true) ||
-                !Validator.TryValidateObject(em, emailValidCon, errors, true))
+            if (Valid.ValidateFields(details))
             {
-                foreach (ValidationResult val in errors)
-                {
-                    MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-            else
-            {
-
-                var result = cusControl.AddCustomer(emp, cus, adds, em);
+                var result = cusControl.AddCustomer(details);
 
                 if (result != true)
                 {
@@ -127,108 +90,79 @@ namespace SSIP.UserformControls
                     tb_pass.ReadOnly = true;
                     UpdateGrid();
                 }
-
             }
-            #endregion
-        }
 
-        private void btn_updateCus_Click(object sender, EventArgs e)
+        }    
+        private void UpdateCustomer()
         {
-            #region fields        
-            var cus = new User
+            if (Authorized())
             {
-                UserID = Convert.ToInt32(tb_personID.Text),
-                Username = tb_unameAccess.Text,
-                Firstname = tb_fname.Text,
-                Lastname = tb_lname.Text,
-                ContactNumber = tb_mobile.Text,
-                TelephoneNo = tb_tel.Text
-            };
+                #region fields        
 
-            var adds = new Address
-            {
-                HouseNo = tb_houseNo.Text,
-                Street = tb_street.Text,
-                Barangay = cmb_City.Text,
-                City = cmb_City.Text
-            };
+                var details = new CustomerModel();
 
-            var emp = new Employee
-            {
-                EmployeeStatus = cmb_status.Text
-            };
+                details.user_info.UserID = Convert.ToInt32(tb_personID.Text);
+                details.user_info.Username = tb_unameAccess.Text;
+                details.user_info.Firstname = tb_fname.Text;
+                details.user_info.Lastname = tb_lname.Text;
+                details.user_info.ContactNumber = tb_mobile.Text;
+                details.user_info.TelephoneNo = tb_tel.Text;
 
-            var em = new Email
-            {
-                EmailAddress = tb_email.Text
-            };
-            #endregion
+                details.address_info.HouseNo = tb_houseNo.Text;
+                details.address_info.Street = tb_street.Text;
+                details.address_info.Barangay = tb_barangay.Text;
+                details.address_info.City = cmb_City.Text;
 
-            #region validations
+                details.employee_info.EmployeeStatus = cmb_status.Text;
+                details.email_info.EmailAddress = tb_email.Text;
 
-            var customerValidCon = new ValidationContext(cus, null, null);
-            var addsValidCon = new ValidationContext(adds, null, null);
-            var empValidCon = new ValidationContext(emp, null, null);
-            var emailValidCon = new ValidationContext(em, null, null);
-            IList<ValidationResult> errors = new List<ValidationResult>();
+                #endregion
 
-            if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
-                !Validator.TryValidateObject(adds, addsValidCon, errors, true) ||
-                !Validator.TryValidateObject(emp, empValidCon, errors, true) ||
-                !Validator.TryValidateObject(em, emailValidCon, errors, true))
-            {
-                foreach (ValidationResult val in errors)
+                if (Valid.ValidateFields(details))
                 {
-                    MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    var result = cusControl.UpdateCustomer(details);
+
+                    if (result != true)
+                    {
+                        MessageBox.Show("Update failed");
+
+                        // audit here
+                        var failed = new AuditTrails
+                        {
+                            Username = tb_unameAccess.Text,
+                            AuditActionTypeENUM = (Enums.ActionTypes)3,
+                            DateTimeStamp = DateTime.Now.ToString(),
+                            Result = "Failed",
+                            Description = "Failed to Update Customer"
+                        };
+
+                        aud.Logs(failed);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Successfully Updated");
+
+                        // audit here
+                        var addEmployee = new AuditTrails
+                        {
+                            Username = tb_unameAccess.Text,
+                            AuditActionTypeENUM = (Enums.ActionTypes)3,
+                            DateTimeStamp = DateTime.Now.ToString(),
+                            Result = "Succeed",
+                            Description = "Updated Customer ID: " + tb_personID.Text + " "
+                        };
+
+                        aud.Logs(addEmployee);
+
+                        tb_unameAccess.ReadOnly = true;
+                        tb_pass.ReadOnly = true;
+                        UpdateGrid();
+                    }
                 }
             }
-            else
-            {
-                var result = cusControl.UpdateCustomer(emp, cus, adds, em);
-
-                if (result != true)
-                {
-                    MessageBox.Show("Update failed");
-
-                    // audit here
-                    var failed = new AuditTrails
-                    {
-                        Username = tb_unameAccess.Text,
-                        AuditActionTypeENUM = (Enums.ActionTypes)3,
-                        DateTimeStamp = DateTime.Now.ToString(),
-                        Result = "Failed",
-                        Description = "Failed to Update Customer"
-                    };
-
-                    aud.Logs(failed);
-
-                }
-                else
-                {
-                    MessageBox.Show("Successfully Updated");
-
-                    // audit here
-                    var addEmployee = new AuditTrails
-                    {
-                        Username = tb_unameAccess.Text,
-                        AuditActionTypeENUM = (Enums.ActionTypes)3,
-                        DateTimeStamp = DateTime.Now.ToString(),
-                        Result = "Succeed",
-                        Description = "Updated Customer ID: " + tb_personID.Text + " "
-                    };
-
-                    aud.Logs(addEmployee);
-
-                    tb_unameAccess.ReadOnly = true;
-                    tb_pass.ReadOnly = true;
-                    UpdateGrid();
-                }
-            }
-            #endregion
         }
-
-        private void btn_addCus_Click(object sender, EventArgs e)
+        private void AddCustomer()
         {
             HideCustomersGrid();
             ClearBoxes();
@@ -312,6 +246,66 @@ namespace SSIP.UserformControls
             }
 
             
+        }
+        private bool Authorized()
+        {
+            var user = new User
+            {
+                Username = tb_unameAccess.Text,
+                Password = tb_pass.Text
+            };
+
+            var cfirm = new AccessController();
+
+            if (user.Username != "" && user.Lastname != "")
+            {
+                var result = cfirm.ConfirmAccess(user);
+
+                if (result != true)
+                {
+                    NotAuthorizedMssg();
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Authorization Access Required");
+                return false;
+            }
+        }
+        private bool HighAuthority()
+        {
+            var access = new AccessController();
+
+            var creds = new User
+            {
+                Username = tb_unameAccess.Text,
+                Password = tb_pass.Text
+            };
+
+            var result = access.ConfirmAuthority(creds);
+
+            if (result != true)
+            {
+                NotHighAuthorityMssg();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private void NotAuthorizedMssg()
+        {
+            MessageBox.Show("Authorization Required");
+        }
+        private void NotHighAuthorityMssg()
+        {
+            MessageBox.Show("Higher Authoritization Required");
         }
         #endregion
 
@@ -418,6 +412,29 @@ namespace SSIP.UserformControls
 
         #endregion
 
+        #region event handlers
+        private void btn_viewCus_Click(object sender, EventArgs e)
+        {
+            if (HighAuthority())
+            {
+                customersMainPanel.Visible = true;
+                customersMainPanel.Dock = DockStyle.Fill;
+                customersMainPanel.BringToFront();
+                ClearBoxes();
+            }
+        }
+        private void btn_saveCus_Click(object sender, EventArgs e)
+        {
+            SaveCustomer();
+        }
+        private void btn_addCus_Click(object sender, EventArgs e)
+        {
+            AddCustomer();
+        }     
+        private void btn_updateCus_Click(object sender, EventArgs e)
+        {
+            UpdateCustomer();
+        }
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
             var tool = new CustomersController();
@@ -431,10 +448,22 @@ namespace SSIP.UserformControls
                 UpdateGrid();
             }
         }
-
         private void tb_searchCustomers_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+        #endregion
+
+        private void tb_unameAccess_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_unameAccess.Text == "")
+            {
+                tb_pass.Enabled = false;
+            }
+            else
+            {
+                tb_pass.Enabled = true;
+            }
         }
     }
 }

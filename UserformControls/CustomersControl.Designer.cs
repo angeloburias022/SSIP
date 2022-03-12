@@ -29,9 +29,11 @@ namespace SSIP.UserformControls
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.customersMainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tb_searchCustomers = new Guna.UI2.WinForms.Guna2TextBox();
-            this.customersGrid = new System.Windows.Forms.DataGridView();
             this.btn_addCus = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_confirmAccess = new System.Windows.Forms.Label();
             this.tb_unameAccess = new Guna.UI2.WinForms.Guna2TextBox();
@@ -64,9 +66,10 @@ namespace SSIP.UserformControls
             this.cmb_status = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.customersGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.customersMainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // customersMainPanel
@@ -76,8 +79,8 @@ namespace SSIP.UserformControls
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.333333F));
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.22222F));
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.666667F));
-            this.customersMainPanel.Controls.Add(this.tb_searchCustomers, 1, 0);
             this.customersMainPanel.Controls.Add(this.customersGrid, 1, 1);
+            this.customersMainPanel.Controls.Add(this.tb_searchCustomers, 1, 0);
             this.customersMainPanel.Controls.Add(this.btn_addCus, 1, 2);
             this.customersMainPanel.Location = new System.Drawing.Point(972, 100);
             this.customersMainPanel.Name = "customersMainPanel";
@@ -117,21 +120,6 @@ namespace SSIP.UserformControls
             this.tb_searchCustomers.TabIndex = 170;
             this.tb_searchCustomers.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             this.tb_searchCustomers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchCustomers_KeyPress);
-            // 
-            // customersGrid
-            // 
-            this.customersGrid.AllowUserToAddRows = false;
-            this.customersGrid.AllowUserToDeleteRows = false;
-            this.customersGrid.AllowUserToOrderColumns = true;
-            this.customersGrid.AllowUserToResizeColumns = false;
-            this.customersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customersGrid.Location = new System.Drawing.Point(26, 56);
-            this.customersGrid.Name = "customersGrid";
-            this.customersGrid.ReadOnly = true;
-            this.customersGrid.Size = new System.Drawing.Size(399, 195);
-            this.customersGrid.TabIndex = 0;
-            this.customersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellDoubleClick);
             // 
             // btn_addCus
             // 
@@ -194,6 +182,7 @@ namespace SSIP.UserformControls
             this.tb_unameAccess.ShadowDecoration.Parent = this.tb_unameAccess;
             this.tb_unameAccess.Size = new System.Drawing.Size(165, 36);
             this.tb_unameAccess.TabIndex = 124;
+            this.tb_unameAccess.TextChanged += new System.EventHandler(this.tb_unameAccess_TextChanged);
             // 
             // tb_pass
             // 
@@ -206,6 +195,7 @@ namespace SSIP.UserformControls
             this.tb_pass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_pass.DisabledState.Parent = this.tb_pass;
             this.tb_pass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_pass.Enabled = false;
             this.tb_pass.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_pass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_pass.FocusedState.Parent = this.tb_pass;
@@ -309,7 +299,6 @@ namespace SSIP.UserformControls
             this.btn_viewCus.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewCus.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewCus.DisabledState.Parent = this.btn_viewCus;
-            this.btn_viewCus.Enabled = false;
             this.btn_viewCus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_viewCus.ForeColor = System.Drawing.Color.White;
             this.btn_viewCus.HoverState.Parent = this.btn_viewCus;
@@ -333,7 +322,6 @@ namespace SSIP.UserformControls
             this.btn_updateCus.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_updateCus.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_updateCus.DisabledState.Parent = this.btn_updateCus;
-            this.btn_updateCus.Enabled = false;
             this.btn_updateCus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_updateCus.ForeColor = System.Drawing.Color.White;
             this.btn_updateCus.HoverState.Parent = this.btn_updateCus;
@@ -744,6 +732,69 @@ namespace SSIP.UserformControls
             this.label1.TabIndex = 168;
             this.label1.Text = "Customer";
             // 
+            // customersGrid
+            // 
+            this.customersGrid.AllowUserToAddRows = false;
+            this.customersGrid.AllowUserToDeleteRows = false;
+            this.customersGrid.AllowUserToOrderColumns = true;
+            this.customersGrid.AllowUserToResizeColumns = false;
+            this.customersGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.customersGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.customersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.customersGrid.BackgroundColor = System.Drawing.Color.White;
+            this.customersGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.customersGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.customersGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.customersGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.customersGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.customersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customersGrid.EnableHeadersVisualStyles = false;
+            this.customersGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.customersGrid.Location = new System.Drawing.Point(26, 56);
+            this.customersGrid.Name = "customersGrid";
+            this.customersGrid.ReadOnly = true;
+            this.customersGrid.RowHeadersVisible = false;
+            this.customersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.customersGrid.Size = new System.Drawing.Size(399, 195);
+            this.customersGrid.TabIndex = 169;
+            this.customersGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.customersGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.customersGrid.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.customersGrid.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.customersGrid.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.customersGrid.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.customersGrid.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.customersGrid.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.customersGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.customersGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.customersGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.customersGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.customersGrid.ThemeStyle.HeaderStyle.Height = 23;
+            this.customersGrid.ThemeStyle.ReadOnly = true;
+            this.customersGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.customersGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.customersGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.customersGrid.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.customersGrid.ThemeStyle.RowsStyle.Height = 22;
+            this.customersGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.customersGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.customersGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellDoubleClick);
+            // 
             // CustomersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -782,9 +833,9 @@ namespace SSIP.UserformControls
             this.Size = new System.Drawing.Size(1287, 529);
             this.Load += new System.EventHandler(this.CustomersControl_Load);
             this.customersMainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).EndInit();
             this.confirmAccessPanel.ResumeLayout(false);
             this.confirmAccessPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -793,7 +844,6 @@ namespace SSIP.UserformControls
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel customersMainPanel;
-        private System.Windows.Forms.DataGridView customersGrid;
         private Guna.UI2.WinForms.Guna2Button btn_addCus;
         private System.Windows.Forms.Label lbl_confirmAccess;
         private Guna.UI2.WinForms.Guna2TextBox tb_unameAccess;
@@ -827,5 +877,6 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox tb_searchCustomers;
+        private Guna.UI2.WinForms.Guna2DataGridView customersGrid;
     }
 }
