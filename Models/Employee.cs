@@ -27,5 +27,16 @@ namespace SSIP.Models
         public DateTime DateHired { get; set; }
         public string Total_hrs { get; set; }
 
+        public User user_info { get; set; }
+        public Email email_info { get; set; }
+        public Address address_info { get; set; }
+
+        public Employee()
+        {
+            user_info = new User();
+            email_info = new Email();
+            address_info = new Address();              
+        }
+
     }
 }

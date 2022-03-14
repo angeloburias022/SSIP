@@ -30,7 +30,7 @@ namespace SSIP.Controllers
         #endregion
 
         #region employee operations
-        public bool AddEmployee(Employee emp, User user, Address addr, Email email)
+        public bool AddEmployee(Employee emp)
         {
             try
             {
@@ -41,24 +41,24 @@ namespace SSIP.Controllers
                         con.Open();
                         com.CommandType = CommandType.StoredProcedure;
 
-                        com.Parameters.AddWithValue("@FirstName", user.Firstname);
-                        com.Parameters.AddWithValue("@LastName", user.Lastname);
-                        com.Parameters.AddWithValue("@MobileNo", user.ContactNumber);
-                        com.Parameters.AddWithValue("@TelephoneNo", user.TelephoneNo);
+                        com.Parameters.AddWithValue("@FirstName", emp.user_info.Firstname);
+                        com.Parameters.AddWithValue("@LastName", emp.user_info.Lastname);
+                        com.Parameters.AddWithValue("@MobileNo", emp.user_info.ContactNumber);
+                        com.Parameters.AddWithValue("@TelephoneNo", emp.user_info.TelephoneNo);
 
-                        com.Parameters.AddWithValue("@HouseNo", addr.HouseNo);
-                        com.Parameters.AddWithValue("@Street", addr.Street);
-                        com.Parameters.AddWithValue("@Barangay", addr.Barangay);
-                        com.Parameters.AddWithValue("@City", addr.City);
+                        com.Parameters.AddWithValue("@HouseNo", emp.address_info.HouseNo);
+                        com.Parameters.AddWithValue("@Street", emp.address_info.Street);
+                        com.Parameters.AddWithValue("@Barangay", emp.address_info.Barangay);
+                        com.Parameters.AddWithValue("@City", emp.address_info.City);
 
                         com.Parameters.AddWithValue("@DateHired", emp.DateHired);
                         com.Parameters.AddWithValue("@Status", emp.EmployeeStatus);
                         com.Parameters.AddWithValue("@Position", emp.Position);
                         com.Parameters.AddWithValue("@TypeOfContract", emp.TypeOfContract);
 
-                        com.Parameters.AddWithValue("@Username", user.Username);
-                        com.Parameters.AddWithValue("@Password", enc.PassWordEncryptor(user.Password));
-                        com.Parameters.AddWithValue("@Email", email.EmailAddress);
+                        com.Parameters.AddWithValue("@Username", emp.user_info.Username);
+                        com.Parameters.AddWithValue("@Password", enc.PassWordEncryptor(emp.user_info.Password));
+                        com.Parameters.AddWithValue("@Email", emp.email_info.EmailAddress);
                         com.Parameters.AddWithValue("@AccTypeID", emp.AccountTypeID);
                         com.Parameters.AddWithValue("@code", emp.code);
 
@@ -68,19 +68,16 @@ namespace SSIP.Controllers
 
                         return true;
                     }
-
                 }
-
             }
             catch (Exception error)
             {
                 error.ToString();
-              
             }
             
             return false;
         }
-        public bool UpdateEmployee(Employee emp, User user, Address addr, Email email, string username)
+        public bool UpdateEmployee(Employee emp, string username)
         {
             try
             {
@@ -92,17 +89,17 @@ namespace SSIP.Controllers
                         com.CommandType = CommandType.StoredProcedure;
 
                         com.Parameters.AddWithValue("@EmployeeID", emp.EmployeeID);
-                        com.Parameters.AddWithValue("@PersonID", user.UserID);
+                        com.Parameters.AddWithValue("@PersonID", emp.user_info.UserID);
 
-                        com.Parameters.AddWithValue("@FirstName", user.Firstname);
-                        com.Parameters.AddWithValue("@LastName", user.Lastname);
-                        com.Parameters.AddWithValue("@MobileNo", user.ContactNumber);
-                        com.Parameters.AddWithValue("@TelephoneNo", user.TelephoneNo);
+                        com.Parameters.AddWithValue("@FirstName", emp.user_info.Firstname);
+                        com.Parameters.AddWithValue("@LastName", emp.user_info.Lastname);
+                        com.Parameters.AddWithValue("@MobileNo", emp.user_info.ContactNumber);
+                        com.Parameters.AddWithValue("@TelephoneNo", emp.user_info.TelephoneNo);
 
-                        com.Parameters.AddWithValue("@HouseNo", addr.HouseNo);
-                        com.Parameters.AddWithValue("@Street", addr.Street);
-                        com.Parameters.AddWithValue("@Barangay", addr.Barangay);
-                        com.Parameters.AddWithValue("@City", addr.City);
+                        com.Parameters.AddWithValue("@HouseNo", emp.address_info.HouseNo);
+                        com.Parameters.AddWithValue("@Street", emp.address_info.Street);
+                        com.Parameters.AddWithValue("@Barangay", emp.address_info.Barangay);
+                        com.Parameters.AddWithValue("@City", emp.address_info.City);
 
                         com.Parameters.AddWithValue("@DateHired", emp.DateHired);
                         com.Parameters.AddWithValue("@Status", emp.EmployeeStatus);
@@ -111,7 +108,7 @@ namespace SSIP.Controllers
 
                   //      com.Parameters.AddWithValue("@Username", user.Username);
                   //      com.Parameters.AddWithValue("@Password", enc.PassWordEncryptor(user.Password));
-                        com.Parameters.AddWithValue("@Email", email.EmailAddress);
+                        com.Parameters.AddWithValue("@Email", emp.email_info.EmailAddress);
                         com.Parameters.AddWithValue("@AccTypeID", emp.AccountTypeID);
 
                         com.ExecuteNonQuery();

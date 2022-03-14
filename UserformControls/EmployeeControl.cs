@@ -224,77 +224,44 @@ namespace SSIP.UserformControls
             {
                 #region fields
 
-                var qr = new QRCodeControl();
+                var qr = new QRCodeControl();          
+                var details = new Employee();
 
-                var user = new User
-                {
-                    Firstname = tb_fname.Text,
-                    Lastname = tb_lname.Text,
-                    ContactNumber = tb_mobile.Text,
-                    TelephoneNo = tb_tel.Text,
-                    Username = tb_uname.Text,
-                    Password = tb_password.Text
+                details.user_info.Username = tb_uname.Text;
+                details.user_info.Password = tb_password.Text;
+                details.user_info.Firstname = tb_fname.Text;
+                details.user_info.Lastname = tb_lname.Text;
+                details.user_info.ContactNumber = tb_mobile.Text;
+                details.user_info.TelephoneNo = tb_tel.Text;
+             
+                details.email_info.EmailAddress = tb_email.Text;
 
-                };
-
-                var email = new Email
-                {
-                    EmailAddress = tb_email.Text,
-                };
-
-                var address = new Address
-                {
-                    HouseNo = tb_houseNo.Text,
-                    Street = tb_street.Text,
-                    Barangay = tb_barangay.Text,
-                    City = cmb_City.Text
-                };
+                details.address_info.HouseNo = tb_houseNo.Text;
+                details.address_info.Street = tb_street.Text;
+                details.address_info.Barangay = tb_barangay.Text;
+                details.address_info.City = cmb_City.Text;
 
                 string randomCode = GenerateCode.Code(10);
 
                 this.qrCodeControl1.GetDetails(randomCode, tb_fname.Text, tb_lname.Text, tb_position.Text);
 
                 tb_qrcode.Text = randomCode;
-                //   btn_genQR.Enabled = true;
 
-                var emp = new Employee
-                {
-                    DateHired = Convert.ToDateTime(tb_datehired.Text),
-                    Position = tb_position.Text,
-                    TypeOfContract = "none",
-                    AccountTypeID = cmb_acctype.SelectedIndex,
-                    EmployeeStatus = cmb_empStatus.Text,
-                    code = tb_qrcode.Text
-                };
+                details.DateHired = Convert.ToDateTime(tb_datehired.Text);
+                details.Position = tb_position.Text;
+                details.TypeOfContract = "None";
+                details.AccountTypeID = cmb_acctype.SelectedIndex;
+                details.EmployeeStatus = cmb_empStatus.Text;
+                details.code = tb_qrcode.Text;
 
                 #endregion
 
                 #region validations
-
-                var customerValidCon = new ValidationContext(user, null, null);
-                var addsValidCon = new ValidationContext(address, null, null);
-                var empValidCon = new ValidationContext(emp, null, null);
-                var emailValidCon = new ValidationContext(email, null, null);
-                IList<ValidationResult> errors = new List<ValidationResult>();
-
-                if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(user, customerValidCon, errors, true) ||
-                    !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(address, addsValidCon, errors, true) ||
-                    !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(emp, empValidCon, errors, true) ||
-                    !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(email, emailValidCon, errors, true))
-                {
-                    foreach (ValidationResult val in errors)
-                    {
-                        MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-                else
+                if (Valid.ValidateFields(details))
                 {
                     var empController = new EmployeesController();
 
-                    var result = empController.AddEmployee(emp, user, address, email);
-
-
+                    var result = empController.AddEmployee(details);
 
                     if (result != true)
                     {
@@ -335,9 +302,8 @@ namespace SSIP.UserformControls
                         aud.Logs(addEmployee);
                         UpdateGrids();
                         ClearBoxes();
-                    }
+                    } 
                 }
-
                 #endregion
 
             }
@@ -346,64 +312,36 @@ namespace SSIP.UserformControls
         {
             if (HighAuthority())
             {
-                tb_personID.Text = "0";
+               // tb_personID.Text = "0";
 
                 var update = new EmployeesController();
+                var details = new Employee();
 
                 #region fields
-                var personal = new User
-                {
-                    UserID = Convert.ToInt32(tb_personID.Text),
-                    Firstname = tb_fname.Text,
-                    Lastname = tb_lname.Text,
-                    ContactNumber = tb_mobile.Text,
-                    TelephoneNo = tb_tel.Text
-                };
+                details.user_info.UserID = Convert.ToInt32(tb_personID.Text);
+                details.user_info.Firstname = tb_fname.Text;
+                details.user_info.Lastname = tb_lname.Text;
+                details.user_info.ContactNumber = tb_mobile.Text;
+                details.user_info.TelephoneNo = tb_tel.Text;
+              
+                details.address_info.HouseNo = tb_houseNo.Text;
+                details.address_info.Street = tb_street.Text;
+                details.address_info.Barangay = tb_barangay.Text;
+                details.address_info.City = cmb_City.Text;
 
-                var adds = new Address
-                {
-                    HouseNo = tb_houseNo.Text,
-                    Street = tb_street.Text,
-                    Barangay = tb_barangay.Text,
-                    City = cmb_City.Text
-                };
-
-                var empdetails = new Employee
-                {
-                    EmployeeID = Convert.ToInt32(tb_empID.Text),
-                    DateHired = tb_datehired.Value,
-                    Position = tb_position.Text,
-                    AccountTypeID = cmb_acctype.SelectedIndex,
-                    EmployeeStatus = cmb_empStatus.Text
-                };
-
-                var email = new Email
-                {
-                    EmailAddress = tb_email.Text
-                };
+                details.EmployeeID = Convert.ToInt32(tb_empID.Text);
+                details.DateHired = Convert.ToDateTime(tb_datehired.Text);
+                details.Position = tb_position.Text;                
+                details.AccountTypeID = cmb_acctype.SelectedIndex;
+                details.EmployeeStatus = cmb_empStatus.Text;
+               
+                details.email_info.EmailAddress = tb_email.Text;
                 #endregion
 
                 #region validations
-                var customerValidCon = new ValidationContext(personal, null, null);
-                var addsValidCon = new ValidationContext(adds, null, null);
-                var empValidCon = new ValidationContext(empdetails, null, null);
-                var emailValidCon = new ValidationContext(email, null, null);
-                IList<ValidationResult> errors = new List<ValidationResult>();
-
-                if (!System.ComponentModel.DataAnnotations.Validator.TryValidateObject(personal, customerValidCon, errors, true) ||
-                    !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(adds, addsValidCon, errors, true) ||
-                    !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(empdetails, empValidCon, errors, true) ||
-                    !System.ComponentModel.DataAnnotations.Validator.TryValidateObject(email, emailValidCon, errors, true))
+                if (Valid.ValidateFields(details))
                 {
-                    foreach (ValidationResult val in errors)
-                    {
-                        MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-                else
-                {
-                    var result = update.UpdateEmployee(empdetails, personal, adds, email, tb_unameAccess.Text);
+                    var result = update.UpdateEmployee(details, tb_unameAccess.Text);
 
                     if (result != true)
                     {
@@ -422,7 +360,6 @@ namespace SSIP.UserformControls
                     }
                     else
                     {
-
                         UpdateGrids();
                         MessageBox.Show("Updated Successfully");
 
@@ -436,7 +373,7 @@ namespace SSIP.UserformControls
                         };
 
                         aud.Logs(addEmployee);
-                    }
+                    } 
                 }
                 #endregion
 
