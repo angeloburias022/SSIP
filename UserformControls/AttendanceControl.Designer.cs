@@ -30,16 +30,14 @@ namespace SSIP.UserformControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pb_qrcode = new System.Windows.Forms.PictureBox();
-            this.tb_timeout = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_lname = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tb_timein = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_fname = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,6 +69,8 @@ namespace SSIP.UserformControls
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.timeout = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.timein = new Guna.UI2.WinForms.Guna2DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pb_qrcode)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
             this.attendanceMainpanel.SuspendLayout();
@@ -87,34 +87,6 @@ namespace SSIP.UserformControls
             this.pb_qrcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_qrcode.TabIndex = 0;
             this.pb_qrcode.TabStop = false;
-            // 
-            // tb_timeout
-            // 
-            this.tb_timeout.BackColor = System.Drawing.Color.Transparent;
-            this.tb_timeout.BorderRadius = 4;
-            this.tb_timeout.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_timeout.DefaultText = "";
-            this.tb_timeout.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_timeout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_timeout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_timeout.DisabledState.Parent = this.tb_timeout;
-            this.tb_timeout.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_timeout.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.tb_timeout.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_timeout.FocusedState.Parent = this.tb_timeout;
-            this.tb_timeout.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_timeout.ForeColor = System.Drawing.Color.Black;
-            this.tb_timeout.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_timeout.HoverState.Parent = this.tb_timeout;
-            this.tb_timeout.Location = new System.Drawing.Point(161, 271);
-            this.tb_timeout.Name = "tb_timeout";
-            this.tb_timeout.PasswordChar = '\0';
-            this.tb_timeout.PlaceholderText = "Time out";
-            this.tb_timeout.SelectedText = "";
-            this.tb_timeout.ShadowDecoration.Parent = this.tb_timeout;
-            this.tb_timeout.Size = new System.Drawing.Size(75, 36);
-            this.tb_timeout.TabIndex = 161;
-            this.tb_timeout.Leave += new System.EventHandler(this.tb_timeout_Leave);
             // 
             // tb_lname
             // 
@@ -142,33 +114,6 @@ namespace SSIP.UserformControls
             this.tb_lname.ShadowDecoration.Parent = this.tb_lname;
             this.tb_lname.Size = new System.Drawing.Size(165, 36);
             this.tb_lname.TabIndex = 160;
-            // 
-            // tb_timein
-            // 
-            this.tb_timein.BackColor = System.Drawing.Color.Transparent;
-            this.tb_timein.BorderRadius = 4;
-            this.tb_timein.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_timein.DefaultText = "";
-            this.tb_timein.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_timein.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_timein.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_timein.DisabledState.Parent = this.tb_timein;
-            this.tb_timein.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_timein.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.tb_timein.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_timein.FocusedState.Parent = this.tb_timein;
-            this.tb_timein.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_timein.ForeColor = System.Drawing.Color.Black;
-            this.tb_timein.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_timein.HoverState.Parent = this.tb_timein;
-            this.tb_timein.Location = new System.Drawing.Point(74, 271);
-            this.tb_timein.Name = "tb_timein";
-            this.tb_timein.PasswordChar = '\0';
-            this.tb_timein.PlaceholderText = "Time in ";
-            this.tb_timein.SelectedText = "";
-            this.tb_timein.ShadowDecoration.Parent = this.tb_timein;
-            this.tb_timein.Size = new System.Drawing.Size(75, 36);
-            this.tb_timein.TabIndex = 162;
             // 
             // tb_fname
             // 
@@ -203,7 +148,7 @@ namespace SSIP.UserformControls
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Honeydew;
-            this.label6.Location = new System.Drawing.Point(155, 248);
+            this.label6.Location = new System.Drawing.Point(225, 248);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 20);
             this.label6.TabIndex = 155;
@@ -253,7 +198,7 @@ namespace SSIP.UserformControls
             this.workdate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.workdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.workdate.HoverState.Parent = this.workdate;
-            this.workdate.Location = new System.Drawing.Point(74, 348);
+            this.workdate.Location = new System.Drawing.Point(74, 376);
             this.workdate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.workdate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.workdate.Name = "workdate";
@@ -261,6 +206,7 @@ namespace SSIP.UserformControls
             this.workdate.Size = new System.Drawing.Size(165, 36);
             this.workdate.TabIndex = 163;
             this.workdate.Value = new System.DateTime(2022, 2, 12, 0, 0, 0, 0);
+            this.workdate.Visible = false;
             // 
             // label1
             // 
@@ -268,11 +214,12 @@ namespace SSIP.UserformControls
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Honeydew;
-            this.label1.Location = new System.Drawing.Point(70, 325);
+            this.label1.Location = new System.Drawing.Point(70, 353);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 158;
             this.label1.Text = "Date:";
+            this.label1.Visible = false;
             // 
             // btn_viewAttendances
             // 
@@ -455,10 +402,11 @@ namespace SSIP.UserformControls
             this.tb_totalHrs.ForeColor = System.Drawing.Color.Black;
             this.tb_totalHrs.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_totalHrs.HoverState.Parent = this.tb_totalHrs;
-            this.tb_totalHrs.Location = new System.Drawing.Point(302, 271);
+            this.tb_totalHrs.Location = new System.Drawing.Point(383, 271);
             this.tb_totalHrs.Name = "tb_totalHrs";
             this.tb_totalHrs.PasswordChar = '\0';
             this.tb_totalHrs.PlaceholderText = "Total Hours";
+            this.tb_totalHrs.ReadOnly = true;
             this.tb_totalHrs.SelectedText = "";
             this.tb_totalHrs.ShadowDecoration.Parent = this.tb_totalHrs;
             this.tb_totalHrs.Size = new System.Drawing.Size(92, 36);
@@ -472,7 +420,7 @@ namespace SSIP.UserformControls
             this.lbl_totalworkhrs.BackColor = System.Drawing.Color.Transparent;
             this.lbl_totalworkhrs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_totalworkhrs.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_totalworkhrs.Location = new System.Drawing.Point(268, 248);
+            this.lbl_totalworkhrs.Location = new System.Drawing.Point(349, 248);
             this.lbl_totalworkhrs.Name = "lbl_totalworkhrs";
             this.lbl_totalworkhrs.Size = new System.Drawing.Size(196, 20);
             this.lbl_totalworkhrs.TabIndex = 155;
@@ -636,29 +584,29 @@ namespace SSIP.UserformControls
             this.attendanceGrid.AllowUserToAddRows = false;
             this.attendanceGrid.AllowUserToDeleteRows = false;
             this.attendanceGrid.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.attendanceGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.White;
+            this.attendanceGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.attendanceGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.attendanceGrid.BackgroundColor = System.Drawing.Color.White;
             this.attendanceGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.attendanceGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.attendanceGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.attendanceGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.attendanceGrid.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.attendanceGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.attendanceGrid.DefaultCellStyle = dataGridViewCellStyle27;
             this.attendanceGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.attendanceGrid.EnableHeadersVisualStyles = false;
             this.attendanceGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -816,29 +764,29 @@ namespace SSIP.UserformControls
             this.guna2DataGridView1.AllowUserToAddRows = false;
             this.guna2DataGridView1.AllowUserToDeleteRows = false;
             this.guna2DataGridView1.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle30;
             this.guna2DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -872,6 +820,42 @@ namespace SSIP.UserformControls
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.guna2DataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.attendanceGrid_CellDoubleClick);
             // 
+            // timeout
+            // 
+            this.timeout.Checked = true;
+            this.timeout.CheckedState.Parent = this.timeout;
+            this.timeout.Enabled = false;
+            this.timeout.FillColor = System.Drawing.Color.LimeGreen;
+            this.timeout.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.timeout.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timeout.HoverState.Parent = this.timeout;
+            this.timeout.Location = new System.Drawing.Point(214, 271);
+            this.timeout.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.timeout.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.timeout.Name = "timeout";
+            this.timeout.ShadowDecoration.Parent = this.timeout;
+            this.timeout.Size = new System.Drawing.Size(129, 36);
+            this.timeout.TabIndex = 163;
+            this.timeout.Value = new System.DateTime(2022, 3, 19, 12, 0, 0, 0);
+            // 
+            // timein
+            // 
+            this.timein.Checked = true;
+            this.timein.CheckedState.Parent = this.timein;
+            this.timein.Enabled = false;
+            this.timein.FillColor = System.Drawing.Color.LimeGreen;
+            this.timein.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.timein.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timein.HoverState.Parent = this.timein;
+            this.timein.Location = new System.Drawing.Point(71, 271);
+            this.timein.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.timein.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.timein.Name = "timein";
+            this.timein.ShadowDecoration.Parent = this.timein;
+            this.timein.Size = new System.Drawing.Size(128, 36);
+            this.timein.TabIndex = 163;
+            this.timein.Value = new System.DateTime(2022, 3, 19, 12, 0, 0, 0);
+            // 
             // AttendanceControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -886,13 +870,13 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.btn_updateChanges);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_viewAttendances);
+            this.Controls.Add(this.timein);
+            this.Controls.Add(this.timeout);
             this.Controls.Add(this.workdate);
             this.Controls.Add(this.tb_totalHrs);
-            this.Controls.Add(this.tb_timeout);
             this.Controls.Add(this.tb_DisplayQR);
             this.Controls.Add(this.tb_lname);
             this.Controls.Add(this.tb_employeeID);
-            this.Controls.Add(this.tb_timein);
             this.Controls.Add(this.tb_fname);
             this.Controls.Add(this.lbl_totalworkhrs);
             this.Controls.Add(this.label6);
@@ -921,9 +905,7 @@ namespace SSIP.UserformControls
         #endregion
 
         private System.Windows.Forms.PictureBox pb_qrcode;
-        private Guna.UI2.WinForms.Guna2TextBox tb_timeout;
         private Guna.UI2.WinForms.Guna2TextBox tb_lname;
-        private Guna.UI2.WinForms.Guna2TextBox tb_timein;
         private Guna.UI2.WinForms.Guna2TextBox tb_fname;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -955,5 +937,7 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker timeout;
+        private Guna.UI2.WinForms.Guna2DateTimePicker timein;
     }
 }

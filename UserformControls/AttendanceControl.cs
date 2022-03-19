@@ -34,15 +34,76 @@ namespace SSIP.UserformControls
         #endregion
 
         #region main ops     
-        public void GetEmployee(string code)
+        public bool GetEmployee(string code)
         {
             var tools = new EmployeesController();
 
             var result = tools.GetEmployeeName(code);
 
-            tb_fname.Text = result[0].ToString();
-            tb_lname.Text = result[1].ToString();
-            tb_employeeID.Text = result[2].ToString();
+            TimeSpan timeNow = DateTime.Now.TimeOfDay;
+
+           // timein.dis
+
+            if (result.Count > 0)
+            {
+                tb_fname.Text = result[0].ToString();
+                tb_lname.Text = result[1].ToString();
+                tb_employeeID.Text = result[2].ToString();
+
+                if (HasTimeInToday())
+                {               
+                    timeout.Value = Convert.ToDateTime(timeNow.ToString());
+
+                    lbl_totalworkhrs.Visible = true;
+                    tb_totalHrs.Visible = true;
+
+                    TimeSpan duration = new TimeSpan(timeout.Value.Ticks - timein.Value.Ticks);
+
+                    int hours = (int)duration.TotalHours;
+
+                    if(hours < 5)
+                    {
+                        tb_totalHrs.Text = hours.ToString();
+                    }
+                    else if(hours > 5)
+                    {
+                        hours -= 1;
+                        tb_totalHrs.Text = hours.ToString();
+                    }
+                    int minutes = duration.Minutes;
+
+                 //   int totalhrs = Convert.ToInt32(duration.TotalHours.ToString());
+                    tb_totalHrs.Text = hours.ToString();
+                }
+                else
+                {
+                    timein.Value = Convert.ToDateTime(timeNow.ToString());
+                }
+
+               
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+        private bool HasTimeInToday()
+        {
+            var tools = new EmployeesController();
+
+            var result = tools.HasTimeInToday(tb_DisplayQR.Text);
+            if (result.Count > 0)
+            {
+                timein.Value = Convert.ToDateTime(result[0].ToString());
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         private void btn_save_Click(object sender, EventArgs e)
         {
@@ -54,7 +115,7 @@ namespace SSIP.UserformControls
             {
                 var tools = new EmployeesController();
 
-                var result = tools.AddAttendance(tb_employeeID.Text, tb_timein.Text, tb_timeout.Text, workdate.Value, tb_totalHrs.Text);
+                var result = tools.AddAttendance(tb_employeeID.Text, timein.Value, timeout.Value, workdate.Value, tb_totalHrs.Text);
 
                 if (result != true)
                 {
@@ -73,11 +134,11 @@ namespace SSIP.UserformControls
         {
             if (Authorized())
             {
+                ClearFields();
                 captureDevice = new VideoCaptureDevice(filterinfocollection[cboDevice.SelectedIndex].MonikerString);
                 captureDevice.NewFrame += CaptureDevice_NewFrame;
                 captureDevice.Start();
                 timer1.Start();
-
             }
         }
         private void btn_updateChanges_Click(object sender, EventArgs e)
@@ -87,7 +148,7 @@ namespace SSIP.UserformControls
             if (HighAuthority())
             {
                 btn_updateChanges.Enabled = true;
-                var result = tools.UpdateAttendance(tb_employeeID.Text, tb_timein.Text, tb_timeout.Text, tb_totalHrs.Text, workdate.Value);
+                var result = tools.UpdateAttendance(tb_employeeID.Text, timein.Value, timeout.Value, tb_totalHrs.Text, workdate.Value);
 
                 if (result != false)
                 {
@@ -254,19 +315,26 @@ namespace SSIP.UserformControls
         {
             if (pb_qrcode.Image != null)
             {
-
                 BarcodeReader barcodeReader = new BarcodeReader();
-
-
                 Result result = barcodeReader.Decode((Bitmap)pb_qrcode.Image);
                 timer1.Stop();
 
                 if (result != null)
                 {
                     tb_DisplayQR.Text = result.ToString();
-                    GetEmployee(tb_DisplayQR.Text);
-                    if (captureDevice.IsRunning)
-                        captureDevice.Stop();
+                    var res = GetEmployee(tb_DisplayQR.Text);
+
+                    if (res == true)
+                    {
+                        if (captureDevice.IsRunning)
+                            captureDevice.Stop();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Results not found");
+                        timer1.Start();
+                    }
+                  
                 }
                 else
                 {
@@ -288,7 +356,7 @@ namespace SSIP.UserformControls
 
             cboDevice.SelectedIndex = 0;
                 
-        }
+        }     
         private void AttendanceControl_Leave(object sender, EventArgs e)
         {
             try
@@ -305,7 +373,7 @@ namespace SSIP.UserformControls
         }
         private void tb_timeout_Leave(object sender, EventArgs e)
         {
-            if (tb_timeout.Text != "")
+            if (timeout.Text != null)
             {
                 tb_totalHrs.Visible = true;
                 lbl_totalworkhrs.Visible = true;
@@ -379,8 +447,9 @@ namespace SSIP.UserformControls
             tb_lname.Clear();
             tb_totalHrs.Clear();
             tb_DisplayQR.Clear();
-            tb_timein.Clear();
-            tb_timeout.Clear();
+
+            timein.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            timeout.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             workdate.Value = DateTime.Now;
         }
         public void TimePicker()
@@ -420,10 +489,10 @@ namespace SSIP.UserformControls
             HideGRID();
             tb_fname.Text = this.attendanceGrid.CurrentRow.Cells[1].Value.ToString();
             tb_lname.Text = this.attendanceGrid.CurrentRow.Cells[2].Value.ToString();
-            tb_timein.Text = this.attendanceGrid.CurrentRow.Cells[3].Value.ToString();
-            tb_timeout.Text = this.attendanceGrid.CurrentRow.Cells[4].Value.ToString();
+            timein.Value = Convert.ToDateTime(this.attendanceGrid.CurrentRow.Cells[3].Value);
+            timeout.Value = Convert.ToDateTime(this.attendanceGrid.CurrentRow.Cells[4].Value.ToString());
 
-            if (tb_timeout.Text != "")
+            if (timeout.Value != DateTime.MinValue)
             {
                 lbl_totalworkhrs.Visible = true;
                 tb_totalHrs.Visible = true;
@@ -439,12 +508,9 @@ namespace SSIP.UserformControls
             workdate.Value = Convert.ToDateTime(this.attendanceGrid.CurrentRow.Cells[6].Value.ToString());
             tb_employeeID.Text = this.attendanceGrid.CurrentRow.Cells[8].Value.ToString();
         }
-
-        #endregion
-
         private void tb_unameAccess_TextChanged(object sender, EventArgs e)
         {
-            if (tb_unameAccess.Text =="")
+            if (tb_unameAccess.Text == "")
             {
                 tb_pass.Enabled = false;
             }
@@ -453,5 +519,8 @@ namespace SSIP.UserformControls
                 tb_pass.Enabled = true;
             }
         }
+
+        #endregion
+
     }
 }
