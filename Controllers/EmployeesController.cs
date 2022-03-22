@@ -257,7 +257,7 @@ namespace SSIP.Controllers
 
             }
         }
-        public bool AddAttendance(string id, string timein, string timeout, DateTime workdate, string workhrs)
+        public bool AddAttendance(string id, DateTime timein, DateTime timeout, DateTime workdate, string workhrs)
         {
             using (var con = new SqlConnection(db.ConString()))
             {
@@ -270,7 +270,7 @@ namespace SSIP.Controllers
                     com.Parameters.AddWithValue("@employeeID", id);
                     com.Parameters.AddWithValue("@timein", timein);
                     com.Parameters.AddWithValue("@timeout", timeout);
-                    com.Parameters.AddWithValue("@Workdate", workdate);
+                    com.Parameters.AddWithValue("@Workdate", DateTime.Now.ToShortDateString());
                     com.Parameters.AddWithValue("@workhrs", workhrs);
                     com.ExecuteNonQuery();
 
@@ -280,7 +280,7 @@ namespace SSIP.Controllers
                 }
             }
         }
-        public bool UpdateAttendance(string id, string timein, string timeout, string workhrs, DateTime workdate)
+        public bool UpdateAttendance(string id, DateTime timein, DateTime timeout, string workhrs, DateTime workdate)
         {
             using (var con = new SqlConnection(db.ConString()))
             {
@@ -352,6 +352,36 @@ namespace SSIP.Controllers
                 }
                 return dt;
             }
+        }
+
+        public List<string> HasTimeInToday(string code)
+        {
+            var details = new List<string>();
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                using (var com = new SqlCommand("[SpGetTimeIn]", con))
+                {
+                    com.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+
+                    var datenow = DateTime.Now.ToShortDateString();
+
+                    com.Parameters.AddWithValue("@DateNow", datenow);
+                    com.Parameters.AddWithValue("@code", code);
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details.Add(reader["Time_in"].ToString());                       
+                    }
+
+                    con.Close();
+
+                    return details;
+                }
+            }
+          
         }
         #endregion
 
