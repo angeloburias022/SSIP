@@ -58,7 +58,7 @@ namespace SSIP.Controllers
                                             AuditActionTypeENUM = (Enums.ActionTypes)1,
                                             DateTimeStamp = DateTime.Now.ToString(),
                                             Result = "Succeed",
-                                            Description = "'"+user.Username+"' Successfully Log in"
+                                            Description = ""+user.Username+" Successfully Log in"
                                         };
 
                                         aud.Logs(loginLogs);
@@ -184,6 +184,46 @@ namespace SSIP.Controllers
                     }
                 }
             }
+        }
+        #endregion
+
+        #region Get current user details
+        public string GetCurrentUserDetails(string username)
+        {
+            try
+            {
+                using (var con = new SqlConnection(ConString))
+                {
+                    using (var com = new SqlCommand("[SpGetCurrentUserDetails]", con))
+                    {
+                        con.Open();
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@username", username);
+
+                        var reader = com.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            if (reader.HasRows)
+                            {
+                                return reader["FirstName"].ToString();
+                            }
+                            else
+                            {
+                                return "User not found";
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+          
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return "";
         }
         #endregion
 

@@ -32,7 +32,7 @@ namespace SSIP.Forms
                 Username = tb_uname.Text,
                 Password = tb_pwd.Text
             };
-           
+            
             if (!Valid())
             {
                 MessageBox.Show("Check your fields");
@@ -44,13 +44,18 @@ namespace SSIP.Forms
 
                 if (result != false)
                 {
-                    this.Close();
+                                    
                     dboard.Show();
-                }else
+                    dboard.LabelText ="Welcome "+acc.GetCurrentUserDetails(tb_uname.Text);
+                    this.Close();
+                }
+                else
                 {
                     MessageBox.Show("Your password or Username might incorrect.");
                 }
             }
+
+
         }
 
 

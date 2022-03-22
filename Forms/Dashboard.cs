@@ -30,7 +30,7 @@ namespace SSIP.Forms
         #region load charts
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            time_timer.Start();
             //this.dispatchControl1.Visible = false;
             //this.mainServiceControl.BringToFront();
             //   this.mainServiceControl.Visible = false;
@@ -282,7 +282,22 @@ namespace SSIP.Forms
             }
             catch (Exception error)
             {
-                MessageBox.Show("Something went wrong" + error);
+                MessageBox.Show("Something went wrong in Dashboard" + error);
+            }
+        }
+        #endregion
+
+        #region load user name
+ 
+        public string LabelText
+        {
+            get
+            {
+                return this.lbl_currentUser.Text;
+            }
+            set
+            {
+                this.lbl_currentUser.Text = value;
             }
         }
         #endregion
@@ -391,7 +406,20 @@ namespace SSIP.Forms
         #endregion
 
         #region Hide and Show control panel
-        public void ShowAudControl()
+        private void ShowPOSControl()
+        {
+            pos_controlPanel.Dock = DockStyle.Fill;
+            pos_controlPanel.Visible = true;
+            this.salesControl1.BringToFront();
+            this.salesControl1.Show();
+          
+        }
+        private void HidePOSControl()
+        {
+            pos_controlPanel.Hide();
+            pos_controlPanel.Dock = DockStyle.None;
+        }
+        private void ShowAudControl()
         {
             auditControlPanel.Dock = DockStyle.Fill;
             auditControlPanel.Visible = true;
@@ -399,12 +427,12 @@ namespace SSIP.Forms
             this.auditControl1.Show();
 
         }
-        public void HideAudControl()
+        private void HideAudControl()
         {
             auditControlPanel.Hide();
             auditControlPanel.Dock = DockStyle.None;
         }
-        public void ShowEquipInvControl()
+        private void ShowEquipInvControl()
         {
             equipControlPanel.Dock = DockStyle.Fill;
             equipControlPanel.Visible = true;
@@ -412,12 +440,12 @@ namespace SSIP.Forms
             this.equipInvControl1.Show();
 
         }
-        public void HideEquipInvControl()
+        private void HideEquipInvControl()
         {
             equipControlPanel.Hide();
             equipControlPanel.Dock = DockStyle.None;
         }
-        public void ShowProductInvControl()
+        private void ShowProductInvControl()
         {
             productInvPanel.Dock = DockStyle.Fill;
             productInvPanel.Visible = true;
@@ -425,12 +453,12 @@ namespace SSIP.Forms
             this.payrollControl1.Show();
 
         }
-        public void HideProductInvControl()
+        private void HideProductInvControl()
         {
             productInvPanel.Hide();
             productInvPanel.Dock = DockStyle.None;
         }
-        public void ShowMainServicesControl()
+        private void ShowMainServicesControl()
         {
             dispatchFormPanel.Dock = DockStyle.Fill;
             this.mainServiceControl1.BringToFront();
@@ -439,36 +467,36 @@ namespace SSIP.Forms
             dispatchFormPanel.Visible = true;
             dispatchFormPanel.Dock = DockStyle.Fill;
         }
-        public void HideMainServicesPanelControl()
+        private void HideMainServicesPanelControl()
         {
             dispatchFormPanel.Hide();
             dispatchFormPanel.Dock = DockStyle.None;
         }
-        public void ShowEmployeesPanelControl()
+        private void ShowEmployeesPanelControl()
         {
             this.employeesControl1.BringToFront();
             this.employeesControl1.Show();
             this.employeePanel.Visible = true;
             this.employeePanel.Dock = DockStyle.Fill;
         }
-        public void HideEmployeesPanelControl()
+        private void HideEmployeesPanelControl()
         {
             employeePanel.Hide();
             employeePanel.Dock = DockStyle.None;
         }
-        public void ShowCustomersPanelControl()
+        private void ShowCustomersPanelControl()
         {
             this.customersControl1.BringToFront();
             this.customersControl1.Show();
             this.customersControl1Panel.Visible = true;
             this.customersControl1Panel.Dock = DockStyle.Fill;
         }
-        public void HideCustomersPanelControl()
+        private void HideCustomersPanelControl()
         {
             customersControl1Panel.Hide();
             customersControl1Panel.Dock = DockStyle.None;
         }
-        public void ShowAttendanceControl()
+        private void ShowAttendanceControl()
         {
             attendanceControlpanel.Dock = DockStyle.Fill;
             this.attendanceControl1.BringToFront();
@@ -477,18 +505,18 @@ namespace SSIP.Forms
             attendanceControlpanel.Visible = true;
             attendanceControlpanel.Dock = DockStyle.Fill;
         }
-        public void HideAttendanceControl()
+        private void HideAttendanceControl()
         {
             attendanceControlpanel.Hide();
             attendanceControlpanel.Dock = DockStyle.None;
         }
-        public void ShowPayRollControl()
+        private void ShowPayRollControl()
         {
             this.payroll_mainPanel.Visible = true;
             this.payroll_mainPanel.Dock = DockStyle.Fill;
            
         }
-        public void HidePayRollControl()
+        private void HidePayRollControl()
         {
             this.payroll_mainPanel.Visible = false;
             this.payroll_mainPanel.Dock = DockStyle.None;
@@ -496,6 +524,20 @@ namespace SSIP.Forms
         #endregion
 
         #region sub clicks event handler
+        private void btn_pos_Click(object sender, EventArgs e)
+        {
+            HideMainServicesPanelControl();
+            HideEmployeesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideProductInvControl();
+            HideEquipInvControl();
+            HideAudControl();
+
+            ShowPOSControl();
+            HideSubMenu();
+        }
         private void btn_auditLogs_Click(object sender, EventArgs e)
         {
             HideEmployeesPanelControl();
@@ -504,6 +546,7 @@ namespace SSIP.Forms
             HideAttendanceControl();
             HideProductInvControl();
             HideEquipInvControl();
+            HidePOSControl();
 
             ShowAudControl();
             HideSubMenu();
@@ -518,7 +561,7 @@ namespace SSIP.Forms
             HideProductInvControl();
             HideEquipInvControl();
             HideAudControl();
-
+            HidePOSControl();
 
             ShowMainServicesControl();
             HideSubMenu();
@@ -531,7 +574,7 @@ namespace SSIP.Forms
             HideAttendanceControl();
             HideProductInvControl();
             HideAudControl();
-
+            HidePOSControl();
 
             ShowEquipInvControl();
             HideSubMenu();
@@ -545,6 +588,7 @@ namespace SSIP.Forms
             HidePayRollControl();
             HideEquipInvControl();
             HideAudControl();
+            HidePOSControl();
 
             HideSubMenu();
         }
@@ -556,6 +600,7 @@ namespace SSIP.Forms
             HideProductInvControl();
             HidePayRollControl();
             HideAudControl();
+            HidePOSControl();
 
             ShowAttendanceControl();
             HideSubMenu();
@@ -569,6 +614,7 @@ namespace SSIP.Forms
             HideProductInvControl();
             HideEquipInvControl();
             HideAudControl();
+            HidePOSControl();
 
             ShowPayRollControl();
             HideSubMenu();
@@ -582,6 +628,7 @@ namespace SSIP.Forms
             HideAttendanceControl();
             HideEquipInvControl();
             HideAudControl();
+            HidePOSControl();
 
             ShowProductInvControl();
             HideSubMenu();
@@ -596,6 +643,7 @@ namespace SSIP.Forms
             HideProductInvControl();
             HideEquipInvControl();
             HideAudControl();
+            HidePOSControl();
 
             ShowEmployeesPanelControl();
             HideSubMenu();
@@ -609,12 +657,16 @@ namespace SSIP.Forms
             HideProductInvControl();
             HideEquipInvControl();
             HideAudControl();
+            HidePOSControl();
 
             ShowCustomersPanelControl();
             HideSubMenu();
         }
         #endregion
 
-
+        private void time_timer_Tick(object sender, EventArgs e)
+        {
+            lbl_time.Text = string.Format("{0:hh:mm tt}", DateTime.Now);
+        }
     }
 }
