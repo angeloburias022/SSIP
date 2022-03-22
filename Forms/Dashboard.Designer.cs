@@ -165,6 +165,7 @@ namespace SSIP.Forms
             this.logo_panel.Name = "logo_panel";
             this.logo_panel.Size = new System.Drawing.Size(232, 130);
             this.logo_panel.TabIndex = 0;
+            this.logo_panel.Click += new System.EventHandler(this.logo_panel_Click);
             // 
             // btn_menu_cust
             // 

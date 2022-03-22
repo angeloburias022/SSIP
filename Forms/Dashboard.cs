@@ -287,8 +287,7 @@ namespace SSIP.Forms
         }
         #endregion
 
-        #region load user name
- 
+        #region load user name 
         public string LabelText
         {
             get
@@ -300,6 +299,26 @@ namespace SSIP.Forms
                 this.lbl_currentUser.Text = value;
             }
         }
+        #endregion
+
+        #region show charts
+        private void ShowCharts()
+        {
+            HideAudControl();
+            HideAttendanceControl();
+            HideCustomersPanelControl();
+            HideEmployeesPanelControl();
+            HideEquipInvControl();
+            HideMainServicesPanelControl();
+            HidePayRollControl();
+            HidePOSControl();
+            HideProductInvControl();
+        }
+        private void logo_panel_Click(object sender, EventArgs e)
+        {
+            ShowCharts();
+        }
+
         #endregion
 
         #region main clicks event handler
@@ -406,6 +425,7 @@ namespace SSIP.Forms
         #endregion
 
         #region Hide and Show control panel
+
         private void ShowPOSControl()
         {
             pos_controlPanel.Dock = DockStyle.Fill;
@@ -664,9 +684,13 @@ namespace SSIP.Forms
         }
         #endregion
 
+        #region event handlers
         private void time_timer_Tick(object sender, EventArgs e)
         {
             lbl_time.Text = string.Format("{0:hh:mm tt}", DateTime.Now);
         }
+        #endregion
+
+       
     }
 }
