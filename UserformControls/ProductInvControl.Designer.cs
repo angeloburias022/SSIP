@@ -29,22 +29,35 @@ namespace SSIP.UserformControls
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductInvControl));
             this.product_panel = new System.Windows.Forms.Panel();
+            this.cmb_actype = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmb_Hp = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lbl_height = new System.Windows.Forms.Label();
+            this.tb_height = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lbl_hp = new System.Windows.Forms.Label();
+            this.lbl_quan = new System.Windows.Forms.Label();
+            this.tb_quan = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lbl_actype = new System.Windows.Forms.Label();
             this.cmb_prodCategory = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btn_addProduct = new Guna.UI2.WinForms.Guna2Button();
             this.tb_prodDescr = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btn_update = new Guna.UI2.WinForms.Guna2Button();
             this.tb_code = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tb_length = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tb_width = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_prodPrice = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_id = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_productName = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_prodDetails = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.lbl_length = new System.Windows.Forms.Label();
+            this.lbl_width = new System.Windows.Forms.Label();
             this.lbl_code = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lbl_prodName = new System.Windows.Forms.Label();
+            this.btn_addProduct = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_update = new Guna.UI2.WinForms.Guna2Button();
             this.tb_searchProd = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btn_viewProducts = new Guna.UI2.WinForms.Guna2Button();
@@ -59,23 +72,14 @@ namespace SSIP.UserformControls
             this.productMainPanel = new System.Windows.Forms.Panel();
             this.gridMainPanel = new System.Windows.Forms.Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.cmb_Hp = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lbl_hp = new System.Windows.Forms.Label();
-            this.lbl_width = new System.Windows.Forms.Label();
-            this.tb_width = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_length = new System.Windows.Forms.Label();
-            this.tb_length = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_actype = new System.Windows.Forms.Label();
-            this.cmb_actype = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lbl_quan = new System.Windows.Forms.Label();
-            this.tb_quan = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tb_height = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_height = new System.Windows.Forms.Label();
+            this.QRcontrolpanel = new System.Windows.Forms.Panel();
+            this.productQRControl1 = new SSIP.UserformControls.ProductQRControl();
             this.product_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGrid)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
             this.productMainPanel.SuspendLayout();
             this.gridMainPanel.SuspendLayout();
+            this.QRcontrolpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // product_panel
@@ -111,6 +115,173 @@ namespace SSIP.UserformControls
             this.product_panel.Size = new System.Drawing.Size(355, 459);
             this.product_panel.TabIndex = 16;
             // 
+            // cmb_actype
+            // 
+            this.cmb_actype.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_actype.BorderRadius = 4;
+            this.cmb_actype.DisabledState.Parent = this.cmb_actype;
+            this.cmb_actype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_actype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_actype.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_actype.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_actype.FocusedState.Parent = this.cmb_actype;
+            this.cmb_actype.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_actype.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_actype.HoverState.Parent = this.cmb_actype;
+            this.cmb_actype.ItemHeight = 30;
+            this.cmb_actype.Items.AddRange(new object[] {
+            "",
+            "Window-type",
+            "Split-type",
+            "Floor-mounted type",
+            "Ceiling Wallmounted type",
+            ""});
+            this.cmb_actype.ItemsAppearance.Parent = this.cmb_actype;
+            this.cmb_actype.Location = new System.Drawing.Point(18, 398);
+            this.cmb_actype.Name = "cmb_actype";
+            this.cmb_actype.ShadowDecoration.Parent = this.cmb_actype;
+            this.cmb_actype.Size = new System.Drawing.Size(156, 36);
+            this.cmb_actype.TabIndex = 15;
+            this.cmb_actype.Visible = false;
+            // 
+            // cmb_Hp
+            // 
+            this.cmb_Hp.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_Hp.BorderRadius = 4;
+            this.cmb_Hp.DisabledState.Parent = this.cmb_Hp;
+            this.cmb_Hp.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_Hp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Hp.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_Hp.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_Hp.FocusedState.Parent = this.cmb_Hp;
+            this.cmb_Hp.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_Hp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_Hp.HoverState.Parent = this.cmb_Hp;
+            this.cmb_Hp.ItemHeight = 30;
+            this.cmb_Hp.Items.AddRange(new object[] {
+            "1.0 HP",
+            "1.5 HP",
+            "2.0 HP",
+            "2.5 HP",
+            "3.0 HP",
+            "3.5 HP",
+            "4.0 HP",
+            "4.5 HP",
+            "5.0 HP",
+            "5.5 HP",
+            "6.0 HP"});
+            this.cmb_Hp.ItemsAppearance.Parent = this.cmb_Hp;
+            this.cmb_Hp.Location = new System.Drawing.Point(189, 398);
+            this.cmb_Hp.Name = "cmb_Hp";
+            this.cmb_Hp.ShadowDecoration.Parent = this.cmb_Hp;
+            this.cmb_Hp.Size = new System.Drawing.Size(156, 36);
+            this.cmb_Hp.TabIndex = 15;
+            this.cmb_Hp.Visible = false;
+            // 
+            // lbl_height
+            // 
+            this.lbl_height.AutoSize = true;
+            this.lbl_height.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_height.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_height.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_height.Location = new System.Drawing.Point(264, 242);
+            this.lbl_height.Name = "lbl_height";
+            this.lbl_height.Size = new System.Drawing.Size(67, 20);
+            this.lbl_height.TabIndex = 8;
+            this.lbl_height.Text = "Height:";
+            // 
+            // tb_height
+            // 
+            this.tb_height.BackColor = System.Drawing.Color.Transparent;
+            this.tb_height.BorderRadius = 4;
+            this.tb_height.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_height.DefaultText = "0";
+            this.tb_height.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_height.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_height.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_height.DisabledState.Parent = this.tb_height;
+            this.tb_height.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_height.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_height.FocusedState.Parent = this.tb_height;
+            this.tb_height.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_height.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_height.HoverState.Parent = this.tb_height;
+            this.tb_height.Location = new System.Drawing.Point(268, 265);
+            this.tb_height.Name = "tb_height";
+            this.tb_height.PasswordChar = '\0';
+            this.tb_height.PlaceholderText = "";
+            this.tb_height.SelectedText = "";
+            this.tb_height.ShadowDecoration.Parent = this.tb_height;
+            this.tb_height.Size = new System.Drawing.Size(77, 36);
+            this.tb_height.TabIndex = 11;
+            this.tb_height.TextChanged += new System.EventHandler(this.tb_prodPrice_TextChanged);
+            this.tb_height.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
+            // 
+            // lbl_hp
+            // 
+            this.lbl_hp.AutoSize = true;
+            this.lbl_hp.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_hp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_hp.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_hp.Location = new System.Drawing.Point(185, 373);
+            this.lbl_hp.Name = "lbl_hp";
+            this.lbl_hp.Size = new System.Drawing.Size(116, 20);
+            this.lbl_hp.TabIndex = 14;
+            this.lbl_hp.Text = "Horse Power:";
+            this.lbl_hp.Visible = false;
+            // 
+            // lbl_quan
+            // 
+            this.lbl_quan.AutoSize = true;
+            this.lbl_quan.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_quan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_quan.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_quan.Location = new System.Drawing.Point(185, 242);
+            this.lbl_quan.Name = "lbl_quan";
+            this.lbl_quan.Size = new System.Drawing.Size(81, 20);
+            this.lbl_quan.TabIndex = 8;
+            this.lbl_quan.Text = "Quantity:";
+            // 
+            // tb_quan
+            // 
+            this.tb_quan.BackColor = System.Drawing.Color.Transparent;
+            this.tb_quan.BorderRadius = 4;
+            this.tb_quan.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_quan.DefaultText = "0";
+            this.tb_quan.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_quan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_quan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_quan.DisabledState.Parent = this.tb_quan;
+            this.tb_quan.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_quan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_quan.FocusedState.Parent = this.tb_quan;
+            this.tb_quan.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_quan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_quan.HoverState.Parent = this.tb_quan;
+            this.tb_quan.Location = new System.Drawing.Point(189, 265);
+            this.tb_quan.Name = "tb_quan";
+            this.tb_quan.PasswordChar = '\0';
+            this.tb_quan.PlaceholderText = "";
+            this.tb_quan.SelectedText = "";
+            this.tb_quan.ShadowDecoration.Parent = this.tb_quan;
+            this.tb_quan.Size = new System.Drawing.Size(73, 36);
+            this.tb_quan.TabIndex = 11;
+            this.tb_quan.TextChanged += new System.EventHandler(this.tb_prodPrice_TextChanged);
+            this.tb_quan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
+            // 
+            // lbl_actype
+            // 
+            this.lbl_actype.AutoSize = true;
+            this.lbl_actype.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_actype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_actype.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_actype.Location = new System.Drawing.Point(14, 373);
+            this.lbl_actype.Name = "lbl_actype";
+            this.lbl_actype.Size = new System.Drawing.Size(108, 20);
+            this.lbl_actype.TabIndex = 14;
+            this.lbl_actype.Text = "Aircon Type:";
+            this.lbl_actype.Visible = false;
+            // 
             // cmb_prodCategory
             // 
             this.cmb_prodCategory.BackColor = System.Drawing.Color.Transparent;
@@ -137,28 +308,6 @@ namespace SSIP.UserformControls
             this.cmb_prodCategory.TabIndex = 13;
             this.cmb_prodCategory.SelectedValueChanged += new System.EventHandler(this.cmb_prodCategory_SelectedValueChanged);
             // 
-            // btn_addProduct
-            // 
-            this.btn_addProduct.BackColor = System.Drawing.Color.Transparent;
-            this.btn_addProduct.BorderRadius = 4;
-            this.btn_addProduct.CheckedState.Parent = this.btn_addProduct;
-            this.btn_addProduct.CustomImages.Parent = this.btn_addProduct;
-            this.btn_addProduct.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_addProduct.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_addProduct.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_addProduct.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_addProduct.DisabledState.Parent = this.btn_addProduct;
-            this.btn_addProduct.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_addProduct.ForeColor = System.Drawing.Color.White;
-            this.btn_addProduct.HoverState.Parent = this.btn_addProduct;
-            this.btn_addProduct.Location = new System.Drawing.Point(11, 286);
-            this.btn_addProduct.Name = "btn_addProduct";
-            this.btn_addProduct.ShadowDecoration.Parent = this.btn_addProduct;
-            this.btn_addProduct.Size = new System.Drawing.Size(138, 32);
-            this.btn_addProduct.TabIndex = 9;
-            this.btn_addProduct.Text = "ADD PRODUCT";
-            this.btn_addProduct.Click += new System.EventHandler(this.btn_addProduct_Click);
-            // 
             // tb_prodDescr
             // 
             this.tb_prodDescr.BackColor = System.Drawing.Color.Transparent;
@@ -183,28 +332,6 @@ namespace SSIP.UserformControls
             this.tb_prodDescr.ShadowDecoration.Parent = this.tb_prodDescr;
             this.tb_prodDescr.Size = new System.Drawing.Size(151, 105);
             this.tb_prodDescr.TabIndex = 11;
-            // 
-            // btn_update
-            // 
-            this.btn_update.BackColor = System.Drawing.Color.Transparent;
-            this.btn_update.BorderRadius = 4;
-            this.btn_update.CheckedState.Parent = this.btn_update;
-            this.btn_update.CustomImages.Parent = this.btn_update;
-            this.btn_update.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_update.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_update.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_update.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_update.DisabledState.Parent = this.btn_update;
-            this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_update.ForeColor = System.Drawing.Color.White;
-            this.btn_update.HoverState.Parent = this.btn_update;
-            this.btn_update.Location = new System.Drawing.Point(11, 324);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.ShadowDecoration.Parent = this.btn_update;
-            this.btn_update.Size = new System.Drawing.Size(138, 33);
-            this.btn_update.TabIndex = 9;
-            this.btn_update.Text = "UPDATE PRODUCT";
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // tb_code
             // 
@@ -231,6 +358,60 @@ namespace SSIP.UserformControls
             this.tb_code.ShadowDecoration.Parent = this.tb_code;
             this.tb_code.Size = new System.Drawing.Size(156, 36);
             this.tb_code.TabIndex = 11;
+            // 
+            // tb_length
+            // 
+            this.tb_length.BackColor = System.Drawing.Color.Transparent;
+            this.tb_length.BorderRadius = 4;
+            this.tb_length.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_length.DefaultText = "0";
+            this.tb_length.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_length.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_length.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_length.DisabledState.Parent = this.tb_length;
+            this.tb_length.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_length.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_length.FocusedState.Parent = this.tb_length;
+            this.tb_length.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_length.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_length.HoverState.Parent = this.tb_length;
+            this.tb_length.Location = new System.Drawing.Point(271, 334);
+            this.tb_length.Name = "tb_length";
+            this.tb_length.PasswordChar = '\0';
+            this.tb_length.PlaceholderText = "88.0 (cm)";
+            this.tb_length.SelectedText = "";
+            this.tb_length.ShadowDecoration.Parent = this.tb_length;
+            this.tb_length.Size = new System.Drawing.Size(74, 36);
+            this.tb_length.TabIndex = 11;
+            this.tb_length.TextChanged += new System.EventHandler(this.tb_prodPrice_TextChanged);
+            this.tb_length.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
+            // 
+            // tb_width
+            // 
+            this.tb_width.BackColor = System.Drawing.Color.Transparent;
+            this.tb_width.BorderRadius = 4;
+            this.tb_width.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_width.DefaultText = "0";
+            this.tb_width.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_width.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_width.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_width.DisabledState.Parent = this.tb_width;
+            this.tb_width.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_width.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_width.FocusedState.Parent = this.tb_width;
+            this.tb_width.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_width.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_width.HoverState.Parent = this.tb_width;
+            this.tb_width.Location = new System.Drawing.Point(189, 334);
+            this.tb_width.Name = "tb_width";
+            this.tb_width.PasswordChar = '\0';
+            this.tb_width.PlaceholderText = "example: 77.0 (cm)";
+            this.tb_width.SelectedText = "";
+            this.tb_width.ShadowDecoration.Parent = this.tb_width;
+            this.tb_width.Size = new System.Drawing.Size(74, 36);
+            this.tb_width.TabIndex = 11;
+            this.tb_width.TextChanged += new System.EventHandler(this.tb_prodPrice_TextChanged);
+            this.tb_width.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
             // 
             // tb_prodPrice
             // 
@@ -346,6 +527,30 @@ namespace SSIP.UserformControls
             this.label8.TabIndex = 8;
             this.label8.Text = "Product Category";
             // 
+            // lbl_length
+            // 
+            this.lbl_length.AutoSize = true;
+            this.lbl_length.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_length.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_length.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_length.Location = new System.Drawing.Point(263, 311);
+            this.lbl_length.Name = "lbl_length";
+            this.lbl_length.Size = new System.Drawing.Size(65, 20);
+            this.lbl_length.TabIndex = 8;
+            this.lbl_length.Text = "Length";
+            // 
+            // lbl_width
+            // 
+            this.lbl_width.AutoSize = true;
+            this.lbl_width.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_width.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_width.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_width.Location = new System.Drawing.Point(185, 311);
+            this.lbl_width.Name = "lbl_width";
+            this.lbl_width.Size = new System.Drawing.Size(60, 20);
+            this.lbl_width.TabIndex = 8;
+            this.lbl_width.Text = "Width:";
+            // 
             // lbl_code
             // 
             this.lbl_code.AutoSize = true;
@@ -393,6 +598,50 @@ namespace SSIP.UserformControls
             this.lbl_prodName.Size = new System.Drawing.Size(127, 20);
             this.lbl_prodName.TabIndex = 8;
             this.lbl_prodName.Text = "Product Name:";
+            // 
+            // btn_addProduct
+            // 
+            this.btn_addProduct.BackColor = System.Drawing.Color.Transparent;
+            this.btn_addProduct.BorderRadius = 4;
+            this.btn_addProduct.CheckedState.Parent = this.btn_addProduct;
+            this.btn_addProduct.CustomImages.Parent = this.btn_addProduct;
+            this.btn_addProduct.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addProduct.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_addProduct.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_addProduct.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_addProduct.DisabledState.Parent = this.btn_addProduct;
+            this.btn_addProduct.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_addProduct.ForeColor = System.Drawing.Color.White;
+            this.btn_addProduct.HoverState.Parent = this.btn_addProduct;
+            this.btn_addProduct.Location = new System.Drawing.Point(11, 286);
+            this.btn_addProduct.Name = "btn_addProduct";
+            this.btn_addProduct.ShadowDecoration.Parent = this.btn_addProduct;
+            this.btn_addProduct.Size = new System.Drawing.Size(138, 32);
+            this.btn_addProduct.TabIndex = 9;
+            this.btn_addProduct.Text = "ADD PRODUCT";
+            this.btn_addProduct.Click += new System.EventHandler(this.btn_addProduct_Click);
+            // 
+            // btn_update
+            // 
+            this.btn_update.BackColor = System.Drawing.Color.Transparent;
+            this.btn_update.BorderRadius = 4;
+            this.btn_update.CheckedState.Parent = this.btn_update;
+            this.btn_update.CustomImages.Parent = this.btn_update;
+            this.btn_update.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_update.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_update.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_update.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_update.DisabledState.Parent = this.btn_update;
+            this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_update.ForeColor = System.Drawing.Color.White;
+            this.btn_update.HoverState.Parent = this.btn_update;
+            this.btn_update.Location = new System.Drawing.Point(11, 324);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.ShadowDecoration.Parent = this.btn_update;
+            this.btn_update.Size = new System.Drawing.Size(138, 33);
+            this.btn_update.TabIndex = 9;
+            this.btn_update.Text = "UPDATE PRODUCT";
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // tb_searchProd
             // 
@@ -654,256 +903,30 @@ namespace SSIP.UserformControls
             this.guna2Button1.TabIndex = 14;
             this.guna2Button1.Text = "SALES";
             // 
-            // cmb_Hp
+            // QRcontrolpanel
             // 
-            this.cmb_Hp.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_Hp.BorderRadius = 4;
-            this.cmb_Hp.DisabledState.Parent = this.cmb_Hp;
-            this.cmb_Hp.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_Hp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Hp.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_Hp.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_Hp.FocusedState.Parent = this.cmb_Hp;
-            this.cmb_Hp.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_Hp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_Hp.HoverState.Parent = this.cmb_Hp;
-            this.cmb_Hp.ItemHeight = 30;
-            this.cmb_Hp.Items.AddRange(new object[] {
-            "1.0 HP",
-            "1.5 HP",
-            "2.0 HP",
-            "2.5 HP",
-            "3.0 HP",
-            "3.5 HP",
-            "4.0 HP",
-            "4.5 HP",
-            "5.0 HP",
-            "5.5 HP",
-            "6.0 HP"});
-            this.cmb_Hp.ItemsAppearance.Parent = this.cmb_Hp;
-            this.cmb_Hp.Location = new System.Drawing.Point(189, 398);
-            this.cmb_Hp.Name = "cmb_Hp";
-            this.cmb_Hp.ShadowDecoration.Parent = this.cmb_Hp;
-            this.cmb_Hp.Size = new System.Drawing.Size(156, 36);
-            this.cmb_Hp.TabIndex = 15;
-            this.cmb_Hp.Visible = false;
+            this.QRcontrolpanel.Controls.Add(this.productQRControl1);
+            this.QRcontrolpanel.Location = new System.Drawing.Point(805, 356);
+            this.QRcontrolpanel.Name = "QRcontrolpanel";
+            this.QRcontrolpanel.Size = new System.Drawing.Size(89, 75);
+            this.QRcontrolpanel.TabIndex = 139;
+            this.QRcontrolpanel.Visible = false;
             // 
-            // lbl_hp
+            // productQRControl1
             // 
-            this.lbl_hp.AutoSize = true;
-            this.lbl_hp.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_hp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_hp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_hp.Location = new System.Drawing.Point(185, 373);
-            this.lbl_hp.Name = "lbl_hp";
-            this.lbl_hp.Size = new System.Drawing.Size(116, 20);
-            this.lbl_hp.TabIndex = 14;
-            this.lbl_hp.Text = "Horse Power:";
-            this.lbl_hp.Visible = false;
-            // 
-            // lbl_width
-            // 
-            this.lbl_width.AutoSize = true;
-            this.lbl_width.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_width.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_width.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_width.Location = new System.Drawing.Point(185, 311);
-            this.lbl_width.Name = "lbl_width";
-            this.lbl_width.Size = new System.Drawing.Size(60, 20);
-            this.lbl_width.TabIndex = 8;
-            this.lbl_width.Text = "Width:";
-            // 
-            // tb_width
-            // 
-            this.tb_width.BackColor = System.Drawing.Color.Transparent;
-            this.tb_width.BorderRadius = 4;
-            this.tb_width.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_width.DefaultText = "0";
-            this.tb_width.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_width.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_width.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_width.DisabledState.Parent = this.tb_width;
-            this.tb_width.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_width.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_width.FocusedState.Parent = this.tb_width;
-            this.tb_width.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_width.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_width.HoverState.Parent = this.tb_width;
-            this.tb_width.Location = new System.Drawing.Point(189, 334);
-            this.tb_width.Name = "tb_width";
-            this.tb_width.PasswordChar = '\0';
-            this.tb_width.PlaceholderText = "example: 77.0 (cm)";
-            this.tb_width.SelectedText = "";
-            this.tb_width.ShadowDecoration.Parent = this.tb_width;
-            this.tb_width.Size = new System.Drawing.Size(74, 36);
-            this.tb_width.TabIndex = 11;
-            this.tb_width.TextChanged += new System.EventHandler(this.tb_prodPrice_TextChanged);
-            this.tb_width.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
-            // 
-            // lbl_length
-            // 
-            this.lbl_length.AutoSize = true;
-            this.lbl_length.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_length.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_length.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_length.Location = new System.Drawing.Point(263, 311);
-            this.lbl_length.Name = "lbl_length";
-            this.lbl_length.Size = new System.Drawing.Size(65, 20);
-            this.lbl_length.TabIndex = 8;
-            this.lbl_length.Text = "Length";
-            // 
-            // tb_length
-            // 
-            this.tb_length.BackColor = System.Drawing.Color.Transparent;
-            this.tb_length.BorderRadius = 4;
-            this.tb_length.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_length.DefaultText = "0";
-            this.tb_length.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_length.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_length.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_length.DisabledState.Parent = this.tb_length;
-            this.tb_length.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_length.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_length.FocusedState.Parent = this.tb_length;
-            this.tb_length.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_length.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_length.HoverState.Parent = this.tb_length;
-            this.tb_length.Location = new System.Drawing.Point(271, 334);
-            this.tb_length.Name = "tb_length";
-            this.tb_length.PasswordChar = '\0';
-            this.tb_length.PlaceholderText = "88.0 (cm)";
-            this.tb_length.SelectedText = "";
-            this.tb_length.ShadowDecoration.Parent = this.tb_length;
-            this.tb_length.Size = new System.Drawing.Size(74, 36);
-            this.tb_length.TabIndex = 11;
-            this.tb_length.TextChanged += new System.EventHandler(this.tb_prodPrice_TextChanged);
-            this.tb_length.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
-            // 
-            // lbl_actype
-            // 
-            this.lbl_actype.AutoSize = true;
-            this.lbl_actype.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_actype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_actype.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_actype.Location = new System.Drawing.Point(14, 373);
-            this.lbl_actype.Name = "lbl_actype";
-            this.lbl_actype.Size = new System.Drawing.Size(108, 20);
-            this.lbl_actype.TabIndex = 14;
-            this.lbl_actype.Text = "Aircon Type:";
-            this.lbl_actype.Visible = false;
-            // 
-            // cmb_actype
-            // 
-            this.cmb_actype.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_actype.BorderRadius = 4;
-            this.cmb_actype.DisabledState.Parent = this.cmb_actype;
-            this.cmb_actype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_actype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_actype.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_actype.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_actype.FocusedState.Parent = this.cmb_actype;
-            this.cmb_actype.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_actype.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_actype.HoverState.Parent = this.cmb_actype;
-            this.cmb_actype.ItemHeight = 30;
-            this.cmb_actype.Items.AddRange(new object[] {
-            "",
-            "Window-type",
-            "Split-type",
-            "Floor-mounted type",
-            "Ceiling Wallmounted type",
-            ""});
-            this.cmb_actype.ItemsAppearance.Parent = this.cmb_actype;
-            this.cmb_actype.Location = new System.Drawing.Point(18, 398);
-            this.cmb_actype.Name = "cmb_actype";
-            this.cmb_actype.ShadowDecoration.Parent = this.cmb_actype;
-            this.cmb_actype.Size = new System.Drawing.Size(156, 36);
-            this.cmb_actype.TabIndex = 15;
-            this.cmb_actype.Visible = false;
-            // 
-            // lbl_quan
-            // 
-            this.lbl_quan.AutoSize = true;
-            this.lbl_quan.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_quan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_quan.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_quan.Location = new System.Drawing.Point(185, 242);
-            this.lbl_quan.Name = "lbl_quan";
-            this.lbl_quan.Size = new System.Drawing.Size(81, 20);
-            this.lbl_quan.TabIndex = 8;
-            this.lbl_quan.Text = "Quantity:";
-            // 
-            // tb_quan
-            // 
-            this.tb_quan.BackColor = System.Drawing.Color.Transparent;
-            this.tb_quan.BorderRadius = 4;
-            this.tb_quan.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_quan.DefaultText = "0";
-            this.tb_quan.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_quan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_quan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_quan.DisabledState.Parent = this.tb_quan;
-            this.tb_quan.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_quan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_quan.FocusedState.Parent = this.tb_quan;
-            this.tb_quan.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_quan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_quan.HoverState.Parent = this.tb_quan;
-            this.tb_quan.Location = new System.Drawing.Point(189, 265);
-            this.tb_quan.Name = "tb_quan";
-            this.tb_quan.PasswordChar = '\0';
-            this.tb_quan.PlaceholderText = "";
-            this.tb_quan.SelectedText = "";
-            this.tb_quan.ShadowDecoration.Parent = this.tb_quan;
-            this.tb_quan.Size = new System.Drawing.Size(73, 36);
-            this.tb_quan.TabIndex = 11;
-            this.tb_quan.TextChanged += new System.EventHandler(this.tb_prodPrice_TextChanged);
-            this.tb_quan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
-            // 
-            // tb_height
-            // 
-            this.tb_height.BackColor = System.Drawing.Color.Transparent;
-            this.tb_height.BorderRadius = 4;
-            this.tb_height.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_height.DefaultText = "0";
-            this.tb_height.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_height.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_height.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_height.DisabledState.Parent = this.tb_height;
-            this.tb_height.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_height.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_height.FocusedState.Parent = this.tb_height;
-            this.tb_height.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_height.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_height.HoverState.Parent = this.tb_height;
-            this.tb_height.Location = new System.Drawing.Point(268, 265);
-            this.tb_height.Name = "tb_height";
-            this.tb_height.PasswordChar = '\0';
-            this.tb_height.PlaceholderText = "";
-            this.tb_height.SelectedText = "";
-            this.tb_height.ShadowDecoration.Parent = this.tb_height;
-            this.tb_height.Size = new System.Drawing.Size(77, 36);
-            this.tb_height.TabIndex = 11;
-            this.tb_height.TextChanged += new System.EventHandler(this.tb_prodPrice_TextChanged);
-            this.tb_height.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
-            // 
-            // lbl_height
-            // 
-            this.lbl_height.AutoSize = true;
-            this.lbl_height.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_height.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_height.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_height.Location = new System.Drawing.Point(264, 242);
-            this.lbl_height.Name = "lbl_height";
-            this.lbl_height.Size = new System.Drawing.Size(67, 20);
-            this.lbl_height.TabIndex = 8;
-            this.lbl_height.Text = "Height:";
+            this.productQRControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("productQRControl1.BackgroundImage")));
+            this.productQRControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.productQRControl1.Location = new System.Drawing.Point(0, 0);
+            this.productQRControl1.Name = "productQRControl1";
+            this.productQRControl1.Size = new System.Drawing.Size(89, 75);
+            this.productQRControl1.TabIndex = 0;
             // 
             // ProductInvControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SSIP.Properties.Resources.bg;
+            this.Controls.Add(this.QRcontrolpanel);
             this.Controls.Add(this.confirmAccessPanel);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btn_showSales);
@@ -920,6 +943,7 @@ namespace SSIP.UserformControls
             this.productMainPanel.ResumeLayout(false);
             this.gridMainPanel.ResumeLayout(false);
             this.gridMainPanel.PerformLayout();
+            this.QRcontrolpanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -968,5 +992,7 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label lbl_length;
         private System.Windows.Forms.Label lbl_height;
         private Guna.UI2.WinForms.Guna2TextBox tb_height;
+        private System.Windows.Forms.Panel QRcontrolpanel;
+        private ProductQRControl productQRControl1;
     }
 }

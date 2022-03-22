@@ -264,6 +264,12 @@
     <Compile Include="UserformControls\PayrollControl.Designer.cs">
       <DependentUpon>PayrollControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserformControls\ProductQRControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserformControls\ProductQRControl.Designer.cs">
+      <DependentUpon>ProductQRControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserformControls\QRCodeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -319,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\PayrollControl.resx">
       <DependentUpon>PayrollControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserformControls\ProductQRControl.resx">
+      <DependentUpon>ProductQRControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\QRCodeControl.resx">
       <DependentUpon>QRCodeControl.cs</DependentUpon>

@@ -33,6 +33,8 @@ namespace SSIP.UserformControls
             {
                 var productCode = GenerateCode.Code(10);
                 var details = new ProductInventory();
+
+                tb_code.Text = productCode;
                 try
                 {
                     details.Name = tb_productName.Text;
@@ -253,7 +255,13 @@ namespace SSIP.UserformControls
         #region event handler
         private void btn_addProduct_Click(object sender, EventArgs e)
         {
-            AddProduct();
+            if (AddProduct())
+            {          
+                this.productQRControl1.GetProductDetails(tb_code.Text, tb_productName.Text);
+                QRcontrolpanel.Dock = DockStyle.Fill;
+                QRcontrolpanel.Visible = true;
+                productQRControl1.Show();
+            }
         }
         private void tb_unameAccess_TextChanged(object sender, EventArgs e)
         {
