@@ -24,5 +24,15 @@ namespace SSIP.UserformControls
             auditGrid.DataSource = aud.GetAudits();
             this.auditGrid.Columns["AuditActionTypeENUM"].Visible = false;
         }
+        private void UpdateGrid()
+        {
+            auditGrid.DataSource = aud.GetAudits();
+            auditGrid.Update();
+        }
+
+        private void AuditControl_Load(object sender, EventArgs e)
+        {
+            UpdateGrid();
+        }
     }
 }

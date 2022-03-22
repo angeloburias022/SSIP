@@ -148,6 +148,7 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\PayRollController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Dashboard.Context.cs">
       <AutoGen>True</AutoGen>

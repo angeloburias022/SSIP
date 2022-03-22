@@ -105,6 +105,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.auditGrid);
             this.Name = "AuditControl";
             this.Size = new System.Drawing.Size(1055, 518);
+            this.Load += new System.EventHandler(this.AuditControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.auditGrid)).EndInit();
             this.ResumeLayout(false);
 
