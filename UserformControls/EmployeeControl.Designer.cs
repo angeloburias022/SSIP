@@ -76,11 +76,11 @@ namespace SSIP.UserformControls
             this.employeeMainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tb_searchEmployees = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_addEmployee = new Guna.UI2.WinForms.Guna2Button();
+            this.employeeGrid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_newEmp = new Guna.UI2.WinForms.Guna2Button();
             this.tb_qrcode = new Guna.UI2.WinForms.Guna2TextBox();
             this.qrCodeControl1 = new SSIP.UserformControls.QRCodeControl();
-            this.employeeGrid = new System.Windows.Forms.DataGridView();
             this.employee_panel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
             this.employeeMainPanel.SuspendLayout();
@@ -708,6 +708,7 @@ namespace SSIP.UserformControls
             this.tb_uname.ShadowDecoration.Parent = this.tb_uname;
             this.tb_uname.Size = new System.Drawing.Size(165, 36);
             this.tb_uname.TabIndex = 137;
+            this.tb_uname.TextChanged += new System.EventHandler(this.tb_uname_TextChanged);
             // 
             // lbl_empStatus
             // 
@@ -959,6 +960,17 @@ namespace SSIP.UserformControls
             this.btn_addEmployee.UseTransparentBackground = true;
             this.btn_addEmployee.Click += new System.EventHandler(this.btn_addEmployee_Click);
             // 
+            // employeeGrid
+            // 
+            this.employeeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeeGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeeGrid.Location = new System.Drawing.Point(26, 56);
+            this.employeeGrid.Name = "employeeGrid";
+            this.employeeGrid.ReadOnly = true;
+            this.employeeGrid.Size = new System.Drawing.Size(399, 195);
+            this.employeeGrid.TabIndex = 141;
+            this.employeeGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeeGrid_CellDoubleClick);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1034,17 +1046,6 @@ namespace SSIP.UserformControls
             this.qrCodeControl1.Size = new System.Drawing.Size(78, 49);
             this.qrCodeControl1.TabIndex = 140;
             this.qrCodeControl1.Visible = false;
-            // 
-            // employeeGrid
-            // 
-            this.employeeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.employeeGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeeGrid.Location = new System.Drawing.Point(26, 56);
-            this.employeeGrid.Name = "employeeGrid";
-            this.employeeGrid.ReadOnly = true;
-            this.employeeGrid.Size = new System.Drawing.Size(399, 195);
-            this.employeeGrid.TabIndex = 141;
-            this.employeeGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeeGrid_CellDoubleClick);
             // 
             // EmployeeControl
             // 

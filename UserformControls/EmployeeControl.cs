@@ -18,7 +18,7 @@ namespace SSIP.UserformControls
 {
     public partial class EmployeeControl : UserControl
     {
-
+       
         public bool emp_setter { get; set; }
 
         #region Declaration 
@@ -33,6 +33,8 @@ namespace SSIP.UserformControls
         }
 
         #endregion
+
+ 
 
         #region Operator / user access
         private void tb_pass_Leave(object sender, EventArgs e)
@@ -380,8 +382,8 @@ namespace SSIP.UserformControls
             }
         }
         private void EmployeeControl_Load(object sender, EventArgs e)
-        {
-            employeeGrid.DataSource = emp.GetEmployees();
+        {       
+            employeeGrid.DataSource = emp.GetEmployees();   
         }  
         #endregion
 
@@ -513,5 +515,26 @@ namespace SSIP.UserformControls
             }
         }
         #endregion
+
+        private void tb_uname_TextChanged(object sender, EventArgs e)
+        {         
+            checkUsernameUniqueness();
+           // EnableDoubleBuffering();
+        }
+
+        private void checkUsernameUniqueness()
+        {
+            var tool = new AccessController();
+
+            if (tool.UsernameUnique(tb_uname.Text))
+            {
+                btn_saveAcc.Enabled = false;
+                MessageBox.Show("Username already exist");              
+            }
+            else
+            {
+                btn_saveAcc.Enabled = true;               
+            }
+        }
     }
 }

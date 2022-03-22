@@ -190,9 +190,8 @@ namespace SSIP.Controllers
         #region Get current user details
         public string GetCurrentUserDetails(string username)
         {
-            try
-            {
-                using (var con = new SqlConnection(ConString))
+           
+           using (var con = new SqlConnection(ConString))
                 {
                     using (var com = new SqlCommand("[SpGetCurrentUserDetails]", con))
                     {
@@ -216,14 +215,41 @@ namespace SSIP.Controllers
                         }
                         con.Close();
                     }
-                }
+                }         
+            
           
-            }
-            catch (Exception error)
-            {
-                error.ToString();
-            }
             return "";
+        }
+
+        public bool UsernameUnique(string username)
+        {
+            using (var con = new SqlConnection(ConString))
+            {
+                using (var com = new SqlCommand("[SpGetCurrentUserDetails]", con))
+                {
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    com.Parameters.AddWithValue("@username", username);
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        if (reader.HasRows)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return false;
+
         }
         #endregion
 
