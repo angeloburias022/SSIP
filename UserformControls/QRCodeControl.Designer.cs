@@ -161,6 +161,7 @@ namespace SSIP.UserformControls
             this.btn_download.TabIndex = 129;
             this.btn_download.Text = "DOWNLOAD";
             this.btn_download.UseTransparentBackground = true;
+            this.btn_download.Visible = false;
             this.btn_download.Click += new System.EventHandler(this.btn_download_Click);
             // 
             // panel2
@@ -255,6 +256,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.lbl_code);
             this.Name = "QRCodeControl";
             this.Size = new System.Drawing.Size(667, 431);
+            this.Load += new System.EventHandler(this.QRCodeControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic_qrcode)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

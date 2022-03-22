@@ -20,7 +20,7 @@ namespace SSIP.UserformControls
 
         public QRCodeControl()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }   
  
         public void GetDetails(string code, string firstname, string lastname, string Position)
@@ -29,17 +29,12 @@ namespace SSIP.UserformControls
             lbl_lname.Text = lastname;
             lbl_displayPosition.Text = Position;
 
-
             var writer = new BarcodeWriter
             {
                 Format = BarcodeFormat.QR_CODE
             };
             var bitmap = writer.Write(code);
 
-
-           // Zen.Barcode.CodeQrBarcodeDraw qrcode = Zen.Barcode.BarcodeDrawFactory.CodeQr;
-           //   pic_qrcode.Image = qrcode.Draw(code, 650) as Image;
-            // Zen.Barcode.CodeQrBarcodeDraw = Zen.Barcode.BarcodeDrawFactory.C
             pic_qrcode.Image = bitmap;
             lbl_code.Text = code;
         }
@@ -55,11 +50,7 @@ namespace SSIP.UserformControls
                MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
                == DialogResult.OK)
             {
-                printQRCodeDialog1.Document = printQRCode;
-                printQRCodeDialog1.ShowDialog();
 
-                // auto saved the payslip
-               // Save();
             }
             else
             {
@@ -72,7 +63,13 @@ namespace SSIP.UserformControls
             e.Graphics.DrawImage(pic_qrcode.Image, 280, 150, 300, 300);
             e.Graphics.DrawString("Firstname: " + lbl_fname.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(350, 430));
             e.Graphics.DrawString("Lastname: " + lbl_lname.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(350, 470));
+            e.Graphics.DrawString("Position: " + lbl_displayPosition.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(350, 500));
+        }
 
+        private void QRCodeControl_Load(object sender, EventArgs e)
+        {
+            printQRCodeDialog1.Document = printQRCode;
+            printQRCodeDialog1.ShowDialog();
         }
     }
 }
