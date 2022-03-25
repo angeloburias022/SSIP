@@ -25,6 +25,8 @@ namespace SSIP.Forms
             InitializeComponent();
             CustomizeDesign();
         }
+  
+
         #endregion
 
         #region load charts
@@ -34,10 +36,17 @@ namespace SSIP.Forms
             //this.dispatchControl1.Visible = false;
             //this.mainServiceControl.BringToFront();
             //   this.mainServiceControl.Visible = false;
+            Charts();
+           
+        }
 
+        private void Charts()
+        {
             try
             {
                 #region NCR chart
+
+                
 
                 // NCR chart
                 using (DashboardEntities db = new DashboardEntities())
@@ -50,6 +59,8 @@ namespace SSIP.Forms
                         LabelPoint = point => point.Y.ToString()
                     };
 
+                    
+                    
                     Axis ax = new Axis()
                     {
                         Separator = new Separator() { Step = 1, IsEnabled = false }
@@ -287,7 +298,7 @@ namespace SSIP.Forms
         }
         #endregion
 
-        #region load user name 
+        #region load user's name 
         public string LabelText
         {
             get
@@ -316,7 +327,20 @@ namespace SSIP.Forms
         }
         private void logo_panel_Click(object sender, EventArgs e)
         {
+            UpdateCharts();
             ShowCharts();
+            
+        }
+        private void UpdateCharts()
+        {
+            CityChart.Refresh();
+            CityChart.Update();
+
+            DispatchedChart.Update();
+            DispatchedChart.Refresh();
+
+            Services_pie_chart.Update();
+            Services_pie_chart.Refresh();
         }
 
         #endregion
@@ -555,6 +579,8 @@ namespace SSIP.Forms
             HideEquipInvControl();
             HideAudControl();
 
+
+            this.Text = "Point of Sale";
             ShowPOSControl();
             HideSubMenu();
         }
@@ -568,7 +594,11 @@ namespace SSIP.Forms
             HideEquipInvControl();
             HidePOSControl();
 
+            
             ShowAudControl();
+     
+            this.Text = "Audit logs";
+        
             HideSubMenu();
         }
         private void btn_dispatchSched_Click(object sender, EventArgs e)
@@ -583,6 +613,8 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
 
+
+            this.Text = "Schedule / Dispatch";
             ShowMainServicesControl();
             HideSubMenu();
         }
@@ -596,6 +628,8 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
 
+
+            this.Text = "Equipment Inventory";
             ShowEquipInvControl();
             HideSubMenu();
         }
@@ -610,6 +644,8 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
 
+
+            this.Text = "Sales Inventory";
             HideSubMenu();
         }
         private void btn_attendance_sub_Click(object sender, EventArgs e)
@@ -622,6 +658,8 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
 
+
+            this.Text = "Attendance";
             ShowAttendanceControl();
             HideSubMenu();
         }
@@ -636,6 +674,9 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
 
+
+
+            this.Text = "Payroll";
             ShowPayRollControl();
             HideSubMenu();
         }
@@ -650,6 +691,8 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
 
+
+            this.Text = "Product Inventory";
             ShowProductInvControl();
             HideSubMenu();
         }     
@@ -665,6 +708,9 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
 
+
+
+            this.Text = "Manage Employees";
             ShowEmployeesPanelControl();
             HideSubMenu();
         }
@@ -679,6 +725,8 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
 
+
+            this.Text = "Manage Customers";
             ShowCustomersPanelControl();
             HideSubMenu();
         }

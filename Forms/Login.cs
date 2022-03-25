@@ -46,7 +46,7 @@ namespace SSIP.Forms
                 {
                                     
                     dboard.Show();
-                    dboard.LabelText ="Welcome "+acc.GetCurrentUserDetails(tb_uname.Text);
+                    dboard.LabelText ="Welcome \n \t \t"+acc.GetCurrentUserDetails(tb_uname.Text);
                     this.Close();
                 }
                 else
