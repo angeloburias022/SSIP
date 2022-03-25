@@ -15,8 +15,6 @@ namespace SSIP.Controllers
     {
         DataTable dt = new DataTable();
         ConnectionDB db = new ConnectionDB();
-
-
         public List<string> GetProductDetails(string code)
         {
             var details = new List<string>();
@@ -144,7 +142,6 @@ namespace SSIP.Controllers
             }
             return true;
         }
-
         public void AddTransaction(DataGridViewRow dr, Sales sa)
         {
             try
@@ -174,7 +171,6 @@ namespace SSIP.Controllers
                 error.ToString();
             }
         }
-
         public bool AddTransClientInfo(Sales sa)
         {
             try
@@ -194,6 +190,7 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@Code", sa.code);
                         com.Parameters.AddWithValue("@ItemsTotal", sa.Quantity);
                         com.Parameters.AddWithValue("@Contact", sa.ContactNo);
+                        com.Parameters.AddWithValue("@Email", sa.email_info.EmailAddress);
                         com.ExecuteNonQuery();
                         con.Close();
 

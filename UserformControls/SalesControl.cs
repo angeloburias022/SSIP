@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using ZXing;
 using ZXing.Aztec.Internal;
 
+
 namespace SSIP.UserformControls
 {
     public partial class SalesControl : UserControl
@@ -29,6 +30,9 @@ namespace SSIP.UserformControls
         DataTable dt = new DataTable();
         DataRow dr;
         SalesController sp = new SalesController();
+        //SendEmail em = new SendEmail();
+
+     
         #endregion
 
         #region declarations
@@ -40,7 +44,11 @@ namespace SSIP.UserformControls
         #endregion
 
         #region access 
+        private void Access()
+        {
 
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region private methods
@@ -116,20 +124,37 @@ namespace SSIP.UserformControls
             details.Quantity = Convert.ToInt32(itemsTotal.Text);
             details.code = GenerateCode.Code(10);
             details.ContactNo = tb_contact.Text;
-            var result = tools.AddTransClientInfo(details);
+            details.email_info.EmailAddress = tb_email.Text;
 
-            if (result != false)
+            if (Valid.ValidateFields(details))
             {
-                foreach (DataGridViewRow item in prodGrid.Rows)
+                var result = tools.AddTransClientInfo(details);
+
+                if (result != false)
                 {
-                    if (item.IsNewRow) continue;
+                    foreach (DataGridViewRow item in prodGrid.Rows)
                     {
-                        tools.AddTransaction(item, details);
-                    }                  
+                        if (item.IsNewRow) continue;
+                        {
+                            tools.AddTransaction(item, details);
+                        }
+                    }
+                    MessageBox.Show("Recorded");
+                    btn_finalized.Enabled = true;
+
+                    var body = new Emailer { 
+                        Body = "You have successfully ordered "+itemsTotal.Text+" A/C unit/units. \n" +
+                        "\n Thank you for choosing our service. \n" +
+                        "Regards, \n" +
+                        "RFB Airconditioning Services",
+                        Subject = "Ordered Aircon",
+                        Receiver = tb_email.Text,            
+                    };
+                    SendEmail.Send(body);
                 }
-                MessageBox.Show("Recorded");
-                btn_finalized.Enabled = true;
-            }
+
+               
+            }          
         }
         private void GetProductDetails(string code)
         {
@@ -174,24 +199,31 @@ namespace SSIP.UserformControls
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (productPictureBox.Image != null)
+            try
             {
-                var barcodeReader = new BarcodeReader();
-
-                Result result = barcodeReader.Decode((Bitmap)productPictureBox.Image);
-                timer1.Stop();
-
-                if (result != null)
+                if (productPictureBox.Image != null)
                 {
-                    tb_code.Text = result.ToString();
-                    GetProductDetails(tb_code.Text);
-                    if (captureDevice.IsRunning)
-                        captureDevice.Stop();
+                    var barcodeReader = new BarcodeReader();
+
+                    Result result = barcodeReader.Decode((Bitmap)productPictureBox.Image);
+                    timer1.Stop();
+
+                    if (result != null)
+                    {
+                        tb_code.Text = result.ToString();
+                        GetProductDetails(tb_code.Text);
+                        if (captureDevice.IsRunning)
+                            captureDevice.Stop();
+                    }
+                    else
+                    {
+                        timer1.Start();
+                    }
                 }
-                else
-                {
-                    timer1.Start();
-                }
+            }
+            catch (Exception error)
+            {
+                error.ToString();
             }
         }
         private void btn_remove_Click(object sender, EventArgs e)
@@ -276,13 +308,26 @@ namespace SSIP.UserformControls
            // frm.Hide();
             if (amountPaid < itemsPriceTotal)
             {
-                MessageBox.Show("Invalid amount");
+                MessageBox.Show("Invalid amount");             
             }
             else
             {
                 total = amountPaid - itemsPriceTotal;
                 change = total;
                 display_change.Text = change.ToString();
+            }
+        }
+
+        private void tb_email_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_email.Text== "")
+            {
+                MessageBox.Show("Check email field");
+                btn_finalized.Enabled = false;
+            }
+            else
+            {
+                btn_finalized.Enabled = true;
             }
         }
     }
