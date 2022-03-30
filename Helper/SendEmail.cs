@@ -11,7 +11,7 @@ namespace SSIP.Helper
 {
     public static class SendEmail
     {
-        public static void Send(Emailer emailer)
+        public static bool Send(Emailer emailer)
         {
             try
             {
@@ -32,13 +32,19 @@ namespace SSIP.Helper
                 mssgDetails.Subject = emailer.Subject;
                 mssgDetails.IsBodyHtml = true;
                 mssgDetails.Body = emailer.Body;
+                mssgDetails.Attachments.Add(new Attachment(emailer.Attachments));
+                
 
+                
                 clientDetails.Send(mssgDetails);
+
+                return true;
             }
             catch (Exception error)
             {
                 error.ToString();
             }
+            return false;
         }
     }
 }

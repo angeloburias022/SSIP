@@ -30,6 +30,7 @@ namespace SSIP.UserformControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesControl));
             this.gridMainPanel = new System.Windows.Forms.Panel();
             this.prodGrid = new System.Windows.Forms.DataGridView();
             this.tb_searchProd = new Guna.UI2.WinForms.Guna2TextBox();
@@ -57,7 +58,6 @@ namespace SSIP.UserformControls
             this.grandTotal = new System.Windows.Forms.Label();
             this.tb_amountPaid = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_amountPaid = new System.Windows.Forms.Label();
-            this.btn_Ereceipt = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_change = new System.Windows.Forms.Label();
             this.display_change = new System.Windows.Forms.Label();
             this.lbl_quantity = new System.Windows.Forms.Label();
@@ -76,13 +76,22 @@ namespace SSIP.UserformControls
             this.tb_contact = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tb_compute = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_generateExcell = new Guna.UI2.WinForms.Guna2Button();
             this.tb_email = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.attachment = new System.Windows.Forms.Label();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printSlipDocument = new System.Drawing.Printing.PrintDocument();
+            this.printSlipDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.receiptattach = new System.Windows.Forms.Label();
+            this.confirmAccessPanel = new System.Windows.Forms.Panel();
+            this.lbl_confirmAccess = new System.Windows.Forms.Label();
+            this.tb_unameAccess = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
             this.gridMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodGrid)).BeginInit();
             this.product_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productPictureBox)).BeginInit();
+            this.confirmAccessPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridMainPanel
@@ -121,10 +130,10 @@ namespace SSIP.UserformControls
             this.tb_searchProd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_searchProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_searchProd.HoverState.Parent = this.tb_searchProd;
-            this.tb_searchProd.Location = new System.Drawing.Point(13, 38);
+            this.tb_searchProd.Location = new System.Drawing.Point(196, 39);
             this.tb_searchProd.Name = "tb_searchProd";
             this.tb_searchProd.PasswordChar = '\0';
-            this.tb_searchProd.PlaceholderText = "Type here";
+            this.tb_searchProd.PlaceholderText = "EX: SDFSFFGGN";
             this.tb_searchProd.SelectedText = "";
             this.tb_searchProd.ShadowDecoration.Parent = this.tb_searchProd;
             this.tb_searchProd.Size = new System.Drawing.Size(156, 36);
@@ -137,7 +146,7 @@ namespace SSIP.UserformControls
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(9, 15);
+            this.label7.Location = new System.Drawing.Point(192, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 20);
             this.label7.TabIndex = 8;
@@ -311,6 +320,7 @@ namespace SSIP.UserformControls
             this.tb_quantity.ShadowDecoration.Parent = this.tb_quantity;
             this.tb_quantity.Size = new System.Drawing.Size(151, 36);
             this.tb_quantity.TabIndex = 11;
+            this.tb_quantity.TextChanged += new System.EventHandler(this.tb_quantity_TextChanged);
             this.tb_quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_prodPrice_KeyPress);
             // 
             // tb_prodPrice
@@ -500,13 +510,14 @@ namespace SSIP.UserformControls
             this.btn_scan.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_scan.ForeColor = System.Drawing.Color.White;
             this.btn_scan.HoverState.Parent = this.btn_scan;
-            this.btn_scan.Location = new System.Drawing.Point(760, 114);
+            this.btn_scan.Location = new System.Drawing.Point(745, 49);
             this.btn_scan.Name = "btn_scan";
             this.btn_scan.ShadowDecoration.Parent = this.btn_scan;
             this.btn_scan.Size = new System.Drawing.Size(164, 33);
             this.btn_scan.TabIndex = 9;
             this.btn_scan.Text = "SCAN PRODUCT";
             this.btn_scan.Click += new System.EventHandler(this.btn_scan_Click);
+            this.btn_scan.DoubleClick += new System.EventHandler(this.btn_scan_DoubleClick);
             // 
             // lbl_grandTotal
             // 
@@ -568,27 +579,6 @@ namespace SSIP.UserformControls
             this.lbl_amountPaid.Size = new System.Drawing.Size(135, 20);
             this.lbl_amountPaid.TabIndex = 20;
             this.lbl_amountPaid.Text = "AMOUNT PAID:";
-            // 
-            // btn_Ereceipt
-            // 
-            this.btn_Ereceipt.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Ereceipt.BorderRadius = 4;
-            this.btn_Ereceipt.CheckedState.Parent = this.btn_Ereceipt;
-            this.btn_Ereceipt.CustomImages.Parent = this.btn_Ereceipt;
-            this.btn_Ereceipt.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Ereceipt.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Ereceipt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Ereceipt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Ereceipt.DisabledState.Parent = this.btn_Ereceipt;
-            this.btn_Ereceipt.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_Ereceipt.ForeColor = System.Drawing.Color.White;
-            this.btn_Ereceipt.HoverState.Parent = this.btn_Ereceipt;
-            this.btn_Ereceipt.Location = new System.Drawing.Point(711, 423);
-            this.btn_Ereceipt.Name = "btn_Ereceipt";
-            this.btn_Ereceipt.ShadowDecoration.Parent = this.btn_Ereceipt;
-            this.btn_Ereceipt.Size = new System.Drawing.Size(111, 40);
-            this.btn_Ereceipt.TabIndex = 9;
-            this.btn_Ereceipt.Text = " E-RECEIPT";
             // 
             // lbl_change
             // 
@@ -656,7 +646,7 @@ namespace SSIP.UserformControls
             this.cboDevice1.HoverState.Parent = this.cboDevice1;
             this.cboDevice1.ItemHeight = 30;
             this.cboDevice1.ItemsAppearance.Parent = this.cboDevice1;
-            this.cboDevice1.Location = new System.Drawing.Point(214, 529);
+            this.cboDevice1.Location = new System.Drawing.Point(578, 561);
             this.cboDevice1.Name = "cboDevice1";
             this.cboDevice1.ShadowDecoration.Parent = this.cboDevice1;
             this.cboDevice1.Size = new System.Drawing.Size(102, 36);
@@ -677,7 +667,7 @@ namespace SSIP.UserformControls
             this.btn_finalized.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_finalized.ForeColor = System.Drawing.Color.White;
             this.btn_finalized.HoverState.Parent = this.btn_finalized;
-            this.btn_finalized.Location = new System.Drawing.Point(828, 469);
+            this.btn_finalized.Location = new System.Drawing.Point(778, 434);
             this.btn_finalized.Name = "btn_finalized";
             this.btn_finalized.ShadowDecoration.Parent = this.btn_finalized;
             this.btn_finalized.Size = new System.Drawing.Size(111, 32);
@@ -691,7 +681,7 @@ namespace SSIP.UserformControls
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(36, 506);
+            this.label2.Location = new System.Drawing.Point(400, 538);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 20);
             this.label2.TabIndex = 8;
@@ -714,7 +704,7 @@ namespace SSIP.UserformControls
             this.tb_totalprice.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_totalprice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_totalprice.HoverState.Parent = this.tb_totalprice;
-            this.tb_totalprice.Location = new System.Drawing.Point(40, 529);
+            this.tb_totalprice.Location = new System.Drawing.Point(404, 561);
             this.tb_totalprice.Name = "tb_totalprice";
             this.tb_totalprice.PasswordChar = '\0';
             this.tb_totalprice.PlaceholderText = "Price here";
@@ -739,7 +729,7 @@ namespace SSIP.UserformControls
             this.btn_cancelOrder.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_cancelOrder.ForeColor = System.Drawing.Color.White;
             this.btn_cancelOrder.HoverState.Parent = this.btn_cancelOrder;
-            this.btn_cancelOrder.Location = new System.Drawing.Point(828, 423);
+            this.btn_cancelOrder.Location = new System.Drawing.Point(834, 388);
             this.btn_cancelOrder.Name = "btn_cancelOrder";
             this.btn_cancelOrder.ShadowDecoration.Parent = this.btn_cancelOrder;
             this.btn_cancelOrder.Size = new System.Drawing.Size(111, 40);
@@ -763,7 +753,7 @@ namespace SSIP.UserformControls
             this.tb_address.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_address.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_address.HoverState.Parent = this.tb_address;
-            this.tb_address.Location = new System.Drawing.Point(737, 352);
+            this.tb_address.Location = new System.Drawing.Point(743, 317);
             this.tb_address.Name = "tb_address";
             this.tb_address.PasswordChar = '\0';
             this.tb_address.PlaceholderText = "DELIVERY ADDRESS";
@@ -778,7 +768,7 @@ namespace SSIP.UserformControls
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(735, 331);
+            this.label3.Location = new System.Drawing.Point(741, 296);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 20);
             this.label3.TabIndex = 8;
@@ -790,7 +780,7 @@ namespace SSIP.UserformControls
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(731, 151);
+            this.label4.Location = new System.Drawing.Point(737, 116);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 20);
             this.label4.TabIndex = 8;
@@ -812,7 +802,7 @@ namespace SSIP.UserformControls
             this.tb_cusname.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_cusname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_cusname.HoverState.Parent = this.tb_cusname;
-            this.tb_cusname.Location = new System.Drawing.Point(737, 174);
+            this.tb_cusname.Location = new System.Drawing.Point(743, 139);
             this.tb_cusname.Name = "tb_cusname";
             this.tb_cusname.PasswordChar = '\0';
             this.tb_cusname.PlaceholderText = "Name here";
@@ -823,11 +813,12 @@ namespace SSIP.UserformControls
             // 
             // productPictureBox
             // 
-            this.productPictureBox.Location = new System.Drawing.Point(772, 12);
+            this.productPictureBox.Location = new System.Drawing.Point(932, 190);
             this.productPictureBox.Name = "productPictureBox";
             this.productPictureBox.Size = new System.Drawing.Size(132, 96);
             this.productPictureBox.TabIndex = 167;
             this.productPictureBox.TabStop = false;
+            this.productPictureBox.Visible = false;
             // 
             // tb_contact
             // 
@@ -845,7 +836,7 @@ namespace SSIP.UserformControls
             this.tb_contact.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_contact.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_contact.HoverState.Parent = this.tb_contact;
-            this.tb_contact.Location = new System.Drawing.Point(737, 236);
+            this.tb_contact.Location = new System.Drawing.Point(743, 201);
             this.tb_contact.Name = "tb_contact";
             this.tb_contact.PasswordChar = '\0';
             this.tb_contact.PlaceholderText = "Contact no";
@@ -860,7 +851,7 @@ namespace SSIP.UserformControls
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(735, 213);
+            this.label5.Location = new System.Drawing.Point(741, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 20);
             this.label5.TabIndex = 168;
@@ -880,34 +871,13 @@ namespace SSIP.UserformControls
             this.tb_compute.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.tb_compute.ForeColor = System.Drawing.Color.White;
             this.tb_compute.HoverState.Parent = this.tb_compute;
-            this.tb_compute.Location = new System.Drawing.Point(711, 469);
+            this.tb_compute.Location = new System.Drawing.Point(717, 388);
             this.tb_compute.Name = "tb_compute";
             this.tb_compute.ShadowDecoration.Parent = this.tb_compute;
-            this.tb_compute.Size = new System.Drawing.Size(111, 32);
+            this.tb_compute.Size = new System.Drawing.Size(111, 40);
             this.tb_compute.TabIndex = 170;
             this.tb_compute.Text = "COMPUTE";
             this.tb_compute.Click += new System.EventHandler(this.tb_compute_Click);
-            // 
-            // btn_generateExcell
-            // 
-            this.btn_generateExcell.BackColor = System.Drawing.Color.Transparent;
-            this.btn_generateExcell.BorderRadius = 4;
-            this.btn_generateExcell.CheckedState.Parent = this.btn_generateExcell;
-            this.btn_generateExcell.CustomImages.Parent = this.btn_generateExcell;
-            this.btn_generateExcell.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_generateExcell.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_generateExcell.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_generateExcell.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_generateExcell.DisabledState.Parent = this.btn_generateExcell;
-            this.btn_generateExcell.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_generateExcell.ForeColor = System.Drawing.Color.White;
-            this.btn_generateExcell.HoverState.Parent = this.btn_generateExcell;
-            this.btn_generateExcell.Location = new System.Drawing.Point(759, 507);
-            this.btn_generateExcell.Name = "btn_generateExcell";
-            this.btn_generateExcell.ShadowDecoration.Parent = this.btn_generateExcell;
-            this.btn_generateExcell.Size = new System.Drawing.Size(133, 32);
-            this.btn_generateExcell.TabIndex = 9;
-            this.btn_generateExcell.Text = "GENERATE EXCEL";
             // 
             // tb_email
             // 
@@ -925,7 +895,7 @@ namespace SSIP.UserformControls
             this.tb_email.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_email.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_email.HoverState.Parent = this.tb_email;
-            this.tb_email.Location = new System.Drawing.Point(737, 292);
+            this.tb_email.Location = new System.Drawing.Point(743, 257);
             this.tb_email.Name = "tb_email";
             this.tb_email.PasswordChar = '\0';
             this.tb_email.PlaceholderText = "Email";
@@ -941,17 +911,142 @@ namespace SSIP.UserformControls
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(733, 272);
+            this.label6.Location = new System.Drawing.Point(739, 237);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 20);
             this.label6.TabIndex = 171;
             this.label6.Text = "Email";
+            // 
+            // attachment
+            // 
+            this.attachment.AutoSize = true;
+            this.attachment.BackColor = System.Drawing.Color.Transparent;
+            this.attachment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attachment.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.attachment.Location = new System.Drawing.Point(565, 484);
+            this.attachment.Name = "attachment";
+            this.attachment.Size = new System.Drawing.Size(100, 20);
+            this.attachment.TabIndex = 23;
+            this.attachment.Text = "attachment";
+            this.attachment.Visible = false;
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printSlipDocument
+            // 
+            this.printSlipDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSlipDocument_PrintPage);
+            // 
+            // printSlipDialog
+            // 
+            this.printSlipDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printSlipDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printSlipDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printSlipDialog.Enabled = true;
+            this.printSlipDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printSlipDialog.Icon")));
+            this.printSlipDialog.Name = "printSlipDialog";
+            this.printSlipDialog.Visible = false;
+            // 
+            // receiptattach
+            // 
+            this.receiptattach.AutoSize = true;
+            this.receiptattach.BackColor = System.Drawing.Color.Transparent;
+            this.receiptattach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.receiptattach.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.receiptattach.Location = new System.Drawing.Point(565, 506);
+            this.receiptattach.Name = "receiptattach";
+            this.receiptattach.Size = new System.Drawing.Size(115, 20);
+            this.receiptattach.TabIndex = 23;
+            this.receiptattach.Text = "receiptattach";
+            this.receiptattach.Visible = false;
+            // 
+            // confirmAccessPanel
+            // 
+            this.confirmAccessPanel.BackColor = System.Drawing.Color.Transparent;
+            this.confirmAccessPanel.Controls.Add(this.lbl_confirmAccess);
+            this.confirmAccessPanel.Controls.Add(this.tb_unameAccess);
+            this.confirmAccessPanel.Controls.Add(this.tb_pass);
+            this.confirmAccessPanel.Location = new System.Drawing.Point(20, 419);
+            this.confirmAccessPanel.Name = "confirmAccessPanel";
+            this.confirmAccessPanel.Size = new System.Drawing.Size(183, 120);
+            this.confirmAccessPanel.TabIndex = 173;
+            // 
+            // lbl_confirmAccess
+            // 
+            this.lbl_confirmAccess.AutoSize = true;
+            this.lbl_confirmAccess.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_confirmAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_confirmAccess.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_confirmAccess.Location = new System.Drawing.Point(24, 5);
+            this.lbl_confirmAccess.Name = "lbl_confirmAccess";
+            this.lbl_confirmAccess.Size = new System.Drawing.Size(134, 20);
+            this.lbl_confirmAccess.TabIndex = 122;
+            this.lbl_confirmAccess.Text = "Confirm Access";
+            // 
+            // tb_unameAccess
+            // 
+            this.tb_unameAccess.BackColor = System.Drawing.Color.Transparent;
+            this.tb_unameAccess.BorderRadius = 4;
+            this.tb_unameAccess.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_unameAccess.DefaultText = "";
+            this.tb_unameAccess.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_unameAccess.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_unameAccess.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_unameAccess.DisabledState.Parent = this.tb_unameAccess;
+            this.tb_unameAccess.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_unameAccess.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_unameAccess.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_unameAccess.FocusedState.Parent = this.tb_unameAccess;
+            this.tb_unameAccess.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_unameAccess.ForeColor = System.Drawing.Color.Black;
+            this.tb_unameAccess.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_unameAccess.HoverState.Parent = this.tb_unameAccess;
+            this.tb_unameAccess.Location = new System.Drawing.Point(9, 28);
+            this.tb_unameAccess.Name = "tb_unameAccess";
+            this.tb_unameAccess.PasswordChar = '\0';
+            this.tb_unameAccess.PlaceholderText = "Username";
+            this.tb_unameAccess.SelectedText = "";
+            this.tb_unameAccess.ShadowDecoration.Parent = this.tb_unameAccess;
+            this.tb_unameAccess.Size = new System.Drawing.Size(165, 36);
+            this.tb_unameAccess.TabIndex = 124;
+            this.tb_unameAccess.TextChanged += new System.EventHandler(this.tb_unameAccess_TextChanged);
+            // 
+            // tb_pass
+            // 
+            this.tb_pass.BackColor = System.Drawing.Color.Transparent;
+            this.tb_pass.BorderRadius = 4;
+            this.tb_pass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_pass.DefaultText = "";
+            this.tb_pass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_pass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_pass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_pass.DisabledState.Parent = this.tb_pass;
+            this.tb_pass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_pass.Enabled = false;
+            this.tb_pass.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_pass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_pass.FocusedState.Parent = this.tb_pass;
+            this.tb_pass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_pass.ForeColor = System.Drawing.Color.Black;
+            this.tb_pass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_pass.HoverState.Parent = this.tb_pass;
+            this.tb_pass.Location = new System.Drawing.Point(9, 73);
+            this.tb_pass.Name = "tb_pass";
+            this.tb_pass.PasswordChar = '*';
+            this.tb_pass.PlaceholderText = "Password";
+            this.tb_pass.SelectedText = "";
+            this.tb_pass.ShadowDecoration.Parent = this.tb_pass;
+            this.tb_pass.Size = new System.Drawing.Size(165, 36);
+            this.tb_pass.TabIndex = 123;
+            this.tb_pass.Validated += new System.EventHandler(this.tb_pass_Validated);
             // 
             // SalesControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SSIP.Properties.Resources.bg;
+            this.Controls.Add(this.confirmAccessPanel);
             this.Controls.Add(this.tb_email);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tb_compute);
@@ -961,10 +1056,11 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.cboDevice1);
             this.Controls.Add(this.display_change);
             this.Controls.Add(this.btn_cancelOrder);
-            this.Controls.Add(this.btn_generateExcell);
             this.Controls.Add(this.btn_finalized);
             this.Controls.Add(this.tb_cusname);
             this.Controls.Add(this.tb_address);
+            this.Controls.Add(this.receiptattach);
+            this.Controls.Add(this.attachment);
             this.Controls.Add(this.lbl_change);
             this.Controls.Add(this.tb_totalprice);
             this.Controls.Add(this.btn_scan);
@@ -975,7 +1071,6 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btn_Ereceipt);
             this.Controls.Add(this.grandTotal);
             this.Controls.Add(this.itemsTotal);
             this.Controls.Add(this.lbl_quantity);
@@ -989,6 +1084,8 @@ namespace SSIP.UserformControls
             this.product_panel.ResumeLayout(false);
             this.product_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productPictureBox)).EndInit();
+            this.confirmAccessPanel.ResumeLayout(false);
+            this.confirmAccessPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1019,7 +1116,6 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2Button btn_scan;
         private Guna.UI2.WinForms.Guna2TextBox tb_amountPaid;
         private System.Windows.Forms.Label lbl_amountPaid;
-        private Guna.UI2.WinForms.Guna2Button btn_Ereceipt;
         private System.Windows.Forms.Label lbl_change;
         private System.Windows.Forms.Label display_change;
         private System.Windows.Forms.Label lbl_quantity;
@@ -1041,8 +1137,16 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2TextBox tb_contact;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Button tb_compute;
-        private Guna.UI2.WinForms.Guna2Button btn_generateExcell;
         private Guna.UI2.WinForms.Guna2TextBox tb_email;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label attachment;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printSlipDocument;
+        private System.Windows.Forms.PrintPreviewDialog printSlipDialog;
+        private System.Windows.Forms.Label receiptattach;
+        private System.Windows.Forms.Panel confirmAccessPanel;
+        private System.Windows.Forms.Label lbl_confirmAccess;
+        private Guna.UI2.WinForms.Guna2TextBox tb_unameAccess;
+        private Guna.UI2.WinForms.Guna2TextBox tb_pass;
     }
 }
