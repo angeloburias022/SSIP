@@ -1,4 +1,5 @@
-﻿using SSIP.Forms;
+﻿using SSIP.DbAccess;
+using SSIP.Forms;
 using SSIP.Helper;
 using SSIP.Models;
 using System;
@@ -21,6 +22,7 @@ namespace SSIP.Controllers
     {
         #region declations
         private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        ConnectionDB db = new ConnectionDB();
         PasswordEncryptor enc = new PasswordEncryptor();
         AuditController aud = new AuditController();
         Dashboard dboard = new Dashboard();
@@ -31,7 +33,7 @@ namespace SSIP.Controllers
         {
             try
             {      
-                using (SqlConnection con = new SqlConnection(ConString))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     // it will check the device if there is an existing database
                     if (CheckDatabaseExists(con, "RFBDesktopApp"))
@@ -126,7 +128,7 @@ namespace SSIP.Controllers
         #region Confirm access
         public bool ConfirmAccess(User user)
         {
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 using (SqlCommand cmd = new SqlCommand("[SpLoginUser]", con))
                 {
@@ -157,7 +159,7 @@ namespace SSIP.Controllers
         }
         public bool ConfirmAuthority(User user)
         {
-            using (SqlConnection con = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 using (SqlCommand cmd = new SqlCommand("[SpCheckAuthority]", con))
                 {
@@ -190,40 +192,8 @@ namespace SSIP.Controllers
         #region Get current user details
         public string GetCurrentUserDetails(string username)
         {
-           
-           using (var con = new SqlConnection(ConString))
-                {
-                    using (var com = new SqlCommand("[SpGetCurrentUserDetails]", con))
-                    {
-                        con.Open();
-                        com.CommandType = CommandType.StoredProcedure;
 
-                        com.Parameters.AddWithValue("@username", username);
-
-                        var reader = com.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            if (reader.HasRows)
-                            {
-                                return reader["FirstName"].ToString();
-                            }
-                            else
-                            {
-                                return "User not found";
-                            }
-                        }
-                        con.Close();
-                    }
-                }         
-            
-          
-            return "";
-        }
-
-        public bool UsernameUnique(string username)
-        {
-            using (var con = new SqlConnection(ConString))
+            using (var con = new SqlConnection(db.ConString()))
             {
                 using (var com = new SqlCommand("[SpGetCurrentUserDetails]", con))
                 {
@@ -238,25 +208,116 @@ namespace SSIP.Controllers
                     {
                         if (reader.HasRows)
                         {
-                            return true;
+                            return reader["FirstName"].ToString();
                         }
                         else
                         {
-                            return false;
+                            return "User not found";
                         }
                     }
                     con.Close();
                 }
             }
-            return false;
 
+
+            return "";
+        }
+
+        public List<string> UsernameUnique(string username)
+        {
+            DataTable dt = new DataTable();
+            var details = new List<string>();
+            try
+            {
+                
+                using (var con = new SqlConnection(db.ConString()))
+                {
+                    using (var com = new SqlCommand("[SpGetCurrentUserDetails]", con))
+                    {
+                        if (username.Length > 0)
+                        {
+                            con.Open();
+                            com.CommandType = CommandType.StoredProcedure;
+
+                            com.Parameters.AddWithValue("@username", username);
+
+                            var reader = com.ExecuteReader();
+                            while (reader.Read())
+                            {
+                                details.Add(reader["FirstName"].ToString());
+                                details.Add(reader["Username"].ToString());
+                            }
+                            con.Close();
+                            return details;
+
+                        }
+                        else
+                        {
+                            return details;
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+
+                error.ToString();
+            }
+            return details;
+        }
+
+        public List<string> GetProduct(string search)
+        {
+            DataTable dt = new DataTable();
+            var details = new List<string>();
+            using (SqlConnection con = new SqlConnection(db.ConString()))
+            {
+                try
+                {
+                    using (var com = new SqlCommand("[SpFindProduct]", con))
+                    {
+                        con.Open();
+                        if (search != null)
+                        {
+                            com.CommandType = CommandType.StoredProcedure;
+
+                            com.Parameters.AddWithValue("@Search", search);
+
+                            var reader = com.ExecuteReader();
+
+                            while (reader.Read())
+                            {
+                                details.Add(reader["ProductID"].ToString());
+                                details.Add(reader["ProductName"].ToString());
+                                details.Add(reader["UnitPrice"].ToString());
+                                details.Add(reader["ProductCode"].ToString());
+                                details.Add(reader["Description"].ToString());
+                                details.Add(reader["CategoryID"].ToString());
+                            }
+                            con.Close();
+                            return details;
+                        }
+                        else
+                        {
+                            return details;
+                        }
+                    }
+                }
+                catch (Exception error)
+                {
+
+                    error.ToString();
+                }
+
+            }
+            return details;
         }
         #endregion
 
         #region Check username
         public bool CheckUsername(User user)
         {
-            using (var con = new SqlConnection(ConString))
+            using (var con = new SqlConnection(db.ConString()))
             {
                 con.Open();
                 var query = "SELECT UserName FROM Users WHERE UserName = '"+user.Username+"'";
