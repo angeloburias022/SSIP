@@ -525,8 +525,8 @@ namespace SSIP.UserformControls
         private void checkUsernameUniqueness()
         {
             var tool = new AccessController();
-
-            if (tool.UsernameUnique(tb_uname.Text))
+            var result = tool.UsernameUnique(tb_uname.Text);
+            if (result.Count > 0)
             {
                 btn_saveAcc.Enabled = false;
                 MessageBox.Show("Username already exist");              

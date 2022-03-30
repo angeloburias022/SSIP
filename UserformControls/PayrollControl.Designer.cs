@@ -100,12 +100,12 @@ namespace SSIP.UserformControls
             this.printSlipDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.payrollMainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.tb_search = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_addPayroll = new Guna.UI2.WinForms.Guna2Button();
             this.payrollGrid = new System.Windows.Forms.DataGridView();
             this.btn_update = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_empID = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tb_search = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.empGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
@@ -1262,6 +1262,32 @@ namespace SSIP.UserformControls
             this.payrollMainPanel.TabIndex = 140;
             this.payrollMainPanel.Visible = false;
             // 
+            // tb_search
+            // 
+            this.tb_search.BorderColor = System.Drawing.Color.Transparent;
+            this.tb_search.BorderRadius = 4;
+            this.tb_search.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_search.DefaultText = "";
+            this.tb_search.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_search.DisabledState.Parent = this.tb_search;
+            this.tb_search.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_search.FocusedState.Parent = this.tb_search;
+            this.tb_search.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_search.HoverState.Parent = this.tb_search;
+            this.tb_search.Location = new System.Drawing.Point(26, 3);
+            this.tb_search.Name = "tb_search";
+            this.tb_search.PasswordChar = '\0';
+            this.tb_search.PlaceholderText = "Search";
+            this.tb_search.SelectedText = "";
+            this.tb_search.ShadowDecoration.Parent = this.tb_search;
+            this.tb_search.Size = new System.Drawing.Size(200, 36);
+            this.tb_search.TabIndex = 141;
+            this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
+            // 
             // btn_addPayroll
             // 
             this.btn_addPayroll.BackColor = System.Drawing.Color.Transparent;
@@ -1358,32 +1384,6 @@ namespace SSIP.UserformControls
             this.tb_empID.ShadowDecoration.Parent = this.tb_empID;
             this.tb_empID.Size = new System.Drawing.Size(74, 36);
             this.tb_empID.TabIndex = 107;
-            // 
-            // tb_search
-            // 
-            this.tb_search.BorderColor = System.Drawing.Color.Transparent;
-            this.tb_search.BorderRadius = 4;
-            this.tb_search.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_search.DefaultText = "";
-            this.tb_search.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tb_search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tb_search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_search.DisabledState.Parent = this.tb_search;
-            this.tb_search.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_search.FocusedState.Parent = this.tb_search;
-            this.tb_search.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tb_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tb_search.HoverState.Parent = this.tb_search;
-            this.tb_search.Location = new System.Drawing.Point(26, 3);
-            this.tb_search.Name = "tb_search";
-            this.tb_search.PasswordChar = '\0';
-            this.tb_search.PlaceholderText = "Search";
-            this.tb_search.SelectedText = "";
-            this.tb_search.ShadowDecoration.Parent = this.tb_search;
-            this.tb_search.Size = new System.Drawing.Size(200, 36);
-            this.tb_search.TabIndex = 141;
-            this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
             // PayrollControl
             // 
