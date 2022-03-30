@@ -15,6 +15,7 @@ namespace SSIP.Enums
         Delete = 5,
         Print = 6,
         Compute = 7,
-        access = 8
+        Access = 8,
+        Email = 9
     }
 }
