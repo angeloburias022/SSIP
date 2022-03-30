@@ -82,6 +82,7 @@ namespace SSIP.Forms
             this.pos_controlPanel = new System.Windows.Forms.Panel();
             this.salesControl1 = new SSIP.UserformControls.SalesControl();
             this.time_timer = new System.Windows.Forms.Timer(this.components);
+            this.lbl_username = new System.Windows.Forms.Label();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -163,7 +164,7 @@ namespace SSIP.Forms
             this.logo_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.logo_panel.Location = new System.Drawing.Point(0, 0);
             this.logo_panel.Name = "logo_panel";
-            this.logo_panel.Size = new System.Drawing.Size(144, 130);
+            this.logo_panel.Size = new System.Drawing.Size(161, 130);
             this.logo_panel.TabIndex = 0;
             this.logo_panel.Click += new System.EventHandler(this.logo_panel_Click);
             // 
@@ -176,7 +177,7 @@ namespace SSIP.Forms
             this.btn_menu_cust.Location = new System.Drawing.Point(0, 130);
             this.btn_menu_cust.Name = "btn_menu_cust";
             this.btn_menu_cust.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn_menu_cust.Size = new System.Drawing.Size(144, 50);
+            this.btn_menu_cust.Size = new System.Drawing.Size(161, 50);
             this.btn_menu_cust.TabIndex = 0;
             this.btn_menu_cust.Text = "Customers";
             this.btn_menu_cust.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -190,7 +191,7 @@ namespace SSIP.Forms
             this.Customers_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.Customers_panel.Location = new System.Drawing.Point(0, 180);
             this.Customers_panel.Name = "Customers_panel";
-            this.Customers_panel.Size = new System.Drawing.Size(144, 102);
+            this.Customers_panel.Size = new System.Drawing.Size(161, 102);
             this.Customers_panel.TabIndex = 5;
             // 
             // btn_cusArchived
@@ -202,7 +203,7 @@ namespace SSIP.Forms
             this.btn_cusArchived.Location = new System.Drawing.Point(0, 50);
             this.btn_cusArchived.Name = "btn_cusArchived";
             this.btn_cusArchived.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_cusArchived.Size = new System.Drawing.Size(144, 50);
+            this.btn_cusArchived.Size = new System.Drawing.Size(161, 50);
             this.btn_cusArchived.TabIndex = 1;
             this.btn_cusArchived.Text = "Customer\'s Archived";
             this.btn_cusArchived.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -217,7 +218,7 @@ namespace SSIP.Forms
             this.btn_managecus_sub.Location = new System.Drawing.Point(0, 0);
             this.btn_managecus_sub.Name = "btn_managecus_sub";
             this.btn_managecus_sub.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_managecus_sub.Size = new System.Drawing.Size(144, 50);
+            this.btn_managecus_sub.Size = new System.Drawing.Size(161, 50);
             this.btn_managecus_sub.TabIndex = 3;
             this.btn_managecus_sub.Text = "Manage Customers";
             this.btn_managecus_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -234,7 +235,7 @@ namespace SSIP.Forms
             this.btn_menu_employees.Location = new System.Drawing.Point(0, 282);
             this.btn_menu_employees.Name = "btn_menu_employees";
             this.btn_menu_employees.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn_menu_employees.Size = new System.Drawing.Size(144, 50);
+            this.btn_menu_employees.Size = new System.Drawing.Size(161, 50);
             this.btn_menu_employees.TabIndex = 0;
             this.btn_menu_employees.Text = "Employees";
             this.btn_menu_employees.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -249,7 +250,7 @@ namespace SSIP.Forms
             this.emp_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.emp_panel.Location = new System.Drawing.Point(0, 332);
             this.emp_panel.Name = "emp_panel";
-            this.emp_panel.Size = new System.Drawing.Size(144, 144);
+            this.emp_panel.Size = new System.Drawing.Size(161, 144);
             this.emp_panel.TabIndex = 5;
             // 
             // btn_attendance_sub
@@ -261,7 +262,7 @@ namespace SSIP.Forms
             this.btn_attendance_sub.Location = new System.Drawing.Point(0, 100);
             this.btn_attendance_sub.Name = "btn_attendance_sub";
             this.btn_attendance_sub.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_attendance_sub.Size = new System.Drawing.Size(144, 50);
+            this.btn_attendance_sub.Size = new System.Drawing.Size(161, 50);
             this.btn_attendance_sub.TabIndex = 1;
             this.btn_attendance_sub.Text = "Attendance";
             this.btn_attendance_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -277,7 +278,7 @@ namespace SSIP.Forms
             this.btn_manageEmp_sub.Location = new System.Drawing.Point(0, 50);
             this.btn_manageEmp_sub.Name = "btn_manageEmp_sub";
             this.btn_manageEmp_sub.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_manageEmp_sub.Size = new System.Drawing.Size(144, 50);
+            this.btn_manageEmp_sub.Size = new System.Drawing.Size(161, 50);
             this.btn_manageEmp_sub.TabIndex = 2;
             this.btn_manageEmp_sub.Text = "Manage Employees";
             this.btn_manageEmp_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -293,7 +294,7 @@ namespace SSIP.Forms
             this.btn_payroll_sub.Location = new System.Drawing.Point(0, 0);
             this.btn_payroll_sub.Name = "btn_payroll_sub";
             this.btn_payroll_sub.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_payroll_sub.Size = new System.Drawing.Size(144, 50);
+            this.btn_payroll_sub.Size = new System.Drawing.Size(161, 50);
             this.btn_payroll_sub.TabIndex = 3;
             this.btn_payroll_sub.Text = "PayRoll";
             this.btn_payroll_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -319,7 +320,7 @@ namespace SSIP.Forms
             this.nav_panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.nav_panel.Location = new System.Drawing.Point(0, 0);
             this.nav_panel.Name = "nav_panel";
-            this.nav_panel.Size = new System.Drawing.Size(161, 551);
+            this.nav_panel.Size = new System.Drawing.Size(178, 582);
             this.nav_panel.TabIndex = 16;
             // 
             // userPanel
@@ -329,18 +330,18 @@ namespace SSIP.Forms
             this.userPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.userPanel.Location = new System.Drawing.Point(0, 919);
             this.userPanel.Name = "userPanel";
-            this.userPanel.Size = new System.Drawing.Size(144, 165);
+            this.userPanel.Size = new System.Drawing.Size(161, 165);
             this.userPanel.TabIndex = 29;
             // 
             // lbl_currentUser
             // 
             this.lbl_currentUser.AutoSize = true;
             this.lbl_currentUser.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_currentUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_currentUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_currentUser.ForeColor = System.Drawing.Color.LimeGreen;
             this.lbl_currentUser.Location = new System.Drawing.Point(12, 8);
             this.lbl_currentUser.Name = "lbl_currentUser";
-            this.lbl_currentUser.Size = new System.Drawing.Size(126, 24);
+            this.lbl_currentUser.Size = new System.Drawing.Size(131, 25);
             this.lbl_currentUser.TabIndex = 9;
             this.lbl_currentUser.Text = "Current user";
             // 
@@ -348,11 +349,11 @@ namespace SSIP.Forms
             // 
             this.lbl_time.AutoSize = true;
             this.lbl_time.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_time.ForeColor = System.Drawing.Color.LimeGreen;
-            this.lbl_time.Location = new System.Drawing.Point(16, 58);
+            this.lbl_time.Location = new System.Drawing.Point(28, 76);
             this.lbl_time.Name = "lbl_time";
-            this.lbl_time.Size = new System.Drawing.Size(128, 31);
+            this.lbl_time.Size = new System.Drawing.Size(96, 25);
             this.lbl_time.TabIndex = 9;
             this.lbl_time.Text = "00:00:00";
             // 
@@ -362,7 +363,7 @@ namespace SSIP.Forms
             this.settings_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.settings_panel.Location = new System.Drawing.Point(0, 867);
             this.settings_panel.Name = "settings_panel";
-            this.settings_panel.Size = new System.Drawing.Size(144, 52);
+            this.settings_panel.Size = new System.Drawing.Size(161, 52);
             this.settings_panel.TabIndex = 17;
             // 
             // btn_auditLogs
@@ -374,7 +375,7 @@ namespace SSIP.Forms
             this.btn_auditLogs.Location = new System.Drawing.Point(0, 0);
             this.btn_auditLogs.Name = "btn_auditLogs";
             this.btn_auditLogs.Padding = new System.Windows.Forms.Padding(36, 0, 0, 0);
-            this.btn_auditLogs.Size = new System.Drawing.Size(144, 50);
+            this.btn_auditLogs.Size = new System.Drawing.Size(161, 50);
             this.btn_auditLogs.TabIndex = 28;
             this.btn_auditLogs.Text = "Audit Logs";
             this.btn_auditLogs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -390,7 +391,7 @@ namespace SSIP.Forms
             this.btn_main_settings.Location = new System.Drawing.Point(0, 817);
             this.btn_main_settings.Name = "btn_main_settings";
             this.btn_main_settings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn_main_settings.Size = new System.Drawing.Size(144, 50);
+            this.btn_main_settings.Size = new System.Drawing.Size(161, 50);
             this.btn_main_settings.TabIndex = 27;
             this.btn_main_settings.Text = "Settings";
             this.btn_main_settings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -404,7 +405,7 @@ namespace SSIP.Forms
             this.services_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.services_panel.Location = new System.Drawing.Point(0, 719);
             this.services_panel.Name = "services_panel";
-            this.services_panel.Size = new System.Drawing.Size(144, 98);
+            this.services_panel.Size = new System.Drawing.Size(161, 98);
             this.services_panel.TabIndex = 17;
             // 
             // btn_pos
@@ -416,7 +417,7 @@ namespace SSIP.Forms
             this.btn_pos.Location = new System.Drawing.Point(0, 50);
             this.btn_pos.Name = "btn_pos";
             this.btn_pos.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_pos.Size = new System.Drawing.Size(144, 50);
+            this.btn_pos.Size = new System.Drawing.Size(161, 50);
             this.btn_pos.TabIndex = 27;
             this.btn_pos.Text = "Point of Sale";
             this.btn_pos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -432,7 +433,7 @@ namespace SSIP.Forms
             this.btn_dispatchSched.Location = new System.Drawing.Point(0, 0);
             this.btn_dispatchSched.Name = "btn_dispatchSched";
             this.btn_dispatchSched.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_dispatchSched.Size = new System.Drawing.Size(144, 50);
+            this.btn_dispatchSched.Size = new System.Drawing.Size(161, 50);
             this.btn_dispatchSched.TabIndex = 26;
             this.btn_dispatchSched.Text = "Dispatch/Schedule";
             this.btn_dispatchSched.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -448,7 +449,7 @@ namespace SSIP.Forms
             this.btn_main_services.Location = new System.Drawing.Point(0, 669);
             this.btn_main_services.Name = "btn_main_services";
             this.btn_main_services.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn_main_services.Size = new System.Drawing.Size(144, 50);
+            this.btn_main_services.Size = new System.Drawing.Size(161, 50);
             this.btn_main_services.TabIndex = 26;
             this.btn_main_services.Text = "Services";
             this.btn_main_services.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -463,7 +464,7 @@ namespace SSIP.Forms
             this.inventory_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.inventory_panel.Location = new System.Drawing.Point(0, 526);
             this.inventory_panel.Name = "inventory_panel";
-            this.inventory_panel.Size = new System.Drawing.Size(144, 143);
+            this.inventory_panel.Size = new System.Drawing.Size(161, 143);
             this.inventory_panel.TabIndex = 23;
             this.inventory_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.inventory_panel_Paint);
             // 
@@ -476,7 +477,7 @@ namespace SSIP.Forms
             this.btn_prodInventory.Location = new System.Drawing.Point(0, 100);
             this.btn_prodInventory.Name = "btn_prodInventory";
             this.btn_prodInventory.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_prodInventory.Size = new System.Drawing.Size(144, 50);
+            this.btn_prodInventory.Size = new System.Drawing.Size(161, 50);
             this.btn_prodInventory.TabIndex = 26;
             this.btn_prodInventory.Text = "Product Inventory";
             this.btn_prodInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -492,7 +493,7 @@ namespace SSIP.Forms
             this.btn_equip_inv.Location = new System.Drawing.Point(0, 50);
             this.btn_equip_inv.Name = "btn_equip_inv";
             this.btn_equip_inv.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_equip_inv.Size = new System.Drawing.Size(144, 50);
+            this.btn_equip_inv.Size = new System.Drawing.Size(161, 50);
             this.btn_equip_inv.TabIndex = 25;
             this.btn_equip_inv.Text = "Equipment Inventory";
             this.btn_equip_inv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -508,7 +509,7 @@ namespace SSIP.Forms
             this.btn_sales_inv.Location = new System.Drawing.Point(0, 0);
             this.btn_sales_inv.Name = "btn_sales_inv";
             this.btn_sales_inv.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_sales_inv.Size = new System.Drawing.Size(144, 50);
+            this.btn_sales_inv.Size = new System.Drawing.Size(161, 50);
             this.btn_sales_inv.TabIndex = 24;
             this.btn_sales_inv.Text = "Sales Inventory";
             this.btn_sales_inv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -524,7 +525,7 @@ namespace SSIP.Forms
             this.btn_main_invent.Location = new System.Drawing.Point(0, 476);
             this.btn_main_invent.Name = "btn_main_invent";
             this.btn_main_invent.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn_main_invent.Size = new System.Drawing.Size(144, 50);
+            this.btn_main_invent.Size = new System.Drawing.Size(161, 50);
             this.btn_main_invent.TabIndex = 19;
             this.btn_main_invent.Text = "Inventories";
             this.btn_main_invent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -693,23 +694,39 @@ namespace SSIP.Forms
             // salesControl1
             // 
             this.salesControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("salesControl1.BackgroundImage")));
+            this.salesControl1.CurrentUser = null;
             this.salesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.salesControl1.Location = new System.Drawing.Point(0, 0);
             this.salesControl1.Name = "salesControl1";
             this.salesControl1.Size = new System.Drawing.Size(74, 61);
             this.salesControl1.TabIndex = 0;
+            this.salesControl1.user = null;
             // 
             // time_timer
             // 
             this.time_timer.Interval = 1000;
             this.time_timer.Tick += new System.EventHandler(this.time_timer_Tick);
             // 
+            // lbl_username
+            // 
+            this.lbl_username.AutoSize = true;
+            this.lbl_username.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_username.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lbl_username.Location = new System.Drawing.Point(218, 535);
+            this.lbl_username.Name = "lbl_username";
+            this.lbl_username.Size = new System.Drawing.Size(110, 25);
+            this.lbl_username.TabIndex = 29;
+            this.lbl_username.Text = "Username";
+            this.lbl_username.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1185, 551);
+            this.ClientSize = new System.Drawing.Size(1185, 582);
+            this.Controls.Add(this.lbl_username);
             this.Controls.Add(this.pos_controlPanel);
             this.Controls.Add(this.auditControlPanel);
             this.Controls.Add(this.equipControlPanel);
@@ -808,5 +825,6 @@ namespace SSIP.Forms
         private System.Windows.Forms.Timer time_timer;
         private System.Windows.Forms.Label lbl_time;
         public System.Windows.Forms.Label lbl_currentUser;
+        public System.Windows.Forms.Label lbl_username;
     }
 }

@@ -24,6 +24,7 @@ namespace SSIP.Forms
         {
             InitializeComponent();
             CustomizeDesign();
+     //       salesControl1.user = lbl_currentUser.;
         }
   
 
@@ -37,7 +38,7 @@ namespace SSIP.Forms
             //this.mainServiceControl.BringToFront();
             //   this.mainServiceControl.Visible = false;
             Charts();
-           
+          
         }
 
         private void Charts()
@@ -308,7 +309,20 @@ namespace SSIP.Forms
             set
             {
                 this.lbl_currentUser.Text = value;
+                
             }
+        }
+
+        public string Username {
+            get {
+                return this.lbl_username.Text;
+            }
+            set
+            {
+                this.lbl_username.Text = value;
+                salesControl1.user = value;
+            } 
+        
         }
         #endregion
 
@@ -454,9 +468,16 @@ namespace SSIP.Forms
         {
             pos_controlPanel.Dock = DockStyle.Fill;
             pos_controlPanel.Visible = true;
-            this.salesControl1.BringToFront();
-            this.salesControl1.Show();
-          
+          //  this.salesControl1.BringToFront();
+          //  this.salesControl1.Show();
+            // SalesControl sales = new SalesControl();
+            // sales.Controls = salesControl1;
+            //SalesControl sales = new SalesControl();
+            //sales.Parent = this;
+          //  this.salesControl1.Parent =  this;
+          //  salesControl1.user = lbl_currentUser.Text;
+       //     salesControl1 control1 = new salesControl1();
+        //    control1.salesControl1.CurrentUser = lbl_currentUser.Text;
         }
         private void HidePOSControl()
         {

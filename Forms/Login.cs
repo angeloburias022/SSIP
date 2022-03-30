@@ -44,9 +44,10 @@ namespace SSIP.Forms
 
                 if (result != false)
                 {
-                                    
+                    var uname = acc.GetCurrentUserDetails(tb_uname.Text);
                     dboard.Show();
-                    dboard.LabelText ="Welcome \n \t \t"+acc.GetCurrentUserDetails(tb_uname.Text);
+                    dboard.LabelText ="Welcome \n \t \t"+ uname;
+                    dboard.Username = uname;
                     this.Close();
                 }
                 else
