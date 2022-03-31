@@ -134,12 +134,20 @@ namespace SSIP.UserformControls
 
             try
             {
-                tb_id.Text = result[0].ToString();
-                tb_productName.Text = result[1].ToString();
-                tb_prodPrice.Text = result[2].ToString();
-                tb_code.Text = result[3].ToString();
-                tb_prodDescr.Text = result[4].ToString();
-                cmb_prodCategory.SelectedIndex = Convert.ToInt32(result[5]);
+                if (result[6].Length > 0)
+                {
+                    tb_id.Text = result[0].ToString();
+                    tb_productName.Text = result[1].ToString();
+                    tb_prodPrice.Text = result[2].ToString();
+                    tb_code.Text = result[3].ToString();
+                    tb_prodDescr.Text = result[4].ToString();
+                    cmb_prodCategory.SelectedIndex = Convert.ToInt32(result[5]);
+                    tb_quantity.Text = result[6].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("No stock available", "OUT OF STOCK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }         
             }
             catch (Exception error)
             {
@@ -338,13 +346,35 @@ namespace SSIP.UserformControls
 
             if (result.Count > 0)
             {
-                GetCam();
-                tb_id.Text = result[0].ToString();
-                tb_productName.Text = result[1].ToString();
-                tb_prodPrice.Text = result[2].ToString();
-                tb_code.Text = result[3].ToString();
-                tb_prodDescr.Text = result[4].ToString();
-                cmb_prodCategory.SelectedIndex = Convert.ToInt32(result[5].ToString());
+                if (result[6].Length > 0)
+                {
+                    GetCam();
+                    tb_id.Text = result[0].ToString();
+                    tb_productName.Text = result[1].ToString();
+                    tb_prodPrice.Text = result[2].ToString();
+                    tb_code.Text = result[3].ToString();
+                    tb_prodDescr.Text = result[4].ToString();
+                    cmb_prodCategory.SelectedIndex = Convert.ToInt32(result[5].ToString());
+                    tb_quantity.Text = result[6].ToString();
+                }
+                else
+                {                 
+                    if (MessageBox.Show("No stock available, Request new one?", "OUT OF STOCK", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        GetCam();
+                        tb_id.Text = result[0].ToString();
+                        tb_productName.Text = result[1].ToString();
+                        tb_prodPrice.Text = result[2].ToString();
+                        tb_code.Text = result[3].ToString();
+                        tb_prodDescr.Text = result[4].ToString();
+                        cmb_prodCategory.SelectedIndex = Convert.ToInt32(result[5].ToString());
+                        tb_quantity.Text = result[6].ToString();
+                    }
+                    else
+                    {
+                        ClearFields();
+                    }
+                }
             }
             else
             {

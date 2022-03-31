@@ -77,6 +77,7 @@ namespace SSIP.Controllers
                                 details.Add(reader["ProductCode"].ToString());
                                 details.Add(reader["Description"].ToString());
                                 details.Add(reader["CategoryID"].ToString());
+                                details.Add(reader["Quantity"].ToString());
                             }
                             con.Close();
                             return details;

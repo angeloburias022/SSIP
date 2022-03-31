@@ -70,16 +70,16 @@ namespace SSIP.UserformControls
             this.productMainPanel = new System.Windows.Forms.Panel();
             this.gridMainPanel = new System.Windows.Forms.Panel();
             this.QRcontrolpanel = new System.Windows.Forms.Panel();
+            this.btn_download = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_close = new Guna.UI2.WinForms.Guna2Button();
+            this.productName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbl_productName = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.productName = new System.Windows.Forms.Label();
             this.displaycode = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_close = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_download = new Guna.UI2.WinForms.Guna2Button();
             this.pic_qrcode = new System.Windows.Forms.PictureBox();
             this.printDocuQR = new System.Drawing.Printing.PrintDocument();
             this.printQRDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -122,7 +122,7 @@ namespace SSIP.UserformControls
             this.product_panel.Controls.Add(this.lbl_prodName);
             this.product_panel.Location = new System.Drawing.Point(13, 14);
             this.product_panel.Name = "product_panel";
-            this.product_panel.Size = new System.Drawing.Size(355, 459);
+            this.product_panel.Size = new System.Drawing.Size(355, 485);
             this.product_panel.TabIndex = 16;
             // 
             // cmb_actype
@@ -147,7 +147,7 @@ namespace SSIP.UserformControls
             "Ceiling Wallmounted type",
             ""});
             this.cmb_actype.ItemsAppearance.Parent = this.cmb_actype;
-            this.cmb_actype.Location = new System.Drawing.Point(18, 398);
+            this.cmb_actype.Location = new System.Drawing.Point(18, 432);
             this.cmb_actype.Name = "cmb_actype";
             this.cmb_actype.ShadowDecoration.Parent = this.cmb_actype;
             this.cmb_actype.Size = new System.Drawing.Size(156, 36);
@@ -181,7 +181,7 @@ namespace SSIP.UserformControls
             "5.5 HP",
             "6.0 HP"});
             this.cmb_Hp.ItemsAppearance.Parent = this.cmb_Hp;
-            this.cmb_Hp.Location = new System.Drawing.Point(189, 398);
+            this.cmb_Hp.Location = new System.Drawing.Point(189, 432);
             this.cmb_Hp.Name = "cmb_Hp";
             this.cmb_Hp.ShadowDecoration.Parent = this.cmb_Hp;
             this.cmb_Hp.Size = new System.Drawing.Size(156, 36);
@@ -194,7 +194,7 @@ namespace SSIP.UserformControls
             this.lbl_height.BackColor = System.Drawing.Color.Transparent;
             this.lbl_height.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_height.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_height.Location = new System.Drawing.Point(264, 242);
+            this.lbl_height.Location = new System.Drawing.Point(264, 273);
             this.lbl_height.Name = "lbl_height";
             this.lbl_height.Size = new System.Drawing.Size(67, 20);
             this.lbl_height.TabIndex = 8;
@@ -216,7 +216,7 @@ namespace SSIP.UserformControls
             this.tb_height.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_height.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_height.HoverState.Parent = this.tb_height;
-            this.tb_height.Location = new System.Drawing.Point(268, 265);
+            this.tb_height.Location = new System.Drawing.Point(268, 296);
             this.tb_height.Name = "tb_height";
             this.tb_height.PasswordChar = '\0';
             this.tb_height.PlaceholderText = "";
@@ -233,7 +233,7 @@ namespace SSIP.UserformControls
             this.lbl_hp.BackColor = System.Drawing.Color.Transparent;
             this.lbl_hp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_hp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_hp.Location = new System.Drawing.Point(185, 373);
+            this.lbl_hp.Location = new System.Drawing.Point(185, 407);
             this.lbl_hp.Name = "lbl_hp";
             this.lbl_hp.Size = new System.Drawing.Size(116, 20);
             this.lbl_hp.TabIndex = 14;
@@ -246,7 +246,7 @@ namespace SSIP.UserformControls
             this.lbl_quan.BackColor = System.Drawing.Color.Transparent;
             this.lbl_quan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_quan.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_quan.Location = new System.Drawing.Point(185, 242);
+            this.lbl_quan.Location = new System.Drawing.Point(185, 273);
             this.lbl_quan.Name = "lbl_quan";
             this.lbl_quan.Size = new System.Drawing.Size(81, 20);
             this.lbl_quan.TabIndex = 8;
@@ -268,7 +268,7 @@ namespace SSIP.UserformControls
             this.tb_quan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_quan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_quan.HoverState.Parent = this.tb_quan;
-            this.tb_quan.Location = new System.Drawing.Point(189, 265);
+            this.tb_quan.Location = new System.Drawing.Point(189, 296);
             this.tb_quan.Name = "tb_quan";
             this.tb_quan.PasswordChar = '\0';
             this.tb_quan.PlaceholderText = "";
@@ -285,7 +285,7 @@ namespace SSIP.UserformControls
             this.lbl_actype.BackColor = System.Drawing.Color.Transparent;
             this.lbl_actype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_actype.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_actype.Location = new System.Drawing.Point(14, 373);
+            this.lbl_actype.Location = new System.Drawing.Point(14, 407);
             this.lbl_actype.Name = "lbl_actype";
             this.lbl_actype.Size = new System.Drawing.Size(108, 20);
             this.lbl_actype.TabIndex = 14;
@@ -385,7 +385,7 @@ namespace SSIP.UserformControls
             this.tb_length.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_length.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_length.HoverState.Parent = this.tb_length;
-            this.tb_length.Location = new System.Drawing.Point(271, 334);
+            this.tb_length.Location = new System.Drawing.Point(271, 365);
             this.tb_length.Name = "tb_length";
             this.tb_length.PasswordChar = '\0';
             this.tb_length.PlaceholderText = "88.0 (cm)";
@@ -412,7 +412,7 @@ namespace SSIP.UserformControls
             this.tb_width.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_width.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_width.HoverState.Parent = this.tb_width;
-            this.tb_width.Location = new System.Drawing.Point(189, 334);
+            this.tb_width.Location = new System.Drawing.Point(189, 365);
             this.tb_width.Name = "tb_width";
             this.tb_width.PasswordChar = '\0';
             this.tb_width.PlaceholderText = "example: 77.0 (cm)";
@@ -543,7 +543,7 @@ namespace SSIP.UserformControls
             this.lbl_length.BackColor = System.Drawing.Color.Transparent;
             this.lbl_length.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_length.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_length.Location = new System.Drawing.Point(263, 311);
+            this.lbl_length.Location = new System.Drawing.Point(263, 342);
             this.lbl_length.Name = "lbl_length";
             this.lbl_length.Size = new System.Drawing.Size(65, 20);
             this.lbl_length.TabIndex = 8;
@@ -555,7 +555,7 @@ namespace SSIP.UserformControls
             this.lbl_width.BackColor = System.Drawing.Color.Transparent;
             this.lbl_width.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_width.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_width.Location = new System.Drawing.Point(185, 311);
+            this.lbl_width.Location = new System.Drawing.Point(185, 342);
             this.lbl_width.Name = "lbl_width";
             this.lbl_width.Size = new System.Drawing.Size(60, 20);
             this.lbl_width.TabIndex = 8;
@@ -752,7 +752,7 @@ namespace SSIP.UserformControls
             this.confirmAccessPanel.Controls.Add(this.lbl_confirmAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_unameAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_pass);
-            this.confirmAccessPanel.Location = new System.Drawing.Point(796, 195);
+            this.confirmAccessPanel.Location = new System.Drawing.Point(474, 390);
             this.confirmAccessPanel.Name = "confirmAccessPanel";
             this.confirmAccessPanel.Size = new System.Drawing.Size(183, 120);
             this.confirmAccessPanel.TabIndex = 136;
@@ -830,10 +830,11 @@ namespace SSIP.UserformControls
             // 
             this.productMainPanel.BackColor = System.Drawing.Color.Transparent;
             this.productMainPanel.Controls.Add(this.product_panel);
+            this.productMainPanel.Controls.Add(this.confirmAccessPanel);
             this.productMainPanel.Controls.Add(this.gridMainPanel);
             this.productMainPanel.Location = new System.Drawing.Point(3, 42);
             this.productMainPanel.Name = "productMainPanel";
-            this.productMainPanel.Size = new System.Drawing.Size(787, 495);
+            this.productMainPanel.Size = new System.Drawing.Size(787, 517);
             this.productMainPanel.TabIndex = 137;
             // 
             // gridMainPanel
@@ -847,7 +848,7 @@ namespace SSIP.UserformControls
             this.gridMainPanel.Controls.Add(this.label7);
             this.gridMainPanel.Location = new System.Drawing.Point(374, 14);
             this.gridMainPanel.Name = "gridMainPanel";
-            this.gridMainPanel.Size = new System.Drawing.Size(410, 395);
+            this.gridMainPanel.Size = new System.Drawing.Size(410, 370);
             this.gridMainPanel.TabIndex = 17;
             // 
             // QRcontrolpanel
@@ -870,77 +871,28 @@ namespace SSIP.UserformControls
             this.QRcontrolpanel.TabIndex = 139;
             this.QRcontrolpanel.Visible = false;
             // 
-            // panel4
+            // btn_download
             // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(69, 375);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(517, 37);
-            this.panel4.TabIndex = 3;
-            // 
-            // lbl_productName
-            // 
-            this.lbl_productName.AutoSize = true;
-            this.lbl_productName.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_productName.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_productName.Location = new System.Drawing.Point(172, 340);
-            this.lbl_productName.Name = "lbl_productName";
-            this.lbl_productName.Size = new System.Drawing.Size(127, 20);
-            this.lbl_productName.TabIndex = 138;
-            this.lbl_productName.Text = "Product Name:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Honeydew;
-            this.label1.Location = new System.Drawing.Point(212, 307);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 20);
-            this.label1.TabIndex = 139;
-            this.label1.Text = "QR Code:";
-            // 
-            // productName
-            // 
-            this.productName.AutoSize = true;
-            this.productName.BackColor = System.Drawing.Color.Transparent;
-            this.productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productName.ForeColor = System.Drawing.Color.Honeydew;
-            this.productName.Location = new System.Drawing.Point(305, 340);
-            this.productName.Name = "productName";
-            this.productName.Size = new System.Drawing.Size(122, 20);
-            this.productName.TabIndex = 140;
-            this.productName.Text = "Product Name";
-            // 
-            // displaycode
-            // 
-            this.displaycode.AutoSize = true;
-            this.displaycode.BackColor = System.Drawing.Color.Transparent;
-            this.displaycode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.displaycode.ForeColor = System.Drawing.Color.Honeydew;
-            this.displaycode.Location = new System.Drawing.Point(305, 307);
-            this.displaycode.Name = "displaycode";
-            this.displaycode.Size = new System.Drawing.Size(82, 20);
-            this.displaycode.TabIndex = 141;
-            this.displaycode.Text = "QR Code";
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(69, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(517, 71);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(586, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(74, 412);
-            this.panel2.TabIndex = 1;
+            this.btn_download.BackColor = System.Drawing.Color.Transparent;
+            this.btn_download.BorderRadius = 4;
+            this.btn_download.CheckedState.Parent = this.btn_download;
+            this.btn_download.CustomImages.Parent = this.btn_download;
+            this.btn_download.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_download.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_download.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_download.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_download.DisabledState.Parent = this.btn_download;
+            this.btn_download.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_download.ForeColor = System.Drawing.Color.White;
+            this.btn_download.HoverState.Parent = this.btn_download;
+            this.btn_download.Location = new System.Drawing.Point(90, 176);
+            this.btn_download.Name = "btn_download";
+            this.btn_download.ShadowDecoration.Parent = this.btn_download;
+            this.btn_download.Size = new System.Drawing.Size(120, 45);
+            this.btn_download.TabIndex = 137;
+            this.btn_download.Text = "DOWNLOAD";
+            this.btn_download.UseTransparentBackground = true;
+            this.btn_download.Click += new System.EventHandler(this.btn_download_Click);
             // 
             // btn_close
             // 
@@ -965,6 +917,78 @@ namespace SSIP.UserformControls
             this.btn_close.UseTransparentBackground = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
+            // productName
+            // 
+            this.productName.AutoSize = true;
+            this.productName.BackColor = System.Drawing.Color.Transparent;
+            this.productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productName.ForeColor = System.Drawing.Color.Honeydew;
+            this.productName.Location = new System.Drawing.Point(305, 340);
+            this.productName.Name = "productName";
+            this.productName.Size = new System.Drawing.Size(122, 20);
+            this.productName.TabIndex = 140;
+            this.productName.Text = "Product Name";
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(69, 375);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(517, 37);
+            this.panel4.TabIndex = 3;
+            // 
+            // lbl_productName
+            // 
+            this.lbl_productName.AutoSize = true;
+            this.lbl_productName.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_productName.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_productName.Location = new System.Drawing.Point(172, 340);
+            this.lbl_productName.Name = "lbl_productName";
+            this.lbl_productName.Size = new System.Drawing.Size(127, 20);
+            this.lbl_productName.TabIndex = 138;
+            this.lbl_productName.Text = "Product Name:";
+            // 
+            // displaycode
+            // 
+            this.displaycode.AutoSize = true;
+            this.displaycode.BackColor = System.Drawing.Color.Transparent;
+            this.displaycode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displaycode.ForeColor = System.Drawing.Color.Honeydew;
+            this.displaycode.Location = new System.Drawing.Point(305, 307);
+            this.displaycode.Name = "displaycode";
+            this.displaycode.Size = new System.Drawing.Size(82, 20);
+            this.displaycode.TabIndex = 141;
+            this.displaycode.Text = "QR Code";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Honeydew;
+            this.label1.Location = new System.Drawing.Point(212, 307);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 20);
+            this.label1.TabIndex = 139;
+            this.label1.Text = "QR Code:";
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(69, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(517, 71);
+            this.panel3.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(586, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(74, 412);
+            this.panel2.TabIndex = 1;
+            // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -972,29 +996,6 @@ namespace SSIP.UserformControls
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(69, 412);
             this.panel1.TabIndex = 0;
-            // 
-            // btn_download
-            // 
-            this.btn_download.BackColor = System.Drawing.Color.Transparent;
-            this.btn_download.BorderRadius = 4;
-            this.btn_download.CheckedState.Parent = this.btn_download;
-            this.btn_download.CustomImages.Parent = this.btn_download;
-            this.btn_download.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_download.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_download.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_download.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_download.DisabledState.Parent = this.btn_download;
-            this.btn_download.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_download.ForeColor = System.Drawing.Color.White;
-            this.btn_download.HoverState.Parent = this.btn_download;
-            this.btn_download.Location = new System.Drawing.Point(90, 176);
-            this.btn_download.Name = "btn_download";
-            this.btn_download.ShadowDecoration.Parent = this.btn_download;
-            this.btn_download.Size = new System.Drawing.Size(120, 45);
-            this.btn_download.TabIndex = 137;
-            this.btn_download.Text = "DOWNLOAD";
-            this.btn_download.UseTransparentBackground = true;
-            this.btn_download.Click += new System.EventHandler(this.btn_download_Click);
             // 
             // pic_qrcode
             // 
@@ -1026,7 +1027,6 @@ namespace SSIP.UserformControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SSIP.Properties.Resources.bg;
             this.Controls.Add(this.QRcontrolpanel);
-            this.Controls.Add(this.confirmAccessPanel);
             this.Controls.Add(this.productMainPanel);
             this.Name = "ProductInvControl";
             this.Size = new System.Drawing.Size(2066, 787);

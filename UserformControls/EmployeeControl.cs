@@ -34,8 +34,6 @@ namespace SSIP.UserformControls
 
         #endregion
 
- 
-
         #region Operator / user access
         private void tb_pass_Leave(object sender, EventArgs e)
         {

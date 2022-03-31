@@ -43,5 +43,10 @@ namespace SSIP.UserformControls
             printQRDialog1.Document = printDocuQR;
             printQRDialog1.ShowDialog();
         }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+                       
+        }
     }
 }

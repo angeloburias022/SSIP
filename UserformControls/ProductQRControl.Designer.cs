@@ -46,7 +46,7 @@ namespace SSIP.UserformControls
             // pic_qrcode
             // 
             this.pic_qrcode.BackColor = System.Drawing.Color.White;
-            this.pic_qrcode.Location = new System.Drawing.Point(261, 52);
+            this.pic_qrcode.Location = new System.Drawing.Point(27, 26);
             this.pic_qrcode.Name = "pic_qrcode";
             this.pic_qrcode.Size = new System.Drawing.Size(280, 245);
             this.pic_qrcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -74,6 +74,7 @@ namespace SSIP.UserformControls
             this.btn_close.TabIndex = 129;
             this.btn_close.Text = "CLOSE";
             this.btn_close.UseTransparentBackground = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // panel2
             // 
@@ -81,9 +82,9 @@ namespace SSIP.UserformControls
             this.panel2.BackgroundImage = global::SSIP.Properties.Resources.bg;
             this.panel2.Controls.Add(this.btn_close);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(640, 0);
+            this.panel2.Location = new System.Drawing.Point(325, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(168, 462);
+            this.panel2.Size = new System.Drawing.Size(168, 393);
             this.panel2.TabIndex = 131;
             // 
             // lbl_productName
@@ -92,7 +93,7 @@ namespace SSIP.UserformControls
             this.lbl_productName.BackColor = System.Drawing.Color.Transparent;
             this.lbl_productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_productName.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_productName.Location = new System.Drawing.Point(255, 369);
+            this.lbl_productName.Location = new System.Drawing.Point(21, 343);
             this.lbl_productName.Name = "lbl_productName";
             this.lbl_productName.Size = new System.Drawing.Size(127, 20);
             this.lbl_productName.TabIndex = 132;
@@ -104,7 +105,7 @@ namespace SSIP.UserformControls
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Honeydew;
-            this.label1.Location = new System.Drawing.Point(295, 335);
+            this.label1.Location = new System.Drawing.Point(61, 309);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 133;
@@ -116,7 +117,7 @@ namespace SSIP.UserformControls
             this.productName.BackColor = System.Drawing.Color.Transparent;
             this.productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productName.ForeColor = System.Drawing.Color.Honeydew;
-            this.productName.Location = new System.Drawing.Point(397, 369);
+            this.productName.Location = new System.Drawing.Point(163, 343);
             this.productName.Name = "productName";
             this.productName.Size = new System.Drawing.Size(122, 20);
             this.productName.TabIndex = 134;
@@ -128,7 +129,7 @@ namespace SSIP.UserformControls
             this.displaycode.BackColor = System.Drawing.Color.Transparent;
             this.displaycode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.displaycode.ForeColor = System.Drawing.Color.Honeydew;
-            this.displaycode.Location = new System.Drawing.Point(400, 335);
+            this.displaycode.Location = new System.Drawing.Point(166, 309);
             this.displaycode.Name = "displaycode";
             this.displaycode.Size = new System.Drawing.Size(82, 20);
             this.displaycode.TabIndex = 135;
@@ -160,7 +161,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pic_qrcode);
             this.Name = "ProductQRControl";
-            this.Size = new System.Drawing.Size(808, 462);
+            this.Size = new System.Drawing.Size(493, 393);
             this.Load += new System.EventHandler(this.ProductQRControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic_qrcode)).EndInit();
             this.panel2.ResumeLayout(false);

@@ -277,24 +277,50 @@ namespace SSIP.UserformControls
         #region event handler
         private void btn_addProduct_Click(object sender, EventArgs e)
         {
-            if (AddProduct())
+            if (tb_id.Text == "0")
             {
-                productMainPanel.Visible = false;
-                
-                GetProductDetails(tb_code.Text, tb_productName.Text);
-                QRcontrolpanel.Dock = DockStyle.Fill;
-                QRcontrolpanel.Visible = true;
-             
+                if (AddProduct())
+                {                 
+                    productMainPanel.Visible = false;
+                    GetProductDetails(tb_code.Text, tb_productName.Text);
+                    QRcontrolpanel.Dock = DockStyle.Fill;
+                    QRcontrolpanel.Visible = true;
+                    ClearFields();
+                } 
+            }else
+            {
+                MessageBox.Show("There is an existing product", tb_code.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ClearFields();
             }
         }
+
+        private void ClearFields()
+        {
+            tb_id.Clear();
+            tb_productName.Clear();
+            tb_code.Clear();
+            tb_prodDescr.Clear();
+            tb_prodPrice.Clear();
+            tb_quan.Clear();
+            tb_length.Clear();
+            tb_height.Clear();
+            tb_width.Clear();
+            cmb_actype.SelectedIndex = -1;
+            cmb_Hp.SelectedIndex = -1;
+            cmb_prodCategory.SelectedIndex = -1;
+        }
+
         private void tb_unameAccess_TextChanged(object sender, EventArgs e)
         {
             if (tb_unameAccess.Text != "")
             {
+                tb_unameAccess.FillColor = Color.White;
                 tb_pass.Enabled = true;
             }
             else
             {
+                tb_unameAccess.FillColor = Color.Red;
                 tb_pass.Enabled = false;
             }
         }  
@@ -336,7 +362,10 @@ namespace SSIP.UserformControls
         }
         private void btn_update_Click(object sender, EventArgs e)
         {
-            UpdateProduct();
+            if (tb_id.Text != "0")
+            {
+                UpdateProduct();                     
+            }
         }
         private void tb_searchProd_TextChanged(object sender, EventArgs e)
         {
@@ -408,7 +437,13 @@ namespace SSIP.UserformControls
         private bool downloaded()
         {
             printQRDialog1.Document = printDocuQR;
-            printQRDialog1.ShowDialog();
+            DialogResult res = printQRDialog1.ShowDialog();
+
+
+            if (res == DialogResult.Cancel)
+            {
+                printDocuQR.Print();
+            }
 
             return true;
         }
@@ -416,8 +451,8 @@ namespace SSIP.UserformControls
         private void printDocuQR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(pic_qrcode.Image, 280, 150, 300, 300);
-            e.Graphics.DrawString("Product Name: " + productName.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(310, 430));
-            e.Graphics.DrawString("Product Code/QR Code: " + displaycode.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(310, 470));
+            e.Graphics.DrawString("Product Name: " + productName.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(280, 430));
+            e.Graphics.DrawString("Product Code/QR Code: " + displaycode.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(280, 470));
 
         }
         private void btn_download_Click(object sender, EventArgs e)
@@ -486,6 +521,7 @@ namespace SSIP.UserformControls
         private void NotAuthorizedMssg()
         {
             MessageBox.Show("Authorization Required");
+            tb_unameAccess.FillColor = Color.Red;
         }
         private void NotHighAuthorityMssg()
         {
