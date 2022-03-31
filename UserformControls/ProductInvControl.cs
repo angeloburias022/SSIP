@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 using static SSIP.Models.Inventories;
 
 namespace SSIP.UserformControls
@@ -74,6 +75,8 @@ namespace SSIP.UserformControls
                         aud.Logs(success);
                         MessageBox.Show("Product Added");
                         UpdateGrid();
+
+                        return true;
                     }
                     else
                     {
@@ -88,10 +91,16 @@ namespace SSIP.UserformControls
 
                         aud.Logs(failed);
                         MessageBox.Show("Something went wrong");
+
+                        return false;
                     }
+                }
+                else
+                {
+                    return false;
                 }               
             }
-        return true;
+        return false;
         }
         private bool UpdateProduct()
         {
@@ -250,17 +259,32 @@ namespace SSIP.UserformControls
                 error.ToString();
             }
         }
+
+        public void GetProductDetails(string code, string name)
+        {
+            var writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE
+            };
+            var bitmap = writer.Write(code);
+
+            pic_qrcode.Image = bitmap;
+            productName.Text = name;
+            displaycode.Text = code;
+        }
         #endregion
 
         #region event handler
         private void btn_addProduct_Click(object sender, EventArgs e)
         {
             if (AddProduct())
-            {          
-                this.productQRControl1.GetProductDetails(tb_code.Text, tb_productName.Text);
+            {
+                productMainPanel.Visible = false;
+                
+                GetProductDetails(tb_code.Text, tb_productName.Text);
                 QRcontrolpanel.Dock = DockStyle.Fill;
                 QRcontrolpanel.Visible = true;
-                productQRControl1.Show();
+             
             }
         }
         private void tb_unameAccess_TextChanged(object sender, EventArgs e)
@@ -371,6 +395,35 @@ namespace SSIP.UserformControls
         {
             ShowAirconDetailFields();
         }
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            btn_download.Enabled = false;
+            if (downloaded())
+            {
+                QRcontrolpanel.Dock = DockStyle.None;
+                QRcontrolpanel.Visible = false;              
+            }
+            productMainPanel.Visible = true;
+        }
+        private bool downloaded()
+        {
+            printQRDialog1.Document = printDocuQR;
+            printQRDialog1.ShowDialog();
+
+            return true;
+        }
+
+        private void printDocuQR_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(pic_qrcode.Image, 280, 150, 300, 300);
+            e.Graphics.DrawString("Product Name: " + productName.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(310, 430));
+            e.Graphics.DrawString("Product Code/QR Code: " + displaycode.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(310, 470));
+
+        }
+        private void btn_download_Click(object sender, EventArgs e)
+        {
+            downloaded();
+        }
         #endregion
 
         #region access
@@ -480,6 +533,6 @@ namespace SSIP.UserformControls
             }
         }
 
-        #endregion      
+        #endregion
     }
 }

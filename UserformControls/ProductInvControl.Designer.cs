@@ -63,23 +63,33 @@ namespace SSIP.UserformControls
             this.btn_viewProducts = new Guna.UI2.WinForms.Guna2Button();
             this.btn_remove = new Guna.UI2.WinForms.Guna2Button();
             this.ProductGrid = new System.Windows.Forms.DataGridView();
-            this.btn_showSales = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_showEquip = new Guna.UI2.WinForms.Guna2Button();
             this.confirmAccessPanel = new System.Windows.Forms.Panel();
             this.lbl_confirmAccess = new System.Windows.Forms.Label();
             this.tb_unameAccess = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
             this.productMainPanel = new System.Windows.Forms.Panel();
             this.gridMainPanel = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.QRcontrolpanel = new System.Windows.Forms.Panel();
-            this.productQRControl1 = new SSIP.UserformControls.ProductQRControl();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbl_productName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.productName = new System.Windows.Forms.Label();
+            this.displaycode = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_close = new Guna.UI2.WinForms.Guna2Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_download = new Guna.UI2.WinForms.Guna2Button();
+            this.pic_qrcode = new System.Windows.Forms.PictureBox();
+            this.printDocuQR = new System.Drawing.Printing.PrintDocument();
+            this.printQRDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.product_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGrid)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
             this.productMainPanel.SuspendLayout();
             this.gridMainPanel.SuspendLayout();
             this.QRcontrolpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_qrcode)).BeginInit();
             this.SuspendLayout();
             // 
             // product_panel
@@ -736,48 +746,6 @@ namespace SSIP.UserformControls
             this.ProductGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGrid_CellDoubleClick);
             this.ProductGrid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ProductGrid_MouseDown);
             // 
-            // btn_showSales
-            // 
-            this.btn_showSales.BackColor = System.Drawing.Color.Transparent;
-            this.btn_showSales.BorderRadius = 4;
-            this.btn_showSales.CheckedState.Parent = this.btn_showSales;
-            this.btn_showSales.CustomImages.Parent = this.btn_showSales;
-            this.btn_showSales.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_showSales.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_showSales.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_showSales.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_showSales.DisabledState.Parent = this.btn_showSales;
-            this.btn_showSales.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_showSales.ForeColor = System.Drawing.Color.White;
-            this.btn_showSales.HoverState.Parent = this.btn_showSales;
-            this.btn_showSales.Location = new System.Drawing.Point(793, 72);
-            this.btn_showSales.Name = "btn_showSales";
-            this.btn_showSales.ShadowDecoration.Parent = this.btn_showSales;
-            this.btn_showSales.Size = new System.Drawing.Size(174, 45);
-            this.btn_showSales.TabIndex = 14;
-            this.btn_showSales.Text = "PRODUCTS";
-            // 
-            // btn_showEquip
-            // 
-            this.btn_showEquip.BackColor = System.Drawing.Color.Transparent;
-            this.btn_showEquip.BorderRadius = 4;
-            this.btn_showEquip.CheckedState.Parent = this.btn_showEquip;
-            this.btn_showEquip.CustomImages.Parent = this.btn_showEquip;
-            this.btn_showEquip.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_showEquip.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_showEquip.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_showEquip.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_showEquip.DisabledState.Parent = this.btn_showEquip;
-            this.btn_showEquip.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_showEquip.ForeColor = System.Drawing.Color.White;
-            this.btn_showEquip.HoverState.Parent = this.btn_showEquip;
-            this.btn_showEquip.Location = new System.Drawing.Point(793, 123);
-            this.btn_showEquip.Name = "btn_showEquip";
-            this.btn_showEquip.ShadowDecoration.Parent = this.btn_showEquip;
-            this.btn_showEquip.Size = new System.Drawing.Size(174, 45);
-            this.btn_showEquip.TabIndex = 15;
-            this.btn_showEquip.Text = "EQUIPMENTS";
-            // 
             // confirmAccessPanel
             // 
             this.confirmAccessPanel.BackColor = System.Drawing.Color.Transparent;
@@ -863,7 +831,7 @@ namespace SSIP.UserformControls
             this.productMainPanel.BackColor = System.Drawing.Color.Transparent;
             this.productMainPanel.Controls.Add(this.product_panel);
             this.productMainPanel.Controls.Add(this.gridMainPanel);
-            this.productMainPanel.Location = new System.Drawing.Point(3, -17);
+            this.productMainPanel.Location = new System.Drawing.Point(3, 42);
             this.productMainPanel.Name = "productMainPanel";
             this.productMainPanel.Size = new System.Drawing.Size(787, 495);
             this.productMainPanel.TabIndex = 137;
@@ -882,44 +850,175 @@ namespace SSIP.UserformControls
             this.gridMainPanel.Size = new System.Drawing.Size(410, 395);
             this.gridMainPanel.TabIndex = 17;
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 4;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.DisabledState.Parent = this.guna2Button1;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(793, 21);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(174, 45);
-            this.guna2Button1.TabIndex = 14;
-            this.guna2Button1.Text = "SALES";
-            // 
             // QRcontrolpanel
             // 
-            this.QRcontrolpanel.Controls.Add(this.productQRControl1);
-            this.QRcontrolpanel.Location = new System.Drawing.Point(805, 356);
+            this.QRcontrolpanel.BackColor = System.Drawing.Color.Transparent;
+            this.QRcontrolpanel.Controls.Add(this.btn_download);
+            this.QRcontrolpanel.Controls.Add(this.btn_close);
+            this.QRcontrolpanel.Controls.Add(this.productName);
+            this.QRcontrolpanel.Controls.Add(this.panel4);
+            this.QRcontrolpanel.Controls.Add(this.lbl_productName);
+            this.QRcontrolpanel.Controls.Add(this.displaycode);
+            this.QRcontrolpanel.Controls.Add(this.label1);
+            this.QRcontrolpanel.Controls.Add(this.panel3);
+            this.QRcontrolpanel.Controls.Add(this.panel2);
+            this.QRcontrolpanel.Controls.Add(this.panel1);
+            this.QRcontrolpanel.Controls.Add(this.pic_qrcode);
+            this.QRcontrolpanel.Location = new System.Drawing.Point(835, 356);
             this.QRcontrolpanel.Name = "QRcontrolpanel";
-            this.QRcontrolpanel.Size = new System.Drawing.Size(89, 75);
+            this.QRcontrolpanel.Size = new System.Drawing.Size(660, 412);
             this.QRcontrolpanel.TabIndex = 139;
             this.QRcontrolpanel.Visible = false;
             // 
-            // productQRControl1
+            // panel4
             // 
-            this.productQRControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("productQRControl1.BackgroundImage")));
-            this.productQRControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productQRControl1.Location = new System.Drawing.Point(0, 0);
-            this.productQRControl1.Name = "productQRControl1";
-            this.productQRControl1.Size = new System.Drawing.Size(89, 75);
-            this.productQRControl1.TabIndex = 0;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(69, 375);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(517, 37);
+            this.panel4.TabIndex = 3;
+            // 
+            // lbl_productName
+            // 
+            this.lbl_productName.AutoSize = true;
+            this.lbl_productName.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_productName.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_productName.Location = new System.Drawing.Point(172, 340);
+            this.lbl_productName.Name = "lbl_productName";
+            this.lbl_productName.Size = new System.Drawing.Size(127, 20);
+            this.lbl_productName.TabIndex = 138;
+            this.lbl_productName.Text = "Product Name:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Honeydew;
+            this.label1.Location = new System.Drawing.Point(212, 307);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 20);
+            this.label1.TabIndex = 139;
+            this.label1.Text = "QR Code:";
+            // 
+            // productName
+            // 
+            this.productName.AutoSize = true;
+            this.productName.BackColor = System.Drawing.Color.Transparent;
+            this.productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productName.ForeColor = System.Drawing.Color.Honeydew;
+            this.productName.Location = new System.Drawing.Point(305, 340);
+            this.productName.Name = "productName";
+            this.productName.Size = new System.Drawing.Size(122, 20);
+            this.productName.TabIndex = 140;
+            this.productName.Text = "Product Name";
+            // 
+            // displaycode
+            // 
+            this.displaycode.AutoSize = true;
+            this.displaycode.BackColor = System.Drawing.Color.Transparent;
+            this.displaycode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displaycode.ForeColor = System.Drawing.Color.Honeydew;
+            this.displaycode.Location = new System.Drawing.Point(305, 307);
+            this.displaycode.Name = "displaycode";
+            this.displaycode.Size = new System.Drawing.Size(82, 20);
+            this.displaycode.TabIndex = 141;
+            this.displaycode.Text = "QR Code";
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(69, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(517, 71);
+            this.panel3.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(586, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(74, 412);
+            this.panel2.TabIndex = 1;
+            // 
+            // btn_close
+            // 
+            this.btn_close.BackColor = System.Drawing.Color.Transparent;
+            this.btn_close.BorderRadius = 4;
+            this.btn_close.CheckedState.Parent = this.btn_close;
+            this.btn_close.CustomImages.Parent = this.btn_close;
+            this.btn_close.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_close.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_close.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_close.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_close.DisabledState.Parent = this.btn_close;
+            this.btn_close.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_close.ForeColor = System.Drawing.Color.White;
+            this.btn_close.HoverState.Parent = this.btn_close;
+            this.btn_close.Location = new System.Drawing.Point(448, 176);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.ShadowDecoration.Parent = this.btn_close;
+            this.btn_close.Size = new System.Drawing.Size(120, 45);
+            this.btn_close.TabIndex = 137;
+            this.btn_close.Text = "CLOSE";
+            this.btn_close.UseTransparentBackground = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(69, 412);
+            this.panel1.TabIndex = 0;
+            // 
+            // btn_download
+            // 
+            this.btn_download.BackColor = System.Drawing.Color.Transparent;
+            this.btn_download.BorderRadius = 4;
+            this.btn_download.CheckedState.Parent = this.btn_download;
+            this.btn_download.CustomImages.Parent = this.btn_download;
+            this.btn_download.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_download.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_download.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_download.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_download.DisabledState.Parent = this.btn_download;
+            this.btn_download.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_download.ForeColor = System.Drawing.Color.White;
+            this.btn_download.HoverState.Parent = this.btn_download;
+            this.btn_download.Location = new System.Drawing.Point(90, 176);
+            this.btn_download.Name = "btn_download";
+            this.btn_download.ShadowDecoration.Parent = this.btn_download;
+            this.btn_download.Size = new System.Drawing.Size(120, 45);
+            this.btn_download.TabIndex = 137;
+            this.btn_download.Text = "DOWNLOAD";
+            this.btn_download.UseTransparentBackground = true;
+            this.btn_download.Click += new System.EventHandler(this.btn_download_Click);
+            // 
+            // pic_qrcode
+            // 
+            this.pic_qrcode.BackColor = System.Drawing.Color.White;
+            this.pic_qrcode.Location = new System.Drawing.Point(216, 91);
+            this.pic_qrcode.Name = "pic_qrcode";
+            this.pic_qrcode.Size = new System.Drawing.Size(226, 187);
+            this.pic_qrcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_qrcode.TabIndex = 136;
+            this.pic_qrcode.TabStop = false;
+            // 
+            // printDocuQR
+            // 
+            this.printDocuQR.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocuQR_PrintPage);
+            // 
+            // printQRDialog1
+            // 
+            this.printQRDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printQRDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printQRDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printQRDialog1.Enabled = true;
+            this.printQRDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printQRDialog1.Icon")));
+            this.printQRDialog1.Name = "printQRDialog1";
+            this.printQRDialog1.Visible = false;
             // 
             // ProductInvControl
             // 
@@ -928,12 +1027,9 @@ namespace SSIP.UserformControls
             this.BackgroundImage = global::SSIP.Properties.Resources.bg;
             this.Controls.Add(this.QRcontrolpanel);
             this.Controls.Add(this.confirmAccessPanel);
-            this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.btn_showSales);
-            this.Controls.Add(this.btn_showEquip);
             this.Controls.Add(this.productMainPanel);
             this.Name = "ProductInvControl";
-            this.Size = new System.Drawing.Size(996, 481);
+            this.Size = new System.Drawing.Size(2066, 787);
             this.Load += new System.EventHandler(this.ProductInvControl_Load);
             this.product_panel.ResumeLayout(false);
             this.product_panel.PerformLayout();
@@ -944,6 +1040,8 @@ namespace SSIP.UserformControls
             this.gridMainPanel.ResumeLayout(false);
             this.gridMainPanel.PerformLayout();
             this.QRcontrolpanel.ResumeLayout(false);
+            this.QRcontrolpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_qrcode)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -966,8 +1064,6 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView ProductGrid;
         private System.Windows.Forms.Label lbl_prodName;
-        private Guna.UI2.WinForms.Guna2Button btn_showSales;
-        private Guna.UI2.WinForms.Guna2Button btn_showEquip;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_prodCategory;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel confirmAccessPanel;
@@ -978,7 +1074,6 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel productMainPanel;
         private System.Windows.Forms.Panel gridMainPanel;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2TextBox tb_code;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_actype;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_Hp;
@@ -994,5 +1089,18 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2TextBox tb_height;
         private System.Windows.Forms.Panel QRcontrolpanel;
         private ProductQRControl productQRControl1;
+        private System.Windows.Forms.Label lbl_productName;
+        private System.Windows.Forms.Label productName;
+        private System.Windows.Forms.Label displaycode;
+        private System.Windows.Forms.PictureBox pic_qrcode;
+        private Guna.UI2.WinForms.Guna2Button btn_close;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Drawing.Printing.PrintDocument printDocuQR;
+        private System.Windows.Forms.PrintPreviewDialog printQRDialog1;
+        private Guna.UI2.WinForms.Guna2Button btn_download;
     }
 }
