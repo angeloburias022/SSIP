@@ -33,9 +33,7 @@ namespace SSIP.Helper
                 mssgDetails.IsBodyHtml = true;
                 mssgDetails.Body = emailer.Body;
                 mssgDetails.Attachments.Add(new Attachment(emailer.Attachments));
-                
-
-                
+             
                 clientDetails.Send(mssgDetails);
 
                 return true;

@@ -103,29 +103,36 @@ namespace SSIP.UserformControls
         }
         private void ShowRows()
         {
-            int prod_quan = 0, prod_price = 0, totalPrice = 0;
-            // price * quan
-            prod_price = Convert.ToInt32(tb_prodPrice.Text);
-            prod_quan = Convert.ToInt32(tb_quantity.Text);
-            totalPrice = prod_price * prod_quan;
-            tb_totalprice.Text = totalPrice.ToString();
+            try
+            {
+                int prod_quan = 0, prod_price = 0, totalPrice = 0;
+                // price * quan
+                prod_price = Convert.ToInt32(tb_prodPrice.Text);
+                prod_quan = Convert.ToInt32(tb_quantity.Text);
+                totalPrice = prod_price * prod_quan;
+                tb_totalprice.Text = totalPrice.ToString();
 
-            dr = dt.NewRow();
+                dr = dt.NewRow();
 
-            dr["ProductID"] = tb_id.Text;
-            dr["Name"] = tb_productName.Text;
-            dr["Code"] = tb_code.Text;
-            dr["Category"] = cmb_prodCategory.SelectedItem;
-            dr["Description"] = tb_prodDescr.Text;
-            dr["Quantity"] = tb_quantity.Text;
-            dr["Unit Price"] = tb_prodPrice.Text;
-            dr["Total Price"] = tb_totalprice.Text;
-            dt.Rows.Add(dr);
-            prodGrid.DataSource = dt;
+                dr["ProductID"] = tb_id.Text;
+                dr["Name"] = tb_productName.Text;
+                dr["Code"] = tb_code.Text;
+                dr["Category"] = cmb_prodCategory.SelectedItem;
+                dr["Description"] = tb_prodDescr.Text;
+                dr["Quantity"] = tb_quantity.Text;
+                dr["Unit Price"] = tb_prodPrice.Text;
+                dr["Total Price"] = tb_totalprice.Text;
+                dt.Rows.Add(dr);
+                prodGrid.DataSource = dt;
 
-            this.prodGrid.Columns["ProductID"].Visible = false;
-            this.prodGrid.Columns["Category"].Visible = false;
-            this.prodGrid.Columns["Description"].Visible = false;
+                this.prodGrid.Columns["ProductID"].Visible = false;
+                this.prodGrid.Columns["Category"].Visible = false;
+                this.prodGrid.Columns["Description"].Visible = false;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
         }
         private void SearchProducts()
         {
@@ -794,7 +801,14 @@ namespace SSIP.UserformControls
                 e.Graphics.DrawString("Amount Paid: " + tb_amountPaid.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 310));
                 e.Graphics.DrawString("Change: " + display_change.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 340));
                 e.Graphics.DrawString("Grand Total: " + grandTotal.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 370));
-                e.Graphics.DrawString("Cashier: " + user, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 430));
+                if (CurrentUser == null)
+                {
+                    e.Graphics.DrawString("Cashier: " + tb_unameAccess.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 430));
+                }
+                else
+                {
+                    e.Graphics.DrawString("Cashier: " + CurrentUser, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 430));
+                }
 
                 //e.Graphics.DrawString("SSS: " + lbl_sss_print.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 340));
                 //e.Graphics.DrawString("Pag-ibig " + lbl_pagibig_print.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(120, 370));
