@@ -43,6 +43,10 @@ namespace SSIP.Forms
 
         private void Charts()
         {
+            CityChart.BackColor = Color.Transparent;
+            Services_pie_chart.BackColor = Color.Transparent;
+            DispatchedChart.BackColor = Color.Transparent;
+            CustomizeDesign();
             try
             {
                 #region NCR chart
@@ -341,9 +345,11 @@ namespace SSIP.Forms
         }
         private void logo_panel_Click(object sender, EventArgs e)
         {
+            this.Controls.Clear();
+            this.InitializeComponent();
             UpdateCharts();
             ShowCharts();
-            
+            Charts();
         }
         private void UpdateCharts()
         {
@@ -758,8 +764,12 @@ namespace SSIP.Forms
         {
             lbl_time.Text = string.Format("{0:hh:mm tt}", DateTime.Now);
         }
+
         #endregion
 
-       
+        private void logo_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
