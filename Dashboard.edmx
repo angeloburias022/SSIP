@@ -5,7 +5,9 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DashboardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SpGetActypeStocks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SpGetNoOfDispatched" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpMontlySales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SpNCRChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SpServicesChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DashboardModelStoreContainer" />
@@ -17,6 +19,8 @@
           <FunctionImport Name="SpNCRChart" ReturnType="Collection(DashboardModel.SpNCRChart_Result)" />
           <FunctionImport Name="SpServicesChart" ReturnType="Collection(DashboardModel.SpServicesChart_Result)" />
           <FunctionImport Name="SpGetNoOfDispatched" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SpMontlySales" ReturnType="Collection(DashboardModel.SpMontlySales_Result)" />
+          <FunctionImport Name="SpGetActypeStocks" ReturnType="Collection(DashboardModel.SpGetActypeStocks_Result)" />
         </EntityContainer>
         <ComplexType Name="SpNCRChart_Result">
           <Property Type="Int32" Name="caloocan" Nullable="true" />
@@ -41,6 +45,26 @@
           <Property Type="Int32" Name="rep" Nullable="true" />
           <Property Type="Int32" Name="che" Nullable="true" />
           <Property Type="Int32" Name="ins" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SpMontlySales_Result">
+          <Property Type="Decimal" Name="January" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="February" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="March" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="April" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="May" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="June" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="July" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="August" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="September" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="October" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="November" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="December" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="SpGetActypeStocks_Result">
+          <Property Type="Int32" Name="WindowType" Nullable="true" />
+          <Property Type="Int32" Name="SplitType" Nullable="true" />
+          <Property Type="Int32" Name="Floor_mounted_type" Nullable="true" />
+          <Property Type="Int32" Name="Ceiling_Wallmounted_type" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -81,6 +105,34 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SpGetNoOfDispatched" FunctionName="DashboardModel.Store.SpGetNoOfDispatched" />
+          <FunctionImportMapping FunctionImportName="SpMontlySales" FunctionName="DashboardModel.Store.SpMontlySales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.SpMontlySales_Result">
+                <ScalarProperty Name="January" ColumnName="January" />
+                <ScalarProperty Name="February" ColumnName="February" />
+                <ScalarProperty Name="March" ColumnName="March" />
+                <ScalarProperty Name="April" ColumnName="April" />
+                <ScalarProperty Name="May" ColumnName="May" />
+                <ScalarProperty Name="June" ColumnName="June" />
+                <ScalarProperty Name="July" ColumnName="July" />
+                <ScalarProperty Name="August" ColumnName="August" />
+                <ScalarProperty Name="September" ColumnName="September" />
+                <ScalarProperty Name="October" ColumnName="October" />
+                <ScalarProperty Name="November" ColumnName="November" />
+                <ScalarProperty Name="December" ColumnName="December" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SpGetActypeStocks" FunctionName="DashboardModel.Store.SpGetActypeStocks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DashboardModel.SpGetActypeStocks_Result">
+                <ScalarProperty Name="WindowType" ColumnName="WindowType" />
+                <ScalarProperty Name="SplitType" ColumnName="SplitType" />
+                <ScalarProperty Name="Floor_mounted_type" ColumnName="Floor_mounted_type" />
+                <ScalarProperty Name="Ceiling_Wallmounted_type" ColumnName="Ceiling_Wallmounted_type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

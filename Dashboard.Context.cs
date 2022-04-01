@@ -42,5 +42,15 @@ namespace SSIP
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SpGetNoOfDispatched");
         }
+    
+        public virtual ObjectResult<SpMontlySales_Result> SpMontlySales()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SpMontlySales_Result>("SpMontlySales");
+        }
+    
+        public virtual ObjectResult<SpGetActypeStocks_Result> SpGetActypeStocks()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SpGetActypeStocks_Result>("SpGetActypeStocks");
+        }
     }
 }

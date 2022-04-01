@@ -1,5 +1,7 @@
 ﻿using AForge.Video;
 using AForge.Video.DirectShow;
+using LiveCharts;
+using LiveCharts.Wpf;
 using OfficeOpenXml;
 using SSIP.Controllers;
 using SSIP.Forms;
@@ -971,6 +973,213 @@ namespace SSIP.UserformControls
             if (tb_quantity.Text.Length < 0 || tb_quantity.Text =="")
             {
                 tb_quantity.Text = "0";
+            }
+        }
+
+       
+        private void btn_viewOrders_Click(object sender, EventArgs e)
+        {
+            if (Authorized())
+            {
+                this.Controls.Clear();
+                InitializeComponent();
+                salesGridView.DataSource = null;
+                salesGridView.Update();
+
+                TypeAcPieChart.BackColor = Color.Transparent;
+                TypeAcPieChart.ForeColor = Color.White;
+                if (LoadDatas())
+                {
+                    chartTablePanel.Dock = DockStyle.Fill;
+                    chartTablePanel.Visible = true;
+                } 
+            }
+        }
+
+        private void btn_placeOrder_Click(object sender, EventArgs e)
+        {           
+            chartTablePanel.Visible = false;
+         
+        }
+        private bool LoadDatas()
+        {
+           
+            try
+            {
+                var tools = new SalesController();
+                #region POS data
+
+                salesGridView.DataSource = tools.GetOrders();
+                salesGridView.Update();
+                #endregion
+                try
+                {
+
+                    #region monthly sales chart
+                    // Monthly sales chart
+                    using (DashboardEntities db = new DashboardEntities())
+                    {
+                        var data = db.SpMontlySales(); // get the stored proc inside the entity
+                        ColumnSeries col = new ColumnSeries() // access the cartesian chart
+                        {
+                            DataLabels = true,
+                            Values = new ChartValues<int>(),
+                            LabelPoint = point => point.Y.ToString()
+                        };
+
+                        Axis ax = new Axis()
+                        {
+                            Separator = new Separator() { Step = 1, IsEnabled = false }
+                        };
+
+                        ax.Labels = new List<string>();
+
+                        // loop through the database
+                        foreach (var sales in data)
+                        {
+
+                            col.Values.Add(Convert.ToInt32(sales.January.Value));
+                            ax.Labels.Add("January");
+
+                            col.Values.Add(Convert.ToInt32(sales.February.Value));
+                            ax.Labels.Add("February");
+
+                            col.Values.Add(Convert.ToInt32(sales.March.Value));
+                            ax.Labels.Add("March");
+
+                            col.Values.Add(Convert.ToInt32(sales.April.Value));
+                            ax.Labels.Add("April");
+
+                            col.Values.Add(Convert.ToInt32(sales.May.Value));
+                            ax.Labels.Add("May");
+
+                            col.Values.Add(Convert.ToInt32(sales.June.Value));
+                            ax.Labels.Add("June");
+
+                            col.Values.Add(Convert.ToInt32(sales.July.Value));
+                            ax.Labels.Add("July");
+
+                            col.Values.Add(Convert.ToInt32(sales.August.Value));
+                            ax.Labels.Add("August");
+
+                            col.Values.Add(Convert.ToInt32(sales.September.Value));
+                            ax.Labels.Add("September");
+
+                            col.Values.Add(Convert.ToInt32(sales.October.Value));
+                            ax.Labels.Add("October");
+
+                            col.Values.Add(Convert.ToInt32(sales.November.Value));
+                            ax.Labels.Add("November");
+
+                            col.Values.Add(Convert.ToInt32(sales.December.Value));
+                            ax.Labels.Add("December");
+
+
+
+                        }
+
+                        cartesianMonthChart1.Series.Add(col);
+                        cartesianMonthChart1.AxisX.Add(ax);
+                        cartesianMonthChart1.AxisY.Add(
+                            new Axis
+                            {
+                                LabelFormatter = value => value.ToString(),
+                                Separator = new Separator()
+                            });
+
+                    }
+
+                    #endregion
+
+                    #region aircontype stocks
+                    SeriesCollection series = new SeriesCollection();
+                    using (DashboardEntities db = new DashboardEntities())
+                    {
+                        var data = db.SpGetActypeStocks(); // get the stored proc inside the entity
+
+                        Func<ChartPoint, string> labelPoint = chartPoint =>
+                          string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+                        try
+                        {
+                            foreach (var actypes in data)
+                            {
+                                PieSeries WindowType = new PieSeries
+                                {
+                                    DataLabels = true,
+                                    LabelPoint = labelPoint,
+                                    Title = "WindowType",
+                                    Values = new ChartValues<int> { actypes.WindowType.Value }
+                                };
+
+                                PieSeries SplitType = new PieSeries
+                                {
+                                    DataLabels = true,
+                                    LabelPoint = labelPoint,
+                                    Title = "SplitType",
+                                    Values = new ChartValues<int> { actypes.SplitType.Value }
+                                };
+
+                                PieSeries Floor_mounted_type = new PieSeries
+                                {
+                                    DataLabels = true,
+                                    LabelPoint = labelPoint,
+                                    Title = "Floor mounted type",
+                                    Values = new ChartValues<int> { actypes.Floor_mounted_type.Value }
+                                };
+
+                                PieSeries Ceiling_Wallmounted_type = new PieSeries
+                                {
+                                    DataLabels = true,
+                                    LabelPoint = labelPoint,
+                                    Title = "Ceiling Wallmounted type",
+                                    Values = new ChartValues<int> { actypes.Ceiling_Wallmounted_type.Value }
+                                };
+
+
+                                series.Add(WindowType);
+                                series.Add(SplitType);
+                                series.Add(Floor_mounted_type);
+                                series.Add(Ceiling_Wallmounted_type);
+                                TypeAcPieChart.Series = series;
+                            }
+
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("something went wrong" + error);
+                        }
+
+                        TypeAcPieChart.LegendLocation = LegendLocation.Bottom;
+
+                        //SeriesCollection series = new SeriesCollection();
+
+                        //foreach (var obj in db.SpServicesChart())
+                        //    series.Add(new PieSeries() { Title = obj.che.ToString(), Values = new ChartValues<int> { obj.clea.ToString(), ChartValues = new ChartValues<string>, } DataLabels = true, LabelPoint = LabelPoint);
+                        //pieChart1.Series = series;
+                    }
+                    #endregion
+                }
+                catch (Exception error)
+                {
+
+                    error.ToString();
+                }
+                return true;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return false;
+        }
+
+        private void tb_searchOrders_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_searchOrders.Text.Length > 0)
+            {
+                var tools = new SalesController();
+                salesGridView.DataSource = tools.FindOrders(tb_searchOrders.Text);
+                salesGridView.Update();
             }
         }
     }

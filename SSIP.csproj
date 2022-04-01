@@ -237,6 +237,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RFBAttendancesSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SpGetActypeStocks_Result.cs">
+      <DependentUpon>Dashboard.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpMontlySales_Result.cs">
+      <DependentUpon>Dashboard.tt</DependentUpon>
+    </Compile>
     <Compile Include="SpNCRChart_Result.cs">
       <DependentUpon>Dashboard.tt</DependentUpon>
     </Compile>

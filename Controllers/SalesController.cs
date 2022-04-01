@@ -14,6 +14,7 @@ namespace SSIP.Controllers
     public class SalesController
     {
         DataTable dt = new DataTable();
+        DataSet ds = new DataSet();
         ConnectionDB db = new ConnectionDB();
         public List<string> GetProductDetails(string code)
         {
@@ -123,6 +124,49 @@ namespace SSIP.Controllers
                 {
                     DataRow dr = dt.Rows[rowsindex++];
                     dr[prop.Name] = prop.GetValue(item);
+                }
+            }
+            return dt;
+        }
+
+        public DataTable GetOrders()
+        {           
+            using (SqlConnection con = new SqlConnection(db.ConString()))
+            {
+                using (SqlCommand com = new SqlCommand("[SpGetOrders]", con))
+                {
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                    {
+                        ds.Clear();
+                        adapter.Fill(ds);
+
+                        dt = ds.Tables[0];
+                        con.Close();
+
+                    }
+                }
+            }
+            return dt;
+        }
+        public DataTable FindOrders(string search)
+        {
+            using (SqlConnection con = new SqlConnection(db.ConString()))
+            {
+                using (SqlCommand com = new SqlCommand("[SpGetOrders]", con))
+                {
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@search", search);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                    {
+                        ds.Clear();
+                        adapter.Fill(ds);
+
+                        dt = ds.Tables[0];
+                        con.Close();
+
+                    }
                 }
             }
             return dt;
