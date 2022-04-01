@@ -152,22 +152,28 @@ namespace SSIP.Controllers
         }
         public DataTable FindOrders(string search)
         {
-            using (SqlConnection con = new SqlConnection(db.ConString()))
+            try
             {
-                using (SqlCommand com = new SqlCommand("[SpGetOrders]", con))
+                using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
-                    com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@search", search);
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                    using (SqlCommand com = new SqlCommand("[SpGetOrders]", con))
                     {
-                        ds.Clear();
-                        adapter.Fill(ds);
-
-                        dt = ds.Tables[0];
-                        con.Close();
-
+                        com.CommandType = CommandType.StoredProcedure;
+                        com.Parameters.AddWithValue("@search", search);
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+                            dt = ds.Tables[0];
+                            con.Close();
+                        }
                     }
                 }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
             }
             return dt;
         }

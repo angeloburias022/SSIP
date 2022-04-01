@@ -983,9 +983,7 @@ namespace SSIP.UserformControls
             {
                 this.Controls.Clear();
                 InitializeComponent();
-                salesGridView.DataSource = null;
-                salesGridView.Update();
-
+               
                 TypeAcPieChart.BackColor = Color.Transparent;
                 TypeAcPieChart.ForeColor = Color.White;
                 if (LoadDatas())
@@ -999,7 +997,8 @@ namespace SSIP.UserformControls
         private void btn_placeOrder_Click(object sender, EventArgs e)
         {           
             chartTablePanel.Visible = false;
-         
+            salesGridView.DataSource = null;
+            salesGridView.Update();
         }
         private bool LoadDatas()
         {
