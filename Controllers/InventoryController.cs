@@ -279,7 +279,8 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@code", inv.ProductCode);
                         com.Parameters.AddWithValue("@recordedBy", inv.RecordedBy);
                         com.Parameters.AddWithValue("@datepurchased", inv.DatePurchased);
-
+                        com.Parameters.AddWithValue("@status", inv.Status);
+                        com.Parameters.AddWithValue("@quan", inv.quantity);
                         com.ExecuteNonQuery();
                         con.Close();
                         return true;
@@ -310,6 +311,8 @@ namespace SSIP.Controllers
                         com.Parameters.AddWithValue("@price", inv.UnitPrice);
                         com.Parameters.AddWithValue("@recordedBy", inv.RecordedBy);
                         com.Parameters.AddWithValue("@datepurchased", inv.DatePurchased);
+                        com.Parameters.AddWithValue("@status", inv.Status);
+                        com.Parameters.AddWithValue("@quan", inv.quantity); 
                         com.ExecuteNonQuery();
                     }
                     con.Close();
@@ -384,7 +387,146 @@ namespace SSIP.Controllers
             }
 
         }
+
+        public string GetCurrentEquipments()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetCurrentEquipmentsNo]", con))
+                {
+
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["CurrentEquipments"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+
+        }
+        public string GetNewEquipments()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetNewEquipmentsNo]", con))
+                {
+
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["NewEquipments"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+
+        }
+        public string GetBrandNewEquipments()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetBrandNewEquipmentsNo]", con))
+                {
+
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["BrandNewEquips"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+
+        }
+        public string GetUsedEquipments()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetUsedEquipmentsNo]", con))
+                {
+
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["Used"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+
+        }
+        public string GetSlightlyUsedEquipments()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetRunningLowEquipmentsNo]", con))
+                {
+
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["RunningLowEquipments"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+
+        }
+        public string GetRunningLowEquipments()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetRunningLowEquipmentsNo]", con))
+                {
+
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["RunningLowEquipments"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+
+        }
         #endregion
-    
+
     }
 }

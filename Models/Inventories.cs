@@ -27,7 +27,7 @@ namespace SSIP.Models
             public DateTime DateUpdated { get; set; }
             public DateTime DateDeleted { get; set; }
 
-         
+            public string Status { get; set; }
         }
 
         public class ProductInventory : Inventory

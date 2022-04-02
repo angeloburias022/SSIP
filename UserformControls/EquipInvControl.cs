@@ -45,7 +45,9 @@ namespace SSIP.UserformControls
                         ProductCode = productCode,
                         Category = "categ",
                         DatePurchased = datepurchased.Value,
-                        RecordedBy = tb_unameAccess.Text
+                        RecordedBy = tb_unameAccess.Text,
+                        Status = cmb_equipStatus.SelectedIndex.ToString(),
+                        quantity = Convert.ToInt32(tb_quan.Text)
                     };
                 }
                 catch (Exception error)
@@ -102,7 +104,9 @@ namespace SSIP.UserformControls
                     Category = "category",
                     UnitPrice = Convert.ToDecimal(tb_price.Text),
                     DatePurchased = datepurchased.Value,
-                    RecordedBy = tb_unameAccess.Text
+                    RecordedBy = tb_unameAccess.Text,
+                    Status = cmb_equipStatus.SelectedIndex.ToString(),
+                    quantity = Convert.ToInt32(tb_quan.Text)
                 };
                 if (Valid.ValidateFields(details))
                 {
@@ -155,6 +159,8 @@ namespace SSIP.UserformControls
             tb_price.Text = this.itemGrid.CurrentRow.Cells[3].Value.ToString();
             datepurchased.Value =Convert.ToDateTime(this.itemGrid.CurrentRow.Cells[4].Value.ToString());
             tb_id.Text = this.itemGrid.CurrentRow.Cells[5].Value.ToString();
+            cmb_equipStatus.SelectedIndex = Convert.ToInt32(this.itemGrid.CurrentRow.Cells[6].Value);
+            tb_quan.Text = this.itemGrid.CurrentRow.Cells[6].Value.ToString();
         }
         private void DeactivateProduct(string id)
         {
@@ -360,5 +366,39 @@ namespace SSIP.UserformControls
         }
         #endregion
 
+        private void btn_viewForm_Click(object sender, EventArgs e)
+        {
+            Equipstats_panel.Visible = false;
+            ShowStats();
+        }
+
+        private void ShowStats()
+        {
+            var tools = new InventoryController();
+            dis_brandnewEquipment.Text = tools.GetBrandNewEquipments();
+            dis_usedEquipments.Text = tools.GetUsedEquipments();
+            dis_newEquip.Text = tools.GetNewEquipments();
+            dis_currentEquipment.Text = tools.GetCurrentEquipments();            
+            dis_runningLow.Text = tools.GetRunningLowEquipments();
+            dis_slightlyUsed.Text = tools.GetSlightlyUsedEquipments();
+        }
+
+        private void EquipInvControl_Load(object sender, EventArgs e)
+        {
+            Equipstats_panel.Visible = true;
+            Equipstats_panel.Dock = DockStyle.Fill;
+            ShowStats();
+        }
+
+        private void btn_showStats_Click(object sender, EventArgs e)
+        {
+            Equipstats_panel.Visible = true;
+            Equipstats_panel.Dock = DockStyle.Fill;
+            ShowStats();
+        }
+        private void tb_quan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
     }
 }
