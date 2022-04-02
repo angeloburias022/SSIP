@@ -19,6 +19,11 @@ namespace SSIP.Controllers
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
         ConnectionDB db = new ConnectionDB();
+
+        public InventoryController()
+        {
+        
+        }
         #endregion
 
         #region product inventory main ops
@@ -182,6 +187,75 @@ namespace SSIP.Controllers
                     error.ToString();
                 }
                 return dt;
+            }
+
+        }
+        public string GetCurrentStocks()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetCurrentStocks]", con))
+                {
+                    
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["CurrentStocks"].ToString();                           
+                    }
+                    con.Close();
+                    return details;                    
+                }
+            }
+           
+        }
+        public string GetNewStocks()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetNewStocks]", con))
+                {
+
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["NewStocks"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+
+        }
+        public string GetRunningLowStocks()
+        {
+            var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                con.Open();
+                using (var com = new SqlCommand("[SpGetRunningLowStocks]", con))
+                {
+
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["LowStocks"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
             }
 
         }

@@ -200,6 +200,7 @@ namespace SSIP.UserformControls
                 lbl_hp.Visible = true;
                 cmb_Hp.Visible = true;
 
+                lbl_meterlbl.Visible = true;
                 //lbl_width.Visible = true;
                 //tb_width.Visible = true;
 
@@ -213,7 +214,7 @@ namespace SSIP.UserformControls
 
                 lbl_hp.Visible = false;
                 cmb_Hp.Visible = false;
-
+                lbl_meterlbl.Visible = false;
                 //lbl_width.Visible = false;
                 //tb_width.Visible = false;
 
@@ -382,6 +383,7 @@ namespace SSIP.UserformControls
         }
         private void ProductInvControl_Load(object sender, EventArgs e)
         {
+            ShowStats();
         }
         private void ProductGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -396,7 +398,7 @@ namespace SSIP.UserformControls
         }
         private void btn_remove_Click(object sender, EventArgs e)
         {
-            var id =  this.ProductGrid.CurrentRow.Cells[6].Value.ToString();
+            var id =  this.ProductGrid.CurrentRow.Cells[12].Value.ToString();
          
             Int32 rowToDelete = ProductGrid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
             ProductGrid.Rows.RemoveAt(rowToDelete);
@@ -570,5 +572,26 @@ namespace SSIP.UserformControls
         }
 
         #endregion
+
+        private void btn_viewForm_Click(object sender, EventArgs e)
+        {
+            stats_panel.Visible = false;
+            ShowStats();
+        }
+
+        private void btn_showStats_Click(object sender, EventArgs e)
+        {
+            stats_panel.Visible = true;
+            stats_panel.Dock = DockStyle.Fill;
+            ShowStats();
+        }
+
+        private void ShowStats()
+        {
+            var tools = new InventoryController();
+            dis_currentStocks.Text = tools.GetCurrentStocks();
+            dis_newstocks.Text = tools.GetNewStocks();
+            dis_runningLow.Text = tools.GetRunningLowStocks();
+        }
     }
 }
