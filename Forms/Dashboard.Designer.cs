@@ -51,6 +51,7 @@ namespace SSIP.Forms
             this.lbl_currentUser = new System.Windows.Forms.Label();
             this.lbl_time = new System.Windows.Forms.Label();
             this.settings_panel = new System.Windows.Forms.Panel();
+            this.btn_viewchangePass = new System.Windows.Forms.Button();
             this.btn_auditLogs = new System.Windows.Forms.Button();
             this.btn_main_settings = new System.Windows.Forms.Button();
             this.services_panel = new System.Windows.Forms.Panel();
@@ -84,6 +85,17 @@ namespace SSIP.Forms
             this.lbl_username = new System.Windows.Forms.Label();
             this.dispatchePanel = new System.Windows.Forms.Panel();
             this.dispatchesControl1 = new SSIP.UserformControls.DispatchesControl();
+            this.changePassPanel = new System.Windows.Forms.Panel();
+            this.tb_current = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btn_check = new Guna.UI2.WinForms.Guna2Button();
+            this.lbl_confirmAccess = new System.Windows.Forms.Label();
+            this.confirmAccessPanel = new System.Windows.Forms.Panel();
+            this.tb_confirm = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btn_confirm = new Guna.UI2.WinForms.Guna2Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_newPass = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_usernameee = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -101,6 +113,8 @@ namespace SSIP.Forms
             this.auditControlPanel.SuspendLayout();
             this.pos_controlPanel.SuspendLayout();
             this.dispatchePanel.SuspendLayout();
+            this.changePassPanel.SuspendLayout();
+            this.confirmAccessPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Services_pie_chart
@@ -317,7 +331,7 @@ namespace SSIP.Forms
             this.userPanel.Controls.Add(this.lbl_currentUser);
             this.userPanel.Controls.Add(this.lbl_time);
             this.userPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.userPanel.Location = new System.Drawing.Point(0, 915);
+            this.userPanel.Location = new System.Drawing.Point(0, 940);
             this.userPanel.Name = "userPanel";
             this.userPanel.Size = new System.Drawing.Size(161, 165);
             this.userPanel.TabIndex = 29;
@@ -348,12 +362,29 @@ namespace SSIP.Forms
             // 
             // settings_panel
             // 
+            this.settings_panel.Controls.Add(this.btn_viewchangePass);
             this.settings_panel.Controls.Add(this.btn_auditLogs);
             this.settings_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.settings_panel.Location = new System.Drawing.Point(0, 863);
+            this.settings_panel.Location = new System.Drawing.Point(0, 818);
             this.settings_panel.Name = "settings_panel";
-            this.settings_panel.Size = new System.Drawing.Size(161, 52);
+            this.settings_panel.Size = new System.Drawing.Size(161, 122);
             this.settings_panel.TabIndex = 17;
+            // 
+            // btn_viewchangePass
+            // 
+            this.btn_viewchangePass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_viewchangePass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_viewchangePass.FlatAppearance.BorderSize = 0;
+            this.btn_viewchangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_viewchangePass.Location = new System.Drawing.Point(0, 50);
+            this.btn_viewchangePass.Name = "btn_viewchangePass";
+            this.btn_viewchangePass.Padding = new System.Windows.Forms.Padding(36, 0, 0, 0);
+            this.btn_viewchangePass.Size = new System.Drawing.Size(161, 50);
+            this.btn_viewchangePass.TabIndex = 29;
+            this.btn_viewchangePass.Text = "Change Password";
+            this.btn_viewchangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_viewchangePass.UseVisualStyleBackColor = false;
+            this.btn_viewchangePass.Click += new System.EventHandler(this.btn_viewchangePass_Click);
             // 
             // btn_auditLogs
             // 
@@ -377,12 +408,12 @@ namespace SSIP.Forms
             this.btn_main_settings.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_main_settings.FlatAppearance.BorderSize = 0;
             this.btn_main_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_main_settings.Location = new System.Drawing.Point(0, 813);
+            this.btn_main_settings.Location = new System.Drawing.Point(0, 768);
             this.btn_main_settings.Name = "btn_main_settings";
             this.btn_main_settings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_main_settings.Size = new System.Drawing.Size(161, 50);
             this.btn_main_settings.TabIndex = 27;
-            this.btn_main_settings.Text = "Audit";
+            this.btn_main_settings.Text = "Settings";
             this.btn_main_settings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_main_settings.UseVisualStyleBackColor = false;
             this.btn_main_settings.Click += new System.EventHandler(this.btn_main_settings_Click);
@@ -395,7 +426,7 @@ namespace SSIP.Forms
             this.services_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.services_panel.Location = new System.Drawing.Point(0, 616);
             this.services_panel.Name = "services_panel";
-            this.services_panel.Size = new System.Drawing.Size(161, 197);
+            this.services_panel.Size = new System.Drawing.Size(161, 152);
             this.services_panel.TabIndex = 17;
             // 
             // btn_Dispatch
@@ -727,12 +758,215 @@ namespace SSIP.Forms
             this.dispatchesControl1.Size = new System.Drawing.Size(85, 97);
             this.dispatchesControl1.TabIndex = 31;
             // 
+            // changePassPanel
+            // 
+            this.changePassPanel.BackColor = System.Drawing.Color.Transparent;
+            this.changePassPanel.Controls.Add(this.tb_current);
+            this.changePassPanel.Controls.Add(this.btn_check);
+            this.changePassPanel.Controls.Add(this.lbl_confirmAccess);
+            this.changePassPanel.Controls.Add(this.confirmAccessPanel);
+            this.changePassPanel.Location = new System.Drawing.Point(451, 65);
+            this.changePassPanel.Name = "changePassPanel";
+            this.changePassPanel.Size = new System.Drawing.Size(521, 281);
+            this.changePassPanel.TabIndex = 32;
+            this.changePassPanel.Visible = false;
+            // 
+            // tb_current
+            // 
+            this.tb_current.BackColor = System.Drawing.Color.Transparent;
+            this.tb_current.BorderRadius = 4;
+            this.tb_current.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_current.DefaultText = "";
+            this.tb_current.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_current.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_current.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_current.DisabledState.Parent = this.tb_current;
+            this.tb_current.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_current.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_current.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_current.FocusedState.Parent = this.tb_current;
+            this.tb_current.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_current.ForeColor = System.Drawing.Color.Black;
+            this.tb_current.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_current.HoverState.Parent = this.tb_current;
+            this.tb_current.Location = new System.Drawing.Point(176, 97);
+            this.tb_current.Name = "tb_current";
+            this.tb_current.PasswordChar = '*';
+            this.tb_current.PlaceholderText = "Current Password";
+            this.tb_current.SelectedText = "";
+            this.tb_current.ShadowDecoration.Parent = this.tb_current;
+            this.tb_current.Size = new System.Drawing.Size(165, 36);
+            this.tb_current.TabIndex = 128;
+            // 
+            // btn_check
+            // 
+            this.btn_check.BackColor = System.Drawing.Color.Transparent;
+            this.btn_check.BorderRadius = 4;
+            this.btn_check.CheckedState.Parent = this.btn_check;
+            this.btn_check.CustomImages.Parent = this.btn_check;
+            this.btn_check.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_check.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_check.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_check.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_check.DisabledState.Parent = this.btn_check;
+            this.btn_check.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_check.ForeColor = System.Drawing.Color.White;
+            this.btn_check.HoverState.Parent = this.btn_check;
+            this.btn_check.Location = new System.Drawing.Point(362, 94);
+            this.btn_check.Name = "btn_check";
+            this.btn_check.ShadowDecoration.Parent = this.btn_check;
+            this.btn_check.Size = new System.Drawing.Size(146, 37);
+            this.btn_check.TabIndex = 144;
+            this.btn_check.Text = "CHECK";
+            this.btn_check.Click += new System.EventHandler(this.btn_check_Click);
+            // 
+            // lbl_confirmAccess
+            // 
+            this.lbl_confirmAccess.AutoSize = true;
+            this.lbl_confirmAccess.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_confirmAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_confirmAccess.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_confirmAccess.Location = new System.Drawing.Point(18, 105);
+            this.lbl_confirmAccess.Name = "lbl_confirmAccess";
+            this.lbl_confirmAccess.Size = new System.Drawing.Size(158, 20);
+            this.lbl_confirmAccess.TabIndex = 122;
+            this.lbl_confirmAccess.Text = "Change Password:";
+            // 
+            // confirmAccessPanel
+            // 
+            this.confirmAccessPanel.BackColor = System.Drawing.Color.Transparent;
+            this.confirmAccessPanel.Controls.Add(this.tb_confirm);
+            this.confirmAccessPanel.Controls.Add(this.btn_confirm);
+            this.confirmAccessPanel.Controls.Add(this.label4);
+            this.confirmAccessPanel.Controls.Add(this.tb_newPass);
+            this.confirmAccessPanel.Controls.Add(this.label3);
+            this.confirmAccessPanel.Location = new System.Drawing.Point(15, 137);
+            this.confirmAccessPanel.Name = "confirmAccessPanel";
+            this.confirmAccessPanel.Size = new System.Drawing.Size(503, 110);
+            this.confirmAccessPanel.TabIndex = 143;
+            this.confirmAccessPanel.Visible = false;
+            // 
+            // tb_confirm
+            // 
+            this.tb_confirm.BackColor = System.Drawing.Color.Transparent;
+            this.tb_confirm.BorderRadius = 4;
+            this.tb_confirm.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_confirm.DefaultText = "";
+            this.tb_confirm.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_confirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_confirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_confirm.DisabledState.Parent = this.tb_confirm;
+            this.tb_confirm.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_confirm.Enabled = false;
+            this.tb_confirm.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_confirm.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_confirm.FocusedState.Parent = this.tb_confirm;
+            this.tb_confirm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_confirm.ForeColor = System.Drawing.Color.Black;
+            this.tb_confirm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_confirm.HoverState.Parent = this.tb_confirm;
+            this.tb_confirm.Location = new System.Drawing.Point(161, 61);
+            this.tb_confirm.Name = "tb_confirm";
+            this.tb_confirm.PasswordChar = '*';
+            this.tb_confirm.PlaceholderText = "Confirm Password";
+            this.tb_confirm.SelectedText = "";
+            this.tb_confirm.ShadowDecoration.Parent = this.tb_confirm;
+            this.tb_confirm.Size = new System.Drawing.Size(165, 36);
+            this.tb_confirm.TabIndex = 127;
+            this.tb_confirm.TextChanged += new System.EventHandler(this.tb_confirm_TextChanged);
+            // 
+            // btn_confirm
+            // 
+            this.btn_confirm.BackColor = System.Drawing.Color.Transparent;
+            this.btn_confirm.BorderRadius = 4;
+            this.btn_confirm.CheckedState.Parent = this.btn_confirm;
+            this.btn_confirm.CustomImages.Parent = this.btn_confirm;
+            this.btn_confirm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_confirm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_confirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_confirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_confirm.DisabledState.Parent = this.btn_confirm;
+            this.btn_confirm.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_confirm.ForeColor = System.Drawing.Color.White;
+            this.btn_confirm.HoverState.Parent = this.btn_confirm;
+            this.btn_confirm.Location = new System.Drawing.Point(347, 6);
+            this.btn_confirm.Name = "btn_confirm";
+            this.btn_confirm.ShadowDecoration.Parent = this.btn_confirm;
+            this.btn_confirm.Size = new System.Drawing.Size(146, 37);
+            this.btn_confirm.TabIndex = 144;
+            this.btn_confirm.Text = "CONFIRM CHANGE";
+            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Honeydew;
+            this.label4.Location = new System.Drawing.Point(3, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(158, 20);
+            this.label4.TabIndex = 126;
+            this.label4.Text = "Change Password:";
+            // 
+            // tb_newPass
+            // 
+            this.tb_newPass.BackColor = System.Drawing.Color.Transparent;
+            this.tb_newPass.BorderRadius = 4;
+            this.tb_newPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_newPass.DefaultText = "";
+            this.tb_newPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_newPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_newPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_newPass.DisabledState.Parent = this.tb_newPass;
+            this.tb_newPass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_newPass.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_newPass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_newPass.FocusedState.Parent = this.tb_newPass;
+            this.tb_newPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_newPass.ForeColor = System.Drawing.Color.Black;
+            this.tb_newPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_newPass.HoverState.Parent = this.tb_newPass;
+            this.tb_newPass.Location = new System.Drawing.Point(161, 11);
+            this.tb_newPass.Name = "tb_newPass";
+            this.tb_newPass.PasswordChar = '*';
+            this.tb_newPass.PlaceholderText = "New Password";
+            this.tb_newPass.SelectedText = "";
+            this.tb_newPass.ShadowDecoration.Parent = this.tb_newPass;
+            this.tb_newPass.Size = new System.Drawing.Size(165, 36);
+            this.tb_newPass.TabIndex = 125;
+            this.tb_newPass.TextChanged += new System.EventHandler(this.tb_newPass_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Honeydew;
+            this.label3.Location = new System.Drawing.Point(25, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 20);
+            this.label3.TabIndex = 124;
+            this.label3.Text = "New Password:";
+            // 
+            // lbl_usernameee
+            // 
+            this.lbl_usernameee.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_usernameee.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_usernameee.Location = new System.Drawing.Point(1063, 114);
+            this.lbl_usernameee.Name = "lbl_usernameee";
+            this.lbl_usernameee.Size = new System.Drawing.Size(86, 15);
+            this.lbl_usernameee.TabIndex = 33;
+            this.lbl_usernameee.Text = "guna2HtmlLabel1";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1185, 582);
+            this.Controls.Add(this.lbl_usernameee);
+            this.Controls.Add(this.changePassPanel);
             this.Controls.Add(this.dispatchePanel);
             this.Controls.Add(this.lbl_username);
             this.Controls.Add(this.pos_controlPanel);
@@ -776,6 +1010,10 @@ namespace SSIP.Forms
             this.auditControlPanel.ResumeLayout(false);
             this.pos_controlPanel.ResumeLayout(false);
             this.dispatchePanel.ResumeLayout(false);
+            this.changePassPanel.ResumeLayout(false);
+            this.changePassPanel.PerformLayout();
+            this.confirmAccessPanel.ResumeLayout(false);
+            this.confirmAccessPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -836,5 +1074,17 @@ namespace SSIP.Forms
         private System.Windows.Forms.Button btn_Dispatch;
         private System.Windows.Forms.Panel dispatchePanel;
         private UserformControls.DispatchesControl dispatchesControl1;
+        private System.Windows.Forms.Button btn_viewchangePass;
+        private System.Windows.Forms.Panel changePassPanel;
+        private System.Windows.Forms.Label lbl_confirmAccess;
+        private System.Windows.Forms.Panel confirmAccessPanel;
+        private Guna.UI2.WinForms.Guna2Button btn_check;
+        private Guna.UI2.WinForms.Guna2TextBox tb_confirm;
+        private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2TextBox tb_newPass;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2TextBox tb_current;
+        private Guna.UI2.WinForms.Guna2Button btn_confirm;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_usernameee;
     }
 }

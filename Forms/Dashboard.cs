@@ -1,5 +1,7 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using SSIP.Controllers;
+using SSIP.Helper;
 using SSIP.Models;
 using SSIP.UserformControls;
 using SSIP.UserForms;
@@ -316,6 +318,19 @@ namespace SSIP.Forms
             }
         }
 
+        public string UserName
+        {
+            get
+            {
+                return this.lbl_usernameee.Text;
+            }
+            set
+            {
+                this.lbl_usernameee.Text = value;
+
+            }
+        }
+
         public string Username {
             get {
                 return this.lbl_username.Text;
@@ -469,6 +484,17 @@ namespace SSIP.Forms
 
         #region Hide and Show control panel
 
+        private void ShowChangePass()
+        {
+            changePassPanel.Visible = true;
+            changePassPanel.Dock = DockStyle.Fill;
+        }
+
+        private void HideChangePass()
+        {
+            changePassPanel.Visible = false;
+            changePassPanel.Dock = DockStyle.None;
+        }
         private void ShowPOSControl()
         {
             pos_controlPanel.Dock = DockStyle.Fill;
@@ -611,6 +637,24 @@ namespace SSIP.Forms
         #endregion
 
         #region sub clicks event handler
+        private void btn_viewchangePass_Click(object sender, EventArgs e)
+        {
+
+            HideMainServicesPanelControl();
+            HideEmployeesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideProductInvControl();
+            HideEquipInvControl();
+            HideAudControl();
+            HideMainServicesPanelControl2();
+           
+            this.Text = "Change Password";
+      
+            HideSubMenu();
+            ShowChangePass();
+        }
         private void btn_pos_Click(object sender, EventArgs e)
         {
             HideMainServicesPanelControl();
@@ -621,7 +665,8 @@ namespace SSIP.Forms
             HideProductInvControl();
             HideEquipInvControl();
             HideAudControl();
-
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
             this.Text = "Point of Sale";
             ShowPOSControl();
@@ -636,15 +681,15 @@ namespace SSIP.Forms
             HideProductInvControl();
             HideEquipInvControl();
             HidePOSControl();
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
-            
             ShowAudControl();
      
             this.Text = "Audit logs";
         
             HideSubMenu();
         }
-
         private void btn_Sched_Click(object sender, EventArgs e)
         {
             HideEmployeesPanelControl();
@@ -657,6 +702,7 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
             HideMainServicesPanelControl2();
+            HideChangePass();
 
             this.Text = "Schedule";
             ShowMainServicesControl();
@@ -674,6 +720,7 @@ namespace SSIP.Forms
             HideAudControl();
             HidePOSControl();
             HideMainServicesPanelControl();
+            HideChangePass();
 
             this.Text = "Dispatch";
             ShowMainServicesControl2();
@@ -688,7 +735,8 @@ namespace SSIP.Forms
             HideProductInvControl();
             HideAudControl();
             HidePOSControl();
-
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
             this.Text = "Equipment Inventory";
             ShowEquipInvControl();
@@ -704,7 +752,8 @@ namespace SSIP.Forms
             HideEquipInvControl();
             HideAudControl();
             HidePOSControl();
-
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
             this.Text = "Sales Inventory";
             HideSubMenu();
@@ -718,7 +767,8 @@ namespace SSIP.Forms
             HidePayRollControl();
             HideAudControl();
             HidePOSControl();
-
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
             this.Text = "Attendance";
             ShowAttendanceControl();
@@ -734,7 +784,8 @@ namespace SSIP.Forms
             HideEquipInvControl();
             HideAudControl();
             HidePOSControl();
-
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
 
             this.Text = "Payroll";
@@ -751,7 +802,8 @@ namespace SSIP.Forms
             HideEquipInvControl();
             HideAudControl();
             HidePOSControl();
-
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
             this.Text = "Product Inventory";
             ShowProductInvControl();
@@ -768,7 +820,8 @@ namespace SSIP.Forms
             HideEquipInvControl();
             HideAudControl();
             HidePOSControl();
-
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
 
             this.Text = "Manage Employees";
@@ -785,7 +838,8 @@ namespace SSIP.Forms
             HideEquipInvControl();
             HideAudControl();
             HidePOSControl();
-
+            HideMainServicesPanelControl2();
+            HideChangePass();
 
             this.Text = "Manage Customers";
             ShowCustomersPanelControl();
@@ -806,6 +860,90 @@ namespace SSIP.Forms
 
         }
 
-       
+        private void btn_check_Click(object sender, EventArgs e)
+        {
+            CheckPassword();
+        }
+
+        private bool CheckPassword()
+        {
+            var tools = new AccessController();
+            PasswordEncryptor enc = new PasswordEncryptor();
+
+            var creds = new User
+            {
+                Username =lbl_usernameee.Text,
+                Password = tb_current.Text
+            };
+            var result = tools.ConfirmAccess(creds);
+
+            if (result != false)
+            {
+                confirmAccessPanel.Visible = true;
+                return true;
+            }
+            else
+            {
+               
+                confirmAccessPanel.Visible = false;
+                return false;
+            }
+        }
+
+        private void tb_newPass_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_newPass.Text !="")
+            {
+                if (tb_current.Text != tb_newPass.Text)
+                {
+                    btn_confirm.Enabled = true;
+                    tb_confirm.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Your current password and new password is the same", "Pick a new one", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btn_confirm.Enabled = false;
+                }
+             
+            }
+            else
+            {
+                tb_confirm.Enabled = false;
+            }
+        }
+
+        private void btn_confirm_Click(object sender, EventArgs e)
+        {
+            if (tb_confirm.Text == tb_newPass.Text)
+            {
+                var tools = new AccessController();
+
+                var creds = new User
+                {
+                    Username = lbl_usernameee.Text,
+                    Password = tb_newPass.Text
+                };
+
+                var result = tools.UpdatePassword(creds);
+
+                if (result == true)
+                {
+                    MessageBox.Show("Change Successfully", "New Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to Change Password", "New Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("New Password and Confirm Password should be the same", "Check Fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void tb_confirm_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
     }
 }

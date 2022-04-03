@@ -48,6 +48,8 @@ namespace SSIP.Forms
                     dboard.Show();
                     dboard.LabelText ="Welcome \n \t \t"+ uname;
                     dboard.Username = uname;
+                    dboard.UserName = tb_uname.Text;
+
                     this.Close();
                 }
                 else

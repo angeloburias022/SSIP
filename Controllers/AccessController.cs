@@ -344,6 +344,33 @@ namespace SSIP.Controllers
 
             return false;
         }
+
+        public bool UpdatePassword(User user)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand("[SpChangePassword]", con))
+                    {
+                        con.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@uname", SqlDbType.VarChar).Value = user.Username;
+                        var pwdEncrypt = enc.PassWordEncryptor(user.Password);
+                        cmd.Parameters.Add("@pass", SqlDbType.VarChar).Value = pwdEncrypt;
+
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return false;
+        }
         #endregion
 
         #region Create Database
