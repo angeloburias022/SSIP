@@ -106,6 +106,7 @@ namespace SSIP.UserformControls
             this.btn_update = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_empID = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btn_clear = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.empGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
@@ -669,7 +670,7 @@ namespace SSIP.UserformControls
             this.btn_viewPayrolls.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_viewPayrolls.ForeColor = System.Drawing.Color.White;
             this.btn_viewPayrolls.HoverState.Parent = this.btn_viewPayrolls;
-            this.btn_viewPayrolls.Location = new System.Drawing.Point(633, 45);
+            this.btn_viewPayrolls.Location = new System.Drawing.Point(633, 30);
             this.btn_viewPayrolls.Name = "btn_viewPayrolls";
             this.btn_viewPayrolls.ShadowDecoration.Parent = this.btn_viewPayrolls;
             this.btn_viewPayrolls.Size = new System.Drawing.Size(120, 36);
@@ -733,7 +734,7 @@ namespace SSIP.UserformControls
             this.btn_filter.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_filter.ForeColor = System.Drawing.Color.White;
             this.btn_filter.HoverState.Parent = this.btn_filter;
-            this.btn_filter.Location = new System.Drawing.Point(633, 128);
+            this.btn_filter.Location = new System.Drawing.Point(633, 113);
             this.btn_filter.Name = "btn_filter";
             this.btn_filter.ShadowDecoration.Parent = this.btn_filter;
             this.btn_filter.Size = new System.Drawing.Size(120, 36);
@@ -1336,7 +1337,7 @@ namespace SSIP.UserformControls
             this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_update.ForeColor = System.Drawing.Color.White;
             this.btn_update.HoverState.Parent = this.btn_update;
-            this.btn_update.Location = new System.Drawing.Point(633, 86);
+            this.btn_update.Location = new System.Drawing.Point(633, 71);
             this.btn_update.Name = "btn_update";
             this.btn_update.ShadowDecoration.Parent = this.btn_update;
             this.btn_update.Size = new System.Drawing.Size(120, 36);
@@ -1385,6 +1386,29 @@ namespace SSIP.UserformControls
             this.tb_empID.Size = new System.Drawing.Size(74, 36);
             this.tb_empID.TabIndex = 107;
             // 
+            // btn_clear
+            // 
+            this.btn_clear.BackColor = System.Drawing.Color.Transparent;
+            this.btn_clear.BorderRadius = 4;
+            this.btn_clear.CheckedState.Parent = this.btn_clear;
+            this.btn_clear.CustomImages.Parent = this.btn_clear;
+            this.btn_clear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_clear.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_clear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_clear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_clear.DisabledState.Parent = this.btn_clear;
+            this.btn_clear.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_clear.ForeColor = System.Drawing.Color.White;
+            this.btn_clear.HoverState.Parent = this.btn_clear;
+            this.btn_clear.Location = new System.Drawing.Point(633, 155);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.ShadowDecoration.Parent = this.btn_clear;
+            this.btn_clear.Size = new System.Drawing.Size(120, 36);
+            this.btn_clear.TabIndex = 114;
+            this.btn_clear.Text = "CLEAR";
+            this.btn_clear.UseTransparentBackground = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
             // PayrollControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1394,6 +1418,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.confirmAccessPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_update);
+            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_filter);
             this.Controls.Add(this.btn_compute);
             this.Controls.Add(this.btn_printLayout);
@@ -1525,5 +1550,6 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox tb_empID;
         private Guna.UI2.WinForms.Guna2TextBox tb_search;
+        private Guna.UI2.WinForms.Guna2Button btn_clear;
     }
 }

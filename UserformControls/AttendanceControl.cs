@@ -74,10 +74,17 @@ namespace SSIP.UserformControls
 
                  //   int totalhrs = Convert.ToInt32(duration.TotalHours.ToString());
                     tb_totalHrs.Text = hours.ToString();
+
+                    MessageBox.Show("Employee Found", "QR Code Scanner", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btn_save.Enabled = false;
                 }
                 else
                 {
                     timein.Value = Convert.ToDateTime(timeNow.ToString());
+
+                    MessageBox.Show("Employee Found", "QR Code Scanner", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    btn_updateChanges.Enabled = false;
                 }
 
                
@@ -107,7 +114,14 @@ namespace SSIP.UserformControls
         }
         private void btn_save_Click(object sender, EventArgs e)
         {
-            Save();          
+            if (tb_employeeID.Text != "0")
+            {
+                Save();
+            }
+            else
+            {
+                MessageBox.Show("Scan QR first", "QR Code Scanner", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }              
         }
         private void Save()
         {
@@ -143,27 +157,33 @@ namespace SSIP.UserformControls
         }
         private void btn_updateChanges_Click(object sender, EventArgs e)
         {
-            var tools = new EmployeesController();
-
-            if (HighAuthority())
+            if (tb_employeeID.Text != "0")
             {
-                btn_updateChanges.Enabled = true;
-                var result = tools.UpdateAttendance(tb_employeeID.Text, timein.Value, timeout.Value, tb_totalHrs.Text, workdate.Value);
+                var tools = new EmployeesController();
 
-                if (result != false)
+                if (HighAuthority())
                 {
-                    MessageBox.Show("Attendance Updated");
+                    btn_updateChanges.Enabled = true;
+                    var result = tools.UpdateAttendance(tb_employeeID.Text, timein.Value, timeout.Value, tb_totalHrs.Text, workdate.Value);
+
+                    if (result != false)
+                    {
+                        MessageBox.Show("Attendance Updated");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something wennt wrong");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Something wennt wrong");
-                }
-            }
-            else
+                    MessageBox.Show("Higher authorization access required");
+                    btn_updateChanges.Enabled = false;
+                    HideGRID();
+                } 
+            }else
             {
-                MessageBox.Show("Higher authorization access required");
-                btn_updateChanges.Enabled = false;
-                HideGRID();
+                MessageBox.Show("Scan QR first", "QR Code Scanner", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -521,6 +541,5 @@ namespace SSIP.UserformControls
         }
 
         #endregion
-
     }
 }

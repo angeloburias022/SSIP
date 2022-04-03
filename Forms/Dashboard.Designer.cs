@@ -54,8 +54,9 @@ namespace SSIP.Forms
             this.btn_auditLogs = new System.Windows.Forms.Button();
             this.btn_main_settings = new System.Windows.Forms.Button();
             this.services_panel = new System.Windows.Forms.Panel();
+            this.btn_Dispatch = new System.Windows.Forms.Button();
             this.btn_pos = new System.Windows.Forms.Button();
-            this.btn_dispatchSched = new System.Windows.Forms.Button();
+            this.btn_Sched = new System.Windows.Forms.Button();
             this.btn_main_services = new System.Windows.Forms.Button();
             this.inventory_panel = new System.Windows.Forms.Panel();
             this.btn_prodInventory = new System.Windows.Forms.Button();
@@ -81,6 +82,8 @@ namespace SSIP.Forms
             this.salesControl1 = new SSIP.UserformControls.SalesControl();
             this.time_timer = new System.Windows.Forms.Timer(this.components);
             this.lbl_username = new System.Windows.Forms.Label();
+            this.dispatchePanel = new System.Windows.Forms.Panel();
+            this.dispatchesControl1 = new SSIP.UserformControls.DispatchesControl();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -97,6 +100,7 @@ namespace SSIP.Forms
             this.equipControlPanel.SuspendLayout();
             this.auditControlPanel.SuspendLayout();
             this.pos_controlPanel.SuspendLayout();
+            this.dispatchePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Services_pie_chart
@@ -313,7 +317,7 @@ namespace SSIP.Forms
             this.userPanel.Controls.Add(this.lbl_currentUser);
             this.userPanel.Controls.Add(this.lbl_time);
             this.userPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.userPanel.Location = new System.Drawing.Point(0, 816);
+            this.userPanel.Location = new System.Drawing.Point(0, 915);
             this.userPanel.Name = "userPanel";
             this.userPanel.Size = new System.Drawing.Size(161, 165);
             this.userPanel.TabIndex = 29;
@@ -346,7 +350,7 @@ namespace SSIP.Forms
             // 
             this.settings_panel.Controls.Add(this.btn_auditLogs);
             this.settings_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.settings_panel.Location = new System.Drawing.Point(0, 764);
+            this.settings_panel.Location = new System.Drawing.Point(0, 863);
             this.settings_panel.Name = "settings_panel";
             this.settings_panel.Size = new System.Drawing.Size(161, 52);
             this.settings_panel.TabIndex = 17;
@@ -373,7 +377,7 @@ namespace SSIP.Forms
             this.btn_main_settings.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_main_settings.FlatAppearance.BorderSize = 0;
             this.btn_main_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_main_settings.Location = new System.Drawing.Point(0, 714);
+            this.btn_main_settings.Location = new System.Drawing.Point(0, 813);
             this.btn_main_settings.Name = "btn_main_settings";
             this.btn_main_settings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_main_settings.Size = new System.Drawing.Size(161, 50);
@@ -385,13 +389,30 @@ namespace SSIP.Forms
             // 
             // services_panel
             // 
+            this.services_panel.Controls.Add(this.btn_Dispatch);
             this.services_panel.Controls.Add(this.btn_pos);
-            this.services_panel.Controls.Add(this.btn_dispatchSched);
+            this.services_panel.Controls.Add(this.btn_Sched);
             this.services_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.services_panel.Location = new System.Drawing.Point(0, 616);
             this.services_panel.Name = "services_panel";
-            this.services_panel.Size = new System.Drawing.Size(161, 98);
+            this.services_panel.Size = new System.Drawing.Size(161, 197);
             this.services_panel.TabIndex = 17;
+            // 
+            // btn_Dispatch
+            // 
+            this.btn_Dispatch.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Dispatch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Dispatch.FlatAppearance.BorderSize = 0;
+            this.btn_Dispatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Dispatch.Location = new System.Drawing.Point(0, 100);
+            this.btn_Dispatch.Name = "btn_Dispatch";
+            this.btn_Dispatch.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btn_Dispatch.Size = new System.Drawing.Size(161, 50);
+            this.btn_Dispatch.TabIndex = 28;
+            this.btn_Dispatch.Text = "Dispatch";
+            this.btn_Dispatch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Dispatch.UseVisualStyleBackColor = false;
+            this.btn_Dispatch.Click += new System.EventHandler(this.btn_Dispatch_Click);
             // 
             // btn_pos
             // 
@@ -409,21 +430,21 @@ namespace SSIP.Forms
             this.btn_pos.UseVisualStyleBackColor = false;
             this.btn_pos.Click += new System.EventHandler(this.btn_pos_Click);
             // 
-            // btn_dispatchSched
+            // btn_Sched
             // 
-            this.btn_dispatchSched.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_dispatchSched.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_dispatchSched.FlatAppearance.BorderSize = 0;
-            this.btn_dispatchSched.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_dispatchSched.Location = new System.Drawing.Point(0, 0);
-            this.btn_dispatchSched.Name = "btn_dispatchSched";
-            this.btn_dispatchSched.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btn_dispatchSched.Size = new System.Drawing.Size(161, 50);
-            this.btn_dispatchSched.TabIndex = 26;
-            this.btn_dispatchSched.Text = "Dispatch/Schedule";
-            this.btn_dispatchSched.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_dispatchSched.UseVisualStyleBackColor = false;
-            this.btn_dispatchSched.Click += new System.EventHandler(this.btn_dispatchSched_Click);
+            this.btn_Sched.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Sched.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Sched.FlatAppearance.BorderSize = 0;
+            this.btn_Sched.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Sched.Location = new System.Drawing.Point(0, 0);
+            this.btn_Sched.Name = "btn_Sched";
+            this.btn_Sched.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btn_Sched.Size = new System.Drawing.Size(161, 50);
+            this.btn_Sched.TabIndex = 26;
+            this.btn_Sched.Text = "Schedule";
+            this.btn_Sched.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Sched.UseVisualStyleBackColor = false;
+            this.btn_Sched.Click += new System.EventHandler(this.btn_Sched_Click);
             // 
             // btn_main_services
             // 
@@ -688,12 +709,31 @@ namespace SSIP.Forms
             this.lbl_username.Text = "Username";
             this.lbl_username.Visible = false;
             // 
+            // dispatchePanel
+            // 
+            this.dispatchePanel.Controls.Add(this.dispatchesControl1);
+            this.dispatchePanel.Location = new System.Drawing.Point(184, 180);
+            this.dispatchePanel.Name = "dispatchePanel";
+            this.dispatchePanel.Size = new System.Drawing.Size(85, 97);
+            this.dispatchePanel.TabIndex = 30;
+            this.dispatchePanel.Visible = false;
+            // 
+            // dispatchesControl1
+            // 
+            this.dispatchesControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dispatchesControl1.BackgroundImage")));
+            this.dispatchesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dispatchesControl1.Location = new System.Drawing.Point(0, 0);
+            this.dispatchesControl1.Name = "dispatchesControl1";
+            this.dispatchesControl1.Size = new System.Drawing.Size(85, 97);
+            this.dispatchesControl1.TabIndex = 31;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1185, 582);
+            this.Controls.Add(this.dispatchePanel);
             this.Controls.Add(this.lbl_username);
             this.Controls.Add(this.pos_controlPanel);
             this.Controls.Add(this.auditControlPanel);
@@ -735,6 +775,7 @@ namespace SSIP.Forms
             this.equipControlPanel.ResumeLayout(false);
             this.auditControlPanel.ResumeLayout(false);
             this.pos_controlPanel.ResumeLayout(false);
+            this.dispatchePanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -763,7 +804,7 @@ namespace SSIP.Forms
         private System.Windows.Forms.Button btn_equip_inv;
         private System.Windows.Forms.Panel services_panel;
         private System.Windows.Forms.Button btn_main_services;
-        private System.Windows.Forms.Button btn_dispatchSched;
+        private System.Windows.Forms.Button btn_Sched;
         private System.Windows.Forms.Panel settings_panel;
         private System.Windows.Forms.Button btn_auditLogs;
         private System.Windows.Forms.Button btn_main_settings;
@@ -792,5 +833,8 @@ namespace SSIP.Forms
         private System.Windows.Forms.Label lbl_time;
         public System.Windows.Forms.Label lbl_currentUser;
         public System.Windows.Forms.Label lbl_username;
+        private System.Windows.Forms.Button btn_Dispatch;
+        private System.Windows.Forms.Panel dispatchePanel;
+        private UserformControls.DispatchesControl dispatchesControl1;
     }
 }

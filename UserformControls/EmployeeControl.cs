@@ -183,6 +183,11 @@ namespace SSIP.UserformControls
         {
             try
             {
+                tb_uname.Visible = false;
+                tb_password.Visible = false;
+                lbl_username.Visible = false;
+                lbl_password.Visible = false;
+
                 tb_datehired.Format = DateTimePickerFormat.Custom;
                 // Display the date as "Mon 27 Feb 2012". 
                 tb_datehired.CustomFormat = "ddd dd MMM yyyy";
@@ -227,39 +232,68 @@ namespace SSIP.UserformControls
                 var qr = new QRCodeControl();          
                 var details = new Employee();
 
-                details.user_info.Username = tb_uname.Text;
-                details.user_info.Password = tb_password.Text;
-                details.user_info.Firstname = tb_fname.Text;
-                details.user_info.Lastname = tb_lname.Text;
-                details.user_info.ContactNumber = tb_mobile.Text;
-                details.user_info.TelephoneNo = tb_tel.Text;
-             
-                details.email_info.EmailAddress = tb_email.Text;
 
-                details.address_info.HouseNo = tb_houseNo.Text;
-                details.address_info.Street = tb_street.Text;
-                details.address_info.Barangay = tb_barangay.Text;
-                details.address_info.City = cmb_City.Text;
+                var user_info = new User
+                {
+                    Username = tb_uname.Text,
+                    Password = tb_password.Text,
+                    Firstname = tb_fname.Text,
+                    Lastname = tb_lname.Text,
+                    ContactNumber = tb_mobile.Text,
+                    TelephoneNo = tb_tel.Text
+                };
 
-                string randomCode = GenerateCode.Code(10);
+                var addrss_info = new Address
+                {
+                    HouseNo = tb_houseNo.Text,
+                    Street = tb_street.Text,
+                    Barangay = tb_barangay.Text,
+                    City = cmb_City.Text
+                };
 
-                this.qrCodeControl1.GetDetails(randomCode, tb_fname.Text, tb_lname.Text, tb_position.Text);
+                var email_info = new Email
+                {
+                    EmailAddress = tb_email.Text
+                };
 
-                tb_qrcode.Text = randomCode;
+            
 
-                details.DateHired = Convert.ToDateTime(tb_datehired.Text);
-                details.Position = tb_position.Text;
-                details.TypeOfContract = "None";
-                details.AccountTypeID = cmb_acctype.SelectedIndex;
-                details.EmployeeStatus = cmb_empStatus.Text;
-                details.code = tb_qrcode.Text;
-
+              
                 #endregion
 
                 #region validations
-                if (Valid.ValidateFields(details))
+                if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info))
                 {
                     var empController = new EmployeesController();
+
+                    details.user_info.Username = user_info.Username;
+                    details.user_info.Password = user_info.Password;
+                    details.user_info.Firstname = user_info.Firstname;
+                    details.user_info.Lastname = user_info.Lastname;
+                    details.user_info.ContactNumber = user_info.ContactNumber;
+                    details.user_info.TelephoneNo =user_info.TelephoneNo;
+
+                    details.email_info.EmailAddress = email_info.EmailAddress;
+
+                    details.address_info.HouseNo = addrss_info.HouseNo;
+                    details.address_info.Street =addrss_info.Street;
+                    details.address_info.Barangay =addrss_info.Barangay;
+                    details.address_info.City = addrss_info.City;
+
+                    details.DateHired = Convert.ToDateTime(tb_datehired.Text);
+                    details.Position = tb_position.Text;
+                    details.TypeOfContract = "None";
+                    details.AccountTypeID = cmb_acctype.SelectedIndex;
+                    details.EmployeeStatus = cmb_empStatus.Text;
+
+
+                    string randomCode = GenerateCode.Code(10);
+
+                    this.qrCodeControl1.GetDetails(randomCode, tb_fname.Text, tb_lname.Text, tb_position.Text);
+
+                    tb_qrcode.Text = randomCode;
+
+                    details.code = tb_qrcode.Text;
 
                     var result = empController.AddEmployee(details);
 
@@ -318,29 +352,58 @@ namespace SSIP.UserformControls
                 var details = new Employee();
 
                 #region fields
-                details.user_info.UserID = Convert.ToInt32(tb_personID.Text);
-                details.user_info.Firstname = tb_fname.Text;
-                details.user_info.Lastname = tb_lname.Text;
-                details.user_info.ContactNumber = tb_mobile.Text;
-                details.user_info.TelephoneNo = tb_tel.Text;
-              
-                details.address_info.HouseNo = tb_houseNo.Text;
-                details.address_info.Street = tb_street.Text;
-                details.address_info.Barangay = tb_barangay.Text;
-                details.address_info.City = cmb_City.Text;
+
+
+                #region fields
+
+                var user_info = new User
+                {
+                    UserID = Convert.ToInt32(tb_personID.Text),
+                    Username = tb_unameAccess.Text,
+                    Firstname = tb_fname.Text,
+                    Lastname = tb_lname.Text,
+                    ContactNumber = tb_mobile.Text,
+                    TelephoneNo = tb_tel.Text
+                };
+
+                var addrss_info = new Address
+                {
+                    HouseNo = tb_houseNo.Text,
+                    Street = tb_street.Text,
+                    Barangay = tb_barangay.Text,
+                    City = cmb_City.Text
+                };
+
+                var email_info = new Email
+                {
+                    EmailAddress = tb_email.Text
+                };
+
+                #endregion
 
                 details.EmployeeID = Convert.ToInt32(tb_empID.Text);
                 details.DateHired = Convert.ToDateTime(tb_datehired.Text);
                 details.Position = tb_position.Text;                
                 details.AccountTypeID = cmb_acctype.SelectedIndex;
                 details.EmployeeStatus = cmb_empStatus.Text;
-               
-                details.email_info.EmailAddress = tb_email.Text;
+                          
                 #endregion
 
                 #region validations
-                if (Valid.ValidateFields(details))
+                if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info) && Valid.ValidateFields(details))
                 {
+                    details.user_info.UserID = user_info.UserID;
+                    details.user_info.Firstname = user_info.Firstname;
+                    details.user_info.Lastname = user_info.Lastname;
+                    details.user_info.ContactNumber = user_info.ContactNumber;
+                    details.user_info.TelephoneNo = user_info.TelephoneNo;
+
+                    details.address_info.HouseNo = addrss_info.HouseNo;
+                    details.address_info.Street = addrss_info.Street;
+                    details.address_info.Barangay = addrss_info.Barangay;
+                    details.address_info.City = addrss_info.City;
+                    details.email_info.EmailAddress = email_info.EmailAddress;
+
                     var result = update.UpdateEmployee(details, tb_unameAccess.Text);
 
                     if (result != true)
@@ -461,7 +524,14 @@ namespace SSIP.UserformControls
         }
         private void btn_updateAccount_Click(object sender, EventArgs e)
         {
-            UpdateAcc();
+            if (tb_empID.Text != "0")
+            {
+                UpdateAcc();
+            }
+            else
+            {
+                btn_updateAccount.Enabled = false;
+            }         
         }
         private void btn_newEmp_Click(object sender, EventArgs e)
         {

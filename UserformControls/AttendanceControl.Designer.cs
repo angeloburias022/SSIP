@@ -64,7 +64,6 @@ namespace SSIP.UserformControls
             this.btn_addAttendance = new Guna.UI2.WinForms.Guna2Button();
             this.attendanceGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btn_updateChanges = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
@@ -81,9 +80,9 @@ namespace SSIP.UserformControls
             // 
             // pb_qrcode
             // 
-            this.pb_qrcode.Location = new System.Drawing.Point(574, 87);
+            this.pb_qrcode.Location = new System.Drawing.Point(331, 20);
             this.pb_qrcode.Name = "pb_qrcode";
-            this.pb_qrcode.Size = new System.Drawing.Size(225, 220);
+            this.pb_qrcode.Size = new System.Drawing.Size(140, 120);
             this.pb_qrcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_qrcode.TabIndex = 0;
             this.pb_qrcode.TabStop = false;
@@ -204,7 +203,7 @@ namespace SSIP.UserformControls
             this.workdate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.workdate.Name = "workdate";
             this.workdate.ShadowDecoration.Parent = this.workdate;
-            this.workdate.Size = new System.Drawing.Size(165, 36);
+            this.workdate.Size = new System.Drawing.Size(125, 36);
             this.workdate.TabIndex = 163;
             this.workdate.Value = new System.DateTime(2022, 2, 12, 0, 0, 0, 0);
             this.workdate.Visible = false;
@@ -236,7 +235,7 @@ namespace SSIP.UserformControls
             this.btn_viewAttendances.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_viewAttendances.ForeColor = System.Drawing.Color.White;
             this.btn_viewAttendances.HoverState.Parent = this.btn_viewAttendances;
-            this.btn_viewAttendances.Location = new System.Drawing.Point(302, 418);
+            this.btn_viewAttendances.Location = new System.Drawing.Point(451, 312);
             this.btn_viewAttendances.Name = "btn_viewAttendances";
             this.btn_viewAttendances.ShadowDecoration.Parent = this.btn_viewAttendances;
             this.btn_viewAttendances.Size = new System.Drawing.Size(120, 36);
@@ -259,7 +258,7 @@ namespace SSIP.UserformControls
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_save.ForeColor = System.Drawing.Color.White;
             this.btn_save.HoverState.Parent = this.btn_save;
-            this.btn_save.Location = new System.Drawing.Point(302, 334);
+            this.btn_save.Location = new System.Drawing.Point(451, 228);
             this.btn_save.Name = "btn_save";
             this.btn_save.ShadowDecoration.Parent = this.btn_save;
             this.btn_save.Size = new System.Drawing.Size(120, 36);
@@ -284,7 +283,7 @@ namespace SSIP.UserformControls
             this.btn_scan.ForeColor = System.Drawing.Color.White;
             this.btn_scan.HoverState.Parent = this.btn_scan;
             this.btn_scan.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.btn_scan.Location = new System.Drawing.Point(679, 313);
+            this.btn_scan.Location = new System.Drawing.Point(451, 190);
             this.btn_scan.Name = "btn_scan";
             this.btn_scan.ShadowDecoration.Parent = this.btn_scan;
             this.btn_scan.Size = new System.Drawing.Size(120, 32);
@@ -336,7 +335,7 @@ namespace SSIP.UserformControls
             this.tb_DisplayQR.ForeColor = System.Drawing.Color.Black;
             this.tb_DisplayQR.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_DisplayQR.HoverState.Parent = this.tb_DisplayQR;
-            this.tb_DisplayQR.Location = new System.Drawing.Point(287, 15);
+            this.tb_DisplayQR.Location = new System.Drawing.Point(71, 33);
             this.tb_DisplayQR.Name = "tb_DisplayQR";
             this.tb_DisplayQR.PasswordChar = '\0';
             this.tb_DisplayQR.PlaceholderText = "";
@@ -363,7 +362,7 @@ namespace SSIP.UserformControls
             this.tb_employeeID.BackColor = System.Drawing.Color.Transparent;
             this.tb_employeeID.BorderRadius = 4;
             this.tb_employeeID.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_employeeID.DefaultText = "";
+            this.tb_employeeID.DefaultText = "0";
             this.tb_employeeID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.tb_employeeID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.tb_employeeID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -403,7 +402,7 @@ namespace SSIP.UserformControls
             this.tb_totalHrs.ForeColor = System.Drawing.Color.Black;
             this.tb_totalHrs.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_totalHrs.HoverState.Parent = this.tb_totalHrs;
-            this.tb_totalHrs.Location = new System.Drawing.Point(380, 247);
+            this.tb_totalHrs.Location = new System.Drawing.Point(226, 325);
             this.tb_totalHrs.Name = "tb_totalHrs";
             this.tb_totalHrs.PasswordChar = '\0';
             this.tb_totalHrs.PlaceholderText = "Total Hours";
@@ -421,7 +420,7 @@ namespace SSIP.UserformControls
             this.lbl_totalworkhrs.BackColor = System.Drawing.Color.Transparent;
             this.lbl_totalworkhrs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_totalworkhrs.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_totalworkhrs.Location = new System.Drawing.Point(346, 224);
+            this.lbl_totalworkhrs.Location = new System.Drawing.Point(223, 302);
             this.lbl_totalworkhrs.Name = "lbl_totalworkhrs";
             this.lbl_totalworkhrs.Size = new System.Drawing.Size(196, 20);
             this.lbl_totalworkhrs.TabIndex = 155;
@@ -434,7 +433,7 @@ namespace SSIP.UserformControls
             this.confirmAccessPanel.Controls.Add(this.lbl_confirmAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_unameAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_pass);
-            this.confirmAccessPanel.Location = new System.Drawing.Point(71, 376);
+            this.confirmAccessPanel.Location = new System.Drawing.Point(626, 198);
             this.confirmAccessPanel.Name = "confirmAccessPanel";
             this.confirmAccessPanel.Size = new System.Drawing.Size(183, 120);
             this.confirmAccessPanel.TabIndex = 166;
@@ -655,7 +654,7 @@ namespace SSIP.UserformControls
             this.btn_updateChanges.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_updateChanges.ForeColor = System.Drawing.Color.White;
             this.btn_updateChanges.HoverState.Parent = this.btn_updateChanges;
-            this.btn_updateChanges.Location = new System.Drawing.Point(302, 376);
+            this.btn_updateChanges.Location = new System.Drawing.Point(451, 270);
             this.btn_updateChanges.Name = "btn_updateChanges";
             this.btn_updateChanges.ShadowDecoration.Parent = this.btn_updateChanges;
             this.btn_updateChanges.Size = new System.Drawing.Size(120, 36);
@@ -663,30 +662,6 @@ namespace SSIP.UserformControls
             this.btn_updateChanges.Text = "UPDATE";
             this.btn_updateChanges.UseTransparentBackground = true;
             this.btn_updateChanges.Click += new System.EventHandler(this.btn_updateChanges_Click);
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 4;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.DisabledState.Parent = this.guna2Button1;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.guna2Button1.Location = new System.Drawing.Point(679, 313);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(120, 32);
-            this.guna2Button1.TabIndex = 164;
-            this.guna2Button1.Text = "SCAN QR CODE";
-            this.guna2Button1.UseTransparentBackground = true;
-            this.guna2Button1.Click += new System.EventHandler(this.btn_scan_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -865,7 +840,6 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.attendanceMainpanel);
             this.Controls.Add(this.confirmAccessPanel);
-            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.cboDevice);
             this.Controls.Add(this.btn_scan);
             this.Controls.Add(this.btn_updateChanges);
@@ -933,7 +907,6 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2Button btn_addAttendance;
         private Guna.UI2.WinForms.Guna2DataGridView attendanceGrid;
         private Guna.UI2.WinForms.Guna2Button btn_updateChanges;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;

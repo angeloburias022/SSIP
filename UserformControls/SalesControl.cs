@@ -534,23 +534,28 @@ namespace SSIP.UserformControls
         }
         private void btn_cancelOrder_Click(object sender, EventArgs e)
         {
-            ClearFields();
-            prodGrid.DataSource = null;
-            prodGrid.Update();
+            if (Authorized())
+            {
+                ClearFields();
+                prodGrid.DataSource = null;
+                prodGrid.Update(); 
+            }
         }
         private void tb_compute_Click(object sender, EventArgs e)
-        { 
-            decimal am_paid = Convert.ToDecimal(tb_amountPaid.Text);
-            decimal gra_total = Convert.ToDecimal(grandTotal.Text);
-            if (gra_total > am_paid)
+        {
+            if (Authorized())
             {
-                MessageBox.Show("Invalid Amount");
+                decimal am_paid = Convert.ToDecimal(tb_amountPaid.Text);
+                decimal gra_total = Convert.ToDecimal(grandTotal.Text);
+                if (gra_total > am_paid)
+                {
+                    MessageBox.Show("Invalid Amount");
+                }
+                else
+                {
+                    compute();
+                }
             }
-            else
-            {
-                compute();
-            }
-  
         }
         private bool Validation()
         {

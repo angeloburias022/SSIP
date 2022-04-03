@@ -1,4 +1,4 @@
-﻿using SSIP.AccessControls;
+﻿
 using SSIP.Controllers;
 using SSIP.Forms;
 using SSIP.Models;
@@ -24,7 +24,7 @@ namespace SSIP.UserForms
         {
             InitializeComponent();
 
-            this.securityForm1.Visible = false;
+         
            
             if(tb_schedID.Text != "0" && tb_customerID.Text != "0")
             {
@@ -484,7 +484,8 @@ namespace SSIP.UserForms
         #region Add new sched and dispatch
         private void btn_addDispatch_Click(object sender, EventArgs e)
         {
-            schedgrid.DataSource = null;
+            dispatchListgrid.DataSource = null;
+            dispatchListgrid.Columns.Clear();
             cmb_Status.SelectedValue = "Dispatch";
             btn_updateChanges.Enabled = false;
             btn_save.Enabled = true;
@@ -494,7 +495,9 @@ namespace SSIP.UserForms
         }
         private void btn_addsched_Click(object sender, EventArgs e)
         {
-            dispatchListgrid.DataSource = null;
+            schedgrid.DataSource = null;
+            schedgrid.Columns.Clear();
+           // dispatchListgrid.DataSource = null;
             cmb_Status.SelectedValue = "Schedule";
             btn_updateChanges.Enabled = false;
             btn_save.Enabled = true;
@@ -507,15 +510,9 @@ namespace SSIP.UserForms
         #region hide and view services panels  
         private void ShowScheds()
         {
+            
             if (HighAuthority())
-            {
-
-                schedgrid.DataSource = null;
-                dispatchListgrid.DataSource = null;
-                dispatchListgrid.Columns.Clear();
-                schedgrid.AutoGenerateColumns = true;
-                dispatchListgrid.AutoGenerateColumns = false;
-
+            {              
                 this.schedgrid.DataSource = sv.GetSchedules();
                 this.schedgrid.Columns["SchedID"].Visible = false;
                 this.schedgrid.Columns["FirstName"].Visible = false;
@@ -528,14 +525,10 @@ namespace SSIP.UserForms
         }
         private void ShowDispatch()
         {
+            schedgrid.DataSource = null;
+            schedgrid.Columns.Clear();
             if (HighAuthority())
-            {
-                dispatchListgrid.DataSource = null;
-                schedgrid.DataSource = null;
-                schedgrid.Columns.Clear();
-                dispatchListgrid.AutoGenerateColumns = true;
-                schedgrid.AutoGenerateColumns = false;
-
+            {    
                 this.dispatchListgrid.DataSource = sv.GetDispatches();
                 this.dispatchListgrid.Columns["SchedID"].Visible = false;
                 this.dispatchListgrid.Columns["FirstName"].Visible = false;
@@ -670,6 +663,18 @@ namespace SSIP.UserForms
                         if (result != true)
                         {
                             MessageBox.Show("something went wrong");
+
+
+                            var failedupdate = new AuditTrails
+                            {
+                                Username = tb_recorded.Text,
+                                AuditActionTypeENUM = (Enums.ActionTypes)4,
+                                DateTimeStamp = DateTime.Now.ToString(),
+                                Result = "Failed",
+                                Description = "Failed update of Schedule ID: " + sched.ScheduleID + " "
+                            };
+
+                            aud.Logs(failedupdate);
                             UpdateGrids();
                         }
                         else
@@ -811,5 +816,9 @@ namespace SSIP.UserForms
         }
         #endregion
 
+        private void tb_quan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
     }
 }

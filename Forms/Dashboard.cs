@@ -1,6 +1,5 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
-using SSIP.AccessControls;
 using SSIP.Models;
 using SSIP.UserformControls;
 using SSIP.UserForms;
@@ -538,10 +537,27 @@ namespace SSIP.Forms
             dispatchFormPanel.Visible = true;
             dispatchFormPanel.Dock = DockStyle.Fill;
         }
+     
         private void HideMainServicesPanelControl()
         {
             dispatchFormPanel.Hide();
             dispatchFormPanel.Dock = DockStyle.None;
+        }
+
+        private void ShowMainServicesControl2()
+        {
+            dispatchePanel.Dock = DockStyle.Fill;
+            this.dispatchesControl1.BringToFront();
+            this.dispatchesControl1.Show();
+
+            dispatchePanel.Visible = true;
+            dispatchePanel.Dock = DockStyle.Fill;
+        }
+
+        private void HideMainServicesPanelControl2()
+        {
+            dispatchePanel.Hide();
+            dispatchePanel.Dock = DockStyle.None;
         }
         private void ShowEmployeesPanelControl()
         {
@@ -628,7 +644,8 @@ namespace SSIP.Forms
         
             HideSubMenu();
         }
-        private void btn_dispatchSched_Click(object sender, EventArgs e)
+
+        private void btn_Sched_Click(object sender, EventArgs e)
         {
             HideEmployeesPanelControl();
             HideMainServicesPanelControl();
@@ -639,10 +656,27 @@ namespace SSIP.Forms
             HideEquipInvControl();
             HideAudControl();
             HidePOSControl();
+            HideMainServicesPanelControl2();
 
-
-            this.Text = "Schedule / Dispatch";
+            this.Text = "Schedule";
             ShowMainServicesControl();
+            HideSubMenu();
+        }
+        private void btn_Dispatch_Click(object sender, EventArgs e)
+        {
+            HideEmployeesPanelControl();
+            HideMainServicesPanelControl();
+            HideCustomersPanelControl();
+            HideAttendanceControl();
+            HidePayRollControl();
+            HideProductInvControl();
+            HideEquipInvControl();
+            HideAudControl();
+            HidePOSControl();
+            HideMainServicesPanelControl();
+
+            this.Text = "Dispatch";
+            ShowMainServicesControl2();
             HideSubMenu();
         }
         private void btn_equip_inv_Click(object sender, EventArgs e)
@@ -771,5 +805,7 @@ namespace SSIP.Forms
         {
 
         }
+
+       
     }
 }

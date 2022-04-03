@@ -390,18 +390,6 @@ namespace SSIP.Controllers
             {
                 error.ToString();
             }
-
-
-            var failedupdate = new AuditTrails
-            {
-                Username = user.Username,
-                AuditActionTypeENUM = (Enums.ActionTypes)4,
-                DateTimeStamp = DateTime.Now.ToString(),
-                Result = "Failed",
-                Description = "Failed update of Schedule ID: " + sched.ScheduleID + " "
-            };
-
-            aud.Logs(failedupdate);
             return false;
         }
 

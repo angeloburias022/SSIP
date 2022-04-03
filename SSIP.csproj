@@ -160,12 +160,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessControls\SecurityForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AccessControls\SecurityForm.Designer.cs">
-      <DependentUpon>SecurityForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -267,6 +261,12 @@
     <Compile Include="UserformControls\CustomersControl.Designer.cs">
       <DependentUpon>CustomersControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserformControls\DispatchesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserformControls\DispatchesControl.Designer.cs">
+      <DependentUpon>DispatchesControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserformControls\EmployeeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -315,9 +315,6 @@
     <Compile Include="UserformControls\SalesControl.Designer.cs">
       <DependentUpon>SalesControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AccessControls\SecurityForm.resx">
-      <DependentUpon>SecurityForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -343,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\CustomersControl.resx">
       <DependentUpon>CustomersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserformControls\DispatchesControl.resx">
+      <DependentUpon>DispatchesControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserformControls\EmployeeControl.resx">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
@@ -428,6 +428,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AccessControls\" />
     <Folder Include="receipts\" />
     <Folder Include="UserformControls\Dispatch\" />
   </ItemGroup>

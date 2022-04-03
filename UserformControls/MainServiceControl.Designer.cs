@@ -96,7 +96,7 @@ namespace SSIP.UserForms
             this.label2 = new System.Windows.Forms.Label();
             this.tb_amount = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_amount = new System.Windows.Forms.Label();
-            this.securityForm1 = new SSIP.AccessControls.SecurityForm();
+         
             this.dispatchList_panel.SuspendLayout();
             this.DispatchListPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dispatchListgrid)).BeginInit();
@@ -676,6 +676,7 @@ namespace SSIP.UserForms
             this.tb_quan.ShadowDecoration.Parent = this.tb_quan;
             this.tb_quan.Size = new System.Drawing.Size(165, 36);
             this.tb_quan.TabIndex = 102;
+            this.tb_quan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_quan_KeyPress);
             // 
             // tb_brand
             // 
@@ -1227,6 +1228,7 @@ namespace SSIP.UserForms
             this.btn_updateChanges.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_updateChanges.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_updateChanges.DisabledState.Parent = this.btn_updateChanges;
+            this.btn_updateChanges.Enabled = false;
             this.btn_updateChanges.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_updateChanges.ForeColor = System.Drawing.Color.White;
             this.btn_updateChanges.HoverState.Parent = this.btn_updateChanges;
@@ -1274,9 +1276,9 @@ namespace SSIP.UserForms
             this.label2.ForeColor = System.Drawing.Color.LimeGreen;
             this.label2.Location = new System.Drawing.Point(392, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(266, 42);
+            this.label2.Size = new System.Drawing.Size(230, 42);
             this.label2.TabIndex = 122;
-            this.label2.Text = "Main Services";
+            this.label2.Text = "SCHEDULE";
             // 
             // tb_amount
             // 
@@ -1312,22 +1314,13 @@ namespace SSIP.UserForms
             this.lbl_amount.BackColor = System.Drawing.Color.Transparent;
             this.lbl_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_amount.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_amount.Location = new System.Drawing.Point(746, 432);
+            this.lbl_amount.Location = new System.Drawing.Point(767, 432);
             this.lbl_amount.Name = "lbl_amount";
             this.lbl_amount.Size = new System.Drawing.Size(83, 20);
             this.lbl_amount.TabIndex = 123;
             this.lbl_amount.Text = "AMOUNT";
             this.lbl_amount.Visible = false;
-            // 
-            // securityForm1
-            // 
-            this.securityForm1.ActionType = 0;
-            this.securityForm1.BackColor = System.Drawing.Color.Transparent;
-            this.securityForm1.Location = new System.Drawing.Point(725, 60);
-            this.securityForm1.Name = "securityForm1";
-            this.securityForm1.Size = new System.Drawing.Size(50, 53);
-            this.securityForm1.TabIndex = 106;
-            // 
+            
             // MainServiceControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1338,7 +1331,7 @@ namespace SSIP.UserForms
             this.Controls.Add(this.label2);
             this.Controls.Add(this.schedMainPanel);
             this.Controls.Add(this.dispatchList_panel);
-            this.Controls.Add(this.securityForm1);
+          
             this.Controls.Add(this.btn_viewScheds);
             this.Controls.Add(this.btn_viewDispatches);
             this.Controls.Add(this.btn_updateChanges);
@@ -1393,7 +1386,7 @@ namespace SSIP.UserForms
             this.Controls.Add(this.lbl_assign);
             this.Controls.Add(this.tb_assign1);
             this.Name = "MainServiceControl";
-            this.Size = new System.Drawing.Size(1063, 530);
+            this.Size = new System.Drawing.Size(1063, 716);
             this.Load += new System.EventHandler(this.MainServiceControl_Load);
             this.dispatchList_panel.ResumeLayout(false);
             this.DispatchListPanel.ResumeLayout(false);
@@ -1455,7 +1448,7 @@ namespace SSIP.UserForms
         private Guna.UI2.WinForms.Guna2TextBox tb_recorded;
         private System.Windows.Forms.Label label22;
         private Guna.UI2.WinForms.Guna2DateTimePicker tb_svdate;
-        private AccessControls.SecurityForm securityForm1;
+   
         private Guna.UI2.WinForms.Guna2ComboBox cmb_City;
         private Guna.UI2.WinForms.Guna2TextBox tb_pass;
         private Guna.UI2.WinForms.Guna2Button btn_viewDispatches;

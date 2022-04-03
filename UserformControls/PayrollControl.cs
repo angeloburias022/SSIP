@@ -370,6 +370,11 @@ namespace SSIP.UserformControls
 
             tb_workhrs.Text = "0";
             tb_hourlyRate.Text = "0";
+
+            cmb_empname.SelectedIndex = -1;
+            cmb_others.SelectedIndex = -1;
+            cmb_benefits.SelectedIndex = -1;
+            
         }
         private void CMB_EmployeeName()
         {
@@ -492,39 +497,47 @@ namespace SSIP.UserformControls
             payrollMainPanel.Dock = DockStyle.None;
             payrollMainPanel.Visible = false;
             ClearFields();
+            btn_update.Enabled = false;
         }
         private void payrollGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btn_update.Enabled = true;
-            payrollMainPanel.Visible = false;
-            payrollMainPanel.Dock = DockStyle.None;
-           
-            cmb_empname.Text = this.payrollGrid.CurrentRow.Cells[0].Value.ToString();
-            tb_workhrs.Text = this.payrollGrid.CurrentRow.Cells[1].Value.ToString();
-            tb_hourlyRate.Text = this.payrollGrid.CurrentRow.Cells[2].Value.ToString();
-            tb_totalAmount.Text = this.payrollGrid.CurrentRow.Cells[3].Value.ToString();
-            tb_cashAdvance.Text = this.payrollGrid.CurrentRow.Cells[4].Value.ToString();
-            date_from.Value = Convert.ToDateTime(this.payrollGrid.CurrentRow.Cells[5].Value.ToString());
-            date_to.Value = Convert.ToDateTime(this.payrollGrid.CurrentRow.Cells[6].Value.ToString());
-            payroll_date.Value = Convert.ToDateTime(this.payrollGrid.CurrentRow.Cells[7].Value.ToString());
-           
-            tb_philHealth.Text = this.payrollGrid.CurrentRow.Cells[8].Value.ToString();
-            tb_sss.Text = this.payrollGrid.CurrentRow.Cells[9].Value.ToString();
-            tb_pagIbig.Text = this.payrollGrid.CurrentRow.Cells[10].Value.ToString();
-            tb_otherAmount.Text = this.payrollGrid.CurrentRow.Cells[11].Value.ToString();           
-            tb_id.Text = this.payrollGrid.CurrentRow.Cells[12].Value.ToString();
+            try
+            {
+                btn_update.Enabled = true;
+                payrollMainPanel.Visible = false;
+                payrollMainPanel.Dock = DockStyle.None;
 
-            lbl_philHealth.Visible = true;
-            tb_philHealth.Visible = true;
+                cmb_empname.Text = this.payrollGrid.CurrentRow.Cells[0].Value.ToString();
+                tb_workhrs.Text = this.payrollGrid.CurrentRow.Cells[1].Value.ToString();
+                tb_hourlyRate.Text = this.payrollGrid.CurrentRow.Cells[2].Value.ToString();
+                tb_totalAmount.Text = this.payrollGrid.CurrentRow.Cells[3].Value.ToString();
+                tb_cashAdvance.Text = this.payrollGrid.CurrentRow.Cells[4].Value.ToString();
+                date_from.Value = Convert.ToDateTime(this.payrollGrid.CurrentRow.Cells[5].Value.ToString());
+                date_to.Value = Convert.ToDateTime(this.payrollGrid.CurrentRow.Cells[6].Value.ToString());
+                payroll_date.Value = Convert.ToDateTime(this.payrollGrid.CurrentRow.Cells[7].Value.ToString());
 
-            lbl_sss.Visible = true;
-            tb_sss.Visible = true;
+                tb_philHealth.Text = this.payrollGrid.CurrentRow.Cells[8].Value.ToString();
+                tb_sss.Text = this.payrollGrid.CurrentRow.Cells[9].Value.ToString();
+                tb_pagIbig.Text = this.payrollGrid.CurrentRow.Cells[10].Value.ToString();
+                tb_otherAmount.Text = this.payrollGrid.CurrentRow.Cells[11].Value.ToString();
+                tb_id.Text = this.payrollGrid.CurrentRow.Cells[12].Value.ToString();
 
-            lbl_pagIbig.Visible = true;
-            tb_pagIbig.Visible = true;
+                lbl_philHealth.Visible = true;
+                tb_philHealth.Visible = true;
 
-            lbl_othersAmount.Visible = true;
-            tb_otherAmount.Visible = true;
+                lbl_sss.Visible = true;
+                tb_sss.Visible = true;
+
+                lbl_pagIbig.Visible = true;
+                tb_pagIbig.Visible = true;
+
+                lbl_othersAmount.Visible = true;
+                tb_otherAmount.Visible = true;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
         }      
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
@@ -736,5 +749,10 @@ namespace SSIP.UserformControls
 
         }
         #endregion
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
     }
 }

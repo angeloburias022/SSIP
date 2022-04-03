@@ -30,28 +30,50 @@ namespace SSIP.UserformControls
         #region view, add, update, new buttons     
         private void SaveCustomer()
         {
-            #region fields
-         
             var details = new CustomerModel();
+            
+            #region fields
 
-            details.user_info.Username = tb_unameAccess.Text;
-            details.user_info.Firstname = tb_fname.Text;
-            details.user_info.Lastname = tb_lname.Text;
-            details.user_info.ContactNumber = tb_mobile.Text;
-            details.user_info.TelephoneNo = tb_tel.Text;
+            var user_info = new User
+            {
+                Username = tb_unameAccess.Text,
+                Firstname = tb_fname.Text,
+                Lastname= tb_lname.Text,
+                ContactNumber = tb_mobile.Text,
+                TelephoneNo = tb_tel.Text
+            };
 
-            details.address_info.HouseNo = tb_houseNo.Text;
-            details.address_info.Street = tb_street.Text;
-            details.address_info.Barangay = tb_barangay.Text;
-            details.address_info.City = cmb_City.Text;
+            var addrss_info = new Address
+            {
+                HouseNo = tb_houseNo.Text,
+                Street = tb_street.Text,
+                Barangay = tb_barangay.Text,
+                City = cmb_City.Text
+            };
 
-            details.employee_info.EmployeeStatus = cmb_status.Text;
-            details.email_info.EmailAddress = tb_email.Text;
-          
+            var email_info = new Email
+            {
+                EmailAddress = tb_email.Text
+            };
+         
             #endregion
 
-            if (Valid.ValidateFields(details))
+            if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info))
             {
+                details.user_info.Username = user_info.Username;
+                details.user_info.Firstname = user_info.Firstname;
+                details.user_info.Lastname = user_info.Lastname;
+                details.user_info.ContactNumber = user_info.ContactNumber;
+                details.user_info.TelephoneNo = user_info.TelephoneNo;
+
+                details.address_info.HouseNo = addrss_info.HouseNo;
+                details.address_info.Street = addrss_info.Street;
+                details.address_info.Barangay = addrss_info.Barangay;
+                details.address_info.City = addrss_info.City;
+
+                details.employee_info.EmployeeStatus = cmb_status.Text;
+                details.email_info.EmailAddress = email_info.EmailAddress;
+
                 var result = cusControl.AddCustomer(details);
 
                 if (result != true)
@@ -101,25 +123,50 @@ namespace SSIP.UserformControls
 
                 var details = new CustomerModel();
 
-                details.user_info.UserID = Convert.ToInt32(tb_personID.Text);
-                details.user_info.Username = tb_unameAccess.Text;
-                details.user_info.Firstname = tb_fname.Text;
-                details.user_info.Lastname = tb_lname.Text;
-                details.user_info.ContactNumber = tb_mobile.Text;
-                details.user_info.TelephoneNo = tb_tel.Text;
+          
+                var user_info = new User
+                {
+                    UserID = Convert.ToInt32(tb_personID.Text),
+                    Username = tb_unameAccess.Text,
+                    Firstname = tb_fname.Text,
+                    Lastname = tb_lname.Text,
+                    ContactNumber = tb_mobile.Text,
+                    TelephoneNo = tb_tel.Text
+                };
 
-                details.address_info.HouseNo = tb_houseNo.Text;
-                details.address_info.Street = tb_street.Text;
-                details.address_info.Barangay = tb_barangay.Text;
-                details.address_info.City = cmb_City.Text;
+                var addrss_info = new Address
+                {
+                    HouseNo = tb_houseNo.Text,
+                    Street = tb_street.Text,
+                    Barangay = tb_barangay.Text,
+                    City = cmb_City.Text
+                };
 
-                details.employee_info.EmployeeStatus = cmb_status.Text;
-                details.email_info.EmailAddress = tb_email.Text;
+                var email_info = new Email
+                {
+                    EmailAddress = tb_email.Text
+                };
 
                 #endregion
 
-                if (Valid.ValidateFields(details))
+                if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info))
                 {
+
+                    details.user_info.UserID = user_info.UserID;
+                    details.user_info.Username = user_info.Username;
+                    details.user_info.Firstname = user_info.Firstname;
+                    details.user_info.Lastname = user_info.Lastname;
+                    details.user_info.ContactNumber = user_info.ContactNumber;
+                    details.user_info.TelephoneNo = user_info.TelephoneNo;
+
+                    details.address_info.HouseNo = addrss_info.HouseNo;
+                    details.address_info.Street = addrss_info.Street;
+                    details.address_info.Barangay = addrss_info.Barangay;
+                    details.address_info.City = addrss_info.City;
+
+                    details.employee_info.EmployeeStatus = cmb_status.Text;
+                    details.email_info.EmailAddress = email_info.EmailAddress;
+
                     var result = cusControl.UpdateCustomer(details);
 
                     if (result != true)
@@ -189,8 +236,7 @@ namespace SSIP.UserformControls
             }
             else
             {
-                tb_unameAccess.ReadOnly = true;
-                tb_pass.ReadOnly = true;
+           
             }
         }
         public bool AccessLogin(User users)
