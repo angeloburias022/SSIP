@@ -77,6 +77,10 @@ namespace SSIP.UserformControls
 
                     MessageBox.Show("Employee Found", "QR Code Scanner", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btn_save.Enabled = false;
+                   
+
+                    UpdateAttendance();
+                    //    btn_save.Click;
                 }
                 else
                 {
@@ -85,6 +89,8 @@ namespace SSIP.UserformControls
                     MessageBox.Show("Employee Found", "QR Code Scanner", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     btn_updateChanges.Enabled = false;
+
+                    Save();
                 }
 
                
@@ -157,6 +163,12 @@ namespace SSIP.UserformControls
         }
         private void btn_updateChanges_Click(object sender, EventArgs e)
         {
+            UpdateAttendance();
+        }
+
+        private void UpdateAttendance()
+        {
+
             if (tb_employeeID.Text != "0")
             {
                 var tools = new EmployeesController();
@@ -180,12 +192,12 @@ namespace SSIP.UserformControls
                     MessageBox.Show("Higher authorization access required");
                     btn_updateChanges.Enabled = false;
                     HideGRID();
-                } 
-            }else
+                }
+            }
+            else
             {
                 MessageBox.Show("Scan QR first", "QR Code Scanner", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
         #endregion
