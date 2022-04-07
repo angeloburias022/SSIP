@@ -96,7 +96,6 @@ namespace SSIP.UserForms
             this.label2 = new System.Windows.Forms.Label();
             this.tb_amount = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_amount = new System.Windows.Forms.Label();
-         
             this.dispatchList_panel.SuspendLayout();
             this.DispatchListPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dispatchListgrid)).BeginInit();
@@ -974,6 +973,7 @@ namespace SSIP.UserForms
             this.btn_viewDispatches.TabIndex = 105;
             this.btn_viewDispatches.Text = "VIEW DISPATCHES";
             this.btn_viewDispatches.UseTransparentBackground = true;
+            this.btn_viewDispatches.Visible = false;
             this.btn_viewDispatches.Click += new System.EventHandler(this.btn_viewDispatches_Click);
             // 
             // dispatchList_panel
@@ -1320,7 +1320,7 @@ namespace SSIP.UserForms
             this.lbl_amount.TabIndex = 123;
             this.lbl_amount.Text = "AMOUNT";
             this.lbl_amount.Visible = false;
-            
+            // 
             // MainServiceControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1331,7 +1331,6 @@ namespace SSIP.UserForms
             this.Controls.Add(this.label2);
             this.Controls.Add(this.schedMainPanel);
             this.Controls.Add(this.dispatchList_panel);
-          
             this.Controls.Add(this.btn_viewScheds);
             this.Controls.Add(this.btn_viewDispatches);
             this.Controls.Add(this.btn_updateChanges);

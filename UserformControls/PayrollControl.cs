@@ -358,6 +358,8 @@ namespace SSIP.UserformControls
         }
         private void ClearFields()
         {
+            payrollGrid.DataSource = null;
+            payrollGrid.Update();
             tb_sss.Text = "0";
             tb_pagIbig.Text = "0";
             tb_philHealth.Text = "0";

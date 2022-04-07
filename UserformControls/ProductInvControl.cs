@@ -593,5 +593,16 @@ namespace SSIP.UserformControls
             dis_newstocks.Text = tools.GetNewStocks();
             dis_runningLow.Text = tools.GetRunningLowStocks();
         }
+
+        private void tb_id_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_id.Text == "")
+            {
+                tb_id.Text = "0";
+            }else if (tb_id.Text.Length < 0)
+            {
+                tb_id.Text = "0";
+            }
+        }
     }
 }

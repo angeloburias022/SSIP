@@ -36,6 +36,7 @@ namespace SSIP.UserformControls
             this.lbl_height = new System.Windows.Forms.Label();
             this.tb_height = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_hp = new System.Windows.Forms.Label();
+            this.lbl_meterlbl = new System.Windows.Forms.Label();
             this.lbl_quan = new System.Windows.Forms.Label();
             this.tb_quan = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_actype = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@ namespace SSIP.UserformControls
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
             this.productMainPanel = new System.Windows.Forms.Panel();
             this.gridMainPanel = new System.Windows.Forms.Panel();
+            this.btn_showStats = new Guna.UI2.WinForms.Guna2Button();
             this.QRcontrolpanel = new System.Windows.Forms.Panel();
             this.btn_download = new Guna.UI2.WinForms.Guna2Button();
             this.btn_close = new Guna.UI2.WinForms.Guna2Button();
@@ -83,16 +85,14 @@ namespace SSIP.UserformControls
             this.pic_qrcode = new System.Windows.Forms.PictureBox();
             this.printDocuQR = new System.Drawing.Printing.PrintDocument();
             this.printQRDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.lbl_meterlbl = new System.Windows.Forms.Label();
             this.stats_panel = new System.Windows.Forms.Panel();
-            this.btn_viewForm = new Guna.UI2.WinForms.Guna2Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dis_newstocks = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dis_currentStocks = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.dis_runningLow = new System.Windows.Forms.Label();
-            this.btn_showStats = new Guna.UI2.WinForms.Guna2Button();
+            this.dis_currentStocks = new System.Windows.Forms.Label();
+            this.dis_newstocks = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_viewForm = new Guna.UI2.WinForms.Guna2Button();
             this.product_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGrid)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
@@ -251,6 +251,19 @@ namespace SSIP.UserformControls
             this.lbl_hp.TabIndex = 14;
             this.lbl_hp.Text = "Horse Power:";
             this.lbl_hp.Visible = false;
+            // 
+            // lbl_meterlbl
+            // 
+            this.lbl_meterlbl.AutoSize = true;
+            this.lbl_meterlbl.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_meterlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_meterlbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_meterlbl.Location = new System.Drawing.Point(227, 253);
+            this.lbl_meterlbl.Name = "lbl_meterlbl";
+            this.lbl_meterlbl.Size = new System.Drawing.Size(105, 20);
+            this.lbl_meterlbl.TabIndex = 8;
+            this.lbl_meterlbl.Text = "IN METERS";
+            this.lbl_meterlbl.Visible = false;
             // 
             // lbl_quan
             // 
@@ -487,6 +500,7 @@ namespace SSIP.UserformControls
             this.tb_id.ShadowDecoration.Parent = this.tb_id;
             this.tb_id.Size = new System.Drawing.Size(81, 36);
             this.tb_id.TabIndex = 11;
+            this.tb_id.TextChanged += new System.EventHandler(this.tb_id_TextChanged);
             // 
             // tb_productName
             // 
@@ -864,6 +878,28 @@ namespace SSIP.UserformControls
             this.gridMainPanel.Size = new System.Drawing.Size(410, 370);
             this.gridMainPanel.TabIndex = 17;
             // 
+            // btn_showStats
+            // 
+            this.btn_showStats.BackColor = System.Drawing.Color.Transparent;
+            this.btn_showStats.BorderRadius = 4;
+            this.btn_showStats.CheckedState.Parent = this.btn_showStats;
+            this.btn_showStats.CustomImages.Parent = this.btn_showStats;
+            this.btn_showStats.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_showStats.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_showStats.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_showStats.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_showStats.DisabledState.Parent = this.btn_showStats;
+            this.btn_showStats.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_showStats.ForeColor = System.Drawing.Color.White;
+            this.btn_showStats.HoverState.Parent = this.btn_showStats;
+            this.btn_showStats.Location = new System.Drawing.Point(691, 466);
+            this.btn_showStats.Name = "btn_showStats";
+            this.btn_showStats.ShadowDecoration.Parent = this.btn_showStats;
+            this.btn_showStats.Size = new System.Drawing.Size(138, 33);
+            this.btn_showStats.TabIndex = 9;
+            this.btn_showStats.Text = "BACK TO STATS";
+            this.btn_showStats.Click += new System.EventHandler(this.btn_showStats_Click);
+            // 
             // QRcontrolpanel
             // 
             this.QRcontrolpanel.BackColor = System.Drawing.Color.Transparent;
@@ -1034,19 +1070,6 @@ namespace SSIP.UserformControls
             this.printQRDialog1.Name = "printQRDialog1";
             this.printQRDialog1.Visible = false;
             // 
-            // lbl_meterlbl
-            // 
-            this.lbl_meterlbl.AutoSize = true;
-            this.lbl_meterlbl.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_meterlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_meterlbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_meterlbl.Location = new System.Drawing.Point(227, 253);
-            this.lbl_meterlbl.Name = "lbl_meterlbl";
-            this.lbl_meterlbl.Size = new System.Drawing.Size(105, 20);
-            this.lbl_meterlbl.TabIndex = 8;
-            this.lbl_meterlbl.Text = "IN METERS";
-            this.lbl_meterlbl.Visible = false;
-            // 
             // stats_panel
             // 
             this.stats_panel.BackColor = System.Drawing.Color.Transparent;
@@ -1062,6 +1085,78 @@ namespace SSIP.UserformControls
             this.stats_panel.Name = "stats_panel";
             this.stats_panel.Size = new System.Drawing.Size(2066, 787);
             this.stats_panel.TabIndex = 140;
+            // 
+            // dis_runningLow
+            // 
+            this.dis_runningLow.AutoSize = true;
+            this.dis_runningLow.BackColor = System.Drawing.Color.Transparent;
+            this.dis_runningLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dis_runningLow.ForeColor = System.Drawing.Color.LimeGreen;
+            this.dis_runningLow.Location = new System.Drawing.Point(483, 255);
+            this.dis_runningLow.Name = "dis_runningLow";
+            this.dis_runningLow.Size = new System.Drawing.Size(69, 73);
+            this.dis_runningLow.TabIndex = 11;
+            this.dis_runningLow.Text = "0";
+            // 
+            // dis_currentStocks
+            // 
+            this.dis_currentStocks.AutoSize = true;
+            this.dis_currentStocks.BackColor = System.Drawing.Color.Transparent;
+            this.dis_currentStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dis_currentStocks.ForeColor = System.Drawing.Color.LimeGreen;
+            this.dis_currentStocks.Location = new System.Drawing.Point(483, 166);
+            this.dis_currentStocks.Name = "dis_currentStocks";
+            this.dis_currentStocks.Size = new System.Drawing.Size(69, 73);
+            this.dis_currentStocks.TabIndex = 11;
+            this.dis_currentStocks.Text = "0";
+            // 
+            // dis_newstocks
+            // 
+            this.dis_newstocks.AutoSize = true;
+            this.dis_newstocks.BackColor = System.Drawing.Color.Transparent;
+            this.dis_newstocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dis_newstocks.ForeColor = System.Drawing.Color.LimeGreen;
+            this.dis_newstocks.Location = new System.Drawing.Point(483, 81);
+            this.dis_newstocks.Name = "dis_newstocks";
+            this.dis_newstocks.Size = new System.Drawing.Size(69, 73);
+            this.dis_newstocks.TabIndex = 11;
+            this.dis_newstocks.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label6.Location = new System.Drawing.Point(82, 267);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(357, 31);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "STOCKS RUNNING LOW:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label4.Location = new System.Drawing.Point(45, 189);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(399, 31);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "CURRENT NO. OF STOCKS:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label2.Location = new System.Drawing.Point(227, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(215, 31);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "NEW STOCKS:";
             // 
             // btn_viewForm
             // 
@@ -1084,100 +1179,6 @@ namespace SSIP.UserformControls
             this.btn_viewForm.TabIndex = 10;
             this.btn_viewForm.Text = "ADD NEW PRODUCT";
             this.btn_viewForm.Click += new System.EventHandler(this.btn_viewForm_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label2.Location = new System.Drawing.Point(227, 112);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 31);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "NEW STOCKS:";
-            // 
-            // dis_newstocks
-            // 
-            this.dis_newstocks.AutoSize = true;
-            this.dis_newstocks.BackColor = System.Drawing.Color.Transparent;
-            this.dis_newstocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dis_newstocks.ForeColor = System.Drawing.Color.LimeGreen;
-            this.dis_newstocks.Location = new System.Drawing.Point(483, 81);
-            this.dis_newstocks.Name = "dis_newstocks";
-            this.dis_newstocks.Size = new System.Drawing.Size(69, 73);
-            this.dis_newstocks.TabIndex = 11;
-            this.dis_newstocks.Text = "0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label4.Location = new System.Drawing.Point(45, 189);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(399, 31);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "CURRENT NO. OF STOCKS:";
-            // 
-            // dis_currentStocks
-            // 
-            this.dis_currentStocks.AutoSize = true;
-            this.dis_currentStocks.BackColor = System.Drawing.Color.Transparent;
-            this.dis_currentStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dis_currentStocks.ForeColor = System.Drawing.Color.LimeGreen;
-            this.dis_currentStocks.Location = new System.Drawing.Point(483, 166);
-            this.dis_currentStocks.Name = "dis_currentStocks";
-            this.dis_currentStocks.Size = new System.Drawing.Size(69, 73);
-            this.dis_currentStocks.TabIndex = 11;
-            this.dis_currentStocks.Text = "0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label6.Location = new System.Drawing.Point(82, 267);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(357, 31);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "STOCKS RUNNING LOW:";
-            // 
-            // dis_runningLow
-            // 
-            this.dis_runningLow.AutoSize = true;
-            this.dis_runningLow.BackColor = System.Drawing.Color.Transparent;
-            this.dis_runningLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dis_runningLow.ForeColor = System.Drawing.Color.LimeGreen;
-            this.dis_runningLow.Location = new System.Drawing.Point(483, 255);
-            this.dis_runningLow.Name = "dis_runningLow";
-            this.dis_runningLow.Size = new System.Drawing.Size(69, 73);
-            this.dis_runningLow.TabIndex = 11;
-            this.dis_runningLow.Text = "0";
-            // 
-            // btn_showStats
-            // 
-            this.btn_showStats.BackColor = System.Drawing.Color.Transparent;
-            this.btn_showStats.BorderRadius = 4;
-            this.btn_showStats.CheckedState.Parent = this.btn_showStats;
-            this.btn_showStats.CustomImages.Parent = this.btn_showStats;
-            this.btn_showStats.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_showStats.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_showStats.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_showStats.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_showStats.DisabledState.Parent = this.btn_showStats;
-            this.btn_showStats.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_showStats.ForeColor = System.Drawing.Color.White;
-            this.btn_showStats.HoverState.Parent = this.btn_showStats;
-            this.btn_showStats.Location = new System.Drawing.Point(691, 466);
-            this.btn_showStats.Name = "btn_showStats";
-            this.btn_showStats.ShadowDecoration.Parent = this.btn_showStats;
-            this.btn_showStats.Size = new System.Drawing.Size(138, 33);
-            this.btn_showStats.TabIndex = 9;
-            this.btn_showStats.Text = "BACK TO STATS";
-            this.btn_showStats.Click += new System.EventHandler(this.btn_showStats_Click);
             // 
             // ProductInvControl
             // 
