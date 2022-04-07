@@ -331,7 +331,7 @@ namespace SSIP.Forms
             this.userPanel.Controls.Add(this.lbl_currentUser);
             this.userPanel.Controls.Add(this.lbl_time);
             this.userPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.userPanel.Location = new System.Drawing.Point(0, 940);
+            this.userPanel.Location = new System.Drawing.Point(0, 934);
             this.userPanel.Name = "userPanel";
             this.userPanel.Size = new System.Drawing.Size(161, 165);
             this.userPanel.TabIndex = 29;
@@ -359,13 +359,14 @@ namespace SSIP.Forms
             this.lbl_time.Size = new System.Drawing.Size(96, 25);
             this.lbl_time.TabIndex = 9;
             this.lbl_time.Text = "00:00:00";
+            this.lbl_time.Visible = false;
             // 
             // settings_panel
             // 
             this.settings_panel.Controls.Add(this.btn_viewchangePass);
             this.settings_panel.Controls.Add(this.btn_auditLogs);
             this.settings_panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.settings_panel.Location = new System.Drawing.Point(0, 818);
+            this.settings_panel.Location = new System.Drawing.Point(0, 812);
             this.settings_panel.Name = "settings_panel";
             this.settings_panel.Size = new System.Drawing.Size(161, 122);
             this.settings_panel.TabIndex = 17;
@@ -408,7 +409,7 @@ namespace SSIP.Forms
             this.btn_main_settings.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_main_settings.FlatAppearance.BorderSize = 0;
             this.btn_main_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_main_settings.Location = new System.Drawing.Point(0, 768);
+            this.btn_main_settings.Location = new System.Drawing.Point(0, 762);
             this.btn_main_settings.Name = "btn_main_settings";
             this.btn_main_settings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_main_settings.Size = new System.Drawing.Size(161, 50);
@@ -426,7 +427,7 @@ namespace SSIP.Forms
             this.services_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.services_panel.Location = new System.Drawing.Point(0, 616);
             this.services_panel.Name = "services_panel";
-            this.services_panel.Size = new System.Drawing.Size(161, 152);
+            this.services_panel.Size = new System.Drawing.Size(161, 146);
             this.services_panel.TabIndex = 17;
             // 
             // btn_Dispatch
@@ -765,7 +766,7 @@ namespace SSIP.Forms
             this.changePassPanel.Controls.Add(this.btn_check);
             this.changePassPanel.Controls.Add(this.lbl_confirmAccess);
             this.changePassPanel.Controls.Add(this.confirmAccessPanel);
-            this.changePassPanel.Location = new System.Drawing.Point(451, 65);
+            this.changePassPanel.Location = new System.Drawing.Point(1105, 325);
             this.changePassPanel.Name = "changePassPanel";
             this.changePassPanel.Size = new System.Drawing.Size(521, 281);
             this.changePassPanel.TabIndex = 32;
@@ -958,6 +959,7 @@ namespace SSIP.Forms
             this.lbl_usernameee.Size = new System.Drawing.Size(86, 15);
             this.lbl_usernameee.TabIndex = 33;
             this.lbl_usernameee.Text = "guna2HtmlLabel1";
+            this.lbl_usernameee.Visible = false;
             // 
             // Dashboard
             // 

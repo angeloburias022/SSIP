@@ -199,6 +199,7 @@
     <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Access.cs" />
     <Compile Include="Helper\SendEmail.cs" />
     <Compile Include="Helper\GenerateCode.cs" />
     <Compile Include="Helper\PasswordEncryptor.cs" />
