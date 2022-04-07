@@ -294,50 +294,55 @@ namespace SSIP.UserformControls
                                     Attachments = attachment.Text
                                 };
 
-                                var resultEmail = SendEmail.Send(body);
-                                if (resultEmail)
+                               SendEmail.Send(body);
+
+                                if (PrintReceipt())
                                 {
-                                    if (PrintReceipt())
+
+                                    //var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                                    //string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
+                                    //string attach = Path.Combine(projectDirectory, @"V2_SSIP\receipts\" + receiptattach.Text);
+
+                                    var receipt = new Emailer
                                     {
+                                        Body = "Good day sir/ma'am " + tb_cusname.Text + "<br/>" +
+                                         "This is your e-receipt for the " + itemsTotal.Text + " A/C unit/units. <br/>" +
+                                         "<br/>" +
+                                         "Thank you for choosing our service. <br/>" +
+                                         "<br/>" +
+                                         "Regards, <br/>" +
+                                         "RFB Airconditioning Services",
+                                        Subject = "Receipt",
+                                        Receiver = tb_email.Text,
+                                        Attachments = receiptattach.Text
+                                    };
 
-                                        //var currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-                                        //string projectDirectory = currentDirectory.Parent.Parent.Parent.FullName;
-                                        //string attach = Path.Combine(projectDirectory, @"V2_SSIP\receipts\" + receiptattach.Text);
+                                    var emailresult = SendEmail.Send(receipt);
 
-                                        var receipt = new Emailer
+                                    while(emailresult == false)
+                                    {
+                                      SendEmail.Send(receipt);
+                                        if (emailresult == true)
+                                            continue;
+                                    }
+
+                                    if (emailresult == true)
+                                    {
+                                        var logs = new AuditTrails
                                         {
-                                            Body = "Good day sir/ma'am " + tb_cusname.Text + "<br/>" +
-                                             "This is your e-receipt for the " + itemsTotal.Text + " A/C unit/units. <br/>" +
-                                             "<br/>" +
-                                             "Thank you for choosing our service. <br/>" +
-                                             "<br/>" +
-                                             "Regards, <br/>" +
-                                             "RFB Airconditioning Services",
-                                            Subject = "Receipt",
-                                            Receiver = tb_email.Text,
-                                            Attachments = receiptattach.Text
+                                            Username = tb_unameAccess.Text,
+                                            AuditActionTypeENUM = (Enums.ActionTypes)9,
+                                            DateTimeStamp = DateTime.Now.ToString(),
+                                            Result = "Succeed",
+                                            Description = "" + tb_unameAccess.Text + " Successfully emailed e-receipt and copy of order"
                                         };
 
-                                        var emailresult = SendEmail.Send(receipt);
+                                        aud.Logs(logs);
+                                        ClearAccessTB();
 
-                                        if (emailresult == true)
-                                        {
-                                            var logs = new AuditTrails
-                                            {
-                                                Username = tb_unameAccess.Text,
-                                                AuditActionTypeENUM = (Enums.ActionTypes)9,
-                                                DateTimeStamp = DateTime.Now.ToString(),
-                                                Result = "Succeed",
-                                                Description = "" + tb_unameAccess.Text + " Successfully emailed e-receipt and copy of order"
-                                            };
-
-                                            aud.Logs(logs);
-                                            ClearAccessTB();
-
-                                            MessageBox.Show("Transaction Succeed", "RECORDED", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        }
-
+                                        MessageBox.Show("Transaction Succeed", "RECORDED", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
+
                                 }
 
                             }
@@ -355,7 +360,7 @@ namespace SSIP.UserformControls
 
             if (result.Count > 0)
             {
-                if (result[6].Length > 0)
+                if (Convert.ToInt32(result[6]) > 5)
                 {
                     GetCam();
                     tb_id.Text = result[0].ToString();
@@ -366,7 +371,7 @@ namespace SSIP.UserformControls
                     cmb_prodCategory.SelectedIndex = Convert.ToInt32(result[5].ToString());
                     tb_quantity.Text = result[6].ToString();
                 }
-                else
+                else if((Convert.ToInt32(result[6]) < 0))
                 {                 
                     if (MessageBox.Show("No stock available, Request new one?", "OUT OF STOCK", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
                     {

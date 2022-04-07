@@ -31,9 +31,9 @@ namespace SSIP.UserformControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridMainPanel = new System.Windows.Forms.Panel();
             this.prodGrid = new System.Windows.Forms.DataGridView();
             this.tb_searchProd = new Guna.UI2.WinForms.Guna2TextBox();
@@ -98,6 +98,8 @@ namespace SSIP.UserformControls
             this.cartesianMonthChart1 = new LiveCharts.WinForms.CartesianChart();
             this.TypeAcPieChart = new LiveCharts.WinForms.PieChart();
             this.salesGridView = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.gridMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodGrid)).BeginInit();
             this.product_panel.SuspendLayout();
@@ -1079,6 +1081,8 @@ namespace SSIP.UserformControls
             // chartTablePanel
             // 
             this.chartTablePanel.BackColor = System.Drawing.Color.Transparent;
+            this.chartTablePanel.Controls.Add(this.label14);
+            this.chartTablePanel.Controls.Add(this.label13);
             this.chartTablePanel.Controls.Add(this.tb_searchOrders);
             this.chartTablePanel.Controls.Add(this.label10);
             this.chartTablePanel.Controls.Add(this.btn_placeOrder);
@@ -1087,7 +1091,7 @@ namespace SSIP.UserformControls
             this.chartTablePanel.Controls.Add(this.salesGridView);
             this.chartTablePanel.Location = new System.Drawing.Point(733, 484);
             this.chartTablePanel.Name = "chartTablePanel";
-            this.chartTablePanel.Size = new System.Drawing.Size(950, 495);
+            this.chartTablePanel.Size = new System.Drawing.Size(950, 643);
             this.chartTablePanel.TabIndex = 174;
             this.chartTablePanel.Visible = false;
             // 
@@ -1176,29 +1180,29 @@ namespace SSIP.UserformControls
             // 
             this.salesGridView.AllowUserToAddRows = false;
             this.salesGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
-            this.salesGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
+            this.salesGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.salesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.salesGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.salesGridView.BackgroundColor = System.Drawing.Color.White;
             this.salesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.salesGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.salesGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.salesGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.salesGridView.EnableHeadersVisualStyles = false;
             this.salesGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
             this.salesGridView.Location = new System.Drawing.Point(32, 77);
@@ -1231,6 +1235,30 @@ namespace SSIP.UserformControls
             this.salesGridView.ThemeStyle.RowsStyle.Height = 22;
             this.salesGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
             this.salesGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label13.Location = new System.Drawing.Point(498, 30);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(449, 25);
+            this.label13.TabIndex = 177;
+            this.label13.Text = "Number of Current Aircon Type Available:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label14.Location = new System.Drawing.Point(360, 547);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(250, 25);
+            this.label14.TabIndex = 177;
+            this.label14.Text = "Total Sales per month ";
             // 
             // SalesControl
             // 
@@ -1269,7 +1297,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.lbl_quantity);
             this.Controls.Add(this.lbl_grandTotal);
             this.Name = "SalesControl";
-            this.Size = new System.Drawing.Size(1743, 970);
+            this.Size = new System.Drawing.Size(1743, 1175);
             this.Load += new System.EventHandler(this.SalesControl_Load);
             this.gridMainPanel.ResumeLayout(false);
             this.gridMainPanel.PerformLayout();
@@ -1352,5 +1380,7 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2DataGridView salesGridView;
         private Guna.UI2.WinForms.Guna2TextBox tb_searchOrders;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
     }
 }
