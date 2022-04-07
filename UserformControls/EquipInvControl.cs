@@ -96,18 +96,22 @@ namespace SSIP.UserformControls
         {
             if (HighAuthority())
             {
-                var details = new EquipmentInventory
+                
+                try
                 {
-                    EquipmentID = Convert.ToInt32(tb_id.Text),
-                    Name = tb_productName.Text,
-                    Description = tb_prodDescr.Text,
-                    Category = "category",
-                    UnitPrice = Convert.ToDecimal(tb_price.Text),
-                    DatePurchased = datepurchased.Value,
-                    RecordedBy = tb_unameAccess.Text,
-                    Status = cmb_equipStatus.SelectedIndex.ToString(),
-                    quantity = Convert.ToInt32(tb_quan.Text)
-                };
+                    var details = new EquipmentInventory
+                    {
+                        EquipmentID = Convert.ToInt32(tb_id.Text),
+                        Name = tb_productName.Text,
+                        Description = tb_prodDescr.Text,
+                        Category = "category",
+                        UnitPrice = Convert.ToDecimal(tb_price.Text),
+                        DatePurchased = datepurchased.Value,
+                        RecordedBy = tb_unameAccess.Text,
+                        Status = cmb_equipStatus.SelectedIndex.ToString(),
+                        quantity = Convert.ToInt32(tb_quan.Text)
+                    };
+                
                 if (Valid.ValidateFields(details))
                 {
                     var result = ic.UpdateItem(details);
@@ -140,7 +144,14 @@ namespace SSIP.UserformControls
                         aud.Logs(failed);
                         MessageBox.Show("Something went wrong");
                     }
-                }    
+                }
+
+                }
+                catch (Exception error)
+                {
+
+                    error.ToString();
+                }
             }        
         }      
         private void UpdateGrid()
@@ -326,11 +337,24 @@ namespace SSIP.UserformControls
         #region event handlers
         private void btn_add_Click(object sender, EventArgs e)
         {
-            AddItem();
+            if (tb_id.Text == "0")
+            {
+                AddItem();
+            }
+            else
+            {
+                MessageBox.Show("There is an existing equipment", "ADD A NEW ONE INSTEAD", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void btn_update_Click(object sender, EventArgs e)
         {
-            UpdateItem();
+            if (tb_id.Text != "0")
+            {
+                UpdateItem(); 
+            }else
+            {
+                MessageBox.Show("This item is not available on our database", "ADD IT AS NEW ONE?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }       
         private void btn_remove_Click(object sender, EventArgs e)
         {
@@ -338,13 +362,16 @@ namespace SSIP.UserformControls
         }
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
-            var result = ic.FindItem(tb_search.Text);
-
-            itemGrid.DataSource = result;
-
-            if (tb_search.Text == "")
+            if (Authorized())
             {
-                UpdateGrid();
+                var result = ic.FindItem(tb_search.Text);
+
+                itemGrid.DataSource = result;
+
+                if (tb_search.Text == "")
+                {
+                    UpdateGrid();
+                } 
             }
         }
         private void tb_prodPrice_TextChanged(object sender, EventArgs e)

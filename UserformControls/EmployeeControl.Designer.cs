@@ -1094,7 +1094,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label4);
             this.Name = "EmployeeControl";
-            this.Size = new System.Drawing.Size(886, 470);
+            this.Size = new System.Drawing.Size(1134, 660);
             this.Load += new System.EventHandler(this.EmployeeControl_Load);
             this.employee_panel.ResumeLayout(false);
             this.employee_panel.PerformLayout();
