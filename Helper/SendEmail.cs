@@ -15,28 +15,30 @@ namespace SSIP.Helper
         {
             try
             {
-                var clientDetails = new SmtpClient
-                {
-                    Port = 587,
-                    Host = "smtp.gmail.com",
-                    EnableSsl = true,
+ 
+                using (var businessDetails = new SmtpClient { 
+                    Port = 587, 
+                    Host = "smtp.gmail.com", 
+                    EnableSsl = true, 
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential("rfbairconditioningservices@gmail.com", "r@f@3l091577"),
-                };
+                })
+                {
+                    using (var mssgDetails = new MailMessage())
+                    {
+                        mssgDetails.From = new MailAddress("rfbairconditioningservices@gmail.com");
+                        mssgDetails.To.Add(emailer.Receiver);
+                        mssgDetails.Subject = emailer.Subject;
+                        mssgDetails.IsBodyHtml = true;
+                        mssgDetails.Body = emailer.Body;
+                        mssgDetails.Attachments.Add(new Attachment(emailer.Attachments));
 
-                var mssgDetails = new MailMessage();
-
-                mssgDetails.From = new MailAddress("rfbairconditioningservices@gmail.com");
-                mssgDetails.To.Add(emailer.Receiver);
-                mssgDetails.Subject = emailer.Subject;
-                mssgDetails.IsBodyHtml = true;
-                mssgDetails.Body = emailer.Body;
-                mssgDetails.Attachments.Add(new Attachment(emailer.Attachments));
-             
-                clientDetails.Send(mssgDetails);
-
-                return true;
+                        businessDetails.Send(mssgDetails);
+                        businessDetails.Dispose();
+                    }
+                    return true;
+                }         
             }
             catch (Exception error)
             {
