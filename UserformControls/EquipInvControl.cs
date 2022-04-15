@@ -427,5 +427,15 @@ namespace SSIP.UserformControls
         {
             e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
+
+        private void cmb_filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Authorized())
+            {
+                var tools = new InventoryController();
+                var result = tools.EquipmentFilter(cmb_filter.SelectedIndex);
+                itemGrid.DataSource = result; 
+            }
+        }
     }
 }

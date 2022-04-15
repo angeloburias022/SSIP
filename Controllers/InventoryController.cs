@@ -259,6 +259,74 @@ namespace SSIP.Controllers
             }
 
         }
+
+        public DataTable ProductFilter(int selected)
+        {
+            //   var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                if (selected == 0)
+                {
+
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand("[SpGetNewStocksList]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                else if (selected == 1)
+                {
+
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand("[SpGetProducts]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+
+                }
+                else if (selected == 2)
+                {
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand("[SpGetRunningLowStocksList]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+
+                }
+            }
+
+            return dt;
+        }
         #endregion
 
         #region equipment inventory main ops
@@ -388,6 +456,112 @@ namespace SSIP.Controllers
 
         }
 
+        public DataTable EquipmentFilter(int selected)
+        {
+            //   var details = "";
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                if (selected == 0)
+                {
+
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand("[SpGetBrandNewEquipmentsList]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                } // BRAND NEW EQUIPMENT
+                else if (selected == 1)
+                {
+
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand("[SpGetNewEquipmentsList]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+
+                } // NEW EQUIPMENT
+                else if (selected == 2)
+                {
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand("[SpGetRunningSlightlyUsedEquipmentsList]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+
+                } // SLIGHTLY USED
+                else if (selected == 3)
+                {
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand("[SpGetRunningUsedEquipmentsList]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+
+                } // USED EQUIPMENT
+                else if (selected == 4)
+                {
+                    con.Open();
+                    using (SqlCommand com = new SqlCommand("[SpGetRunningLowEquipmentsList]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+
+                } // RUNNING LOW EQUIP
+
+            }
+
+            return dt;
+        }
         public string GetCurrentEquipments()
         {
             var details = "";
@@ -486,7 +660,7 @@ namespace SSIP.Controllers
             using (var con = new SqlConnection(db.ConString()))
             {
                 con.Open();
-                using (var com = new SqlCommand("[SpGetRunningLowEquipmentsNo]", con))
+                using (var com = new SqlCommand("[SpGetSlightlyUsedEquipmentsNo]", con))
                 {
 
                     com.CommandType = CommandType.StoredProcedure;
@@ -495,7 +669,7 @@ namespace SSIP.Controllers
 
                     while (reader.Read())
                     {
-                        details = reader["RunningLowEquipments"].ToString();
+                        details = reader["SlightlyUsed"].ToString();
                     }
                     con.Close();
                     return details;

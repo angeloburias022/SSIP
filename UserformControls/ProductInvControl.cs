@@ -604,5 +604,15 @@ namespace SSIP.UserformControls
                 tb_id.Text = "0";
             }
         }
+
+        private void cmb_filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Authorized())
+            {
+                var tools = new InventoryController();
+                var result = tools.ProductFilter(cmb_filter.SelectedIndex);
+                ProductGrid.DataSource = result; 
+            }
+        }
     }
 }

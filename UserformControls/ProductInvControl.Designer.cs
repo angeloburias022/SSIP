@@ -93,6 +93,8 @@ namespace SSIP.UserformControls
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_viewForm = new Guna.UI2.WinForms.Guna2Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmb_filter = new Guna.UI2.WinForms.Guna2ComboBox();
             this.product_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGrid)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
@@ -873,6 +875,8 @@ namespace SSIP.UserformControls
             this.gridMainPanel.Controls.Add(this.btn_remove);
             this.gridMainPanel.Controls.Add(this.btn_viewProducts);
             this.gridMainPanel.Controls.Add(this.label7);
+            this.gridMainPanel.Controls.Add(this.cmb_filter);
+            this.gridMainPanel.Controls.Add(this.label3);
             this.gridMainPanel.Location = new System.Drawing.Point(435, 14);
             this.gridMainPanel.Name = "gridMainPanel";
             this.gridMainPanel.Size = new System.Drawing.Size(410, 370);
@@ -1080,8 +1084,7 @@ namespace SSIP.UserformControls
             this.stats_panel.Controls.Add(this.label4);
             this.stats_panel.Controls.Add(this.label2);
             this.stats_panel.Controls.Add(this.btn_viewForm);
-            this.stats_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stats_panel.Location = new System.Drawing.Point(0, 0);
+            this.stats_panel.Location = new System.Drawing.Point(955, 104);
             this.stats_panel.Name = "stats_panel";
             this.stats_panel.Size = new System.Drawing.Size(2066, 787);
             this.stats_panel.TabIndex = 140;
@@ -1180,6 +1183,45 @@ namespace SSIP.UserformControls
             this.btn_viewForm.Text = "ADD NEW PRODUCT";
             this.btn_viewForm.Click += new System.EventHandler(this.btn_viewForm_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(255, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 20);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Filter";
+            // 
+            // cmb_filter
+            // 
+            this.cmb_filter.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_filter.BorderRadius = 4;
+            this.cmb_filter.DisabledState.Parent = this.cmb_filter;
+            this.cmb_filter.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_filter.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_filter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_filter.FocusedState.Parent = this.cmb_filter;
+            this.cmb_filter.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_filter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_filter.HoverState.Parent = this.cmb_filter;
+            this.cmb_filter.ItemHeight = 30;
+            this.cmb_filter.Items.AddRange(new object[] {
+            "New Stocks",
+            "Current Stocks",
+            "Running Low"});
+            this.cmb_filter.ItemsAppearance.Parent = this.cmb_filter;
+            this.cmb_filter.Location = new System.Drawing.Point(259, 37);
+            this.cmb_filter.Name = "cmb_filter";
+            this.cmb_filter.ShadowDecoration.Parent = this.cmb_filter;
+            this.cmb_filter.Size = new System.Drawing.Size(135, 36);
+            this.cmb_filter.TabIndex = 13;
+            this.cmb_filter.SelectedIndexChanged += new System.EventHandler(this.cmb_filter_SelectedIndexChanged);
+            this.cmb_filter.SelectedValueChanged += new System.EventHandler(this.cmb_prodCategory_SelectedValueChanged);
+            // 
             // ProductInvControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1274,5 +1316,7 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label dis_runningLow;
         private System.Windows.Forms.Label label6;
         private Guna.UI2.WinForms.Guna2Button btn_showStats;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_filter;
+        private System.Windows.Forms.Label label3;
     }
 }
