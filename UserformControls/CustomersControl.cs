@@ -1,4 +1,5 @@
 ﻿using SSIP.Controllers;
+using SSIP.Forms;
 using SSIP.Helper;
 using SSIP.Models;
 using System;
@@ -8,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +27,7 @@ namespace SSIP.UserformControls
         {
             InitializeComponent();
         }
+
         #endregion
 
         #region view, add, update, new buttons     
@@ -221,13 +224,16 @@ namespace SSIP.UserformControls
         #region operator / security access
         private void tb_pass_Leave(object sender, EventArgs e)
         {
+            typeof(Panel).InvokeMember("DoubleBuffered",
+BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+null, confirmAccessPanel, new object[] { true });
             var creds = new User
             {
                 Username = tb_unameAccess.Text,
                 Password = tb_pass.Text
             };
 
-            var result = AccessLogin(creds);
+            var result = Access.AuthorizeAccess(creds);
 
             if (result != true)
             {
@@ -236,7 +242,7 @@ namespace SSIP.UserformControls
             }
             else
             {
-           
+
             }
         }
         public bool AccessLogin(User users)
@@ -363,12 +369,13 @@ namespace SSIP.UserformControls
         }
         private void CustomersControl_Load(object sender, EventArgs e)
         {
+       //     this.DoubleBuffered = true;
             if (tb_personID.Text != "0")
             {
                 btn_saveCus.Visible = true;
             }
 
-            customersGrid.DataSource = cusControl.GetCustomers();
+           
         }
         private void customersGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -463,6 +470,7 @@ namespace SSIP.UserformControls
         {
             if (HighAuthority())
             {
+                customersGrid.DataSource = cusControl.GetCustomers();
                 customersMainPanel.Visible = true;
                 customersMainPanel.Dock = DockStyle.Fill;
                 customersMainPanel.BringToFront();
@@ -510,6 +518,22 @@ namespace SSIP.UserformControls
             {
                 tb_pass.Enabled = true;
             }
+        }
+
+        private void customersGrid_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            MainserviceForm mainservice = new MainserviceForm();      
+            mainservice.firstname = this.customersGrid.CurrentRow.Cells[0].Value.ToString();
+            mainservice.lastname = this.customersGrid.CurrentRow.Cells[1].Value.ToString();
+            mainservice.MobleNo = this.customersGrid.CurrentRow.Cells[2].Value.ToString();
+            mainservice.TelephoneNo = this.customersGrid.CurrentRow.Cells[3].Value.ToString();
+            mainservice.HouseNo = this.customersGrid.CurrentRow.Cells[4].Value.ToString();
+            mainservice.Street = this.customersGrid.CurrentRow.Cells[5].Value.ToString();
+            mainservice.Barangay = this.customersGrid.CurrentRow.Cells[6].Value.ToString();
+            mainservice.City = this.customersGrid.CurrentRow.Cells[7].Value.ToString();
+            mainservice.CustomerID = this.customersGrid.CurrentRow.Cells[10].Value.ToString();
+            mainservice.ShowDialog();
+
         }
     }
 }
