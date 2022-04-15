@@ -31,9 +31,9 @@ namespace SSIP.UserformControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridMainPanel = new System.Windows.Forms.Panel();
             this.prodGrid = new System.Windows.Forms.DataGridView();
             this.tb_searchProd = new Guna.UI2.WinForms.Guna2TextBox();
@@ -92,14 +92,15 @@ namespace SSIP.UserformControls
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_viewOrders = new Guna.UI2.WinForms.Guna2Button();
             this.chartTablePanel = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tb_searchOrders = new Guna.UI2.WinForms.Guna2TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_placeOrder = new Guna.UI2.WinForms.Guna2Button();
             this.cartesianMonthChart1 = new LiveCharts.WinForms.CartesianChart();
             this.TypeAcPieChart = new LiveCharts.WinForms.PieChart();
             this.salesGridView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.gridMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodGrid)).BeginInit();
             this.product_panel.SuspendLayout();
@@ -231,7 +232,7 @@ namespace SSIP.UserformControls
             this.product_panel.Controls.Add(this.label11);
             this.product_panel.Controls.Add(this.label12);
             this.product_panel.Controls.Add(this.lbl_prodName);
-            this.product_panel.Location = new System.Drawing.Point(369, 22);
+            this.product_panel.Location = new System.Drawing.Point(382, 22);
             this.product_panel.Name = "product_panel";
             this.product_panel.Size = new System.Drawing.Size(352, 363);
             this.product_panel.TabIndex = 19;
@@ -525,10 +526,10 @@ namespace SSIP.UserformControls
             this.btn_scan.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_scan.ForeColor = System.Drawing.Color.White;
             this.btn_scan.HoverState.Parent = this.btn_scan;
-            this.btn_scan.Location = new System.Drawing.Point(769, 38);
+            this.btn_scan.Location = new System.Drawing.Point(733, 419);
             this.btn_scan.Name = "btn_scan";
             this.btn_scan.ShadowDecoration.Parent = this.btn_scan;
-            this.btn_scan.Size = new System.Drawing.Size(164, 33);
+            this.btn_scan.Size = new System.Drawing.Size(129, 33);
             this.btn_scan.TabIndex = 9;
             this.btn_scan.Text = "SCAN PRODUCT";
             this.btn_scan.Click += new System.EventHandler(this.btn_scan_Click);
@@ -574,7 +575,7 @@ namespace SSIP.UserformControls
             this.tb_amountPaid.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_amountPaid.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_amountPaid.HoverState.Parent = this.tb_amountPaid;
-            this.tb_amountPaid.Location = new System.Drawing.Point(514, 391);
+            this.tb_amountPaid.Location = new System.Drawing.Point(545, 391);
             this.tb_amountPaid.Name = "tb_amountPaid";
             this.tb_amountPaid.PasswordChar = '\0';
             this.tb_amountPaid.PlaceholderText = "";
@@ -589,7 +590,7 @@ namespace SSIP.UserformControls
             this.lbl_amountPaid.BackColor = System.Drawing.Color.Transparent;
             this.lbl_amountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_amountPaid.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_amountPaid.Location = new System.Drawing.Point(373, 400);
+            this.lbl_amountPaid.Location = new System.Drawing.Point(404, 400);
             this.lbl_amountPaid.Name = "lbl_amountPaid";
             this.lbl_amountPaid.Size = new System.Drawing.Size(135, 20);
             this.lbl_amountPaid.TabIndex = 20;
@@ -682,7 +683,7 @@ namespace SSIP.UserformControls
             this.btn_finalized.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_finalized.ForeColor = System.Drawing.Color.White;
             this.btn_finalized.HoverState.Parent = this.btn_finalized;
-            this.btn_finalized.Location = new System.Drawing.Point(778, 434);
+            this.btn_finalized.Location = new System.Drawing.Point(812, 381);
             this.btn_finalized.Name = "btn_finalized";
             this.btn_finalized.ShadowDecoration.Parent = this.btn_finalized;
             this.btn_finalized.Size = new System.Drawing.Size(111, 32);
@@ -744,7 +745,7 @@ namespace SSIP.UserformControls
             this.btn_cancelOrder.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_cancelOrder.ForeColor = System.Drawing.Color.White;
             this.btn_cancelOrder.HoverState.Parent = this.btn_cancelOrder;
-            this.btn_cancelOrder.Location = new System.Drawing.Point(834, 388);
+            this.btn_cancelOrder.Location = new System.Drawing.Point(868, 335);
             this.btn_cancelOrder.Name = "btn_cancelOrder";
             this.btn_cancelOrder.ShadowDecoration.Parent = this.btn_cancelOrder;
             this.btn_cancelOrder.Size = new System.Drawing.Size(111, 40);
@@ -768,7 +769,7 @@ namespace SSIP.UserformControls
             this.tb_address.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_address.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_address.HoverState.Parent = this.tb_address;
-            this.tb_address.Location = new System.Drawing.Point(743, 317);
+            this.tb_address.Location = new System.Drawing.Point(777, 264);
             this.tb_address.Name = "tb_address";
             this.tb_address.PasswordChar = '\0';
             this.tb_address.PlaceholderText = "DELIVERY ADDRESS";
@@ -783,7 +784,7 @@ namespace SSIP.UserformControls
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(741, 296);
+            this.label3.Location = new System.Drawing.Point(775, 243);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 20);
             this.label3.TabIndex = 8;
@@ -795,7 +796,7 @@ namespace SSIP.UserformControls
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(737, 116);
+            this.label4.Location = new System.Drawing.Point(771, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 20);
             this.label4.TabIndex = 8;
@@ -817,7 +818,7 @@ namespace SSIP.UserformControls
             this.tb_cusname.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_cusname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_cusname.HoverState.Parent = this.tb_cusname;
-            this.tb_cusname.Location = new System.Drawing.Point(743, 139);
+            this.tb_cusname.Location = new System.Drawing.Point(777, 86);
             this.tb_cusname.Name = "tb_cusname";
             this.tb_cusname.PasswordChar = '\0';
             this.tb_cusname.PlaceholderText = "Name here";
@@ -828,7 +829,7 @@ namespace SSIP.UserformControls
             // 
             // productPictureBox
             // 
-            this.productPictureBox.Location = new System.Drawing.Point(932, 190);
+            this.productPictureBox.Location = new System.Drawing.Point(1054, 170);
             this.productPictureBox.Name = "productPictureBox";
             this.productPictureBox.Size = new System.Drawing.Size(132, 96);
             this.productPictureBox.TabIndex = 167;
@@ -851,7 +852,7 @@ namespace SSIP.UserformControls
             this.tb_contact.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_contact.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_contact.HoverState.Parent = this.tb_contact;
-            this.tb_contact.Location = new System.Drawing.Point(743, 201);
+            this.tb_contact.Location = new System.Drawing.Point(777, 148);
             this.tb_contact.Name = "tb_contact";
             this.tb_contact.PasswordChar = '\0';
             this.tb_contact.PlaceholderText = "Contact no";
@@ -866,7 +867,7 @@ namespace SSIP.UserformControls
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(741, 178);
+            this.label5.Location = new System.Drawing.Point(775, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 20);
             this.label5.TabIndex = 168;
@@ -886,7 +887,7 @@ namespace SSIP.UserformControls
             this.tb_compute.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.tb_compute.ForeColor = System.Drawing.Color.White;
             this.tb_compute.HoverState.Parent = this.tb_compute;
-            this.tb_compute.Location = new System.Drawing.Point(717, 388);
+            this.tb_compute.Location = new System.Drawing.Point(751, 335);
             this.tb_compute.Name = "tb_compute";
             this.tb_compute.ShadowDecoration.Parent = this.tb_compute;
             this.tb_compute.Size = new System.Drawing.Size(111, 40);
@@ -910,7 +911,7 @@ namespace SSIP.UserformControls
             this.tb_email.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_email.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_email.HoverState.Parent = this.tb_email;
-            this.tb_email.Location = new System.Drawing.Point(743, 257);
+            this.tb_email.Location = new System.Drawing.Point(777, 204);
             this.tb_email.Name = "tb_email";
             this.tb_email.PasswordChar = '\0';
             this.tb_email.PlaceholderText = "Email";
@@ -926,7 +927,7 @@ namespace SSIP.UserformControls
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(739, 237);
+            this.label6.Location = new System.Drawing.Point(773, 184);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 20);
             this.label6.TabIndex = 171;
@@ -1070,10 +1071,10 @@ namespace SSIP.UserformControls
             this.btn_viewOrders.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_viewOrders.ForeColor = System.Drawing.Color.White;
             this.btn_viewOrders.HoverState.Parent = this.btn_viewOrders;
-            this.btn_viewOrders.Location = new System.Drawing.Point(769, 77);
+            this.btn_viewOrders.Location = new System.Drawing.Point(868, 419);
             this.btn_viewOrders.Name = "btn_viewOrders";
             this.btn_viewOrders.ShadowDecoration.Parent = this.btn_viewOrders;
-            this.btn_viewOrders.Size = new System.Drawing.Size(164, 33);
+            this.btn_viewOrders.Size = new System.Drawing.Size(118, 33);
             this.btn_viewOrders.TabIndex = 9;
             this.btn_viewOrders.Text = "VIEW ORDERS";
             this.btn_viewOrders.Click += new System.EventHandler(this.btn_viewOrders_Click);
@@ -1094,6 +1095,30 @@ namespace SSIP.UserformControls
             this.chartTablePanel.Size = new System.Drawing.Size(950, 643);
             this.chartTablePanel.TabIndex = 174;
             this.chartTablePanel.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label14.Location = new System.Drawing.Point(360, 547);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(250, 25);
+            this.label14.TabIndex = 177;
+            this.label14.Text = "Total Sales per month ";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label13.Location = new System.Drawing.Point(498, 30);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(449, 25);
+            this.label13.TabIndex = 177;
+            this.label13.Text = "Number of Current Aircon Type Available:";
             // 
             // tb_searchOrders
             // 
@@ -1180,29 +1205,29 @@ namespace SSIP.UserformControls
             // 
             this.salesGridView.AllowUserToAddRows = false;
             this.salesGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
-            this.salesGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
+            this.salesGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.salesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.salesGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.salesGridView.BackgroundColor = System.Drawing.Color.White;
             this.salesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.salesGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.salesGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.salesGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.salesGridView.EnableHeadersVisualStyles = false;
             this.salesGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
             this.salesGridView.Location = new System.Drawing.Point(32, 77);
@@ -1236,29 +1261,17 @@ namespace SSIP.UserformControls
             this.salesGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
             this.salesGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // label13
+            // label15
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label13.Location = new System.Drawing.Point(498, 30);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(449, 25);
-            this.label13.TabIndex = 177;
-            this.label13.Text = "Number of Current Aircon Type Available:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label14.Location = new System.Drawing.Point(360, 547);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(250, 25);
-            this.label14.TabIndex = 177;
-            this.label14.Text = "Total Sales per month ";
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label15.Location = new System.Drawing.Point(756, 30);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(248, 31);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "Customer Details:";
             // 
             // SalesControl
             // 
@@ -1274,6 +1287,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.label5);
             this.Controls.Add(this.productPictureBox);
             this.Controls.Add(this.cboDevice1);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.display_change);
             this.Controls.Add(this.btn_cancelOrder);
             this.Controls.Add(this.btn_finalized);
@@ -1382,5 +1396,6 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label15;
     }
 }

@@ -371,9 +371,9 @@ namespace SSIP.UserformControls
                     cmb_prodCategory.SelectedIndex = Convert.ToInt32(result[5].ToString());
                     tb_quantity.Text = result[6].ToString();
                 }
-                else if((Convert.ToInt32(result[6]) < 0))
+                else if((Convert.ToInt32(result[6]) < 1))
                 {                 
-                    if (MessageBox.Show("No stock available, Request new one?", "OUT OF STOCK", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show("No stock available, would you like to request?", "OUT OF STOCK", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         GetCam();
                         tb_id.Text = result[0].ToString();
