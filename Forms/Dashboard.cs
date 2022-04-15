@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,7 +25,7 @@ namespace SSIP.Forms
         public Dashboard()
         {
             InitializeComponent();
-            CustomizeDesign();
+             CustomizeDesign();
      //       salesControl1.user = lbl_currentUser.;
         }
   
@@ -35,12 +36,16 @@ namespace SSIP.Forms
         private void Dashboard_Load(object sender, EventArgs e)
         {
             time_timer.Start();
-            //this.dispatchControl1.Visible = false;
-            //this.mainServiceControl.BringToFront();
-            //   this.mainServiceControl.Visible = false;
+            ////this.dispatchControl1.Visible = false;
+            ////this.mainServiceControl.BringToFront();
+            ////   this.mainServiceControl.Visible = false;
             Charts();
-          
+            //typeof(Panel).InvokeMember("DoubleBuffered",
+            // BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+            // null, Customers_panel, new object[] { true });
         }
+
+    
 
         private void Charts()
         {
