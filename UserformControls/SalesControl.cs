@@ -414,7 +414,7 @@ namespace SSIP.UserformControls
             {
                 if (GetCam())
                 {
-                    btn_scan.Text = "SCANNING";
+                    btn_scan.Text = "SCANNING QR";
                     btn_scan.FillColor = Color.Red;
                 } 
             }
@@ -468,7 +468,8 @@ namespace SSIP.UserformControls
             {
                 if (Authorized())
                 {
-                    addProduct(); 
+                    addProduct();
+                    ShowCustomerFields();
                 }
             }
             else if (tb_quantity.Text == "0")
@@ -1190,6 +1191,19 @@ namespace SSIP.UserformControls
                 salesGridView.DataSource = tools.FindOrders(tb_searchOrders.Text);
                 salesGridView.Update();
             }
+        }
+
+        private void ShowCustomerFields()
+        {
+            tb_cusname.Visible = true;
+            tb_contact.Visible = true;
+            tb_email.Visible = true;
+            tb_address.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            label5.Visible = true;
+            label6.Visible = true;
+            label15.Visible = true;
         }
     }
 }

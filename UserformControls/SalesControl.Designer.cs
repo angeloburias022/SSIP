@@ -31,9 +31,9 @@ namespace SSIP.UserformControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridMainPanel = new System.Windows.Forms.Panel();
             this.prodGrid = new System.Windows.Forms.DataGridView();
             this.tb_searchProd = new Guna.UI2.WinForms.Guna2TextBox();
@@ -101,6 +101,7 @@ namespace SSIP.UserformControls
             this.TypeAcPieChart = new LiveCharts.WinForms.PieChart();
             this.salesGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.gridMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodGrid)).BeginInit();
             this.product_panel.SuspendLayout();
@@ -116,6 +117,7 @@ namespace SSIP.UserformControls
             this.gridMainPanel.Controls.Add(this.prodGrid);
             this.gridMainPanel.Controls.Add(this.tb_searchProd);
             this.gridMainPanel.Controls.Add(this.label7);
+            this.gridMainPanel.Controls.Add(this.label16);
             this.gridMainPanel.Location = new System.Drawing.Point(3, 22);
             this.gridMainPanel.Name = "gridMainPanel";
             this.gridMainPanel.Size = new System.Drawing.Size(360, 277);
@@ -526,10 +528,10 @@ namespace SSIP.UserformControls
             this.btn_scan.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_scan.ForeColor = System.Drawing.Color.White;
             this.btn_scan.HoverState.Parent = this.btn_scan;
-            this.btn_scan.Location = new System.Drawing.Point(733, 419);
+            this.btn_scan.Location = new System.Drawing.Point(751, 380);
             this.btn_scan.Name = "btn_scan";
             this.btn_scan.ShadowDecoration.Parent = this.btn_scan;
-            this.btn_scan.Size = new System.Drawing.Size(129, 33);
+            this.btn_scan.Size = new System.Drawing.Size(111, 40);
             this.btn_scan.TabIndex = 9;
             this.btn_scan.Text = "SCAN PRODUCT";
             this.btn_scan.Click += new System.EventHandler(this.btn_scan_Click);
@@ -683,10 +685,10 @@ namespace SSIP.UserformControls
             this.btn_finalized.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_finalized.ForeColor = System.Drawing.Color.White;
             this.btn_finalized.HoverState.Parent = this.btn_finalized;
-            this.btn_finalized.Location = new System.Drawing.Point(812, 381);
+            this.btn_finalized.Location = new System.Drawing.Point(868, 381);
             this.btn_finalized.Name = "btn_finalized";
             this.btn_finalized.ShadowDecoration.Parent = this.btn_finalized;
-            this.btn_finalized.Size = new System.Drawing.Size(111, 32);
+            this.btn_finalized.Size = new System.Drawing.Size(111, 40);
             this.btn_finalized.TabIndex = 9;
             this.btn_finalized.Text = "FINALIZED";
             this.btn_finalized.Click += new System.EventHandler(this.btn_finalized_Click);
@@ -777,6 +779,7 @@ namespace SSIP.UserformControls
             this.tb_address.ShadowDecoration.Parent = this.tb_address;
             this.tb_address.Size = new System.Drawing.Size(181, 64);
             this.tb_address.TabIndex = 11;
+            this.tb_address.Visible = false;
             // 
             // label3
             // 
@@ -789,6 +792,7 @@ namespace SSIP.UserformControls
             this.label3.Size = new System.Drawing.Size(148, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Delivery Address:";
+            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -801,6 +805,7 @@ namespace SSIP.UserformControls
             this.label4.Size = new System.Drawing.Size(142, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "Customer Name:";
+            this.label4.Visible = false;
             // 
             // tb_cusname
             // 
@@ -826,6 +831,7 @@ namespace SSIP.UserformControls
             this.tb_cusname.ShadowDecoration.Parent = this.tb_cusname;
             this.tb_cusname.Size = new System.Drawing.Size(178, 36);
             this.tb_cusname.TabIndex = 11;
+            this.tb_cusname.Visible = false;
             // 
             // productPictureBox
             // 
@@ -860,6 +866,7 @@ namespace SSIP.UserformControls
             this.tb_contact.ShadowDecoration.Parent = this.tb_contact;
             this.tb_contact.Size = new System.Drawing.Size(178, 36);
             this.tb_contact.TabIndex = 169;
+            this.tb_contact.Visible = false;
             // 
             // label5
             // 
@@ -872,6 +879,7 @@ namespace SSIP.UserformControls
             this.label5.Size = new System.Drawing.Size(104, 20);
             this.label5.TabIndex = 168;
             this.label5.Text = "Contact No:";
+            this.label5.Visible = false;
             // 
             // tb_compute
             // 
@@ -919,6 +927,7 @@ namespace SSIP.UserformControls
             this.tb_email.ShadowDecoration.Parent = this.tb_email;
             this.tb_email.Size = new System.Drawing.Size(178, 36);
             this.tb_email.TabIndex = 172;
+            this.tb_email.Visible = false;
             this.tb_email.TextChanged += new System.EventHandler(this.tb_email_TextChanged);
             // 
             // label6
@@ -932,6 +941,7 @@ namespace SSIP.UserformControls
             this.label6.Size = new System.Drawing.Size(53, 20);
             this.label6.TabIndex = 171;
             this.label6.Text = "Email";
+            this.label6.Visible = false;
             // 
             // attachment
             // 
@@ -1071,7 +1081,7 @@ namespace SSIP.UserformControls
             this.btn_viewOrders.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btn_viewOrders.ForeColor = System.Drawing.Color.White;
             this.btn_viewOrders.HoverState.Parent = this.btn_viewOrders;
-            this.btn_viewOrders.Location = new System.Drawing.Point(868, 419);
+            this.btn_viewOrders.Location = new System.Drawing.Point(805, 424);
             this.btn_viewOrders.Name = "btn_viewOrders";
             this.btn_viewOrders.ShadowDecoration.Parent = this.btn_viewOrders;
             this.btn_viewOrders.Size = new System.Drawing.Size(118, 33);
@@ -1205,29 +1215,29 @@ namespace SSIP.UserformControls
             // 
             this.salesGridView.AllowUserToAddRows = false;
             this.salesGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
-            this.salesGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
+            this.salesGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.salesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.salesGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.salesGridView.BackgroundColor = System.Drawing.Color.White;
             this.salesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.salesGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.salesGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.salesGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.salesGridView.EnableHeadersVisualStyles = false;
             this.salesGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
             this.salesGridView.Location = new System.Drawing.Point(32, 77);
@@ -1267,11 +1277,24 @@ namespace SSIP.UserformControls
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label15.Location = new System.Drawing.Point(756, 30);
+            this.label15.Location = new System.Drawing.Point(738, 27);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(248, 31);
             this.label15.TabIndex = 8;
             this.label15.Text = "Customer Details:";
+            this.label15.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label16.Location = new System.Drawing.Point(3, 64);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(146, 31);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "ORDERS:";
             // 
             // SalesControl
             // 
@@ -1397,5 +1420,6 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }
