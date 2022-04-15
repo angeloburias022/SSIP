@@ -321,8 +321,8 @@ namespace SSIP.UserformControls
 
                                     while(emailresult == false)
                                     {
-                                      SendEmail.Send(receipt);
-                                        if (emailresult == true)
+                                      var secondres = SendEmail.Send(receipt);
+                                        if (secondres == true)
                                             continue;
                                     }
 
