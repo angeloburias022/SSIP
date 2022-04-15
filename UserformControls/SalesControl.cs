@@ -801,8 +801,8 @@ namespace SSIP.UserformControls
         {
             if (Authorized())
             {
-                e.Graphics.DrawString("*******************************", new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(50, 30));
-                e.Graphics.DrawString("Receipt", new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(180, 60));
+                e.Graphics.DrawString("*******************************", new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(120, 30));
+                e.Graphics.DrawString("Receipt", new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(250, 60));
 
                 e.Graphics.DrawString("RFB Airconditioning Services", new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.LimeGreen, new Point(180, 90));
                 e.Graphics.DrawString("38 C. Jose st. Malibay Pasay City", new Font("Microsoft Sans Serif", 25, FontStyle.Bold), Brushes.Black, new Point(140, 120));
