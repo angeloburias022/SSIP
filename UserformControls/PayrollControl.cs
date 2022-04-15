@@ -18,7 +18,10 @@ namespace SSIP.UserformControls
         AuditController aud = new AuditController();
         PayRollController pr = new PayRollController();
         EmployeesController emp = new EmployeesController();
-      
+
+
+        public string UserFirstname { get; set; }
+
         public PayrollControl()
         {
             InitializeComponent();
@@ -249,7 +252,7 @@ namespace SSIP.UserformControls
                     //     lbl_ph_print.Text = tb_pagibig.Text;
                     lbl_others_print.Text = tb_otherAmount.Text;
                     lbl_wage.Text = tb_totalAmount.Text;
-                    lbl_signature.Text = tb_unameAccess.Text;
+                    lbl_signature.Text = lbl_usersfname.Text;
                 }
                 else
                 {
@@ -626,26 +629,27 @@ namespace SSIP.UserformControls
             if (result != true)
             {
                 MessageBox.Show("Make sure your credentials is correct");
-                btn_filter.Enabled = false;
-                btn_generateLayout.Enabled = false;
-                btn_printLayout.Enabled = false;
-                btn_viewPayrolls.Enabled = false;
-                btn_compute.Enabled = false;
+                //btn_filter.Enabled = false;
+                //btn_generateLayout.Enabled = false;
+                //btn_printLayout.Enabled = false;
+                //btn_viewPayrolls.Enabled = false;
+                //btn_compute.Enabled = false;
 
-                tb_unameAccess.ReadOnly = false;
-                tb_pass.ReadOnly = false;
+                //tb_unameAccess.ReadOnly = false;
+                //tb_pass.ReadOnly = false;
             }
             else
             {
-                btn_filter.Enabled = true;
-                btn_generateLayout.Enabled = true;
-                btn_printLayout.Enabled = true;
-                btn_viewPayrolls.Enabled = true;
-                btn_compute.Enabled = true;
+                //btn_filter.Enabled = true;
+                //btn_generateLayout.Enabled = true;
+                //btn_printLayout.Enabled = true;
+                //btn_viewPayrolls.Enabled = true;
+                //btn_compute.Enabled = true;
 
-            //    tb_unameAccess.ReadOnly = true;
-            //    tb_pass.ReadOnly = true;
-
+                //    tb_unameAccess.ReadOnly = true;
+                //    tb_pass.ReadOnly = true;
+                var ac = new AccessController();
+                lbl_usersfname.Text = ac.GetCurrentUserDetails(tb_unameAccess.Text);
             
             }
         }
