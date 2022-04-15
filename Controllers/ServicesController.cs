@@ -250,7 +250,7 @@ namespace SSIP.Controllers
                 {
                     conn.Open();
 
-                    if (sched.Status == "Dispatch" || sched.Status == "Done / Paid") // add dispatch
+                    if (sched.Status == "Dispatch" || sched.Status == "Done / Paid" || sched.Status == "Done / Not-paid") // add dispatch
                     {
                         try
                         {
@@ -422,7 +422,64 @@ namespace SSIP.Controllers
             }
             return dt;
         }
+        public DataTable GetPaid()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetPaid]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
 
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
+        public DataTable GetNotPaid()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetNotPaid]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
         public DataTable GetSchedules()
         {
            try
@@ -454,7 +511,6 @@ namespace SSIP.Controllers
 
             return dt;
         }
-
         public DataTable FindSchedule(string searched)
         {
             DataTable dt = new DataTable();
@@ -484,7 +540,6 @@ namespace SSIP.Controllers
             }
            
         }
-
         public DataTable FindDispatch(string searched)
         {
             DataTable dt = new DataTable();
@@ -515,6 +570,33 @@ namespace SSIP.Controllers
              
             }
 
+        }
+
+        public DataTable FilterServiceStatus(int selected)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    if (selected == 1 || selected == -1)
+                    {
+                        return GetDispatches();
+                    }
+                    else if (selected == 2)
+                    {
+                        return GetNotPaid();
+                    }else if(selected == 3)
+                    {
+                        return GetPaid();
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
         }
 
         #endregion

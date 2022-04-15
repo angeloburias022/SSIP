@@ -38,115 +38,118 @@ namespace SSIP.UserformControls
         }
         private void UpdateChanges()
         {
-            if (MessageBox.Show("CONFIRM?",
-                      "UPDATE CHANGES", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            if (HighAuthority())
             {
-                var dispatch = new Dispatch();
-                var sched = new Schedule();
-                var cus = new User();
-                var per = new Customer();
-                var address = new Address();
-
-
-                dispatch = new Dispatch
+                if (MessageBox.Show("CONFIRM?",
+                             "UPDATE CHANGES", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
-                    DispatchID = Convert.ToInt32(tb_dispatchID.Text),
-                    dispatchdate = Convert.ToDateTime(dispatchDate.Text),
-                    TimeIn = tb_timein.Text,
-                    TimeOut = tb_timeout.Text,
-                    AssignTeam = tb_assign1.Text
-                };
+                    var dispatch = new Dispatch();
+                    var sched = new Schedule();
+                    var cus = new User();
+                    var per = new Customer();
+                    var address = new Address();
 
 
-                cus = new User
-                {
-                    Username = tb_recorded.Text,
-                    UserID = Convert.ToInt32(tb_customerID.Text),
-                    Firstname = tb_fname.Text,
-                    Lastname = tb_lname.Text,
-                    ContactNumber = tb_mobile.Text,
-                    TelephoneNo = tb_tel.Text,
-
-                };
-
-                per = new Customer
-                {
-                    CustomerID = Convert.ToInt32(tb_customerID.Text)
-                };
-
-                sched = new Schedule
-                {
-                    Quantity = Convert.ToInt32(tb_quan.Text),
-                    Brand = tb_brand.Text,
-                    AirconType = tb_actype.Text,
-                    ServiceType = cmb_svtype.Text,
-                    ServiceTime = tb_svtime.Text,
-                    RecordedBy = tb_recorded.Text,
-                    ScheduleDate = tb_svdate.Text,
-                    ScheduleID = Convert.ToInt32(tb_schedID.Text),
-                    Status = cmb_Status.Text
-                };
-
-                address = new Address
-                {
-                    Street = tb_street.Text,
-                    HouseNo = tb_houseNo.Text,
-                    Barangay = tb_barangay.Text,
-                    City = cmb_City.Text
-                };
-
-                ServicesController svcon = new ServicesController();
-
-
-                var customerValidCon = new ValidationContext(cus, null, null);
-                var addsValidCon = new ValidationContext(address, null, null);
-                var schedValidCon = new ValidationContext(sched, null, null);
-                IList<ValidationResult> errors = new List<ValidationResult>();
-
-                if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
-                    !Validator.TryValidateObject(address, addsValidCon, errors, true) ||
-                    !Validator.TryValidateObject(sched, schedValidCon, errors, true)
-                    )
-                {
-                    foreach (ValidationResult val in errors)
+                    dispatch = new Dispatch
                     {
-                        MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-                else
-                {
-                    var result = svcon.UpdateService(cus, per, address, sched, dispatch);
+                        DispatchID = Convert.ToInt32(tb_dispatchID.Text),
+                        dispatchdate = Convert.ToDateTime(dispatchDate.Text),
+                        TimeIn = tb_timein.Text,
+                        TimeOut = tb_timeout.Text,
+                        AssignTeam = tb_assign1.Text,
+                        PaidAmount = tb_amount.Text
+                    };
 
-                    if (result != true)
+                    cus = new User
                     {
-                        MessageBox.Show("something went wrong");
+                        Username = tb_recorded.Text,
+                        UserID = Convert.ToInt32(tb_customerID.Text),
+                        Firstname = tb_fname.Text,
+                        Lastname = tb_lname.Text,
+                        ContactNumber = tb_mobile.Text,
+                        TelephoneNo = tb_tel.Text,
+
+                    };
+
+                    per = new Customer
+                    {
+                        CustomerID = Convert.ToInt32(tb_customerID.Text)
+                    };
+
+                    sched = new Schedule
+                    {
+                        Quantity = Convert.ToInt32(tb_quan.Text),
+                        Brand = tb_brand.Text,
+                        AirconType = tb_actype.Text,
+                        ServiceType = cmb_svtype.Text,
+                        ServiceTime = tb_svtime.Text,
+                        RecordedBy = tb_recorded.Text,
+                        ScheduleDate = tb_svdate.Text,
+                        ScheduleID = Convert.ToInt32(tb_schedID.Text),
+                        Status = cmb_Status.Text
+                    };
+
+                    address = new Address
+                    {
+                        Street = tb_street.Text,
+                        HouseNo = tb_houseNo.Text,
+                        Barangay = tb_barangay.Text,
+                        City = cmb_City.Text
+                    };
+
+                    ServicesController svcon = new ServicesController();
 
 
-                        var failedupdate = new AuditTrails
+                    var customerValidCon = new ValidationContext(cus, null, null);
+                    var addsValidCon = new ValidationContext(address, null, null);
+                    var schedValidCon = new ValidationContext(sched, null, null);
+                    IList<ValidationResult> errors = new List<ValidationResult>();
+
+                    if (!Validator.TryValidateObject(cus, customerValidCon, errors, true) ||
+                        !Validator.TryValidateObject(address, addsValidCon, errors, true) ||
+                        !Validator.TryValidateObject(sched, schedValidCon, errors, true)
+                        )
+                    {
+                        foreach (ValidationResult val in errors)
                         {
-                            Username = tb_recorded.Text,
-                            AuditActionTypeENUM = (Enums.ActionTypes)4,
-                            DateTimeStamp = DateTime.Now.ToString(),
-                            Result = "Failed",
-                            Description = "Failed update of Schedule ID: " + sched.ScheduleID + " "
-                        };
-
-                        aud.Logs(failedupdate);
-                        UpdateGrids();
+                            MessageBox.Show(val.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Updated successfully");
-                        UpdateGrids();
+                        var result = svcon.UpdateService(cus, per, address, sched, dispatch);
+
+                        if (result != true)
+                        {
+                            MessageBox.Show("something went wrong");
+
+
+                            var failedupdate = new AuditTrails
+                            {
+                                Username = tb_recorded.Text,
+                                AuditActionTypeENUM = (Enums.ActionTypes)4,
+                                DateTimeStamp = DateTime.Now.ToString(),
+                                Result = "Failed",
+                                Description = "Failed update of Schedule ID: " + sched.ScheduleID + " "
+                            };
+
+                            aud.Logs(failedupdate);
+                            UpdateGrids();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Updated successfully");
+                            UpdateGrids();
+                        }
                     }
+
+
                 }
-
-
-            }
-            else
-            {
-                MessageBox.Show("Cancelled Successfuly");
+                else
+                {
+                    MessageBox.Show("Cancelled Successfuly");
+                } 
             }
         }
         private void Save()
@@ -183,7 +186,8 @@ namespace SSIP.UserformControls
                         dispatchdate = Convert.ToDateTime(dispatchDate.Text),
                         TimeIn = tb_timein.Text,
                         TimeOut = tb_timeout.Text,
-                        AssignTeam = tb_assign1.Text
+                        AssignTeam = tb_assign1.Text,
+                        PaidAmount = tb_amount.Text
                     };
 
                     try
@@ -409,12 +413,15 @@ namespace SSIP.UserformControls
             ViewDispatches();
         }
         void ViewDispatches()
-        { 
-            this.dispatchListgrid.DataSource = sv.GetDispatches();
-            dispatchList_panel.Visible = true;
-            dispatchListgrid.Visible = true;
-            DispatchListPanel.Visible = true;
-            dispatchList_panel.Dock = DockStyle.Fill;
+        {
+            if (Authorized())
+            {
+                this.dispatchListgrid.DataSource = sv.GetDispatches();
+                this.dispatchListgrid.Update();
+                dispatchList_panel.Visible = true;
+                dispatchListgrid.Visible = true;
+                dispatchList_panel.Dock = DockStyle.Fill; 
+            }
         }
         private void tb_recorded_TextChanged(object sender, EventArgs e)
         {
@@ -438,6 +445,12 @@ namespace SSIP.UserformControls
                 ShowAssign();
                 lbl_amount.Visible = true;
                 tb_amount.Visible = true;
+            }else if(cmb_Status.Text == "Done / Not-paid")
+            {
+                ShowAssign();
+                lbl_amount.Visible = true;
+                tb_amount.Text = "0";
+
             }
             else
             {
@@ -548,9 +561,9 @@ namespace SSIP.UserformControls
         void HideDispatch()
         {
             dispatchList_panel.Visible = false;
-            DispatchListPanel.Visible = false;
+           
             dispatchList_panel.Visible = false;
-            DispatchListPanel.Dock = DockStyle.None;
+            dispatchList_panel.Dock = DockStyle.None;
         }
 
         private void dispatchListgrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -636,6 +649,13 @@ namespace SSIP.UserformControls
         private void tb_quan_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void cmb_filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var tools = new ServicesController();
+            var result = tools.FilterServiceStatus(cmb_filter.SelectedIndex);
+            dispatchListgrid.DataSource = result;
         }
     }
 }

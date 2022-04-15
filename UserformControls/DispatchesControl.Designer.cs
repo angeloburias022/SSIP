@@ -32,7 +32,6 @@ namespace SSIP.UserformControls
             this.tb_amount = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_amount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-           
             this.btn_viewDispatches = new Guna.UI2.WinForms.Guna2Button();
             this.btn_updateChanges = new Guna.UI2.WinForms.Guna2Button();
             this.btn_save = new Guna.UI2.WinForms.Guna2Button();
@@ -86,12 +85,12 @@ namespace SSIP.UserformControls
             this.lbl_assign = new System.Windows.Forms.Label();
             this.tb_assign1 = new System.Windows.Forms.TextBox();
             this.dispatchList_panel = new System.Windows.Forms.Panel();
-            this.DispatchListPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tb_searchDispatchs = new Guna.UI2.WinForms.Guna2TextBox();
             this.dispatchListgrid = new System.Windows.Forms.DataGridView();
             this.btn_addDispatch = new Guna.UI2.WinForms.Guna2Button();
+            this.cmb_filter = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.dispatchList_panel.SuspendLayout();
-            this.DispatchListPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dispatchListgrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,8 +146,7 @@ namespace SSIP.UserformControls
             this.label2.Size = new System.Drawing.Size(214, 42);
             this.label2.TabIndex = 179;
             this.label2.Text = "DISPATCH";
-           
-          
+            // 
             // btn_viewDispatches
             // 
             this.btn_viewDispatches.BackColor = System.Drawing.Color.Transparent;
@@ -1085,32 +1083,17 @@ namespace SSIP.UserformControls
             // 
             // dispatchList_panel
             // 
-            this.dispatchList_panel.Controls.Add(this.DispatchListPanel);
-            this.dispatchList_panel.Location = new System.Drawing.Point(947, 115);
+            this.dispatchList_panel.BackColor = System.Drawing.Color.Transparent;
+            this.dispatchList_panel.Controls.Add(this.label3);
+            this.dispatchList_panel.Controls.Add(this.dispatchListgrid);
+            this.dispatchList_panel.Controls.Add(this.tb_searchDispatchs);
+            this.dispatchList_panel.Controls.Add(this.btn_addDispatch);
+            this.dispatchList_panel.Controls.Add(this.cmb_filter);
+            this.dispatchList_panel.Location = new System.Drawing.Point(997, 28);
             this.dispatchList_panel.Name = "dispatchList_panel";
-            this.dispatchList_panel.Size = new System.Drawing.Size(415, 367);
+            this.dispatchList_panel.Size = new System.Drawing.Size(694, 407);
             this.dispatchList_panel.TabIndex = 182;
             this.dispatchList_panel.Visible = false;
-            // 
-            // DispatchListPanel
-            // 
-            this.DispatchListPanel.BackgroundImage = global::SSIP.Properties.Resources.bg;
-            this.DispatchListPanel.ColumnCount = 3;
-            this.DispatchListPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.542169F));
-            this.DispatchListPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.15662F));
-            this.DispatchListPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.542169F));
-            this.DispatchListPanel.Controls.Add(this.tb_searchDispatchs, 1, 0);
-            this.DispatchListPanel.Controls.Add(this.dispatchListgrid, 1, 1);
-            this.DispatchListPanel.Controls.Add(this.btn_addDispatch, 1, 2);
-            this.DispatchListPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DispatchListPanel.Location = new System.Drawing.Point(0, 0);
-            this.DispatchListPanel.Name = "DispatchListPanel";
-            this.DispatchListPanel.RowCount = 3;
-            this.DispatchListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
-            this.DispatchListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.67513F));
-            this.DispatchListPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.33503F));
-            this.DispatchListPanel.Size = new System.Drawing.Size(415, 367);
-            this.DispatchListPanel.TabIndex = 0;
             // 
             // tb_searchDispatchs
             // 
@@ -1130,7 +1113,7 @@ namespace SSIP.UserformControls
             this.tb_searchDispatchs.ForeColor = System.Drawing.Color.Black;
             this.tb_searchDispatchs.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_searchDispatchs.HoverState.Parent = this.tb_searchDispatchs;
-            this.tb_searchDispatchs.Location = new System.Drawing.Point(25, 3);
+            this.tb_searchDispatchs.Location = new System.Drawing.Point(25, 50);
             this.tb_searchDispatchs.Name = "tb_searchDispatchs";
             this.tb_searchDispatchs.PasswordChar = '\0';
             this.tb_searchDispatchs.PlaceholderText = "Search";
@@ -1146,11 +1129,10 @@ namespace SSIP.UserformControls
             this.dispatchListgrid.AllowUserToOrderColumns = true;
             this.dispatchListgrid.AllowUserToResizeColumns = false;
             this.dispatchListgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dispatchListgrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dispatchListgrid.Location = new System.Drawing.Point(25, 62);
+            this.dispatchListgrid.Location = new System.Drawing.Point(25, 93);
             this.dispatchListgrid.Name = "dispatchListgrid";
             this.dispatchListgrid.ReadOnly = true;
-            this.dispatchListgrid.Size = new System.Drawing.Size(363, 219);
+            this.dispatchListgrid.Size = new System.Drawing.Size(649, 219);
             this.dispatchListgrid.TabIndex = 0;
             this.dispatchListgrid.Visible = false;
             this.dispatchListgrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dispatchListgrid_CellDoubleClick);
@@ -1169,7 +1151,7 @@ namespace SSIP.UserformControls
             this.btn_addDispatch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_addDispatch.ForeColor = System.Drawing.Color.White;
             this.btn_addDispatch.HoverState.Parent = this.btn_addDispatch;
-            this.btn_addDispatch.Location = new System.Drawing.Point(25, 287);
+            this.btn_addDispatch.Location = new System.Drawing.Point(25, 318);
             this.btn_addDispatch.Name = "btn_addDispatch";
             this.btn_addDispatch.ShadowDecoration.Parent = this.btn_addDispatch;
             this.btn_addDispatch.Size = new System.Drawing.Size(120, 45);
@@ -1177,6 +1159,47 @@ namespace SSIP.UserformControls
             this.btn_addDispatch.Text = "ADD DISPATCH";
             this.btn_addDispatch.UseTransparentBackground = true;
             this.btn_addDispatch.Click += new System.EventHandler(this.btn_addDispatch_Click);
+            // 
+            // cmb_filter
+            // 
+            this.cmb_filter.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_filter.BorderRadius = 4;
+            this.cmb_filter.DisabledState.Parent = this.cmb_filter;
+            this.cmb_filter.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_filter.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_filter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_filter.FocusedState.Parent = this.cmb_filter;
+            this.cmb_filter.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_filter.ForeColor = System.Drawing.Color.Black;
+            this.cmb_filter.HoverState.Parent = this.cmb_filter;
+            this.cmb_filter.ItemHeight = 30;
+            this.cmb_filter.Items.AddRange(new object[] {
+            "",
+            "Dispatch",
+            "Done / Not-paid",
+            "Done / Paid"});
+            this.cmb_filter.ItemsAppearance.Parent = this.cmb_filter;
+            this.cmb_filter.Location = new System.Drawing.Point(506, 50);
+            this.cmb_filter.Name = "cmb_filter";
+            this.cmb_filter.ShadowDecoration.Parent = this.cmb_filter;
+            this.cmb_filter.Size = new System.Drawing.Size(168, 36);
+            this.cmb_filter.StartIndex = 0;
+            this.cmb_filter.TabIndex = 183;
+            this.cmb_filter.SelectedIndexChanged += new System.EventHandler(this.cmb_filter_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Honeydew;
+            this.label3.Location = new System.Drawing.Point(502, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 20);
+            this.label3.TabIndex = 184;
+            this.label3.Text = "Filter:";
+            this.label3.Visible = false;
             // 
             // DispatchesControl
             // 
@@ -1187,7 +1210,6 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.tb_amount);
             this.Controls.Add(this.lbl_amount);
             this.Controls.Add(this.label2);
-           
             this.Controls.Add(this.btn_viewDispatches);
             this.Controls.Add(this.btn_updateChanges);
             this.Controls.Add(this.btn_save);
@@ -1241,9 +1263,9 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.lbl_assign);
             this.Controls.Add(this.tb_assign1);
             this.Name = "DispatchesControl";
-            this.Size = new System.Drawing.Size(1316, 655);
+            this.Size = new System.Drawing.Size(1822, 777);
             this.dispatchList_panel.ResumeLayout(false);
-            this.DispatchListPanel.ResumeLayout(false);
+            this.dispatchList_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dispatchListgrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1308,9 +1330,10 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label lbl_assign;
         private System.Windows.Forms.TextBox tb_assign1;
         public System.Windows.Forms.Panel dispatchList_panel;
-        private System.Windows.Forms.TableLayoutPanel DispatchListPanel;
         private Guna.UI2.WinForms.Guna2TextBox tb_searchDispatchs;
         private System.Windows.Forms.DataGridView dispatchListgrid;
         private Guna.UI2.WinForms.Guna2Button btn_addDispatch;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_filter;
+        private System.Windows.Forms.Label label3;
     }
 }
