@@ -15,9 +15,17 @@ namespace SSIP
         [STAThread]
         static void Main()
         {
+            #region development
+            // uncomment this during development / changes in system
+
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Dashboard());
+            #endregion
+
+            #region deployment
+
+            // uncomment this during deployment
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -26,6 +34,7 @@ namespace SSIP
             frmMain.Show();
 
             Application.Run();
+            #endregion
         }
     }
 }

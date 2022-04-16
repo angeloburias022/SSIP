@@ -20,6 +20,14 @@ namespace SSIP.Controllers
 {
     public class AccessController
     {
+        public AccessController()
+        {
+
+        }
+
+
+       
+
         #region declations
         private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         ConnectionDB db = new ConnectionDB();
@@ -27,6 +35,9 @@ namespace SSIP.Controllers
         AuditController aud = new AuditController();
         Dashboard dboard = new Dashboard();
         #endregion
+
+
+        
 
         #region Login
         public bool Login(User user)
@@ -191,8 +202,7 @@ namespace SSIP.Controllers
 
         #region Get current user details
         public string GetCurrentUserDetails(string username)
-        {
-
+        { 
             using (var con = new SqlConnection(db.ConString()))
             {
                 using (var com = new SqlCommand("[SpGetCurrentUserDetails]", con))
@@ -218,8 +228,6 @@ namespace SSIP.Controllers
                     con.Close();
                 }
             }
-
-
             return "";
         }
 
@@ -311,6 +319,36 @@ namespace SSIP.Controllers
 
             }
             return details;
+        }
+
+        public string GetEmail(string username)
+        {
+            using (var con = new SqlConnection(db.ConString()))
+            {
+                using (var com = new SqlCommand("[SpGetEmail]", con))
+                {
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    com.Parameters.AddWithValue("@username", username);
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        if (reader.HasRows)
+                        {
+                            return reader["EmailAddress"].ToString();
+                        }
+                        else
+                        {
+                            return "User not found";
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return "";
         }
         #endregion
 

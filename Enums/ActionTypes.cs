@@ -16,6 +16,7 @@ namespace SSIP.Enums
         Print = 6,
         Compute = 7,
         Access = 8,
-        Email = 9
+        Email = 9,
+        ChangePass = 10
     }
 }

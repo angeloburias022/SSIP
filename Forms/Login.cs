@@ -76,5 +76,46 @@ namespace SSIP.Forms
         }
         #endregion
 
+        private void showPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            tb_pwd.PasswordChar = showPassword.Checked ? '\0' : '*';
+        }
+
+        private void forgotPassword_Click(object sender, EventArgs e)
+        {
+            if (tb_uname.Text != "")
+            {
+                
+                var access = new AccessController();
+                var result = access.GetEmail(tb_uname.Text);
+
+                if (result.Length > 5)
+                {
+                    var code = GenerateCode.Code(10);
+                    this.forgotPassword1.code = code;
+                    this.forgotPassword1.username = tb_uname.Text;
+
+                    var email = new Emailer
+                    {
+                        Subject = "Recovery Code",
+                        Body = "This is your recovery code: " + "<strong><u>" + code + "</u></strong>",
+                        Receiver = result
+                    };
+
+                    //if(SendEmail.Send(email))
+                    //{
+                        forgotpass_panel.Visible = true;
+                        forgotpass_panel.Dock = DockStyle.Fill;
+                   // }
+                }else
+                {
+                    MessageBox.Show("Email does not exist", "EMAIL NOT FOUND", MessageBoxButtons.OK, MessageBoxIcon.Information) ;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter your username first", "FORGOT PASSWORD", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

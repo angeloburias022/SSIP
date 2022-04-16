@@ -25,17 +25,34 @@ namespace SSIP.Helper
                     Credentials = new NetworkCredential("rfbairconditioningservices@gmail.com", "r@f@3l091577"),
                 })
                 {
-                    using (var mssgDetails = new MailMessage())
+                    if (emailer.Attachments != null)
                     {
-                        mssgDetails.From = new MailAddress("rfbairconditioningservices@gmail.com");
-                        mssgDetails.To.Add(emailer.Receiver);
-                        mssgDetails.Subject = emailer.Subject;
-                        mssgDetails.IsBodyHtml = true;
-                        mssgDetails.Body = emailer.Body;
-                        mssgDetails.Attachments.Add(new Attachment(emailer.Attachments));
+                        using (var mssgDetails = new MailMessage())
+                        {
+                            mssgDetails.From = new MailAddress("rfbairconditioningservices@gmail.com");
+                            mssgDetails.To.Add(emailer.Receiver);
+                            mssgDetails.Subject = emailer.Subject;
+                            mssgDetails.IsBodyHtml = true;
+                            mssgDetails.Body = emailer.Body;
+                            mssgDetails.Attachments.Add(new Attachment(emailer.Attachments));
 
-                        businessDetails.Send(mssgDetails);
-                        businessDetails.Dispose();
+                            businessDetails.Send(mssgDetails);
+                            businessDetails.Dispose();
+                        } 
+                    }else
+                    {
+                        using (var mssgDetails = new MailMessage())
+                        {
+                            mssgDetails.From = new MailAddress("rfbairconditioningservices@gmail.com");
+                            mssgDetails.To.Add(emailer.Receiver);
+                            mssgDetails.Subject = emailer.Subject;
+                            mssgDetails.IsBodyHtml = true;
+                            mssgDetails.Body = emailer.Body;
+                         
+                            businessDetails.Send(mssgDetails);
+                            businessDetails.Dispose();
+                        }
+
                     }
                     return true;
                 }         
