@@ -511,6 +511,204 @@ namespace SSIP.Controllers
 
             return dt;
         }
+        public DataTable GetSchedThisWeek()
+        {
+            //var currentDate = DateTime.Now;
+            //int days = currentDate.DayOfWeek - DayOfWeek.Sunday;
+            //DateTime weekStart = currentDate.AddDays(-days);
+            //DateTime weekEnd = weekStart.AddDays(6);
+           // var recordsThisweek = currentDate.Where(h => h.StartDate <= weekEnd && h.EndDate >= weekStart);
+            //  return holidays.Where(h => h.StartDate <= weekEnd && h.EndDate >= weekStart);
+            try
+            { 
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetSchedThisWeek]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+                   
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
+        public DataTable GetSchedThisMonth()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetSchedThisMonth]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
+        public DataTable GetSchedThisDay()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetSchedThisDay]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+                        com.Parameters.AddWithValue("@datenow", DateTime.Now.ToShortDateString());
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
+
+        public string NumberOfGetSchedThisWeek()
+        {
+            var details = "";
+
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {
+                    using (var com = new SqlCommand("[SpNoOfGetSchedThisWeek]", con))
+                    {
+                        con.Open();
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        var reader = com.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            details = reader["NumberOfSchedThisWeek"].ToString();
+                        }
+                        con.Close();
+                        return details;
+                    }
+                }          
+        }
+        public string NumberOfGetSchedThisMonth()
+        {
+            var details = "";
+
+            using (SqlConnection con = new SqlConnection(db.ConString()))
+            {
+                using (var com = new SqlCommand("[SpNoOfGetSchedThisMonth]", con))
+                {
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["NumberOfSchedThisMonth"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+        }
+        public string NumberOfGetSchedThisDay()
+        {
+            var details = "";
+
+            using (SqlConnection con = new SqlConnection(db.ConString()))
+            {
+
+                using (var com = new SqlCommand("[SpNoOfGetSchedThisDay]", con))
+                {
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@datenow", DateTime.Now.ToShortDateString());
+
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["NumberOfSchedThisDay"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+        }
+        public string NumberOfGetScheds()
+        {
+            var details = "";
+
+            using (SqlConnection con = new SqlConnection(db.ConString()))
+            {
+                using (var com = new SqlCommand("[SpNoOfGetSchedules]", con))
+                {
+                    con.Open();
+                    com.CommandType = CommandType.StoredProcedure;
+                 
+                    var reader = com.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        details = reader["NumberOfSched"].ToString();
+                    }
+                    con.Close();
+                    return details;
+                }
+            }
+        }
+        public DataTable DateFilters(int selected)
+        {
+            if (selected == 0)
+            {
+                return GetSchedThisWeek();
+            } else if (selected == 1)
+            {
+                return GetSchedThisMonth();
+            } else if (selected == 2)
+            {
+                return GetSchedThisDay();
+            } else
+            {
+                return GetSchedules();
+            }
+        }
         public DataTable FindSchedule(string searched)
         {
             DataTable dt = new DataTable();
@@ -571,7 +769,6 @@ namespace SSIP.Controllers
             }
 
         }
-
         public DataTable FilterServiceStatus(int selected)
         {
             try

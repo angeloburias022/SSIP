@@ -38,8 +38,19 @@ namespace SSIP.UserForms
         ServicesController sv = new ServicesController();
         private void MainServiceControl_Load(object sender, EventArgs e)
         {
-         
-         
+            GetStats(); 
+        }
+
+        private void GetStats()
+        {
+            var tools = new ServicesController();
+            stats_panel.Dock = DockStyle.Fill;
+            stats_panel.Visible = true;
+
+            lbl_NoofSchedThisDay.Text = "Number of Schedules This Day: " + tools.NumberOfGetSchedThisDay();
+            lbl_NoOfSchedThisWeek.Text = "Number of Schedules This Day: " + tools.NumberOfGetSchedThisWeek();
+            lbl_NoOfSchedThisMonth.Text = "Number of Schedules This Month: " + tools.NumberOfGetSchedThisMonth();
+            lbl_NoOfScheds.Text = "Number of Schedules: " + tools.NumberOfGetScheds();
         }
         #endregion
 
@@ -819,6 +830,25 @@ namespace SSIP.UserForms
         private void tb_quan_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void cmb_datefilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var tools = new ServicesController();
+            var result = tools.DateFilters(cmb_datefilter.SelectedIndex);
+
+            schedgrid.DataSource = result;
+
+        }
+
+        private void btn_goTostats_Click(object sender, EventArgs e)
+        {
+            GetStats();
+        }
+
+        private void btn_gotoform_Click(object sender, EventArgs e)
+        {
+            stats_panel.Visible = false;
         }
     }
 }
