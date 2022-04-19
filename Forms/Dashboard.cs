@@ -22,6 +22,7 @@ namespace SSIP.Forms
     {
         #region declarations
         MainServiceControl ms = new MainServiceControl();
+        AuditController aud = new AuditController();
         public Dashboard()
         {
             InitializeComponent();
@@ -934,10 +935,32 @@ namespace SSIP.Forms
                 if (result == true)
                 {
                     MessageBox.Show("Change Successfully", "New Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    var logs = new AuditTrails
+                    {
+                        Username = lbl_usernameee.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)12,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Succeed",
+                        Description = " " + lbl_usernameee.Text + "Successfully Changed Password"
+                    };
+
+                    aud.Logs(logs);
                 }
                 else
                 {
                     MessageBox.Show("Failed to Change Password", "New Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    var logs = new AuditTrails
+                    {
+                        Username = lbl_usernameee.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)12,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Failed",
+                        Description = " " + lbl_usernameee.Text + "Failed to Changed Password"
+                    };
+
+                    aud.Logs(logs);
                 }
             }
             else
@@ -949,6 +972,27 @@ namespace SSIP.Forms
         private void tb_confirm_TextChanged(object sender, EventArgs e)
         {
           
+        }
+
+        private void btn_signout_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Sign out?", "SIGN OUT", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var logs = new AuditTrails
+                {
+                    Username = lbl_usernameee.Text,
+                    AuditActionTypeENUM = (Enums.ActionTypes)2,
+                    DateTimeStamp = DateTime.Now.ToString(),
+                    Result = "Succeed",
+                    Description = " "+ lbl_usernameee.Text+" logged out"
+                };
+
+                aud.Logs(logs);
+                this.Close();
+
+                Login log = new Login();
+                log.Show(); 
+            }
         }
     }
 }

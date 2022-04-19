@@ -17,6 +17,8 @@ namespace SSIP.Enums
         Compute = 7,
         Access = 8,
         Email = 9,
-        ChangePass = 10
+        ChangePass = 10,
+        Scanner = 11,
+        ChangePassword = 12
     }
 }
