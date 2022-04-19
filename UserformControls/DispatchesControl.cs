@@ -657,5 +657,15 @@ namespace SSIP.UserformControls
             var result = tools.FilterServiceStatus(cmb_filter.SelectedIndex);
             dispatchListgrid.DataSource = result;
         }
+
+        private void tb_searchDispatchs_TextChanged(object sender, EventArgs e)
+        {
+            if (Authorized())
+            {
+                var tools = new ServicesController();
+                var result = tools.FindDispatch(tb_searchDispatchs.Text);
+                dispatchListgrid.DataSource = result; 
+            }
+        }
     }
 }

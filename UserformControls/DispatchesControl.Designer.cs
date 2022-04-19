@@ -85,11 +85,11 @@ namespace SSIP.UserformControls
             this.lbl_assign = new System.Windows.Forms.Label();
             this.tb_assign1 = new System.Windows.Forms.TextBox();
             this.dispatchList_panel = new System.Windows.Forms.Panel();
-            this.tb_searchDispatchs = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.dispatchListgrid = new System.Windows.Forms.DataGridView();
+            this.tb_searchDispatchs = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_addDispatch = new Guna.UI2.WinForms.Guna2Button();
             this.cmb_filter = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dispatchList_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dispatchListgrid)).BeginInit();
             this.SuspendLayout();
@@ -1095,6 +1095,34 @@ namespace SSIP.UserformControls
             this.dispatchList_panel.TabIndex = 182;
             this.dispatchList_panel.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Honeydew;
+            this.label3.Location = new System.Drawing.Point(502, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 20);
+            this.label3.TabIndex = 184;
+            this.label3.Text = "Filter:";
+            this.label3.Visible = false;
+            // 
+            // dispatchListgrid
+            // 
+            this.dispatchListgrid.AllowUserToAddRows = false;
+            this.dispatchListgrid.AllowUserToDeleteRows = false;
+            this.dispatchListgrid.AllowUserToOrderColumns = true;
+            this.dispatchListgrid.AllowUserToResizeColumns = false;
+            this.dispatchListgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dispatchListgrid.Location = new System.Drawing.Point(25, 93);
+            this.dispatchListgrid.Name = "dispatchListgrid";
+            this.dispatchListgrid.ReadOnly = true;
+            this.dispatchListgrid.Size = new System.Drawing.Size(649, 219);
+            this.dispatchListgrid.TabIndex = 0;
+            this.dispatchListgrid.Visible = false;
+            this.dispatchListgrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dispatchListgrid_CellDoubleClick);
+            // 
             // tb_searchDispatchs
             // 
             this.tb_searchDispatchs.BackColor = System.Drawing.Color.Transparent;
@@ -1121,21 +1149,7 @@ namespace SSIP.UserformControls
             this.tb_searchDispatchs.ShadowDecoration.Parent = this.tb_searchDispatchs;
             this.tb_searchDispatchs.Size = new System.Drawing.Size(165, 36);
             this.tb_searchDispatchs.TabIndex = 125;
-            // 
-            // dispatchListgrid
-            // 
-            this.dispatchListgrid.AllowUserToAddRows = false;
-            this.dispatchListgrid.AllowUserToDeleteRows = false;
-            this.dispatchListgrid.AllowUserToOrderColumns = true;
-            this.dispatchListgrid.AllowUserToResizeColumns = false;
-            this.dispatchListgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dispatchListgrid.Location = new System.Drawing.Point(25, 93);
-            this.dispatchListgrid.Name = "dispatchListgrid";
-            this.dispatchListgrid.ReadOnly = true;
-            this.dispatchListgrid.Size = new System.Drawing.Size(649, 219);
-            this.dispatchListgrid.TabIndex = 0;
-            this.dispatchListgrid.Visible = false;
-            this.dispatchListgrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dispatchListgrid_CellDoubleClick);
+            this.tb_searchDispatchs.TextChanged += new System.EventHandler(this.tb_searchDispatchs_TextChanged);
             // 
             // btn_addDispatch
             // 
@@ -1187,19 +1201,6 @@ namespace SSIP.UserformControls
             this.cmb_filter.StartIndex = 0;
             this.cmb_filter.TabIndex = 183;
             this.cmb_filter.SelectedIndexChanged += new System.EventHandler(this.cmb_filter_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Honeydew;
-            this.label3.Location = new System.Drawing.Point(502, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 20);
-            this.label3.TabIndex = 184;
-            this.label3.Text = "Filter:";
-            this.label3.Visible = false;
             // 
             // DispatchesControl
             // 

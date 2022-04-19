@@ -491,15 +491,18 @@ null, confirmAccessPanel, new object[] { true });
         }
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
-            var tool = new CustomersController();
-
-            var result = tool.FindCustomers(tb_searchCustomers.Text);
-
-            customersGrid.DataSource = result;
-
-            if (tb_searchCustomers.Text == "")
+            if (HighAuthority())
             {
-                UpdateGrid();
+                var tool = new CustomersController();
+
+                var result = tool.FindCustomers(tb_searchCustomers.Text);
+
+                customersGrid.DataSource = result;
+
+                if (tb_searchCustomers.Text == "")
+                {
+                    UpdateGrid();
+                } 
             }
         }
         private void tb_searchCustomers_KeyPress(object sender, KeyPressEventArgs e)

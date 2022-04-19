@@ -319,11 +319,10 @@ namespace SSIP.UserformControls
 
                                     var emailresult = SendEmail.Send(receipt);
 
-                                    while(emailresult == false)
+                                    if(emailresult == false)
                                     {
-                                      var secondres = SendEmail.Send(receipt);
-                                        if (secondres == true)
-                                            continue;
+                                     SendEmail.Send(receipt);
+                                       
                                     }
 
                                     if (emailresult == true)
@@ -338,6 +337,7 @@ namespace SSIP.UserformControls
                                         };
 
                                         aud.Logs(logs);
+
                                         ClearAccessTB();
 
                                         MessageBox.Show("Transaction Succeed", "RECORDED", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -414,6 +414,18 @@ namespace SSIP.UserformControls
             {
                 if (GetCam())
                 {
+
+                    var loginLogs = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        AuditActionTypeENUM = (Enums.ActionTypes)11,
+                        DateTimeStamp = DateTime.Now.ToString(),
+                        Result = "Succeed",
+                        Description = "" + tb_unameAccess.Text + " Successfully activate Product Scanner"
+                    };
+
+                    aud.Logs(loginLogs);
+
                     btn_scan.Text = "SCANNING QR";
                     btn_scan.FillColor = Color.Red;
                 } 
@@ -496,7 +508,10 @@ namespace SSIP.UserformControls
         }
         private void tb_searchProd_TextChanged(object sender, EventArgs e)
         {
-            SearchProducts();
+            if (Authorized())
+            {
+                SearchProducts(); 
+            }
         }
         private void prodGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -29,16 +29,16 @@ namespace SSIP.UserformControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.auditGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.access_panel = new System.Windows.Forms.Panel();
             this.confirmAccessPanel = new System.Windows.Forms.Panel();
+            this.btn_access = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_confirmAccess = new System.Windows.Forms.Label();
             this.tb_unameAccess = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btn_access = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.auditGrid)).BeginInit();
             this.access_panel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
@@ -51,29 +51,29 @@ namespace SSIP.UserformControls
             this.auditGrid.AllowUserToOrderColumns = true;
             this.auditGrid.AllowUserToResizeColumns = false;
             this.auditGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.auditGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.auditGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.auditGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.auditGrid.BackgroundColor = System.Drawing.Color.White;
             this.auditGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.auditGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.auditGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.auditGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.auditGrid.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.auditGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.auditGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.auditGrid.EnableHeadersVisualStyles = false;
             this.auditGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.auditGrid.Location = new System.Drawing.Point(39, 95);
@@ -126,6 +126,28 @@ namespace SSIP.UserformControls
             this.confirmAccessPanel.Name = "confirmAccessPanel";
             this.confirmAccessPanel.Size = new System.Drawing.Size(448, 241);
             this.confirmAccessPanel.TabIndex = 174;
+            // 
+            // btn_access
+            // 
+            this.btn_access.BackColor = System.Drawing.Color.Transparent;
+            this.btn_access.BorderRadius = 4;
+            this.btn_access.CheckedState.Parent = this.btn_access;
+            this.btn_access.CustomImages.Parent = this.btn_access;
+            this.btn_access.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_access.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_access.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_access.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_access.DisabledState.Parent = this.btn_access;
+            this.btn_access.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_access.ForeColor = System.Drawing.Color.White;
+            this.btn_access.HoverState.Parent = this.btn_access;
+            this.btn_access.Location = new System.Drawing.Point(183, 186);
+            this.btn_access.Name = "btn_access";
+            this.btn_access.ShadowDecoration.Parent = this.btn_access;
+            this.btn_access.Size = new System.Drawing.Size(111, 40);
+            this.btn_access.TabIndex = 171;
+            this.btn_access.Text = "ACCESS";
+            this.btn_access.Click += new System.EventHandler(this.btn_access_Click);
             // 
             // lbl_confirmAccess
             // 
@@ -194,28 +216,6 @@ namespace SSIP.UserformControls
             this.tb_pass.ShadowDecoration.Parent = this.tb_pass;
             this.tb_pass.Size = new System.Drawing.Size(165, 36);
             this.tb_pass.TabIndex = 123;
-            // 
-            // btn_access
-            // 
-            this.btn_access.BackColor = System.Drawing.Color.Transparent;
-            this.btn_access.BorderRadius = 4;
-            this.btn_access.CheckedState.Parent = this.btn_access;
-            this.btn_access.CustomImages.Parent = this.btn_access;
-            this.btn_access.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_access.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_access.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_access.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_access.DisabledState.Parent = this.btn_access;
-            this.btn_access.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_access.ForeColor = System.Drawing.Color.White;
-            this.btn_access.HoverState.Parent = this.btn_access;
-            this.btn_access.Location = new System.Drawing.Point(183, 186);
-            this.btn_access.Name = "btn_access";
-            this.btn_access.ShadowDecoration.Parent = this.btn_access;
-            this.btn_access.Size = new System.Drawing.Size(111, 40);
-            this.btn_access.TabIndex = 171;
-            this.btn_access.Text = "ACCESS";
-            this.btn_access.Click += new System.EventHandler(this.btn_access_Click);
             // 
             // AuditControl
             // 

@@ -253,6 +253,7 @@ namespace SSIP.UserformControls
             this.empGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.empGrid.Location = new System.Drawing.Point(326, 22);
             this.empGrid.Name = "empGrid";
+            this.empGrid.ReadOnly = true;
             this.empGrid.Size = new System.Drawing.Size(349, 185);
             this.empGrid.TabIndex = 112;
             this.empGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.empGrid_CellClick);
@@ -1337,13 +1338,14 @@ namespace SSIP.UserformControls
             this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_update.ForeColor = System.Drawing.Color.White;
             this.btn_update.HoverState.Parent = this.btn_update;
-            this.btn_update.Location = new System.Drawing.Point(691, 74);
+            this.btn_update.Location = new System.Drawing.Point(691, 116);
             this.btn_update.Name = "btn_update";
             this.btn_update.ShadowDecoration.Parent = this.btn_update;
             this.btn_update.Size = new System.Drawing.Size(120, 36);
             this.btn_update.TabIndex = 114;
             this.btn_update.Text = "UPDATE PAYROLL";
             this.btn_update.UseTransparentBackground = true;
+            this.btn_update.Visible = false;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // label1
@@ -1400,7 +1402,7 @@ namespace SSIP.UserformControls
             this.btn_clear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_clear.ForeColor = System.Drawing.Color.White;
             this.btn_clear.HoverState.Parent = this.btn_clear;
-            this.btn_clear.Location = new System.Drawing.Point(691, 116);
+            this.btn_clear.Location = new System.Drawing.Point(691, 75);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.ShadowDecoration.Parent = this.btn_clear;
             this.btn_clear.Size = new System.Drawing.Size(120, 36);

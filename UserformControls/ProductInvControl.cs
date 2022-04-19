@@ -370,19 +370,24 @@ namespace SSIP.UserformControls
         }
         private void tb_searchProd_TextChanged(object sender, EventArgs e)
         {
-            var tools = new InventoryController();
-
-            var results = tools.FindProduct(tb_searchProd.Text);
-
-            ProductGrid.DataSource = results;
-
-            if (tb_searchProd.Text == "")
+            if (Authorized())
             {
-                UpdateGrid();
+                var tools = new InventoryController();
+
+                var results = tools.FindProduct(tb_searchProd.Text);
+
+                ProductGrid.DataSource = results;
+
+                if (tb_searchProd.Text == "")
+                {
+                    UpdateGrid();
+                } 
             }
         }
         private void ProductInvControl_Load(object sender, EventArgs e)
         {
+            stats_panel.Visible = true;
+            stats_panel.Dock = DockStyle.Fill;
             ShowStats();
         }
         private void ProductGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

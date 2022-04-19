@@ -430,18 +430,21 @@ namespace SSIP.UserformControls
         }
         private void tb_searchAttendances_TextChanged(object sender, EventArgs e)
         {
-            var tool = new EmployeesController();
-
-            var result = tool.FindAttendance(tb_searchAttendances.Text);
-
-            attendanceGrid.DataSource = result;
-
-
-            if (tb_searchAttendances.Text == "")
+            if (HighAuthority())
             {
-                UpdateGrid();
-            }
+                var tool = new EmployeesController();
 
+                var result = tool.FindAttendance(tb_searchAttendances.Text);
+
+                attendanceGrid.DataSource = result;
+
+
+                if (tb_searchAttendances.Text == "")
+                {
+                    UpdateGrid();
+                }
+
+            }
         }
         private void tb_searchAttendances_KeyPress(object sender, KeyPressEventArgs e)
         {

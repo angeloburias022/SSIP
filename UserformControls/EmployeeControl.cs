@@ -556,15 +556,18 @@ namespace SSIP.UserformControls
         }
         private void tb_searchEmployees_TextChanged(object sender, EventArgs e)
         {
-            var tool = new EmployeesController();
-
-            var result = tool.FindEmployees(tb_searchEmployees.Text);
-
-            employeeGrid.DataSource = result;
-
-            if (tb_searchEmployees.Text == "")
+            if (HighAuthority())
             {
-                UpdateGrids();
+                var tool = new EmployeesController();
+
+                var result = tool.FindEmployees(tb_searchEmployees.Text);
+
+                employeeGrid.DataSource = result;
+
+                if (tb_searchEmployees.Text == "")
+                {
+                    UpdateGrids();
+                } 
             }
         }
         private void tb_searchEmployees_KeyPress(object sender, KeyPressEventArgs e)

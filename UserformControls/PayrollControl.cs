@@ -546,15 +546,18 @@ namespace SSIP.UserformControls
         }      
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
-            var tools = new PayRollController();
-
-            var result = tools.FindPayRoll(tb_search.Text);
-
-            payrollGrid.DataSource = result;
-
-            if (tb_search.Text == "")
+            if (HighAuthority())
             {
-                UpdateGrid();
+                var tools = new PayRollController();
+
+                var result = tools.FindPayRoll(tb_search.Text);
+
+                payrollGrid.DataSource = result;
+
+                if (tb_search.Text == "")
+                {
+                    UpdateGrid();
+                } 
             }
         }
         #endregion

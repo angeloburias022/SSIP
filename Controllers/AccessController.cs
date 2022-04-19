@@ -47,6 +47,7 @@ namespace SSIP.Controllers
                 using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     // it will check the device if there is an existing database
+                         //if (CheckDatabaseExists(con, @"C:\USERS\HOME PC\DOCUMENTS\CAPSTONE\MAIN_SYSTEM\V2_SSIP\RFB_DB.MDF"))
                     if (CheckDatabaseExists(con, "RFBDesktopApp"))
                     {
                         using (SqlCommand cmd = new SqlCommand("[SpLoginUser]", con))
@@ -89,6 +90,25 @@ namespace SSIP.Controllers
                                         };
 
                                         aud.Logs(loginLogs);
+
+                                        if (user.Username == "admin" && user.Password =="Password")
+                                        {
+                                            // create account 
+                                            con.Open();
+                                            using (var com = new SqlCommand("[SpCreateDefaultAcc]", con))
+                                            {
+                                                com.CommandType = CommandType.StoredProcedure;
+
+                                                com.Parameters.AddWithValue("@username", user.Username);
+                                                com.Parameters.AddWithValue("@password", enc.PassWordEncryptor(user.Password));
+
+                                                com.ExecuteNonQuery();
+                                                con.Close();
+
+                                                return true;
+                                            }
+
+                                        }
                                         return false;
                                     }
                                 }
