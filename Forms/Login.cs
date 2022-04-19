@@ -102,12 +102,13 @@ namespace SSIP.Forms
                         Receiver = result
                     };
 
-                    //if(SendEmail.Send(email))
-                    //{
+                    if (SendEmail.Send(email))
+                    {
                         forgotpass_panel.Visible = true;
                         forgotpass_panel.Dock = DockStyle.Fill;
-                   // }
-                }else
+                    }
+                }
+                else
                 {
                     MessageBox.Show("Email does not exist", "EMAIL NOT FOUND", MessageBoxButtons.OK, MessageBoxIcon.Information) ;
                 }
