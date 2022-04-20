@@ -496,6 +496,47 @@ namespace SSIP.UserformControls
 
         }
 
+        public void Reset()
+        {
+            tb_empID.Clear();
+            tb_personID.Clear();
+
+            tb_fname.Clear();
+            tb_lname.Clear();
+            tb_tel.Clear();
+            tb_mobile.Clear();
+
+            tb_houseNo.Clear();
+            tb_street.Clear();
+            tb_barangay.Clear();
+            //    cmb_City.ResetText();
+            cmb_City.SelectedItem = null;
+            cmb_City.SelectedText = "--select--";
+
+
+            cmb_empStatus.SelectedItem = null;
+            cmb_empStatus.SelectedText = "--select--";
+
+            cmb_acctype.SelectedItem = null;
+            cmb_acctype.SelectedText = "--select--";
+
+            tb_position.Clear();
+            tb_uname.Clear();
+            tb_password.Clear();
+            tb_email.Clear();
+
+
+            tb_unameAccess.Clear();
+            tb_pass.Clear();
+
+
+            employeeMainPanel.Visible = false;
+            employeeGrid.DataSource = null;
+            employeeGrid.Update();
+            tb_searchEmployees.Clear();
+
+        }
+
         #endregion
 
         #region add new employee show, view employee button, hide emp grid, show emp grid
@@ -509,6 +550,8 @@ namespace SSIP.UserformControls
         {
             employeeMainPanel.Visible = true;
             employeeMainPanel.Dock = DockStyle.Fill;
+            employeeGrid.DataSource = emp.GetEmployees();
+            employeeGrid.Update();
         }
         void HideEmployeeGrid()
         {

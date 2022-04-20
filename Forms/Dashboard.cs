@@ -500,6 +500,10 @@ namespace SSIP.Forms
         {
             changePassPanel.Visible = false;
             changePassPanel.Dock = DockStyle.None;
+
+            tb_current.Clear();
+            tb_newPass.Clear();
+            tb_confirm.Clear();
         }
         private void ShowPOSControl()
         {
@@ -520,6 +524,7 @@ namespace SSIP.Forms
         {
             pos_controlPanel.Hide();
             pos_controlPanel.Dock = DockStyle.None;
+            salesControl1.Reset();
         }
         private void ShowAudControl()
         {
@@ -533,7 +538,11 @@ namespace SSIP.Forms
         {
             auditControlPanel.Hide();
             auditControlPanel.Dock = DockStyle.None;
+            auditControl1.Reset();
         }
+
+       
+
         private void ShowEquipInvControl()
         {
             equipControlPanel.Dock = DockStyle.Fill;
@@ -546,6 +555,7 @@ namespace SSIP.Forms
         {
             equipControlPanel.Hide();
             equipControlPanel.Dock = DockStyle.None;
+            equipInvControl1.Reset();
         }
         private void ShowProductInvControl()
         {
@@ -559,6 +569,7 @@ namespace SSIP.Forms
         {
             productInvPanel.Hide();
             productInvPanel.Dock = DockStyle.None;
+            productInvControl1.Reset();
         }
         private void ShowMainServicesControl()
         {
@@ -574,6 +585,7 @@ namespace SSIP.Forms
         {
             dispatchFormPanel.Hide();
             dispatchFormPanel.Dock = DockStyle.None;
+            mainServiceControl1.Reset();
         }
 
         private void ShowMainServicesControl2()
@@ -581,7 +593,7 @@ namespace SSIP.Forms
             dispatchePanel.Dock = DockStyle.Fill;
             this.dispatchesControl1.BringToFront();
             this.dispatchesControl1.Show();
-
+            dispatchesControl1.Reset();
             dispatchePanel.Visible = true;
             dispatchePanel.Dock = DockStyle.Fill;
         }
@@ -602,6 +614,7 @@ namespace SSIP.Forms
         {
             employeePanel.Hide();
             employeePanel.Dock = DockStyle.None;
+            employeesControl1.Reset();
         }
         private void ShowCustomersPanelControl()
         {
@@ -614,6 +627,7 @@ namespace SSIP.Forms
         {
             customersControl1Panel.Hide();
             customersControl1Panel.Dock = DockStyle.None;
+            customersControl1.Reset();
         }
         private void ShowAttendanceControl()
         {
@@ -628,6 +642,7 @@ namespace SSIP.Forms
         {
             attendanceControlpanel.Hide();
             attendanceControlpanel.Dock = DockStyle.None;
+            attendanceControl1.Reset();
         }
         private void ShowPayRollControl()
         {
@@ -639,6 +654,7 @@ namespace SSIP.Forms
         {
             this.payroll_mainPanel.Visible = false;
             this.payroll_mainPanel.Dock = DockStyle.None;
+            payrollControl1.Reset();
         }
         #endregion
 
@@ -860,11 +876,6 @@ namespace SSIP.Forms
         }
 
         #endregion
-
-        private void logo_panel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btn_check_Click(object sender, EventArgs e)
         {

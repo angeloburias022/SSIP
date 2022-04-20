@@ -604,7 +604,7 @@ namespace SSIP.UserformControls
             this.tb_datehired.ShadowDecoration.Parent = this.tb_datehired;
             this.tb_datehired.Size = new System.Drawing.Size(169, 36);
             this.tb_datehired.TabIndex = 132;
-            this.tb_datehired.Value = new System.DateTime(2022, 2, 12, 0, 31, 11, 428);
+            this.tb_datehired.Value = new System.DateTime(2022, 4, 20, 0, 0, 0, 0);
             // 
             // lbl_datehired
             // 
@@ -895,7 +895,7 @@ namespace SSIP.UserformControls
             this.employeeMainPanel.Controls.Add(this.tb_searchEmployees, 1, 0);
             this.employeeMainPanel.Controls.Add(this.btn_addEmployee, 1, 2);
             this.employeeMainPanel.Controls.Add(this.employeeGrid, 1, 1);
-            this.employeeMainPanel.Location = new System.Drawing.Point(749, 347);
+            this.employeeMainPanel.Location = new System.Drawing.Point(769, 249);
             this.employeeMainPanel.Name = "employeeMainPanel";
             this.employeeMainPanel.RowCount = 3;
             this.employeeMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));

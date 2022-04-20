@@ -232,8 +232,9 @@ namespace SSIP.UserformControls
             }
             else
             {
-                tb_prodPrice.FillColor = Color.White;
+                tb_prodPrice.FillColor = Color.WhiteSmoke;
             }
+           
         }
         private void DoubleClickGrid()
         {
@@ -298,18 +299,40 @@ namespace SSIP.UserformControls
 
         private void ClearFields()
         {
-            tb_id.Clear();
+            tb_id.Text = "0";
             tb_productName.Clear();
             tb_code.Clear();
             tb_prodDescr.Clear();
-            tb_prodPrice.Clear();
-            tb_quan.Clear();
-            tb_length.Clear();
-            tb_height.Clear();
-            tb_width.Clear();
+            tb_prodPrice.Text ="0";
+            tb_quan.Text ="0";
+            tb_length.Text = "0";
+            tb_height.Text = "0";
+            tb_width.Text = "0";
             cmb_actype.SelectedIndex = -1;
             cmb_Hp.SelectedIndex = -1;
             cmb_prodCategory.SelectedIndex = -1;
+        }
+        public void Reset()
+        {
+            tb_id.Text="0";
+            tb_productName.Clear();
+            tb_code.Clear();
+            tb_prodDescr.Clear();
+            tb_prodPrice.Text = "0";
+            tb_quan.Text = "0";
+            tb_length.Text = "0";
+            tb_height.Text = "0";
+            tb_width.Text = "0";
+            cmb_actype.SelectedIndex = -1;
+            cmb_Hp.SelectedIndex = -1;
+            cmb_prodCategory.SelectedIndex = -1;
+
+            stats_panel.Visible = true;
+            stats_panel.Dock = DockStyle.Fill;
+            ProductGrid.DataSource = null;
+
+            tb_unameAccess.Clear();
+            tb_pass.Clear();
         }
 
         private void tb_unameAccess_TextChanged(object sender, EventArgs e)

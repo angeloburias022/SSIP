@@ -181,6 +181,7 @@ namespace SSIP.UserformControls
                     if (result != false)
                     {
                         MessageBox.Show("Attendance Updated");
+                        ClearFields();
                     }
                     else
                     {
@@ -393,6 +394,9 @@ namespace SSIP.UserformControls
         {
             try
             {
+                captureDevice = new VideoCaptureDevice(filterinfocollection[cboDevice.SelectedIndex].MonikerString);
+                captureDevice.NewFrame += CaptureDevice_NewFrame;
+                captureDevice.Start();
                 if (captureDevice.IsRunning)
                     captureDevice.Stop();
             }
@@ -486,6 +490,24 @@ namespace SSIP.UserformControls
             timein.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             timeout.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             workdate.Value = DateTime.Now;
+        }
+
+        public void Reset()
+        {
+            tb_employeeID.Clear();
+            tb_fname.Clear();
+            tb_lname.Clear();
+            tb_totalHrs.Clear();
+            tb_DisplayQR.Clear();
+
+            timein.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            timeout.Value = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            workdate.Value = DateTime.Now;
+
+            tb_unameAccess.Clear();
+            tb_pass.Clear();
+            tableLayoutPanel1.Visible = false;
+            btn_scan.Enabled = false;
         }
         public void TimePicker()
         {

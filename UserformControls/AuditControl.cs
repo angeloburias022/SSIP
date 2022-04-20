@@ -67,5 +67,12 @@ namespace SSIP.UserformControls
                 access_panel.Visible = false;
             }
         }
+        public void Reset()
+        {
+            tb_unameAccess.Clear();
+            tb_pass.Clear();
+            access_panel.Dock = DockStyle.Fill;
+            access_panel.Visible = true;
+        }
     }
 }

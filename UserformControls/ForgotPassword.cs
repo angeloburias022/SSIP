@@ -54,6 +54,15 @@ namespace SSIP.UserformControls
             }
         }
 
+        public void Reset()
+        {
+            tb_confirm.Clear();
+            tb_Code.Clear();
+            tb_newPass.Clear();
+            confirmAccessPanel.Visible = true;
+            changePassPanel.Visible = false;
+        }
+
         private void tb_confirm_TextChanged(object sender, EventArgs e)
         {
        

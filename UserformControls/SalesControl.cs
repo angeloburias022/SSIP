@@ -540,12 +540,32 @@ namespace SSIP.UserformControls
         private void ClearFields()
         {
             tb_productName.Clear();
-            tb_id.Clear();
+            tb_id.Text = "0";
             tb_prodDescr.Clear();
-            tb_prodPrice.Clear();
+            tb_prodPrice.Text = "0";
             tb_code.Clear();
             cmb_prodCategory.SelectedIndex = -1;
-            tb_quantity.Clear();
+            tb_quantity.Text = "0";
+        }
+
+        public void Reset()
+        {
+            tb_productName.Clear();
+            tb_id.Text="0";
+            tb_prodDescr.Clear();
+            tb_prodPrice.Text="0";
+            tb_code.Clear();
+            cmb_prodCategory.SelectedIndex = -1;
+            tb_quantity.Text = "0";
+
+            tb_amountPaid.Text = "0";
+
+            tb_unameAccess.Clear();
+            tb_pass.Clear();
+
+            prodGrid.DataSource = null;
+            tb_searchOrders.Clear();
+            HideCustomerFields();
         }
         #endregion
 
@@ -1219,6 +1239,19 @@ namespace SSIP.UserformControls
             label5.Visible = true;
             label6.Visible = true;
             label15.Visible = true;
+        }
+
+        private void HideCustomerFields()
+        {
+            tb_cusname.Visible = false;
+            tb_contact.Visible = false;
+            tb_email.Visible = false;
+            tb_address.Visible = false;
+            label3.Visible = false;
+            label4.Visible = false;
+            label5.Visible = false;
+            label6.Visible = false;
+            label15.Visible = false;
         }
     }
 }

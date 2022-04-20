@@ -354,6 +354,8 @@ null, confirmAccessPanel, new object[] { true });
         private void NotAuthorizedMssg()
         {
             MessageBox.Show("Authorization Required");
+            tb_unameAccess.FillColor = Color.Red;
+            tb_pass.FillColor = Color.Red;
         }
         private void NotHighAuthorityMssg()
         {
@@ -441,6 +443,33 @@ null, confirmAccessPanel, new object[] { true });
 
         }
 
+        public void Reset()
+        {
+            tb_personID.Clear();
+
+            tb_fname.Clear();
+            tb_lname.Clear();
+            tb_tel.Clear();
+            tb_mobile.Clear();
+
+            tb_houseNo.Clear();
+            tb_street.Clear();
+            tb_barangay.Clear();
+            //    cmb_City.ResetText();
+            cmb_City.SelectedItem = null;
+            cmb_City.SelectedText = "--select--";
+            cmb_status.SelectedItem = null;
+            cmb_status.SelectedText = "--select--";
+
+            tb_email.Clear();
+
+            tb_unameAccess.Clear();
+            tb_pass.Clear();
+
+            customersMainPanel.Visible = false;
+
+        }
+
         #endregion
 
         #region add new employee show, view employee button, hide emp grid, show emp grid
@@ -479,7 +508,10 @@ null, confirmAccessPanel, new object[] { true });
         }
         private void btn_saveCus_Click(object sender, EventArgs e)
         {
-            SaveCustomer();
+            if (Authorized())
+            {
+                SaveCustomer(); 
+            }
         }
         private void btn_addCus_Click(object sender, EventArgs e)
         {
@@ -520,6 +552,7 @@ null, confirmAccessPanel, new object[] { true });
             else
             {
                 tb_pass.Enabled = true;
+                tb_unameAccess.FillColor = Color.WhiteSmoke;
             }
         }
 
@@ -537,6 +570,15 @@ null, confirmAccessPanel, new object[] { true });
             mainservice.CustomerID = this.customersGrid.CurrentRow.Cells[10].Value.ToString();
             mainservice.ShowDialog();
 
+        }
+
+        private void tb_pass_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_pass.Text !="")
+            {
+                tb_pass.FillColor = Color.WhiteSmoke;
+            }
+           
         }
     }
 }

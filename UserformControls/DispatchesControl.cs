@@ -502,6 +502,14 @@ namespace SSIP.UserformControls
             }
         }
 
+        void EnabledPersonInfoFields()
+        {
+            tb_fname.Enabled = true;
+            tb_lname.Enabled = true;
+            tb_tel.Enabled = true;
+            tb_mobile.Enabled = true;
+        }
+
         void ClearBoxes()
         {
             tb_fname.Clear();
@@ -526,7 +534,7 @@ namespace SSIP.UserformControls
 
 
             tb_actype.ResetText();
-            tb_quan.Clear();
+            tb_quan.Text = "0";
             tb_svdate.ResetText();
             tb_brand.Clear();
             tb_timein.Clear();
@@ -537,9 +545,54 @@ namespace SSIP.UserformControls
 
             tb_customerID.Text = "0";
             tb_dispatchID.Text = "0";
-            tb_schedID.Clear();
+            tb_schedID.Text = "0";
 
 
+        }
+
+        public void Reset()
+        {
+            tb_fname.Clear();
+            tb_lname.Clear();
+            tb_tel.Clear();
+            tb_mobile.Clear();
+
+            tb_houseNo.Clear();
+            tb_street.Clear();
+            tb_barangay.Clear();
+            cmb_City.ResetText();
+
+            cmb_Status.SelectedItem = null;
+            cmb_Status.SelectedText = "--select--";
+
+
+            cmb_City.SelectedItem = null;
+            cmb_City.SelectedText = "--select--";
+
+            cmb_svtype.SelectedItem = null;
+            cmb_svtype.SelectedText = "--select--";
+
+
+            tb_actype.ResetText();
+            tb_quan.Text = "0";
+            tb_svdate.ResetText();
+            tb_brand.Clear();
+            tb_timein.Clear();
+            tb_timeout.Clear();
+            tb_assign1.Clear();
+            dispatchDate.ResetText();
+            tb_svtime.Clear();
+
+            tb_customerID.Text = "0";
+            tb_dispatchID.Text = "0";
+            tb_schedID.Text = "0";
+
+            tb_recorded.Clear();
+            tb_pass.Clear();
+            dispatchList_panel.Visible = false;
+            tb_searchDispatchs.Clear();
+
+            EnabledPersonInfoFields();
         }
 
         private void btn_addDispatch_Click(object sender, EventArgs e)

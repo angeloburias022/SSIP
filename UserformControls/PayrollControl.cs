@@ -180,10 +180,15 @@ namespace SSIP.UserformControls
             {
                 tb_workhrs.Text = "0";
                 var tool = new PayRollController();
-
-                var result = tool.Filter(cmb_empname.SelectedValue.ToString(), date_from.Value, date_to.Value);
-
-                empGrid.DataSource = result;
+                try
+                {
+                    var result = tool.Filter(cmb_empname.SelectedValue.ToString(), date_from.Value, date_to.Value);
+                    empGrid.DataSource = result;
+                }
+                catch (Exception error)
+                {                  
+                    error.ToString();
+                }        
             }
             else
             {
@@ -380,6 +385,33 @@ namespace SSIP.UserformControls
             cmb_others.SelectedIndex = -1;
             cmb_benefits.SelectedIndex = -1;
             
+        }
+
+        public void Reset()
+        {
+            payrollGrid.DataSource = null;
+            payrollGrid.Update();
+            tb_sss.Text = "0";
+            tb_pagIbig.Text = "0";
+            tb_philHealth.Text = "0";
+
+            tb_id.Text = "0";
+            tb_empID.Text = "0";
+
+            tb_otherAmount.Text = "0";
+            tb_totalAmount.Text = "0";
+
+            tb_workhrs.Text = "0";
+            tb_hourlyRate.Text = "0";
+
+            cmb_empname.SelectedIndex = -1;
+            cmb_others.SelectedIndex = -1;
+            cmb_benefits.SelectedIndex = -1;
+
+            payrollMainPanel.Visible = false;
+
+            tb_unameAccess.Clear();
+            tb_pass.Clear();
         }
         private void CMB_EmployeeName()
         {

@@ -390,6 +390,7 @@ namespace SSIP.UserformControls
         private void itemGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             GetEquipValues();
+           
         }
         #endregion
 
@@ -436,6 +437,29 @@ namespace SSIP.UserformControls
                 var result = tools.EquipmentFilter(cmb_filter.SelectedIndex);
                 itemGrid.DataSource = result; 
             }
+        }
+
+        public void Reset()
+        {
+            tb_id.Text = "0";
+            tb_productName.Clear();
+            tb_quan.Text = "0";
+            tb_search.Clear();
+            tb_code.Clear();
+            tb_price.Text = "0";
+            tb_prodDescr.Clear();
+            cmb_equipStatus.SelectedIndex = -1;
+            cmb_filter.SelectedIndex = -1;
+
+            tb_unameAccess.Clear();
+            tb_pass.Clear();
+            Equipstats_panel.Visible = true;
+            itemGrid.DataSource = null;
+            itemGrid.Update();
+
+            datepurchased.Value = DateTime.Now;
+            
+
         }
     }
 }
