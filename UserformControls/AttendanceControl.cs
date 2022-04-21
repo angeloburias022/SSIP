@@ -135,7 +135,7 @@ namespace SSIP.UserformControls
             {
                 var tools = new EmployeesController();
 
-                var result = tools.AddAttendance(tb_employeeID.Text, timein.Value, timeout.Value, workdate.Value, tb_totalHrs.Text);
+                var result = tools.AddAttendance(tb_employeeID.Text, timein.Value, timeout.Value, workdate.Value, tb_totalHrs.Text,tb_unameAccess.Text);
 
                 if (result != true)
                 {

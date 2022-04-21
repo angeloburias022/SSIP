@@ -56,6 +56,8 @@ namespace SSIP.UserformControls
             this.tb_unameAccess = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
             this.itemGrid = new System.Windows.Forms.DataGridView();
+            this.cmb_filter = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tb_search = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_showStats = new Guna.UI2.WinForms.Guna2Button();
             this.btn_remove = new Guna.UI2.WinForms.Guna2Button();
@@ -75,8 +77,6 @@ namespace SSIP.UserformControls
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cmb_filter = new Guna.UI2.WinForms.Guna2ComboBox();
             this.productMainPanel.SuspendLayout();
             this.product_panel.SuspendLayout();
             this.gridMainPanel.SuspendLayout();
@@ -532,7 +532,7 @@ namespace SSIP.UserformControls
             this.tb_unameAccess.HoverState.Parent = this.tb_unameAccess;
             this.tb_unameAccess.Location = new System.Drawing.Point(9, 28);
             this.tb_unameAccess.Name = "tb_unameAccess";
-            this.tb_unameAccess.PasswordChar = '\0';
+            this.tb_unameAccess.PasswordChar = '*';
             this.tb_unameAccess.PlaceholderText = "Username";
             this.tb_unameAccess.SelectedText = "";
             this.tb_unameAccess.ShadowDecoration.Parent = this.tb_unameAccess;
@@ -578,6 +578,46 @@ namespace SSIP.UserformControls
             this.itemGrid.Size = new System.Drawing.Size(383, 201);
             this.itemGrid.TabIndex = 1;
             this.itemGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemGrid_CellDoubleClick);
+            // 
+            // cmb_filter
+            // 
+            this.cmb_filter.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_filter.BorderRadius = 4;
+            this.cmb_filter.DisabledState.Parent = this.cmb_filter;
+            this.cmb_filter.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_filter.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_filter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_filter.FocusedState.Parent = this.cmb_filter;
+            this.cmb_filter.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_filter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_filter.HoverState.Parent = this.cmb_filter;
+            this.cmb_filter.ItemHeight = 30;
+            this.cmb_filter.Items.AddRange(new object[] {
+            "Brandnew",
+            "New Equipments",
+            "Slightly Used",
+            "Used",
+            "Running Low "});
+            this.cmb_filter.ItemsAppearance.Parent = this.cmb_filter;
+            this.cmb_filter.Location = new System.Drawing.Point(241, 37);
+            this.cmb_filter.Name = "cmb_filter";
+            this.cmb_filter.ShadowDecoration.Parent = this.cmb_filter;
+            this.cmb_filter.Size = new System.Drawing.Size(153, 36);
+            this.cmb_filter.TabIndex = 140;
+            this.cmb_filter.SelectedIndexChanged += new System.EventHandler(this.cmb_filter_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label13.Location = new System.Drawing.Point(237, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 20);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Filter";
             // 
             // tb_search
             // 
@@ -869,46 +909,6 @@ namespace SSIP.UserformControls
             this.label2.Size = new System.Drawing.Size(287, 31);
             this.label2.TabIndex = 17;
             this.label2.Text = "NEW EQUIPMENTS:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label13.Location = new System.Drawing.Point(237, 16);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(50, 20);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Filter";
-            // 
-            // cmb_filter
-            // 
-            this.cmb_filter.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_filter.BorderRadius = 4;
-            this.cmb_filter.DisabledState.Parent = this.cmb_filter;
-            this.cmb_filter.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_filter.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_filter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_filter.FocusedState.Parent = this.cmb_filter;
-            this.cmb_filter.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_filter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_filter.HoverState.Parent = this.cmb_filter;
-            this.cmb_filter.ItemHeight = 30;
-            this.cmb_filter.Items.AddRange(new object[] {
-            "Brandnew",
-            "New Equipments",
-            "Slightly Used",
-            "Used",
-            "Running Low "});
-            this.cmb_filter.ItemsAppearance.Parent = this.cmb_filter;
-            this.cmb_filter.Location = new System.Drawing.Point(241, 37);
-            this.cmb_filter.Name = "cmb_filter";
-            this.cmb_filter.ShadowDecoration.Parent = this.cmb_filter;
-            this.cmb_filter.Size = new System.Drawing.Size(153, 36);
-            this.cmb_filter.TabIndex = 140;
-            this.cmb_filter.SelectedIndexChanged += new System.EventHandler(this.cmb_filter_SelectedIndexChanged);
             // 
             // EquipInvControl
             // 

@@ -48,7 +48,7 @@ namespace SSIP.UserForms
             stats_panel.Visible = true;
 
             lbl_NoofSchedThisDay.Text = "Number of Schedules This Day: " + tools.NumberOfGetSchedThisDay();
-            lbl_NoOfSchedThisWeek.Text = "Number of Schedules This Day: " + tools.NumberOfGetSchedThisWeek();
+            lbl_NoOfSchedThisWeek.Text = "Number of Schedules This Week: " + tools.NumberOfGetSchedThisWeek();
             lbl_NoOfSchedThisMonth.Text = "Number of Schedules This Month: " + tools.NumberOfGetSchedThisMonth();
             lbl_NoOfScheds.Text = "Number of Schedules: " + tools.NumberOfGetScheds();
         }

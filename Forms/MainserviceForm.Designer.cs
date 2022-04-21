@@ -649,7 +649,7 @@ namespace SSIP.Forms
             this.tb_recorded.HoverState.Parent = this.tb_recorded;
             this.tb_recorded.Location = new System.Drawing.Point(736, 228);
             this.tb_recorded.Name = "tb_recorded";
-            this.tb_recorded.PasswordChar = '\0';
+            this.tb_recorded.PasswordChar = '*';
             this.tb_recorded.PlaceholderText = "Username";
             this.tb_recorded.SelectedText = "";
             this.tb_recorded.ShadowDecoration.Parent = this.tb_recorded;

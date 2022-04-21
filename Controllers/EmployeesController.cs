@@ -257,7 +257,7 @@ namespace SSIP.Controllers
 
             }
         }
-        public bool AddAttendance(string id, DateTime timein, DateTime timeout, DateTime workdate, string workhrs)
+        public bool AddAttendance(string id, DateTime timein, DateTime timeout, DateTime workdate, string workhrs, string recordedBy)
         {
             using (var con = new SqlConnection(db.ConString()))
             {
@@ -272,6 +272,8 @@ namespace SSIP.Controllers
                     com.Parameters.AddWithValue("@timeout", timeout);
                     com.Parameters.AddWithValue("@Workdate", DateTime.Now.ToShortDateString());
                     com.Parameters.AddWithValue("@workhrs", workhrs);
+                    com.Parameters.AddWithValue("@recordedBy", recordedBy);
+
                     com.ExecuteNonQuery();
 
                     con.Close();

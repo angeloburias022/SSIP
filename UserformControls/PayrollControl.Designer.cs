@@ -213,11 +213,11 @@ namespace SSIP.UserformControls
             this.lbl_to.BackColor = System.Drawing.Color.Transparent;
             this.lbl_to.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_to.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_to.Location = new System.Drawing.Point(439, 217);
+            this.lbl_to.Location = new System.Drawing.Point(445, 217);
             this.lbl_to.Name = "lbl_to";
-            this.lbl_to.Size = new System.Drawing.Size(37, 20);
+            this.lbl_to.Size = new System.Drawing.Size(89, 20);
             this.lbl_to.TabIndex = 110;
-            this.lbl_to.Text = "TO:";
+            this.lbl_to.Text = "DATE TO:";
             // 
             // lbl_from
             // 
@@ -227,9 +227,9 @@ namespace SSIP.UserformControls
             this.lbl_from.ForeColor = System.Drawing.Color.Honeydew;
             this.lbl_from.Location = new System.Drawing.Point(322, 217);
             this.lbl_from.Name = "lbl_from";
-            this.lbl_from.Size = new System.Drawing.Size(65, 20);
+            this.lbl_from.Size = new System.Drawing.Size(117, 20);
             this.lbl_from.TabIndex = 110;
-            this.lbl_from.Text = "FROM:";
+            this.lbl_from.Text = "DATE FROM:";
             // 
             // date_from
             // 
@@ -273,7 +273,7 @@ namespace SSIP.UserformControls
             this.payroll_date.ShadowDecoration.Parent = this.payroll_date;
             this.payroll_date.Size = new System.Drawing.Size(165, 36);
             this.payroll_date.TabIndex = 111;
-            this.payroll_date.Value = new System.DateTime(2022, 2, 12, 0, 31, 11, 428);
+            this.payroll_date.Value = new System.DateTime(2022, 4, 21, 0, 0, 0, 0);
             // 
             // lbl_payslipDate
             // 
@@ -296,9 +296,9 @@ namespace SSIP.UserformControls
             this.lbl_workhrs.ForeColor = System.Drawing.Color.Honeydew;
             this.lbl_workhrs.Location = new System.Drawing.Point(499, 346);
             this.lbl_workhrs.Name = "lbl_workhrs";
-            this.lbl_workhrs.Size = new System.Drawing.Size(143, 20);
+            this.lbl_workhrs.Size = new System.Drawing.Size(153, 20);
             this.lbl_workhrs.TabIndex = 106;
-            this.lbl_workhrs.Text = "Total WorkHours";
+            this.lbl_workhrs.Text = "Total Work Hours:";
             // 
             // tb_workhrs
             // 
@@ -1190,7 +1190,7 @@ namespace SSIP.UserformControls
             this.tb_unameAccess.HoverState.Parent = this.tb_unameAccess;
             this.tb_unameAccess.Location = new System.Drawing.Point(9, 28);
             this.tb_unameAccess.Name = "tb_unameAccess";
-            this.tb_unameAccess.PasswordChar = '\0';
+            this.tb_unameAccess.PasswordChar = '*';
             this.tb_unameAccess.PlaceholderText = "Username";
             this.tb_unameAccess.SelectedText = "";
             this.tb_unameAccess.ShadowDecoration.Parent = this.tb_unameAccess;
@@ -1356,9 +1356,9 @@ namespace SSIP.UserformControls
             this.label1.ForeColor = System.Drawing.Color.Honeydew;
             this.label1.Location = new System.Drawing.Point(404, 284);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 20);
+            this.label1.Size = new System.Drawing.Size(111, 20);
             this.label1.TabIndex = 105;
-            this.label1.Text = "EmployeeID";
+            this.label1.Text = "EmployeeID:";
             // 
             // tb_empID
             // 

@@ -530,7 +530,7 @@ namespace SSIP.UserformControls
             this.tb_unameAccess.HoverState.Parent = this.tb_unameAccess;
             this.tb_unameAccess.Location = new System.Drawing.Point(9, 28);
             this.tb_unameAccess.Name = "tb_unameAccess";
-            this.tb_unameAccess.PasswordChar = '\0';
+            this.tb_unameAccess.PasswordChar = '*';
             this.tb_unameAccess.PlaceholderText = "Username";
             this.tb_unameAccess.SelectedText = "";
             this.tb_unameAccess.ShadowDecoration.Parent = this.tb_unameAccess;
