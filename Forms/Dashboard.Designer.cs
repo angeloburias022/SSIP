@@ -201,7 +201,7 @@ namespace SSIP.Forms
             this.btn_menu_cust.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_menu_cust.Size = new System.Drawing.Size(167, 51);
             this.btn_menu_cust.TabIndex = 0;
-            this.btn_menu_cust.Text = "Customers";
+            this.btn_menu_cust.Text = "Customer";
             this.btn_menu_cust.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_menu_cust.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_menu_cust.UseVisualStyleBackColor = false;
@@ -227,7 +227,7 @@ namespace SSIP.Forms
             this.btn_managecus_sub.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btn_managecus_sub.Size = new System.Drawing.Size(167, 50);
             this.btn_managecus_sub.TabIndex = 3;
-            this.btn_managecus_sub.Text = "Manage Customers";
+            this.btn_managecus_sub.Text = "Manage Customer";
             this.btn_managecus_sub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_managecus_sub.UseVisualStyleBackColor = false;
             this.btn_managecus_sub.Click += new System.EventHandler(this.btn_managecus_sub_Click);
@@ -246,7 +246,7 @@ namespace SSIP.Forms
             this.btn_menu_employees.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btn_menu_employees.Size = new System.Drawing.Size(167, 50);
             this.btn_menu_employees.TabIndex = 0;
-            this.btn_menu_employees.Text = "Employees";
+            this.btn_menu_employees.Text = "Employee";
             this.btn_menu_employees.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_menu_employees.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_menu_employees.UseVisualStyleBackColor = false;
@@ -642,7 +642,7 @@ namespace SSIP.Forms
             // attendanceControlpanel
             // 
             this.attendanceControlpanel.Controls.Add(this.attendanceControl1);
-            this.attendanceControlpanel.Location = new System.Drawing.Point(882, 334);
+            this.attendanceControlpanel.Location = new System.Drawing.Point(1138, 253);
             this.attendanceControlpanel.Name = "attendanceControlpanel";
             this.attendanceControlpanel.Size = new System.Drawing.Size(69, 100);
             this.attendanceControlpanel.TabIndex = 22;
@@ -698,7 +698,7 @@ namespace SSIP.Forms
             // equipControlPanel
             // 
             this.equipControlPanel.Controls.Add(this.equipInvControl1);
-            this.equipControlPanel.Location = new System.Drawing.Point(978, 325);
+            this.equipControlPanel.Location = new System.Drawing.Point(1147, 170);
             this.equipControlPanel.Name = "equipControlPanel";
             this.equipControlPanel.Size = new System.Drawing.Size(60, 50);
             this.equipControlPanel.TabIndex = 26;

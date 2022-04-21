@@ -217,7 +217,8 @@ namespace SSIP.UserformControls
             HideCustomersGrid();
             ClearBoxes();
             btn_saveCus.Visible = true;
-            btn_updateCus.Enabled = false;
+            btn_updateCus.Visible = false;
+          
         }
         #endregion
 
@@ -398,11 +399,8 @@ null, confirmAccessPanel, new object[] { true });
             tb_email.Text = this.customersGrid.CurrentRow.Cells[9].Value.ToString();
 
             tb_personID.Text = this.customersGrid.CurrentRow.Cells[10].Value.ToString();
-
-          
-
-            btn_updateCus.Visible = true;
-        
+         
+            btn_updateCus.Visible = true;        
             btn_saveCus.Visible = false;
             tb_personID.Visible = true;
             lbl_personID.Visible = true;
@@ -467,7 +465,8 @@ null, confirmAccessPanel, new object[] { true });
             tb_pass.Clear();
 
             customersMainPanel.Visible = false;
-
+            customersGrid.DataSource = null;
+            btn_updateCus.Visible = false;
         }
 
         #endregion
@@ -500,10 +499,10 @@ null, confirmAccessPanel, new object[] { true });
             if (HighAuthority())
             {
                 customersGrid.DataSource = cusControl.GetCustomers();
-                customersMainPanel.Visible = true;
-                customersMainPanel.Dock = DockStyle.Fill;
-                customersMainPanel.BringToFront();
-                ClearBoxes();
+                //customersMainPanel.Visible = true;
+                //customersMainPanel.Dock = DockStyle.Fill;
+                //customersMainPanel.BringToFront();
+                //ClearBoxes();
             }
         }
         private void btn_saveCus_Click(object sender, EventArgs e)
@@ -557,19 +556,19 @@ null, confirmAccessPanel, new object[] { true });
         }
 
         private void customersGrid_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            MainserviceForm mainservice = new MainserviceForm();      
-            mainservice.firstname = this.customersGrid.CurrentRow.Cells[0].Value.ToString();
-            mainservice.lastname = this.customersGrid.CurrentRow.Cells[1].Value.ToString();
-            mainservice.MobleNo = this.customersGrid.CurrentRow.Cells[2].Value.ToString();
-            mainservice.TelephoneNo = this.customersGrid.CurrentRow.Cells[3].Value.ToString();
-            mainservice.HouseNo = this.customersGrid.CurrentRow.Cells[4].Value.ToString();
-            mainservice.Street = this.customersGrid.CurrentRow.Cells[5].Value.ToString();
-            mainservice.Barangay = this.customersGrid.CurrentRow.Cells[6].Value.ToString();
-            mainservice.City = this.customersGrid.CurrentRow.Cells[7].Value.ToString();
-            mainservice.CustomerID = this.customersGrid.CurrentRow.Cells[10].Value.ToString();
-            mainservice.ShowDialog();
-
+        {          
+            CustomerTransactions his = new CustomerTransactions();
+            his.Firstname = this.customersGrid.CurrentRow.Cells[0].Value.ToString();
+            his.Lastname = this.customersGrid.CurrentRow.Cells[1].Value.ToString();
+            his.MobileNo = this.customersGrid.CurrentRow.Cells[2].Value.ToString();
+            his.TelephoneNo = this.customersGrid.CurrentRow.Cells[3].Value.ToString();
+            his.HouseNo = this.customersGrid.CurrentRow.Cells[4].Value.ToString();
+            his.Street = this.customersGrid.CurrentRow.Cells[5].Value.ToString();
+            his.Barangay = this.customersGrid.CurrentRow.Cells[6].Value.ToString();
+            his.City = this.customersGrid.CurrentRow.Cells[7].Value.ToString();
+            his.PersonID = Convert.ToInt32(this.customersGrid.CurrentRow.Cells[10].Value.ToString());
+            his.AddressID = Convert.ToInt32(this.customersGrid.CurrentRow.Cells[11].Value.ToString());
+            his.ShowDialog();
         }
 
         private void tb_pass_TextChanged(object sender, EventArgs e)

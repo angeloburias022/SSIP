@@ -202,7 +202,8 @@ namespace SSIP.UserformControls
                             RecordedBy = tb_recorded.Text,
                             ScheduleDate = tb_svdate.Text,
                             ScheduleID = schedID,
-                            Status = cmb_Status.Text
+                            Status = cmb_Status.Text,
+                            CustomerID = cusID
                         };
                     }
                     catch (Exception error)
@@ -411,6 +412,7 @@ namespace SSIP.UserformControls
         private void btn_viewDispatches_Click(object sender, EventArgs e)
         {
             ViewDispatches();
+            dispatchList_panel.BringToFront();
         }
         void ViewDispatches()
         {
@@ -546,7 +548,7 @@ namespace SSIP.UserformControls
             tb_customerID.Text = "0";
             tb_dispatchID.Text = "0";
             tb_schedID.Text = "0";
-
+           
 
         }
 
@@ -593,6 +595,8 @@ namespace SSIP.UserformControls
             tb_searchDispatchs.Clear();
 
             EnabledPersonInfoFields();
+            btn_save.Visible = true;
+            btn_updateChanges.Visible = false;
         }
 
         private void btn_addDispatch_Click(object sender, EventArgs e)
@@ -623,7 +627,8 @@ namespace SSIP.UserformControls
         {
             HideDispatch();
 
-
+            btn_save.Visible = false;
+            btn_updateChanges.Visible = true;
 
             tb_svdate.Format = DateTimePickerFormat.Custom;
             // Display the date as "Mon 27 Feb 2012". 

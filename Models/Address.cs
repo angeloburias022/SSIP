@@ -4,7 +4,7 @@ namespace SSIP.Models
 {
     public class Address
     {
-
+        public int AddressID { get; set; }
         public string HouseNo { get; set; }
 
         public string Street { get; set; }

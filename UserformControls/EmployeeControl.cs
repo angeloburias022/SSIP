@@ -211,8 +211,9 @@ namespace SSIP.UserformControls
                 tb_personID.Text = this.employeeGrid.CurrentRow.Cells[14].Value.ToString();
 
                 HideEmployeeGrid();
+                btn_updateAccount.Visible = true;
                 btn_updateAccount.Enabled = true;
-                btn_saveAcc.Enabled = false;
+                btn_saveAcc.Visible = false;
             }
             catch (Exception error)
             {
@@ -493,7 +494,6 @@ namespace SSIP.UserformControls
             tb_password.Clear();
             tb_email.Clear();
 
-
         }
 
         public void Reset()
@@ -535,6 +535,8 @@ namespace SSIP.UserformControls
             employeeGrid.Update();
             tb_searchEmployees.Clear();
 
+
+            employeeMainPanel.Visible = false;
         }
 
         #endregion
@@ -543,14 +545,15 @@ namespace SSIP.UserformControls
         private void AddEmployee()
         {
             HideEmployeeGrid();
-            btn_updateAccount.Enabled = false;
-            btn_saveAcc.Enabled = true;
+            btn_updateAccount.Visible = false;
+            btn_saveAcc.Visible = true;
         }
         void ShowEmployeeGrid()
         {
             employeeMainPanel.Visible = true;
             employeeMainPanel.Dock = DockStyle.Fill;
             employeeGrid.DataSource = emp.GetEmployees();
+            employeeMainPanel.BringToFront();
             employeeGrid.Update();
         }
         void HideEmployeeGrid()

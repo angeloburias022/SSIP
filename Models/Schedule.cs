@@ -32,6 +32,7 @@ namespace SSIP.Models
 
         public string RecordedBy { get; set; }
         public string Status { get; set; }
+        public int CustomerID { get; set; }
     }
 
 }

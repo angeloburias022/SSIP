@@ -29,7 +29,6 @@ namespace SSIP.Forms
 
             }
         }
-
         public string lastname {
 
             get {
@@ -40,7 +39,6 @@ namespace SSIP.Forms
                 this.tb_lname.Text = value;
             }
         }
-
         public string MobleNo { 
             get {
                 return this.tb_mobile.Text;
@@ -48,7 +46,6 @@ namespace SSIP.Forms
                 this.tb_mobile.Text = value;
             } 
         }
-
         public string TelephoneNo {
             get {
                 return this.tb_tel.Text;
@@ -56,7 +53,6 @@ namespace SSIP.Forms
                 this.tb_tel.Text = value;
             }       
         }
-
         public string HouseNo { 
             get {
                 return this.tb_houseNo.Text;
@@ -66,7 +62,6 @@ namespace SSIP.Forms
                 this.tb_houseNo.Text = value;
             }         
         }
-
         public string Street { 
             get {
                 return this.tb_street.Text;
@@ -75,7 +70,6 @@ namespace SSIP.Forms
                 this.tb_street.Text = value;
             }
         }
-
         public string Barangay {
             get
             {
@@ -85,7 +79,6 @@ namespace SSIP.Forms
                 this.tb_barangay.Text = value;
             } 
         }
-
         public string City { 
             get {
                 return this.cmb_City.Text;
@@ -98,13 +91,109 @@ namespace SSIP.Forms
             get { return this.cmb_Status.Text; }
             set { this.cmb_Status.Text = value; } 
         }
-
         public string CustomerID
         {
             get { return this.tb_customerID.Text; }
             set { this.tb_customerID.Text = value; }
         }
+        public string AddressID { 
+            get { 
+                return tb_AddressID.Text; 
+            } set { 
+                tb_AddressID.Text = value; 
+            } 
+        }
+        public string ScheduleID { 
+            get {
+                return tb_schedID.Text;
+            } set { 
+                tb_schedID.Text = value;
+            } 
+        }
+        public string DispatchID {  
+            get { 
+                return tb_dispatchID.Text; 
+            } set {
+                tb_dispatchID.Text = value;
+            } 
+        }
+        public DateTime ServiceDate { 
+            get {
+                return tb_servicedate.Value;
+            } set {
+                tb_servicedate.Value = value; 
+            }
+        }
+        public string ServiceType { 
+            get {
+                return cmb_svtype.Text;
+            } set { 
+                cmb_svtype.Text = value; 
+            } 
+        }
+        public string Quantity {
+            get {
+                return tb_quan.Text; 
+            } set { 
+                tb_quan.Text = value; 
+            } 
+        }
+        public string Brand { 
+            get {
+                return tb_brand.Text; 
+            } set { 
+                tb_brand.Text = value; 
+            } 
+        }
+        public string Actype { 
+            get {
+                return tb_actype.Text;
+                } 
+            set { 
+                tb_actype.Text = value; 
+            } 
+        }
+        public string ServiceTime {
+            get
+            {
+                return tb_svtime.Text;
+            }
+            set {
+                tb_svtime.Text = value; 
+            } 
+        }
 
+        public string ServiceStatus { 
+            get { 
+                return cmb_Status.Text;
+            } 
+            set { 
+                cmb_Status.Text = value; 
+            } 
+        }
+
+        public string TimeIn {
+            get
+            {
+                return tb_timein.Text;
+            } 
+            set {
+                tb_timein.Text = value; 
+            } 
+        }
+        public string TimeOut
+        {
+            get
+            {
+                return tb_timeout.Text;
+            }
+            set
+            {
+                tb_timeout.Text = value;
+            }
+        }
+        public string Team { get { return tb_assign1.Text; } set { tb_assign1.Text = value; } }
+        public string DispatchDate { get { return tb_dispatchDate.Text; } set { tb_dispatchDate.Text = value; } }
 
         #endregion
 
@@ -138,9 +227,9 @@ namespace SSIP.Forms
                     int schedID = 0;
 
 
-                    tb_customerID.Text = "0";
-                    tb_schedID.Text = "0";
-
+                    //tb_customerID.Text = "0";
+                    //tb_schedID.Text = "0";
+                    //tb_AddressID.Text = "0";
                     var sched = new Schedule();
 
                     cusID = Convert.ToInt32(tb_customerID.Text);
@@ -158,11 +247,11 @@ namespace SSIP.Forms
 
                     var dispatch = new Dispatch
                     {
-                        dispatchdate = Convert.ToDateTime(dispatchDate.Text),
+                        dispatchdate = Convert.ToDateTime(tb_dispatchDate.Text),
                         TimeIn = tb_timein.Text,
                         TimeOut = tb_timeout.Text,
                         AssignTeam = tb_assign1.Text,
-                        PaidAmount = tb_amount.Text
+                        PaidAmount = tb_amount.Text               
                     };
 
                     try
@@ -175,9 +264,10 @@ namespace SSIP.Forms
                             ServiceType = cmb_svtype.Text,
                             ServiceTime = tb_svtime.Text,
                             RecordedBy = tb_recorded.Text,
-                            ScheduleDate = tb_svdate.Text,
+                            ScheduleDate = tb_servicedate.Text,
                             ScheduleID = schedID,
-                            Status = cmb_Status.Text
+                            Status = cmb_Status.Text,
+                            CustomerID = cusID
                         };
                     }
                     catch (Exception error)
@@ -417,7 +507,7 @@ namespace SSIP.Forms
             lbl_timeout.Visible = false;
             tb_timein.Visible = false;
             tb_timeout.Visible = false;
-            dispatchDate.Visible = false;
+            tb_dispatchDate.Visible = false;
             lbl_dispatchDate.Visible = false;
 
 
@@ -431,7 +521,7 @@ namespace SSIP.Forms
             lbl_timeout.Visible = true;
             tb_timein.Visible = true;
             tb_timeout.Visible = true;
-            dispatchDate.Visible = true;
+            tb_dispatchDate.Visible = true;
             lbl_dispatchDate.Visible = true;
 
         }
@@ -458,7 +548,7 @@ namespace SSIP.Forms
                     dispatch = new Dispatch
                     {
                         DispatchID = Convert.ToInt32(tb_dispatchID.Text),
-                        dispatchdate = Convert.ToDateTime(dispatchDate.Text),
+                        dispatchdate = Convert.ToDateTime(tb_dispatchDate.Text),
                         TimeIn = tb_timein.Text,
                         TimeOut = tb_timeout.Text,
                         AssignTeam = tb_assign1.Text,
@@ -490,7 +580,7 @@ namespace SSIP.Forms
                         ServiceType = cmb_svtype.Text,
                         ServiceTime = tb_svtime.Text,
                         RecordedBy = tb_recorded.Text,
-                        ScheduleDate = tb_svdate.Text,
+                        ScheduleDate = tb_servicedate.Text,
                         ScheduleID = Convert.ToInt32(tb_schedID.Text),
                         Status = cmb_Status.Text
                     };
@@ -577,6 +667,29 @@ namespace SSIP.Forms
             {
 
             }
+        }
+
+        private void sameAddress_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sameAddress.Checked != true)
+            {
+                tb_houseNo.ReadOnly = false;
+                tb_street.ReadOnly = false;
+                tb_barangay.ReadOnly = false;
+                cmb_City.Enabled = true;
+            }else
+            {
+                tb_houseNo.ReadOnly = true;
+                tb_street.ReadOnly = true;
+                tb_barangay.ReadOnly = true;
+                cmb_City.Enabled = false;
+            }
+        }
+        public void HideSave()
+        {
+            btn_save.Visible = false;
+            btn_updateChanges.Visible = true;
+            btn_updateChanges.Enabled = true;
         }
     }
 }

@@ -91,8 +91,6 @@ namespace SSIP.Controllers
                 
                     return true;
                 }
-
-
             }
             catch (Exception error)
             {
@@ -134,8 +132,6 @@ namespace SSIP.Controllers
         }
         public DataTable FindCustomers(string searched)
         {
-
-            DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(db.ConString()))
             {
                 try
@@ -160,7 +156,33 @@ namespace SSIP.Controllers
                 }
                 return dt;
             }
+        }
 
+        public DataTable GetCusTransactions(int PersonID)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(db.ConString()))
+            {
+                try
+                {
+                    using (SqlCommand com = new SqlCommand("[SpGetCustomerTransactions]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@PersonID", PersonID);
+                        SqlDataAdapter sds = new SqlDataAdapter(com); // passes the desired query
+
+                        sds.Fill(dt);
+                        con.Close();
+                        return dt;
+                    }
+                }
+                catch (Exception error)
+                {
+                    error.ToString();
+                }                
+            }
+            return dt;
         }
         #endregion
     }

@@ -43,7 +43,7 @@ namespace SSIP.Controllers
                                     cmd.CommandType = CommandType.StoredProcedure;
                                     // Customer's Details
 
-                                    cmd.Parameters.Add("@TimeIn", SqlDbType.VarChar).Value = dis.TimeOut;
+                                    cmd.Parameters.Add("@TimeIn", SqlDbType.VarChar).Value = dis.TimeIn;
                                     cmd.Parameters.Add("@TimeOut", SqlDbType.VarChar).Value = dis.TimeOut;
 
                                     cmd.Parameters.Add("@Team1", SqlDbType.VarChar).Value = dis.AssignTeam;
@@ -103,51 +103,94 @@ namespace SSIP.Controllers
                         {
                             try
                             {
-                                using (SqlCommand cmd = new SqlCommand("[spAddNewCustomerDispatch]", conn))
+                                if (sched.CustomerID != 0)
                                 {
-                                    cmd.CommandType = CommandType.StoredProcedure;
-                                    // Customer's Details
-                                    cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = user.Firstname;
-                                    cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = user.Lastname;
-                                    cmd.Parameters.Add("@MobileNo", SqlDbType.VarChar).Value = user.ContactNumber;
-                                    cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar).Value = user.TelephoneNo;
-
-                                    // address	
-                                    cmd.Parameters.Add("@HouseNo", SqlDbType.VarChar).Value = address.HouseNo;
-                                    cmd.Parameters.Add("@Street", SqlDbType.VarChar).Value = address.Street;
-                                    cmd.Parameters.Add("@Barangay", SqlDbType.VarChar).Value = address.Barangay;
-                                    cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = address.City;
-
-                                    // Service Details
-                                    cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = sched.Quantity;
-                                    cmd.Parameters.Add("@ServiceType", SqlDbType.VarChar).Value = sched.ServiceType;
-                                    cmd.Parameters.Add("@Brand", SqlDbType.VarChar).Value = sched.Brand;
-                                    cmd.Parameters.Add("@AcType", SqlDbType.VarChar).Value = sched.AirconType;
-
-                                    cmd.Parameters.Add("@ServiceTime", SqlDbType.VarChar).Value = sched.ServiceTime;
-                                    cmd.Parameters.Add("@RecordedBy", SqlDbType.VarChar).Value = sched.RecordedBy;
-                                    cmd.Parameters.Add("@ServiceDate", SqlDbType.DateTime).Value = sched.ScheduleDate;
-                                    cmd.Parameters.Add("@ServiceStatus", SqlDbType.VarChar).Value = sched.Status;
-
-                                    cmd.Parameters.Add("@TimeIn", SqlDbType.VarChar).Value = dis.TimeOut;
-                                    cmd.Parameters.Add("@TimeOut", SqlDbType.VarChar).Value = dis.TimeOut;
-                                    cmd.Parameters.Add("@Team1", SqlDbType.VarChar).Value = dis.AssignTeam;
-                                    cmd.Parameters.Add("@DispatchDate", SqlDbType.DateTime).Value = dis.dispatchdate;
-
-                                    cmd.Parameters.Add("@Amount", SqlDbType.VarChar).Value = dis.PaidAmount;
-
-                                    cmd.ExecuteNonQuery();
-
-                                    var newddispatch = new AuditTrails
+                                    using (SqlCommand cmd = new SqlCommand("[SpNewDispatchForExistingCustomer]", conn))
                                     {
-                                        Username = user.Username,
-                                        AuditActionTypeENUM = (Enums.ActionTypes)3,
-                                        DateTimeStamp = DateTime.Now.ToString(),
-                                        Result = "Succeed"
-                                    };
+                                        cmd.CommandType = CommandType.StoredProcedure;
+                                        // Customer's Details
 
-                                    aud.Logs(newddispatch);
-                                    return true;
+                                        cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = sched.Quantity;
+                                        cmd.Parameters.Add("@ServiceType", SqlDbType.VarChar).Value = sched.ServiceType;
+                                        cmd.Parameters.Add("@Brand", SqlDbType.VarChar).Value = sched.Brand;
+                                        cmd.Parameters.Add("@Actype", SqlDbType.VarChar).Value = sched.AirconType;
+
+                                        cmd.Parameters.Add("@ServiceTime", SqlDbType.VarChar).Value = sched.ServiceTime;
+                                        cmd.Parameters.Add("@ServiceDate", SqlDbType.DateTime).Value = sched.ScheduleDate;
+                                        cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = sched.Status;
+
+                                        cmd.Parameters.Add("@TimeIn", SqlDbType.VarChar).Value = dis.TimeIn;
+                                        cmd.Parameters.Add("@TimeOut", SqlDbType.VarChar).Value = dis.TimeOut;
+                                        cmd.Parameters.Add("@Team1", SqlDbType.VarChar).Value = dis.AssignTeam;
+                                        cmd.Parameters.Add("@DispatchDate", SqlDbType.DateTime).Value = dis.dispatchdate;
+
+                                        cmd.Parameters.Add("@Amount", SqlDbType.VarChar).Value = dis.PaidAmount;
+                                        cmd.Parameters.Add("@CustomerID", SqlDbType.Int).Value = sched.CustomerID;
+
+                                        cmd.ExecuteNonQuery();
+
+                                        var addDispatch = new AuditTrails
+                                        {
+                                            Username = user.Username,
+                                            AuditActionTypeENUM = (Enums.ActionTypes)3,
+                                            DateTimeStamp = DateTime.Now.ToString(),
+                                            Result = "Succeed",
+                                            Description = "Added Dispatch on customer ID: " + sched.CustomerID + " "
+                                        };
+
+                                        aud.Logs(addDispatch);
+
+                                        return true;
+                                    }
+                                }
+                                else
+                                {
+                                    using (SqlCommand cmd = new SqlCommand("[spAddNewCustomerDispatch]", conn))
+                                    {
+                                        cmd.CommandType = CommandType.StoredProcedure;
+                                        // Customer's Details
+                                        cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = user.Firstname;
+                                        cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = user.Lastname;
+                                        cmd.Parameters.Add("@MobileNo", SqlDbType.VarChar).Value = user.ContactNumber;
+                                        cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar).Value = user.TelephoneNo;
+
+                                        // address	
+                                        cmd.Parameters.Add("@HouseNo", SqlDbType.VarChar).Value = address.HouseNo;
+                                        cmd.Parameters.Add("@Street", SqlDbType.VarChar).Value = address.Street;
+                                        cmd.Parameters.Add("@Barangay", SqlDbType.VarChar).Value = address.Barangay;
+                                        cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = address.City;
+
+                                        // Service Details
+                                        cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = sched.Quantity;
+                                        cmd.Parameters.Add("@ServiceType", SqlDbType.VarChar).Value = sched.ServiceType;
+                                        cmd.Parameters.Add("@Brand", SqlDbType.VarChar).Value = sched.Brand;
+                                        cmd.Parameters.Add("@AcType", SqlDbType.VarChar).Value = sched.AirconType;
+
+                                        cmd.Parameters.Add("@ServiceTime", SqlDbType.VarChar).Value = sched.ServiceTime;
+                                        cmd.Parameters.Add("@RecordedBy", SqlDbType.VarChar).Value = sched.RecordedBy;
+                                        cmd.Parameters.Add("@ServiceDate", SqlDbType.DateTime).Value = sched.ScheduleDate;
+                                        cmd.Parameters.Add("@ServiceStatus", SqlDbType.VarChar).Value = sched.Status;
+
+                                        cmd.Parameters.Add("@TimeIn", SqlDbType.VarChar).Value = dis.TimeOut;
+                                        cmd.Parameters.Add("@TimeOut", SqlDbType.VarChar).Value = dis.TimeOut;
+                                        cmd.Parameters.Add("@Team1", SqlDbType.VarChar).Value = dis.AssignTeam;
+                                        cmd.Parameters.Add("@DispatchDate", SqlDbType.DateTime).Value = dis.dispatchdate;
+
+                                        cmd.Parameters.Add("@Amount", SqlDbType.VarChar).Value = dis.PaidAmount;
+
+                                        cmd.ExecuteNonQuery();
+
+                                        var newddispatch = new AuditTrails
+                                        {
+                                            Username = user.Username,
+                                            AuditActionTypeENUM = (Enums.ActionTypes)3,
+                                            DateTimeStamp = DateTime.Now.ToString(),
+                                            Result = "Succeed"
+                                        };
+
+                                        aud.Logs(newddispatch);
+                                        return true;
+                                    }
                                 }
                             }
                             catch (Exception error)
@@ -603,6 +646,12 @@ namespace SSIP.Controllers
             return dt;
         }
 
+        public DataTable GetCustomerTrans()
+        {
+
+            throw new NotImplementedException();
+        }
+
         public string NumberOfGetSchedThisWeek()
         {
             var details = "";
@@ -788,6 +837,38 @@ namespace SSIP.Controllers
                     }
                 }
                 return dt;
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
+            return dt;
+        }
+        public DataTable FilterCustomerTransStatus(string selected, string CustomerID)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.ConString()))
+                {                  
+                    using (SqlCommand com = new SqlCommand("[SpFilterCustomerTrans]", con))
+                    {
+                        com.CommandType = CommandType.StoredProcedure;
+
+                        com.Parameters.AddWithValue("@selected", selected);
+                        com.Parameters.AddWithValue("@CustomerID", CustomerID);
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                        {
+                            ds.Clear();
+                            adapter.Fill(ds);
+
+                            dt = ds.Tables[0];
+                            con.Close();
+
+                        }
+                    }                       
+                    return dt;
+                }
+                
             }
             catch (Exception error)
             {

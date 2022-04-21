@@ -112,7 +112,8 @@ namespace SSIP.UserForms
                             RecordedBy = tb_recorded.Text,
                             ScheduleDate = tb_svdate.Text,
                             ScheduleID = schedID,
-                            Status = cmb_Status.Text
+                            Status = cmb_Status.Text,
+                            CustomerID = cusID
                         };
                     }
                     catch (Exception error)

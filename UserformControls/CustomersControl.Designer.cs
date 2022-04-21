@@ -29,12 +29,8 @@ namespace SSIP.UserformControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomersControl));
             this.customersMainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.customersGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.tb_searchCustomers = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_addCus = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_confirmAccess = new System.Windows.Forms.Label();
@@ -68,9 +64,12 @@ namespace SSIP.UserformControls
             this.cmb_status = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.customersMainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.customersGrid = new System.Windows.Forms.DataGridView();
             this.confirmAccessPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // customersMainPanel
@@ -80,82 +79,15 @@ namespace SSIP.UserformControls
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.333333F));
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.22222F));
             this.customersMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.666667F));
-            this.customersMainPanel.Controls.Add(this.customersGrid, 1, 1);
-            this.customersMainPanel.Controls.Add(this.tb_searchCustomers, 1, 0);
-            this.customersMainPanel.Controls.Add(this.btn_addCus, 1, 2);
-            this.customersMainPanel.Location = new System.Drawing.Point(972, 100);
+            this.customersMainPanel.Location = new System.Drawing.Point(1128, 49);
             this.customersMainPanel.Name = "customersMainPanel";
             this.customersMainPanel.RowCount = 3;
             this.customersMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
             this.customersMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.67513F));
             this.customersMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.33503F));
-            this.customersMainPanel.Size = new System.Drawing.Size(450, 328);
+            this.customersMainPanel.Size = new System.Drawing.Size(94, 101);
             this.customersMainPanel.TabIndex = 165;
             this.customersMainPanel.Visible = false;
-            // 
-            // customersGrid
-            // 
-            this.customersGrid.AllowUserToAddRows = false;
-            this.customersGrid.AllowUserToDeleteRows = false;
-            this.customersGrid.AllowUserToOrderColumns = true;
-            this.customersGrid.AllowUserToResizeColumns = false;
-            this.customersGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.customersGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.customersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.customersGrid.BackgroundColor = System.Drawing.Color.White;
-            this.customersGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.customersGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.customersGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.customersGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.customersGrid.DefaultCellStyle = dataGridViewCellStyle3;
-            this.customersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customersGrid.EnableHeadersVisualStyles = false;
-            this.customersGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.customersGrid.Location = new System.Drawing.Point(26, 56);
-            this.customersGrid.Name = "customersGrid";
-            this.customersGrid.ReadOnly = true;
-            this.customersGrid.RowHeadersVisible = false;
-            this.customersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.customersGrid.Size = new System.Drawing.Size(399, 195);
-            this.customersGrid.TabIndex = 169;
-            this.customersGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.customersGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.customersGrid.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.customersGrid.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.customersGrid.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.customersGrid.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.customersGrid.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.customersGrid.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.customersGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.customersGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.customersGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.customersGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.customersGrid.ThemeStyle.HeaderStyle.Height = 23;
-            this.customersGrid.ThemeStyle.ReadOnly = true;
-            this.customersGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.customersGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.customersGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.customersGrid.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.customersGrid.ThemeStyle.RowsStyle.Height = 22;
-            this.customersGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.customersGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.customersGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellDoubleClick);
-            this.customersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellDoubleClick_1);
             // 
             // tb_searchCustomers
             // 
@@ -175,7 +107,7 @@ namespace SSIP.UserformControls
             this.tb_searchCustomers.ForeColor = System.Drawing.Color.Black;
             this.tb_searchCustomers.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_searchCustomers.HoverState.Parent = this.tb_searchCustomers;
-            this.tb_searchCustomers.Location = new System.Drawing.Point(26, 3);
+            this.tb_searchCustomers.Location = new System.Drawing.Point(652, 104);
             this.tb_searchCustomers.Name = "tb_searchCustomers";
             this.tb_searchCustomers.PasswordChar = '\0';
             this.tb_searchCustomers.PlaceholderText = "Search:";
@@ -200,12 +132,12 @@ namespace SSIP.UserformControls
             this.btn_addCus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_addCus.ForeColor = System.Drawing.Color.White;
             this.btn_addCus.HoverState.Parent = this.btn_addCus;
-            this.btn_addCus.Location = new System.Drawing.Point(26, 257);
+            this.btn_addCus.Location = new System.Drawing.Point(476, 244);
             this.btn_addCus.Name = "btn_addCus";
             this.btn_addCus.ShadowDecoration.Parent = this.btn_addCus;
-            this.btn_addCus.Size = new System.Drawing.Size(112, 43);
+            this.btn_addCus.Size = new System.Drawing.Size(120, 43);
             this.btn_addCus.TabIndex = 105;
-            this.btn_addCus.Text = "ADD CUSTOMER";
+            this.btn_addCus.Text = "CLEAR FIELDS";
             this.btn_addCus.UseTransparentBackground = true;
             this.btn_addCus.Click += new System.EventHandler(this.btn_addCus_Click);
             // 
@@ -285,7 +217,7 @@ namespace SSIP.UserformControls
             this.lbl_personID.BackColor = System.Drawing.Color.Transparent;
             this.lbl_personID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_personID.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_personID.Location = new System.Drawing.Point(268, 64);
+            this.lbl_personID.Location = new System.Drawing.Point(282, 8);
             this.lbl_personID.Name = "lbl_personID";
             this.lbl_personID.Size = new System.Drawing.Size(89, 20);
             this.lbl_personID.TabIndex = 164;
@@ -295,7 +227,7 @@ namespace SSIP.UserformControls
             // tb_personID
             // 
             this.tb_personID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_personID.Location = new System.Drawing.Point(273, 86);
+            this.tb_personID.Location = new System.Drawing.Point(287, 30);
             this.tb_personID.Multiline = true;
             this.tb_personID.Name = "tb_personID";
             this.tb_personID.ReadOnly = true;
@@ -322,7 +254,7 @@ namespace SSIP.UserformControls
             this.tb_email.ForeColor = System.Drawing.Color.Black;
             this.tb_email.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_email.HoverState.Parent = this.tb_email;
-            this.tb_email.Location = new System.Drawing.Point(205, 306);
+            this.tb_email.Location = new System.Drawing.Point(222, 466);
             this.tb_email.Name = "tb_email";
             this.tb_email.PasswordChar = '\0';
             this.tb_email.PlaceholderText = "Email Address";
@@ -337,7 +269,7 @@ namespace SSIP.UserformControls
             this.lbl_email.BackColor = System.Drawing.Color.Transparent;
             this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_email.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_email.Location = new System.Drawing.Point(204, 283);
+            this.lbl_email.Location = new System.Drawing.Point(221, 443);
             this.lbl_email.Name = "lbl_email";
             this.lbl_email.Size = new System.Drawing.Size(53, 20);
             this.lbl_email.TabIndex = 161;
@@ -349,7 +281,7 @@ namespace SSIP.UserformControls
             this.confirmAccessPanel.Controls.Add(this.lbl_confirmAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_unameAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_pass);
-            this.confirmAccessPanel.Location = new System.Drawing.Point(759, 181);
+            this.confirmAccessPanel.Location = new System.Drawing.Point(434, 371);
             this.confirmAccessPanel.Name = "confirmAccessPanel";
             this.confirmAccessPanel.Size = new System.Drawing.Size(207, 126);
             this.confirmAccessPanel.TabIndex = 160;
@@ -368,7 +300,7 @@ namespace SSIP.UserformControls
             this.btn_viewCus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_viewCus.ForeColor = System.Drawing.Color.White;
             this.btn_viewCus.HoverState.Parent = this.btn_viewCus;
-            this.btn_viewCus.Location = new System.Drawing.Point(803, 125);
+            this.btn_viewCus.Location = new System.Drawing.Point(476, 142);
             this.btn_viewCus.Name = "btn_viewCus";
             this.btn_viewCus.ShadowDecoration.Parent = this.btn_viewCus;
             this.btn_viewCus.Size = new System.Drawing.Size(120, 45);
@@ -391,7 +323,7 @@ namespace SSIP.UserformControls
             this.btn_updateCus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_updateCus.ForeColor = System.Drawing.Color.White;
             this.btn_updateCus.HoverState.Parent = this.btn_updateCus;
-            this.btn_updateCus.Location = new System.Drawing.Point(803, 313);
+            this.btn_updateCus.Location = new System.Drawing.Point(476, 193);
             this.btn_updateCus.Name = "btn_updateCus";
             this.btn_updateCus.ShadowDecoration.Parent = this.btn_updateCus;
             this.btn_updateCus.Size = new System.Drawing.Size(120, 45);
@@ -415,7 +347,7 @@ namespace SSIP.UserformControls
             this.btn_saveCus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_saveCus.ForeColor = System.Drawing.Color.White;
             this.btn_saveCus.HoverState.Parent = this.btn_saveCus;
-            this.btn_saveCus.Location = new System.Drawing.Point(803, 364);
+            this.btn_saveCus.Location = new System.Drawing.Point(476, 193);
             this.btn_saveCus.Name = "btn_saveCus";
             this.btn_saveCus.ShadowDecoration.Parent = this.btn_saveCus;
             this.btn_saveCus.Size = new System.Drawing.Size(120, 45);
@@ -428,11 +360,11 @@ namespace SSIP.UserformControls
             // 
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label20.Location = new System.Drawing.Point(14, 88);
+            this.label20.Location = new System.Drawing.Point(26, 43);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(237, 31);
+            this.label20.Size = new System.Drawing.Size(212, 29);
             this.label20.TabIndex = 156;
             this.label20.Text = "Personal Details:";
             // 
@@ -458,7 +390,7 @@ namespace SSIP.UserformControls
             "Mandaluyong",
             "Muntinlupa"});
             this.cmb_City.ItemsAppearance.Parent = this.cmb_City;
-            this.cmb_City.Location = new System.Drawing.Point(578, 232);
+            this.cmb_City.Location = new System.Drawing.Point(223, 371);
             this.cmb_City.Name = "cmb_City";
             this.cmb_City.ShadowDecoration.Parent = this.cmb_City;
             this.cmb_City.Size = new System.Drawing.Size(165, 36);
@@ -482,7 +414,7 @@ namespace SSIP.UserformControls
             this.tb_tel.ForeColor = System.Drawing.Color.Black;
             this.tb_tel.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_tel.HoverState.Parent = this.tb_tel;
-            this.tb_tel.Location = new System.Drawing.Point(577, 157);
+            this.tb_tel.Location = new System.Drawing.Point(220, 207);
             this.tb_tel.Name = "tb_tel";
             this.tb_tel.PasswordChar = '\0';
             this.tb_tel.PlaceholderText = "Tel #";
@@ -509,7 +441,7 @@ namespace SSIP.UserformControls
             this.tb_barangay.ForeColor = System.Drawing.Color.Black;
             this.tb_barangay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_barangay.HoverState.Parent = this.tb_barangay;
-            this.tb_barangay.Location = new System.Drawing.Point(393, 232);
+            this.tb_barangay.Location = new System.Drawing.Point(38, 371);
             this.tb_barangay.Name = "tb_barangay";
             this.tb_barangay.PasswordChar = '\0';
             this.tb_barangay.PlaceholderText = "Barangay";
@@ -536,7 +468,7 @@ namespace SSIP.UserformControls
             this.tb_mobile.ForeColor = System.Drawing.Color.Black;
             this.tb_mobile.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_mobile.HoverState.Parent = this.tb_mobile;
-            this.tb_mobile.Location = new System.Drawing.Point(393, 157);
+            this.tb_mobile.Location = new System.Drawing.Point(36, 207);
             this.tb_mobile.Name = "tb_mobile";
             this.tb_mobile.PasswordChar = '\0';
             this.tb_mobile.PlaceholderText = "Mobile #";
@@ -563,7 +495,7 @@ namespace SSIP.UserformControls
             this.tb_street.ForeColor = System.Drawing.Color.Black;
             this.tb_street.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_street.HoverState.Parent = this.tb_street;
-            this.tb_street.Location = new System.Drawing.Point(208, 232);
+            this.tb_street.Location = new System.Drawing.Point(224, 305);
             this.tb_street.Name = "tb_street";
             this.tb_street.PasswordChar = '\0';
             this.tb_street.PlaceholderText = "Street";
@@ -590,7 +522,7 @@ namespace SSIP.UserformControls
             this.tb_lname.ForeColor = System.Drawing.Color.Black;
             this.tb_lname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_lname.HoverState.Parent = this.tb_lname;
-            this.tb_lname.Location = new System.Drawing.Point(206, 157);
+            this.tb_lname.Location = new System.Drawing.Point(36, 108);
             this.tb_lname.Name = "tb_lname";
             this.tb_lname.PasswordChar = '\0';
             this.tb_lname.PlaceholderText = "Lastname";
@@ -617,13 +549,13 @@ namespace SSIP.UserformControls
             this.tb_houseNo.ForeColor = System.Drawing.Color.Black;
             this.tb_houseNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_houseNo.HoverState.Parent = this.tb_houseNo;
-            this.tb_houseNo.Location = new System.Drawing.Point(23, 232);
+            this.tb_houseNo.Location = new System.Drawing.Point(39, 305);
             this.tb_houseNo.Name = "tb_houseNo";
             this.tb_houseNo.PasswordChar = '\0';
             this.tb_houseNo.PlaceholderText = "House #";
             this.tb_houseNo.SelectedText = "";
             this.tb_houseNo.ShadowDecoration.Parent = this.tb_houseNo;
-            this.tb_houseNo.Size = new System.Drawing.Size(165, 36);
+            this.tb_houseNo.Size = new System.Drawing.Size(90, 36);
             this.tb_houseNo.TabIndex = 154;
             // 
             // tb_fname
@@ -644,7 +576,7 @@ namespace SSIP.UserformControls
             this.tb_fname.ForeColor = System.Drawing.Color.Black;
             this.tb_fname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_fname.HoverState.Parent = this.tb_fname;
-            this.tb_fname.Location = new System.Drawing.Point(20, 157);
+            this.tb_fname.Location = new System.Drawing.Point(220, 108);
             this.tb_fname.Name = "tb_fname";
             this.tb_fname.PasswordChar = '\0';
             this.tb_fname.PlaceholderText = "Firstname";
@@ -659,7 +591,7 @@ namespace SSIP.UserformControls
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Honeydew;
-            this.label15.Location = new System.Drawing.Point(574, 209);
+            this.label15.Location = new System.Drawing.Point(219, 348);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(44, 20);
             this.label15.TabIndex = 141;
@@ -671,7 +603,7 @@ namespace SSIP.UserformControls
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Honeydew;
-            this.label10.Location = new System.Drawing.Point(392, 209);
+            this.label10.Location = new System.Drawing.Point(37, 348);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 20);
             this.label10.TabIndex = 142;
@@ -683,7 +615,7 @@ namespace SSIP.UserformControls
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Honeydew;
-            this.label6.Location = new System.Drawing.Point(203, 209);
+            this.label6.Location = new System.Drawing.Point(219, 282);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 20);
             this.label6.TabIndex = 140;
@@ -695,7 +627,7 @@ namespace SSIP.UserformControls
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Honeydew;
-            this.label9.Location = new System.Drawing.Point(571, 134);
+            this.label9.Location = new System.Drawing.Point(214, 184);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 20);
             this.label9.TabIndex = 144;
@@ -707,11 +639,11 @@ namespace SSIP.UserformControls
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Honeydew;
-            this.label5.Location = new System.Drawing.Point(204, 134);
+            this.label5.Location = new System.Drawing.Point(34, 85);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 20);
+            this.label5.Size = new System.Drawing.Size(93, 20);
             this.label5.TabIndex = 143;
-            this.label5.Text = "LastName:";
+            this.label5.Text = "Lastname:";
             // 
             // label8
             // 
@@ -719,7 +651,7 @@ namespace SSIP.UserformControls
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Honeydew;
-            this.label8.Location = new System.Drawing.Point(389, 134);
+            this.label8.Location = new System.Drawing.Point(32, 184);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 20);
             this.label8.TabIndex = 145;
@@ -731,7 +663,7 @@ namespace SSIP.UserformControls
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Honeydew;
-            this.label12.Location = new System.Drawing.Point(19, 209);
+            this.label12.Location = new System.Drawing.Point(35, 282);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 20);
             this.label12.TabIndex = 147;
@@ -743,11 +675,11 @@ namespace SSIP.UserformControls
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Honeydew;
-            this.label4.Location = new System.Drawing.Point(16, 134);
+            this.label4.Location = new System.Drawing.Point(216, 85);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 20);
+            this.label4.Size = new System.Drawing.Size(94, 20);
             this.label4.TabIndex = 146;
-            this.label4.Text = "FirstName:";
+            this.label4.Text = "Firstname:";
             // 
             // cmb_status
             // 
@@ -767,7 +699,7 @@ namespace SSIP.UserformControls
             "Active",
             "In-Active"});
             this.cmb_status.ItemsAppearance.Parent = this.cmb_status;
-            this.cmb_status.Location = new System.Drawing.Point(23, 306);
+            this.cmb_status.Location = new System.Drawing.Point(40, 466);
             this.cmb_status.Name = "cmb_status";
             this.cmb_status.ShadowDecoration.Parent = this.cmb_status;
             this.cmb_status.Size = new System.Drawing.Size(165, 36);
@@ -779,7 +711,7 @@ namespace SSIP.UserformControls
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Honeydew;
-            this.label2.Location = new System.Drawing.Point(19, 283);
+            this.label2.Location = new System.Drawing.Point(36, 443);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 20);
             this.label2.TabIndex = 166;
@@ -789,19 +721,71 @@ namespace SSIP.UserformControls
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label1.Location = new System.Drawing.Point(437, 17);
+            this.label1.Location = new System.Drawing.Point(436, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 42);
+            this.label1.Size = new System.Drawing.Size(241, 55);
             this.label1.TabIndex = 168;
             this.label1.Text = "Customer";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label3.Location = new System.Drawing.Point(28, 147);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(196, 29);
+            this.label3.TabIndex = 156;
+            this.label3.Text = "Contact Details:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label7.Location = new System.Drawing.Point(31, 253);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(204, 29);
+            this.label7.TabIndex = 171;
+            this.label7.Text = "Address Details:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label11.Location = new System.Drawing.Point(31, 410);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(98, 29);
+            this.label11.TabIndex = 172;
+            this.label11.Text = "Others:";
+            // 
+            // customersGrid
+            // 
+            this.customersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.customersGrid.Location = new System.Drawing.Point(652, 159);
+            this.customersGrid.Name = "customersGrid";
+            this.customersGrid.ReadOnly = true;
+            this.customersGrid.Size = new System.Drawing.Size(427, 182);
+            this.customersGrid.TabIndex = 173;
+            this.customersGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellDoubleClick);
+            this.customersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customersGrid_CellDoubleClick_1);
             // 
             // CustomersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.Controls.Add(this.customersGrid);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btn_addCus);
+            this.Controls.Add(this.tb_searchCustomers);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmb_status);
             this.Controls.Add(this.label2);
@@ -814,6 +798,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.btn_viewCus);
             this.Controls.Add(this.btn_updateCus);
             this.Controls.Add(this.btn_saveCus);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cmb_City);
             this.Controls.Add(this.tb_tel);
@@ -833,12 +818,11 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.label4);
             this.DoubleBuffered = true;
             this.Name = "CustomersControl";
-            this.Size = new System.Drawing.Size(1287, 529);
+            this.Size = new System.Drawing.Size(1097, 529);
             this.Load += new System.EventHandler(this.CustomersControl_Load);
-            this.customersMainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).EndInit();
             this.confirmAccessPanel.ResumeLayout(false);
             this.confirmAccessPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customersGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -880,6 +864,9 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox tb_searchCustomers;
-        private Guna.UI2.WinForms.Guna2DataGridView customersGrid;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView customersGrid;
     }
 }
