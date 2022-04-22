@@ -897,14 +897,14 @@ namespace SSIP.UserformControls
             this.cmb_filter.HoverState.Parent = this.cmb_filter;
             this.cmb_filter.ItemHeight = 30;
             this.cmb_filter.Items.AddRange(new object[] {
-            "New Stocks",
-            "Current Stocks",
-            "Running Low"});
+            "New Products",
+            "Total Product Quantities",
+            "Insufficient no. of Products"});
             this.cmb_filter.ItemsAppearance.Parent = this.cmb_filter;
-            this.cmb_filter.Location = new System.Drawing.Point(259, 37);
+            this.cmb_filter.Location = new System.Drawing.Point(217, 37);
             this.cmb_filter.Name = "cmb_filter";
             this.cmb_filter.ShadowDecoration.Parent = this.cmb_filter;
-            this.cmb_filter.Size = new System.Drawing.Size(135, 36);
+            this.cmb_filter.Size = new System.Drawing.Size(177, 36);
             this.cmb_filter.TabIndex = 13;
             this.cmb_filter.SelectedIndexChanged += new System.EventHandler(this.cmb_filter_SelectedIndexChanged);
             this.cmb_filter.SelectedValueChanged += new System.EventHandler(this.cmb_prodCategory_SelectedValueChanged);
@@ -1135,7 +1135,7 @@ namespace SSIP.UserformControls
             this.dis_runningLow.BackColor = System.Drawing.Color.Transparent;
             this.dis_runningLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dis_runningLow.ForeColor = System.Drawing.Color.LimeGreen;
-            this.dis_runningLow.Location = new System.Drawing.Point(483, 255);
+            this.dis_runningLow.Location = new System.Drawing.Point(483, 179);
             this.dis_runningLow.Name = "dis_runningLow";
             this.dis_runningLow.Size = new System.Drawing.Size(69, 73);
             this.dis_runningLow.TabIndex = 11;
@@ -1147,7 +1147,7 @@ namespace SSIP.UserformControls
             this.dis_currentStocks.BackColor = System.Drawing.Color.Transparent;
             this.dis_currentStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dis_currentStocks.ForeColor = System.Drawing.Color.LimeGreen;
-            this.dis_currentStocks.Location = new System.Drawing.Point(483, 166);
+            this.dis_currentStocks.Location = new System.Drawing.Point(483, 267);
             this.dis_currentStocks.Name = "dis_currentStocks";
             this.dis_currentStocks.Size = new System.Drawing.Size(69, 73);
             this.dis_currentStocks.TabIndex = 11;
@@ -1171,11 +1171,11 @@ namespace SSIP.UserformControls
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label6.Location = new System.Drawing.Point(82, 267);
+            this.label6.Location = new System.Drawing.Point(73, 197);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(357, 31);
+            this.label6.Size = new System.Drawing.Size(404, 31);
             this.label6.TabIndex = 11;
-            this.label6.Text = "STOCKS RUNNING LOW:";
+            this.label6.Text = "INSUFFICIENT  PRODUCTS:";
             // 
             // label4
             // 
@@ -1183,11 +1183,11 @@ namespace SSIP.UserformControls
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label4.Location = new System.Drawing.Point(45, 189);
+            this.label4.Location = new System.Drawing.Point(27, 287);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(399, 31);
+            this.label4.Size = new System.Drawing.Size(450, 31);
             this.label4.TabIndex = 11;
-            this.label4.Text = "CURRENT NO. OF STOCKS:";
+            this.label4.Text = "TOTAL PRODUCT QUANTITIES:";
             // 
             // label2
             // 
@@ -1195,11 +1195,11 @@ namespace SSIP.UserformControls
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label2.Location = new System.Drawing.Point(227, 112);
+            this.label2.Location = new System.Drawing.Point(218, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 31);
+            this.label2.Size = new System.Drawing.Size(259, 31);
             this.label2.TabIndex = 11;
-            this.label2.Text = "NEW STOCKS:";
+            this.label2.Text = "NEW PRODUCTS:";
             // 
             // btn_viewForm
             // 

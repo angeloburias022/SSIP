@@ -316,8 +316,7 @@ namespace SSIP.UserformControls
                     else
                     {
                         MessageBox.Show("Added Successfully!");
-                        tb_unameAccess.ReadOnly = true;
-                        tb_pass.ReadOnly = true;
+                        
                         btn_saveAcc.Enabled = true;
 
                         var addEmployee = new AuditTrails

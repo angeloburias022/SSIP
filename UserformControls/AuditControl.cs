@@ -64,7 +64,7 @@ namespace SSIP.UserformControls
             }
             else
             {
-                access_panel.Visible = false;
+                access_panel.Visible = true;
             }
         }
         public void Reset()

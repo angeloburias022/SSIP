@@ -64,6 +64,8 @@ namespace SSIP.UserformControls
             e.Graphics.DrawString("Firstname: " + lbl_fname.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(350, 430));
             e.Graphics.DrawString("Lastname: " + lbl_lname.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(350, 470));
             e.Graphics.DrawString("Position: " + lbl_displayPosition.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(350, 500));
+            e.Graphics.DrawString("QR Code: " + lbl_code.Text, new Font("Microsoft Sans Serif", 21, FontStyle.Bold), Brushes.Black, new Point(350, 500));
+
         }
 
         private void QRCodeControl_Load(object sender, EventArgs e)

@@ -1400,11 +1400,11 @@ namespace SSIP.UserForms
             // 
             this.lbl_NoOfScheds.AutoSize = true;
             this.lbl_NoOfScheds.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_NoOfScheds.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NoOfScheds.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_NoOfScheds.ForeColor = System.Drawing.Color.LimeGreen;
             this.lbl_NoOfScheds.Location = new System.Drawing.Point(64, 257);
             this.lbl_NoOfScheds.Name = "lbl_NoOfScheds";
-            this.lbl_NoOfScheds.Size = new System.Drawing.Size(185, 31);
+            this.lbl_NoOfScheds.Size = new System.Drawing.Size(231, 39);
             this.lbl_NoOfScheds.TabIndex = 96;
             this.lbl_NoOfScheds.Text = "No of scheds";
             // 
@@ -1412,11 +1412,11 @@ namespace SSIP.UserForms
             // 
             this.lbl_NoOfSchedThisMonth.AutoSize = true;
             this.lbl_NoOfSchedThisMonth.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_NoOfSchedThisMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NoOfSchedThisMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_NoOfSchedThisMonth.ForeColor = System.Drawing.Color.LimeGreen;
             this.lbl_NoOfSchedThisMonth.Location = new System.Drawing.Point(64, 204);
             this.lbl_NoOfSchedThisMonth.Name = "lbl_NoOfSchedThisMonth";
-            this.lbl_NoOfSchedThisMonth.Size = new System.Drawing.Size(313, 31);
+            this.lbl_NoOfSchedThisMonth.Size = new System.Drawing.Size(393, 39);
             this.lbl_NoOfSchedThisMonth.TabIndex = 96;
             this.lbl_NoOfSchedThisMonth.Text = "No of sched this month";
             // 
@@ -1424,11 +1424,11 @@ namespace SSIP.UserForms
             // 
             this.lbl_NoOfSchedThisWeek.AutoSize = true;
             this.lbl_NoOfSchedThisWeek.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_NoOfSchedThisWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NoOfSchedThisWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_NoOfSchedThisWeek.ForeColor = System.Drawing.Color.LimeGreen;
             this.lbl_NoOfSchedThisWeek.Location = new System.Drawing.Point(64, 157);
             this.lbl_NoOfSchedThisWeek.Name = "lbl_NoOfSchedThisWeek";
-            this.lbl_NoOfSchedThisWeek.Size = new System.Drawing.Size(301, 31);
+            this.lbl_NoOfSchedThisWeek.Size = new System.Drawing.Size(376, 39);
             this.lbl_NoOfSchedThisWeek.TabIndex = 96;
             this.lbl_NoOfSchedThisWeek.Text = "No of sched this week";
             // 
@@ -1436,11 +1436,11 @@ namespace SSIP.UserForms
             // 
             this.lbl_NoofSchedThisDay.AutoSize = true;
             this.lbl_NoofSchedThisDay.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_NoofSchedThisDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NoofSchedThisDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_NoofSchedThisDay.ForeColor = System.Drawing.Color.LimeGreen;
             this.lbl_NoofSchedThisDay.Location = new System.Drawing.Point(64, 113);
             this.lbl_NoofSchedThisDay.Name = "lbl_NoofSchedThisDay";
-            this.lbl_NoofSchedThisDay.Size = new System.Drawing.Size(280, 31);
+            this.lbl_NoofSchedThisDay.Size = new System.Drawing.Size(350, 39);
             this.lbl_NoofSchedThisDay.TabIndex = 95;
             this.lbl_NoofSchedThisDay.Text = "No of sched this day";
             // 

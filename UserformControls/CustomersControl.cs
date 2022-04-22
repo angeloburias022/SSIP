@@ -120,7 +120,7 @@ namespace SSIP.UserformControls
         }    
         private void UpdateCustomer()
         {
-            if (Authorized())
+            if (HighAuthority())
             {
                 #region fields        
 

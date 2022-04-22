@@ -29,6 +29,7 @@ namespace SSIP.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerTransactions));
             this.historyGrid = new System.Windows.Forms.DataGridView();
             this.label20 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -259,7 +260,8 @@ namespace SSIP.Forms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.historyGrid);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CustomerTransactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

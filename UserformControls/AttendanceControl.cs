@@ -140,13 +140,31 @@ namespace SSIP.UserformControls
                 if (result != true)
                 {
                     MessageBox.Show("Something went wrong");
+
+                    var attedanceAudit = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        Result = "Failed",
+                        AuditActionTypeENUM = (Enums.ActionTypes)3,
+                        Description = "Failed recorded attendance Employee ID: " + tb_employeeID.Text + " "
+                    };
+
+                    aud.Logs(attedanceAudit);
                 }
                 else
                 {
                     ClearFields();
-                    MessageBox.Show("Attendance Recorded");
+                    MessageBox.Show("Attendance Recorded", "RECORDED", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // audit 
+                    var attedanceAudit = new AuditTrails
+                    {
+                        Username = tb_unameAccess.Text,
+                        Result= "Success",
+                        AuditActionTypeENUM = (Enums.ActionTypes)3,
+                        Description = "Successfully recorded attendance Employee ID: "+tb_employeeID.Text+" "
+                    };
+
+                    aud.Logs(attedanceAudit);
                 } 
             }
         }
@@ -578,5 +596,40 @@ namespace SSIP.UserformControls
         }
 
         #endregion
+
+        private void tb_fname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Search 
+        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (Authorized())
+            {
+                if (tb_search.Text.Length > 3)
+                {
+                    var tools = new EmployeesController();
+                    var result = tools.GetEmployeeName(tb_search.Text);
+
+
+                    tb_fname.Text = result[0].ToString();
+                    tb_lname.Text = result[1].ToString();
+                    tb_employeeID.Text = result[2].ToString();
+
+                    if (MessageBox.Show("Record Attendance?", "EMPLOYEE FOUND", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        Save();
+                    }
+                    else
+                    {
+                        ClearFields();
+                    }
+                }else
+                {
+                    ClearFields();
+                }             
+            }
+        }
     }
 }

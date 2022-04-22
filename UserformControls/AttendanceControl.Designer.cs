@@ -70,6 +70,8 @@ namespace SSIP.UserformControls
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.timeout = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.timein = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.tb_search = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_qrcode)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
             this.attendanceMainpanel.SuspendLayout();
@@ -80,13 +82,12 @@ namespace SSIP.UserformControls
             // 
             // pb_qrcode
             // 
-            this.pb_qrcode.Location = new System.Drawing.Point(331, 20);
+            this.pb_qrcode.Location = new System.Drawing.Point(431, 20);
             this.pb_qrcode.Name = "pb_qrcode";
             this.pb_qrcode.Size = new System.Drawing.Size(140, 120);
             this.pb_qrcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_qrcode.TabIndex = 0;
             this.pb_qrcode.TabStop = false;
-            this.pb_qrcode.Visible = false;
             // 
             // tb_lname
             // 
@@ -141,6 +142,7 @@ namespace SSIP.UserformControls
             this.tb_fname.ShadowDecoration.Parent = this.tb_fname;
             this.tb_fname.Size = new System.Drawing.Size(165, 36);
             this.tb_fname.TabIndex = 159;
+            this.tb_fname.TextChanged += new System.EventHandler(this.tb_fname_TextChanged);
             // 
             // label6
             // 
@@ -835,11 +837,53 @@ namespace SSIP.UserformControls
             this.timein.TabIndex = 163;
             this.timein.Value = new System.DateTime(2022, 3, 19, 12, 0, 0, 0);
             // 
+            // tb_search
+            // 
+            this.tb_search.BackColor = System.Drawing.Color.Transparent;
+            this.tb_search.BorderRadius = 4;
+            this.tb_search.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_search.DefaultText = "";
+            this.tb_search.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tb_search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tb_search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_search.DisabledState.Parent = this.tb_search;
+            this.tb_search.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tb_search.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_search.FocusedState.Parent = this.tb_search;
+            this.tb_search.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tb_search.ForeColor = System.Drawing.Color.Black;
+            this.tb_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tb_search.HoverState.Parent = this.tb_search;
+            this.tb_search.Location = new System.Drawing.Point(227, 56);
+            this.tb_search.Name = "tb_search";
+            this.tb_search.PasswordChar = '\0';
+            this.tb_search.PlaceholderText = "Type here..";
+            this.tb_search.SelectedText = "";
+            this.tb_search.ShadowDecoration.Parent = this.tb_search;
+            this.tb_search.Size = new System.Drawing.Size(165, 36);
+            this.tb_search.TabIndex = 169;
+            this.tb_search.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Honeydew;
+            this.label3.Location = new System.Drawing.Point(223, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 20);
+            this.label3.TabIndex = 168;
+            this.label3.Text = "QR Code:";
+            // 
             // AttendanceControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SSIP.Properties.Resources.bg;
+            this.Controls.Add(this.tb_search);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.attendanceMainpanel);
             this.Controls.Add(this.confirmAccessPanel);
@@ -916,5 +960,7 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         private Guna.UI2.WinForms.Guna2DateTimePicker timeout;
         private Guna.UI2.WinForms.Guna2DateTimePicker timein;
+        private Guna.UI2.WinForms.Guna2TextBox tb_search;
+        private System.Windows.Forms.Label label3;
     }
 }

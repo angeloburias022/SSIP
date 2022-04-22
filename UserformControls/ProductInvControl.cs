@@ -639,7 +639,8 @@ namespace SSIP.UserformControls
             {
                 var tools = new InventoryController();
                 var result = tools.ProductFilter(cmb_filter.SelectedIndex);
-                ProductGrid.DataSource = result; 
+                ProductGrid.DataSource = result;
+                ProductGrid.Update();
             }
         }
     }
