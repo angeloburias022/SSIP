@@ -16,6 +16,7 @@ namespace SSIP.UserformControls
     public partial class ForgotPassword : UserControl
     {
         AuditController aud = new AuditController();
+        AccessController ac = new AccessController();
         public string code { 
             get {
                 return lbl_code.Text;
@@ -76,10 +77,10 @@ namespace SSIP.UserformControls
                 MessageBox.Show("New password and Confirm password is not the same", "CHECK YOUR FIELDS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }else
             {
-                var tools = new AccessController();
+              
                 var creds = new User { Username = username, Password = tb_confirm.Text };
 
-                if (tools.UpdatePassword(creds))
+                if (ac.UpdatePassword(creds))
                 {
                     MessageBox.Show("Password Successfuly changed!", "NEW PASSWORD", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

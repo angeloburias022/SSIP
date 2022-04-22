@@ -22,7 +22,7 @@ namespace SSIP.UserformControls
         CustomersController cusControl = new CustomersController();
 
         AuditController aud = new AuditController();
-
+        AccessController ac = new AccessController();
         public CustomersControl()
         {
             InitializeComponent();
@@ -225,9 +225,7 @@ namespace SSIP.UserformControls
         #region operator / security access
         private void tb_pass_Leave(object sender, EventArgs e)
         {
-            typeof(Panel).InvokeMember("DoubleBuffered",
-BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
-null, confirmAccessPanel, new object[] { true });
+     
             var creds = new User
             {
                 Username = tb_unameAccess.Text,
@@ -239,12 +237,7 @@ null, confirmAccessPanel, new object[] { true });
             if (result != true)
             {
                 MessageBox.Show("Make sure your credentials is correct");
-
-            }
-            else
-            {
-
-            }
+            }          
         }
         public bool AccessLogin(User users)
         {
@@ -254,10 +247,7 @@ null, confirmAccessPanel, new object[] { true });
                 Password = users.Password
             };
 
-         
-            var cfirm = new AccessController();
-
-            var result = cfirm.ConfirmAccess(user);
+            var result = ac.ConfirmAccess(user);
 
             if (result == true)
             {
@@ -524,12 +514,9 @@ null, confirmAccessPanel, new object[] { true });
         {
             if (HighAuthority())
             {
-                var tool = new CustomersController();
-
-                var result = tool.FindCustomers(tb_searchCustomers.Text);
-
+                var result = cusControl.FindCustomers(tb_searchCustomers.Text);
                 customersGrid.DataSource = result;
-
+                customersGrid.Update();
                 if (tb_searchCustomers.Text == "")
                 {
                     UpdateGrid();

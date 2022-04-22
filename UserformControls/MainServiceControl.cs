@@ -20,12 +20,11 @@ namespace SSIP.UserForms
     public partial class MainServiceControl : UserControl
     {
         #region initiliazer
+
         public MainServiceControl()
         {
             InitializeComponent();
-
          
-           
             if(tb_schedID.Text != "0" && tb_customerID.Text != "0")
             {
                 this.btn_addDispatch.Visible = true;
@@ -35,6 +34,7 @@ namespace SSIP.UserForms
             }
         }
 
+        AccessController ac = new AccessController();
         ServicesController sv = new ServicesController();
         private void MainServiceControl_Load(object sender, EventArgs e)
         {
@@ -192,12 +192,9 @@ namespace SSIP.UserForms
                 Password = tb_pass.Text
             };
 
-
-            var cfirm = new AccessController();
-
             if (user.Username != "" && user.Lastname != "")
             {
-                var result = cfirm.ConfirmAccess(user);
+                var result = ac.ConfirmAccess(user);
 
                 if (result != true)
                 {
@@ -217,15 +214,13 @@ namespace SSIP.UserForms
         }
         private bool HighAuthority()
         {
-            var access = new AccessController();
-
             var creds = new User
             {
                 Username = tb_recorded.Text,
                 Password = tb_pass.Text
             };
 
-            var result = access.ConfirmAuthority(creds);
+            var result = ac.ConfirmAuthority(creds);
 
             if (result != true)
             {
@@ -247,10 +242,7 @@ namespace SSIP.UserForms
         }
         private bool AccessLogin(User users)
         {
-         
-            var cfirm = new AccessController();
-
-            var result = cfirm.ConfirmAccess(users);
+            var result = ac.ConfirmAccess(users);
 
             if (result == true)
             {
@@ -418,9 +410,6 @@ namespace SSIP.UserForms
         private void dispatchListgrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             HideDispatch();
-
-       
-
             tb_svdate.Format = DateTimePickerFormat.Custom;
             // Display the date as "Mon 27 Feb 2012". 
             tb_svdate.CustomFormat = "ddd dd MMM yyyy";
@@ -649,9 +638,6 @@ namespace SSIP.UserForms
                         City = cmb_City.Text
                     };
 
-                    ServicesController svcon = new ServicesController();
-
-
                     var customerValidCon = new ValidationContext(cus, null, null);
                     var addsValidCon = new ValidationContext(address, null, null);
                     var schedValidCon = new ValidationContext(sched, null, null);
@@ -670,7 +656,7 @@ namespace SSIP.UserForms
                     }
                     else
                     {
-                        var result = svcon.UpdateService(cus, per, address, sched, dispatch);
+                        var result = sv.UpdateService(cus, per, address, sched, dispatch);
 
                         if (result != true)
                         {
@@ -794,13 +780,10 @@ namespace SSIP.UserForms
         }
         private void tb_searchScheds_TextChanged(object sender, EventArgs e)
         {
-
-            var tool = new ServicesController();
-
-            var result = tool.FindSchedule(tb_searchScheds.Text);
+            var result = sv.FindSchedule(tb_searchScheds.Text);
 
             schedgrid.DataSource = result;
-
+            schedgrid.Update();
             if (tb_searchScheds.Text == "")
             {
                 UpdateGrids();
@@ -809,9 +792,8 @@ namespace SSIP.UserForms
         }
         private void tb_searchDispatchs_TextChanged(object sender, EventArgs e)
         {
-            var tool = new ServicesController();
 
-            var result = tool.FindDispatch(tb_searchScheds.Text);
+            var result = sv.FindDispatch(tb_searchScheds.Text);
 
             dispatchListgrid.DataSource = result;
 
@@ -845,8 +827,8 @@ namespace SSIP.UserForms
 
         private void cmb_datefilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var tools = new ServicesController();
-            var result = tools.DateFilters(cmb_datefilter.SelectedIndex);
+
+            var result = sv.DateFilters(cmb_datefilter.SelectedIndex);
 
             schedgrid.DataSource = result;
 

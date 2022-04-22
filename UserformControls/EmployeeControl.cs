@@ -25,6 +25,7 @@ namespace SSIP.UserformControls
 
         EmployeesController emp = new EmployeesController();
         AuditController aud = new AuditController();
+        AccessController ac = new AccessController();
         public EmployeeControl()
         {
             InitializeComponent();
@@ -137,7 +138,6 @@ namespace SSIP.UserformControls
         }
         private bool HighAuthority()
         {
-            var access = new AccessController();
 
             var creds = new User
             {
@@ -145,7 +145,7 @@ namespace SSIP.UserformControls
                 Password = tb_pass.Text
             };
 
-            var result = access.ConfirmAuthority(creds);
+            var result = ac.ConfirmAuthority(creds);
 
             if (result != true)
             {
@@ -233,7 +233,6 @@ namespace SSIP.UserformControls
                 var qr = new QRCodeControl();          
                 var details = new Employee();
 
-
                 var user_info = new User
                 {
                     Username = tb_uname.Text,
@@ -265,7 +264,7 @@ namespace SSIP.UserformControls
                 #region validations
                 if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info))
                 {
-                    var empController = new EmployeesController();
+                  
 
                     details.user_info.Username = user_info.Username;
                     details.user_info.Password = user_info.Password;
@@ -296,7 +295,7 @@ namespace SSIP.UserformControls
 
                     details.code = tb_qrcode.Text;
 
-                    var result = empController.AddEmployee(details);
+                    var result = emp.AddEmployee(details);
 
                     if (result != true)
                     {
@@ -346,9 +345,7 @@ namespace SSIP.UserformControls
         {
             if (HighAuthority())
             {
-               // tb_personID.Text = "0";
 
-                var update = new EmployeesController();
                 var details = new Employee();
 
                 #region fields
@@ -404,7 +401,7 @@ namespace SSIP.UserformControls
                     details.address_info.City = addrss_info.City;
                     details.email_info.EmailAddress = email_info.EmailAddress;
 
-                    var result = update.UpdateEmployee(details, tb_unameAccess.Text);
+                    var result = emp.UpdateEmployee(details, tb_unameAccess.Text);
 
                     if (result != true)
                     {
@@ -603,9 +600,7 @@ namespace SSIP.UserformControls
         {
             if (HighAuthority())
             {
-                var tool = new EmployeesController();
-
-                var result = tool.FindEmployees(tb_searchEmployees.Text);
+                var result = emp.FindEmployees(tb_searchEmployees.Text);
 
                 employeeGrid.DataSource = result;
 
@@ -635,17 +630,15 @@ namespace SSIP.UserformControls
         private void tb_uname_TextChanged(object sender, EventArgs e)
         {         
             checkUsernameUniqueness();
-           // EnableDoubleBuffering();
         }
 
         private void checkUsernameUniqueness()
         {
-            var tool = new AccessController();
-            var result = tool.UsernameUnique(tb_uname.Text);
+            var result = ac.UsernameUnique(tb_uname.Text);
             if (result.Count > 0)
             {
                 btn_saveAcc.Enabled = false;
-                MessageBox.Show("Username already exist");              
+                MessageBox.Show("Username already exist", "Think another one", MessageBoxButtons.OK, MessageBoxIcon.Information);              
             }
             else
             {

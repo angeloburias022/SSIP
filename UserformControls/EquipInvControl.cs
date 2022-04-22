@@ -21,7 +21,7 @@ namespace SSIP.UserformControls
         #region declarations
         InventoryController ic = new InventoryController();
         AuditController aud = new AuditController();
-       
+        AccessController ac;
         public EquipInvControl()
         {
             InitializeComponent();
@@ -95,8 +95,7 @@ namespace SSIP.UserformControls
         private void UpdateItem()
         {
             if (HighAuthority())
-            {
-                
+            {               
                 try
                 {
                     var details = new EquipmentInventory
@@ -201,10 +200,7 @@ namespace SSIP.UserformControls
                 Password = users.Password
             };
 
-
-            var cfirm = new AccessController();
-
-            var result = cfirm.ConfirmAccess(user);
+            var result = ac.ConfirmAccess(user);
 
             if (result == true)
             {
@@ -270,15 +266,13 @@ namespace SSIP.UserformControls
         }
         private bool HighAuthority()
         {
-            var access = new AccessController();
-
             var creds = new User
             {
                 Username = tb_unameAccess.Text,
                 Password = tb_pass.Text
             };
 
-            var result = access.ConfirmAuthority(creds);
+            var result = ac.ConfirmAuthority(creds);
 
             if (result != true)
             {
@@ -402,13 +396,13 @@ namespace SSIP.UserformControls
 
         private void ShowStats()
         {
-            var tools = new InventoryController();
-            dis_brandnewEquipment.Text = tools.GetBrandNewEquipments();
-            dis_usedEquipments.Text = tools.GetUsedEquipments();
-            dis_newEquip.Text = tools.GetNewEquipments();
-            dis_currentEquipment.Text = tools.GetCurrentEquipments();            
-            dis_runningLow.Text = tools.GetRunningLowEquipments();
-            dis_slightlyUsed.Text = tools.GetSlightlyUsedEquipments();
+           
+            dis_brandnewEquipment.Text = ic.GetBrandNewEquipments();
+            dis_usedEquipments.Text = ic.GetUsedEquipments();
+            dis_newEquip.Text = ic.GetNewEquipments();
+            dis_currentEquipment.Text = ic.GetCurrentEquipments();            
+            dis_runningLow.Text = ic.GetRunningLowEquipments();
+            dis_slightlyUsed.Text = ic.GetSlightlyUsedEquipments();
         }
 
         private void EquipInvControl_Load(object sender, EventArgs e)
@@ -432,9 +426,8 @@ namespace SSIP.UserformControls
         private void cmb_filter_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Authorized())
-            {
-                var tools = new InventoryController();
-                var result = tools.EquipmentFilter(cmb_filter.SelectedIndex);
+            {               
+                var result = ic.EquipmentFilter(cmb_filter.SelectedIndex);
                 itemGrid.DataSource = result; 
             }
         }
@@ -459,6 +452,11 @@ namespace SSIP.UserformControls
 
             datepurchased.Value = DateTime.Now;
             
+
+        }
+
+        private void tb_pass_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

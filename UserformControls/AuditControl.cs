@@ -56,8 +56,7 @@ namespace SSIP.UserformControls
                 Username = tb_unameAccess.Text,
                 Password = tb_pass.Text
             };
-            
-
+           
             if (Access.HighAuthorityAccess(creds))
             {
                 access_panel.Visible = false;
@@ -65,6 +64,7 @@ namespace SSIP.UserformControls
             else
             {
                 access_panel.Visible = true;
+                MessageBox.Show("Higher Authorization Required!", "ADMIN ONLY", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         public void Reset()

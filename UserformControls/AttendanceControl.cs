@@ -23,6 +23,7 @@ namespace SSIP.UserformControls
         VideoCaptureDevice captureDevice;
         AuditController aud = new AuditController();
         EmployeesController emp = new EmployeesController();
+        AccessController ac = new AccessController();
         public AttendanceControl()
         {
             InitializeComponent();
@@ -256,10 +257,7 @@ namespace SSIP.UserformControls
                 Password = users.Password
             };
 
-
-            var cfirm = new AccessController();
-
-            var result = cfirm.ConfirmAccess(user);
+            var result = ac.ConfirmAccess(user);
 
             if (result == true)
             {
@@ -298,24 +296,23 @@ namespace SSIP.UserformControls
         }
 
         private bool HighAuthority()
-        {
-            var access = new AccessController();
-
+        {        
             var user = new User
             {
                 Username = tb_unameAccess.Text,
                 Password = tb_pass.Text
             };
 
-            var result = access.ConfirmAuthority(user);
+            var result = ac.ConfirmAuthority(user);
 
             if (result != false)
             {
                 return true;
             }
             else
+            {
                 return false;
-
+            }
         }
         private bool Authorized()
         {
@@ -325,11 +322,11 @@ namespace SSIP.UserformControls
                 Password = tb_pass.Text
             };
 
-            var cfirm = new AccessController();
+         
 
             if (user.Username != "" && user.Lastname != "")
             {
-                var result = cfirm.ConfirmAccess(user);
+                var result = ac.ConfirmAccess(user);
 
                 if (result != true)
                 {
@@ -454,12 +451,9 @@ namespace SSIP.UserformControls
         {
             if (HighAuthority())
             {
-                var tool = new EmployeesController();
-
-                var result = tool.FindAttendance(tb_searchAttendances.Text);
+                var result = emp.FindAttendance(tb_searchAttendances.Text);
 
                 attendanceGrid.DataSource = result;
-
 
                 if (tb_searchAttendances.Text == "")
                 {
@@ -471,7 +465,6 @@ namespace SSIP.UserformControls
         private void tb_searchAttendances_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
-
         }
         public void DisplayGRID()
         {
@@ -480,9 +473,7 @@ namespace SSIP.UserformControls
             btn_addAttendance.Visible = true;
             attendanceMainpanel.Visible = true;
             attendanceMainpanel.Dock = DockStyle.Fill;
-            attendanceMainpanel.BringToFront();
-            
-           
+            attendanceMainpanel.BringToFront();                
         }
         public void UpdateGrid()
         {
@@ -490,12 +481,9 @@ namespace SSIP.UserformControls
             attendanceGrid.Update();
         }
         public void HideGRID()
-        {
-         
+        {        
             attendanceMainpanel.Visible = false;
-            attendanceMainpanel.Dock = DockStyle.None;
-          
-          
+            attendanceMainpanel.Dock = DockStyle.None;   
         }
         public void ClearFields()
         {
@@ -527,38 +515,7 @@ namespace SSIP.UserformControls
             tableLayoutPanel1.Visible = false;
             btn_scan.Enabled = false;
         }
-        public void TimePicker()
-        {
-            //time_in = new Guna.UI2.WinForms.Guna2DateTimePicker
-            //{
-            //    Format = DateTimePickerFormat.Time,
-            //    ShowUpDown = true,
-            //    Location = new Point(12, 25)
-            //};
-            //Controls.Add(time_in);
 
-
-            //time_out = new Guna.UI2.WinForms.Guna2DateTimePicker
-            //{
-            //    Format = DateTimePickerFormat.Time,
-            //    ShowUpDown = true,
-            //    Location = new Point(240, 25)
-            //};
-            //Controls.Add(time_out);
-            //lbl_timein = new Label
-            //{
-            //    Location = new Point(12, 10)
-            //};
-
-            //Controls.Add(lbl_timein);
-
-            //lbl_timeout = new Label
-            //{
-            //    Location = new Point(12, 10)
-            //};
-
-            //Controls.Add(lbl_timeout);
-        }
         private void attendanceGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             HideGRID();
@@ -609,9 +566,7 @@ namespace SSIP.UserformControls
             {
                 if (tb_search.Text.Length > 3)
                 {
-                    var tools = new EmployeesController();
-                    var result = tools.GetEmployeeName(tb_search.Text);
-
+                    var result = emp.GetEmployeeName(tb_search.Text);
 
                     tb_fname.Text = result[0].ToString();
                     tb_lname.Text = result[1].ToString();

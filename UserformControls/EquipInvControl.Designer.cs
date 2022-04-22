@@ -567,6 +567,7 @@ namespace SSIP.UserformControls
             this.tb_pass.ShadowDecoration.Parent = this.tb_pass;
             this.tb_pass.Size = new System.Drawing.Size(165, 36);
             this.tb_pass.TabIndex = 123;
+            this.tb_pass.TextChanged += new System.EventHandler(this.tb_pass_TextChanged);
             this.tb_pass.Leave += new System.EventHandler(this.tb_pass_Leave);
             // 
             // itemGrid

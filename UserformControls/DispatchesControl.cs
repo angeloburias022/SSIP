@@ -219,7 +219,7 @@ namespace SSIP.UserformControls
                         City = cmb_City.Text
                     };
 
-                    var svcon = new ServicesController();
+                
 
                     var customerValidCon = new ValidationContext(cus, null, null);
                     var addsValidCon = new ValidationContext(address, null, null);
@@ -239,7 +239,7 @@ namespace SSIP.UserformControls
                     }
                     else
                     {
-                        var result = svcon.AddService(cus, address, sched, dispatch);
+                        var result = sv.AddService(cus, address, sched, dispatch);
 
                         if (result != true)
                         {
@@ -720,8 +720,8 @@ namespace SSIP.UserformControls
         {
             if (Authorized())
             {
-                var tools = new ServicesController();
-                var result = tools.FindDispatch(tb_searchDispatchs.Text);
+              
+                var result = sv.FindDispatch(tb_searchDispatchs.Text);
                 dispatchListgrid.DataSource = result; 
             }
         }
