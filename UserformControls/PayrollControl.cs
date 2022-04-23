@@ -18,7 +18,7 @@ namespace SSIP.UserformControls
         AuditController aud = new AuditController();
         PayRollController pr = new PayRollController();
         EmployeesController emp = new EmployeesController();
-
+        AccessController ac = new AccessController();
 
         public string UserFirstname { get; set; }
 
@@ -104,10 +104,8 @@ namespace SSIP.UserformControls
                 DateTo = date_to.Value,
                 total_amount = Convert.ToDecimal(tb_totalAmount.Text)
             };
-
-            var tools = new PayRollController();
-
-            var results = tools.UpdatePayroll(details, tb_unameAccess.Text);
+            
+            var results = pr.UpdatePayroll(details, tb_unameAccess.Text);
 
             if (results != true)
             {                
@@ -179,10 +177,10 @@ namespace SSIP.UserformControls
             if (Authorized())
             {
                 tb_workhrs.Text = "0";
-                var tool = new PayRollController();
+              
                 try
                 {
-                    var result = tool.Filter(cmb_empname.SelectedValue.ToString(), date_from.Value, date_to.Value);
+                    var result = pr.Filter(cmb_empname.SelectedValue.ToString(), date_from.Value, date_to.Value);
                     empGrid.DataSource = result;
                 }
                 catch (Exception error)
@@ -222,15 +220,12 @@ namespace SSIP.UserformControls
                 {
                     ComputeWage(hrlyrate, hrs, cashAdv);
                     tb_hourlyRate.BackColor = Color.White;
-
                 }
                 else
                 {
                     MessageBox.Show("Hourly rate value is invalid");
                     tb_hourlyRate.FillColor = Color.Red;
                 }
-
-
             }
             else
             {
@@ -683,7 +678,7 @@ namespace SSIP.UserformControls
 
                 //    tb_unameAccess.ReadOnly = true;
                 //    tb_pass.ReadOnly = true;
-                var ac = new AccessController();
+       
                 lbl_usersfname.Text = ac.GetCurrentUserDetails(tb_unameAccess.Text);
             
             }
@@ -696,10 +691,7 @@ namespace SSIP.UserformControls
                 Password = users.Password
             };
 
-
-            var cfirm = new AccessController();
-
-            var result = cfirm.ConfirmAccess(user);
+            var result = ac.ConfirmAccess(user);
 
             if (result == true)
             {

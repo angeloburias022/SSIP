@@ -265,7 +265,6 @@ namespace SSIP.UserformControls
             this.lbl_meterlbl.Size = new System.Drawing.Size(105, 20);
             this.lbl_meterlbl.TabIndex = 8;
             this.lbl_meterlbl.Text = "IN METERS";
-            this.lbl_meterlbl.Visible = false;
             // 
             // lbl_quan
             // 
@@ -547,11 +546,11 @@ namespace SSIP.UserformControls
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label9.Location = new System.Drawing.Point(-4, 242);
+            this.label9.Location = new System.Drawing.Point(14, 242);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(187, 20);
+            this.label9.Size = new System.Drawing.Size(192, 20);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Description / Features";
+            this.label9.Text = "Description / Features:";
             // 
             // label8
             // 
@@ -573,9 +572,9 @@ namespace SSIP.UserformControls
             this.lbl_length.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lbl_length.Location = new System.Drawing.Point(277, 342);
             this.lbl_length.Name = "lbl_length";
-            this.lbl_length.Size = new System.Drawing.Size(65, 20);
+            this.lbl_length.Size = new System.Drawing.Size(70, 20);
             this.lbl_length.TabIndex = 8;
-            this.lbl_length.Text = "Length";
+            this.lbl_length.Text = "Length:";
             // 
             // lbl_width
             // 
@@ -621,9 +620,9 @@ namespace SSIP.UserformControls
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label12.Location = new System.Drawing.Point(10, 46);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(28, 20);
+            this.label12.Size = new System.Drawing.Size(33, 20);
             this.label12.TabIndex = 8;
-            this.label12.Text = "ID";
+            this.label12.Text = "ID:";
             // 
             // lbl_prodName
             // 
@@ -733,7 +732,7 @@ namespace SSIP.UserformControls
             this.btn_viewProducts.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_viewProducts.ForeColor = System.Drawing.Color.White;
             this.btn_viewProducts.HoverState.Parent = this.btn_viewProducts;
-            this.btn_viewProducts.Location = new System.Drawing.Point(256, 286);
+            this.btn_viewProducts.Location = new System.Drawing.Point(492, 286);
             this.btn_viewProducts.Name = "btn_viewProducts";
             this.btn_viewProducts.ShadowDecoration.Parent = this.btn_viewProducts;
             this.btn_viewProducts.Size = new System.Drawing.Size(138, 32);
@@ -755,7 +754,7 @@ namespace SSIP.UserformControls
             this.btn_remove.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_remove.ForeColor = System.Drawing.Color.White;
             this.btn_remove.HoverState.Parent = this.btn_remove;
-            this.btn_remove.Location = new System.Drawing.Point(256, 324);
+            this.btn_remove.Location = new System.Drawing.Point(492, 324);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.ShadowDecoration.Parent = this.btn_remove;
             this.btn_remove.Size = new System.Drawing.Size(138, 33);
@@ -769,7 +768,7 @@ namespace SSIP.UserformControls
             this.ProductGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductGrid.Location = new System.Drawing.Point(11, 79);
             this.ProductGrid.Name = "ProductGrid";
-            this.ProductGrid.Size = new System.Drawing.Size(383, 201);
+            this.ProductGrid.Size = new System.Drawing.Size(619, 201);
             this.ProductGrid.TabIndex = 1;
             this.ProductGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGrid_CellDoubleClick);
             this.ProductGrid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ProductGrid_MouseDown);
@@ -863,7 +862,7 @@ namespace SSIP.UserformControls
             this.productMainPanel.Controls.Add(this.btn_showStats);
             this.productMainPanel.Location = new System.Drawing.Point(22, 21);
             this.productMainPanel.Name = "productMainPanel";
-            this.productMainPanel.Size = new System.Drawing.Size(857, 517);
+            this.productMainPanel.Size = new System.Drawing.Size(1145, 517);
             this.productMainPanel.TabIndex = 137;
             // 
             // gridMainPanel
@@ -879,7 +878,7 @@ namespace SSIP.UserformControls
             this.gridMainPanel.Controls.Add(this.label3);
             this.gridMainPanel.Location = new System.Drawing.Point(435, 14);
             this.gridMainPanel.Name = "gridMainPanel";
-            this.gridMainPanel.Size = new System.Drawing.Size(410, 370);
+            this.gridMainPanel.Size = new System.Drawing.Size(649, 370);
             this.gridMainPanel.TabIndex = 17;
             // 
             // cmb_filter
@@ -898,13 +897,13 @@ namespace SSIP.UserformControls
             this.cmb_filter.ItemHeight = 30;
             this.cmb_filter.Items.AddRange(new object[] {
             "New Products",
-            "Total Product Quantities",
+            "All Products",
             "Insufficient no. of Products"});
             this.cmb_filter.ItemsAppearance.Parent = this.cmb_filter;
-            this.cmb_filter.Location = new System.Drawing.Point(217, 37);
+            this.cmb_filter.Location = new System.Drawing.Point(422, 37);
             this.cmb_filter.Name = "cmb_filter";
             this.cmb_filter.ShadowDecoration.Parent = this.cmb_filter;
-            this.cmb_filter.Size = new System.Drawing.Size(177, 36);
+            this.cmb_filter.Size = new System.Drawing.Size(208, 36);
             this.cmb_filter.TabIndex = 13;
             this.cmb_filter.SelectedIndexChanged += new System.EventHandler(this.cmb_filter_SelectedIndexChanged);
             this.cmb_filter.SelectedValueChanged += new System.EventHandler(this.cmb_prodCategory_SelectedValueChanged);
@@ -915,7 +914,7 @@ namespace SSIP.UserformControls
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(255, 14);
+            this.label3.Location = new System.Drawing.Point(418, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 20);
             this.label3.TabIndex = 8;
@@ -1123,7 +1122,7 @@ namespace SSIP.UserformControls
             this.stats_panel.Controls.Add(this.label4);
             this.stats_panel.Controls.Add(this.label2);
             this.stats_panel.Controls.Add(this.btn_viewForm);
-            this.stats_panel.Location = new System.Drawing.Point(985, 180);
+            this.stats_panel.Location = new System.Drawing.Point(886, 573);
             this.stats_panel.Name = "stats_panel";
             this.stats_panel.Size = new System.Drawing.Size(2066, 787);
             this.stats_panel.TabIndex = 140;

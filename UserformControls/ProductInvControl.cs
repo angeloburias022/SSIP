@@ -21,6 +21,7 @@ namespace SSIP.UserformControls
         #region declarations
         InventoryController ic = new InventoryController();
         AuditController aud = new AuditController();
+        AccessController ac = new AccessController();
         public ProductInvControl()
         {
             InitializeComponent();
@@ -565,10 +566,7 @@ namespace SSIP.UserformControls
                 Password = users.Password
             };
 
-
-            var cfirm = new AccessController();
-
-            var result = cfirm.ConfirmAccess(user);
+            var result = ac.ConfirmAccess(user);
 
             if (result == true)
             {

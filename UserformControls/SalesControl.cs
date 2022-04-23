@@ -55,6 +55,8 @@ namespace SSIP.UserformControls
 
         #region declarations
         AuditController aud = new AuditController();
+        AccessController ac = new AccessController();
+        SalesController sc = new SalesController();
         public SalesControl()
         {
             InitializeComponent();
@@ -138,8 +140,8 @@ namespace SSIP.UserformControls
         }
         private void SearchProducts()
         {
-            var tools = new SalesController();
-            var result = tools.GetProduct(tb_searchProd.Text);
+          
+            var result = sc.GetProduct(tb_searchProd.Text);
 
             try
             {
@@ -253,7 +255,7 @@ namespace SSIP.UserformControls
                 {
                     btn_finalized.Enabled = false;
                     var details = new Sales();
-                    var tools = new SalesController();
+
                     details.customerName = tb_cusname.Text;
                     details.Address = tb_address.Text;
                     details.AmountPaid = Convert.ToDecimal(tb_amountPaid.Text);
@@ -265,7 +267,7 @@ namespace SSIP.UserformControls
 
                     if (Valid.ValidateFields(details))
                     {
-                        var result = tools.AddTransClientInfo(details);
+                        var result = sc.AddTransClientInfo(details);
 
                         if (result != false)
                         {
@@ -273,7 +275,7 @@ namespace SSIP.UserformControls
                             {
                                 if (item.IsNewRow) continue;
                                 {
-                                    tools.AddTransaction(item, details);
+                                    sc.AddTransaction(item, details);
                                 }
                             }
                             MessageBox.Show("Recorded");
@@ -472,6 +474,10 @@ namespace SSIP.UserformControls
                 {
                     prodGrid.Rows.RemoveAt(item.Index);
                 }
+               decimal less_quan = Convert.ToDecimal(this.prodGrid.CurrentRow.Cells[5].Value.ToString()) - Convert.ToDecimal(tb_quantity.Text);
+               decimal less_sum = Convert.ToDecimal(this.prodGrid.CurrentRow.Cells[7].Value.ToString()) - Convert.ToDecimal(tb_quantity.Text);
+                itemsTotal.Text = less_quan.ToString();
+                grandTotal.Text = less_sum.ToString();
             }
         }
         private void btn_addProduct_Click(object sender, EventArgs e)
@@ -878,10 +884,7 @@ namespace SSIP.UserformControls
                 Password = users.Password
             };
 
-
-            var cfirm = new AccessController();
-
-            var result = cfirm.ConfirmAccess(user);
+            var result = ac.ConfirmAccess(user);
 
             if (result == true)
             {
@@ -921,15 +924,14 @@ namespace SSIP.UserformControls
         }
         private bool HighAuthority()
         {
-            var access = new AccessController();
-
+            
             var creds = new User
             {
                 Username = tb_unameAccess.Text,
                 Password = tb_pass.Text
             };
 
-            var result = access.ConfirmAuthority(creds);
+            var result = ac.ConfirmAuthority(creds);
 
             if (result != true)
             {
@@ -949,12 +951,9 @@ namespace SSIP.UserformControls
                 Password = tb_pass.Text
             };
 
-
-            var cfirm = new AccessController();
-
             if (user.Username != "" && user.Lastname != "")
             {
-                var result = cfirm.ConfirmAccess(user);
+                var result = ac.ConfirmAccess(user);
 
                 if (result != true)
                 {
@@ -988,8 +987,6 @@ namespace SSIP.UserformControls
         }
         private void tb_pass_Validated(object sender, EventArgs e)
         {
-            MessageBox.Show("validated");
-
             var creds = new User
             {
                 Username = tb_unameAccess.Text,
@@ -1051,10 +1048,10 @@ namespace SSIP.UserformControls
            
             try
             {
-                var tools = new SalesController();
+ 
                 #region POS data
 
-                salesGridView.DataSource = tools.GetOrders();
+                salesGridView.DataSource = sc.GetOrders();
                 salesGridView.Update();
                 #endregion
                 try
@@ -1220,10 +1217,13 @@ namespace SSIP.UserformControls
 
         private void tb_searchOrders_TextChanged(object sender, EventArgs e)
         {
-            if (tb_searchOrders.Text.Length > 0)
+            if (tb_searchOrders.Text.Length > 1)
             {
-                var tools = new SalesController();
-                salesGridView.DataSource = tools.FindOrders(tb_searchOrders.Text);
+                salesGridView.DataSource = sc.FindOrders(tb_searchOrders.Text);
+                salesGridView.Update();
+            }else
+            {
+                salesGridView.DataSource = sc.GetOrders();
                 salesGridView.Update();
             }
         }

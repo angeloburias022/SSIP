@@ -1,10 +1,12 @@
 ﻿using SSIP.Controllers;
+using SSIP.DbAccess;
 using SSIP.Helper;
 using SSIP.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,14 +18,17 @@ namespace SSIP.Forms
     public partial class Login : Form
     {
         Dashboard dboard = new Dashboard();
-       
-
+        AccessController acc = new AccessController();
         public Login()
         {
             InitializeComponent();
         }
+       
+        public bool Log(string user)
+        {
 
-        
+            return true;
+        }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
@@ -32,21 +37,21 @@ namespace SSIP.Forms
                 Username = tb_uname.Text,
                 Password = tb_pwd.Text
             };
-            
+
+            var result = acc.Login(creds);
+
+
             if (!Valid())
             {
                 MessageBox.Show("Check your fields");
-                
-            } else
+            }
+            else
             {
-                var acc = new AccessController();
-                var result = acc.Login(creds);
-
                 if (result != false)
                 {
                     var uname = acc.GetCurrentUserDetails(tb_uname.Text);
                     dboard.Show();
-                    dboard.LabelText ="Welcome \n \t \t"+ uname;
+                    dboard.LabelText = "Welcome \n \t \t" + uname;
                     dboard.Username = uname;
                     dboard.UserName = tb_uname.Text;
 
@@ -57,8 +62,6 @@ namespace SSIP.Forms
                     MessageBox.Show("Your password or Username might incorrect.");
                 }
             }
-
-
         }
 
 
@@ -84,10 +87,8 @@ namespace SSIP.Forms
         private void forgotPassword_Click(object sender, EventArgs e)
         {
             if (tb_uname.Text != "")
-            {
-                
-                var access = new AccessController();
-                var result = access.GetEmail(tb_uname.Text);
+            {           
+                var result = acc.GetEmail(tb_uname.Text);
 
                 if (result.Length > 5)
                 {

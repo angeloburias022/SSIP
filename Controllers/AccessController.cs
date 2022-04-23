@@ -25,15 +25,12 @@ namespace SSIP.Controllers
 
         }
 
-
-       
-
         #region declations
         private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         ConnectionDB db = new ConnectionDB();
         PasswordEncryptor enc = new PasswordEncryptor();
         AuditController aud = new AuditController();
-        Dashboard dboard = new Dashboard();
+       
         #endregion
 
 

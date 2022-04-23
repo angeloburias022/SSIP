@@ -267,7 +267,6 @@ namespace SSIP.Controllers
             {
                 if (selected == 0)
                 {
-
                     con.Open();
                     using (SqlCommand com = new SqlCommand("[SpGetNewStocksList]", con))
                     {
@@ -286,7 +285,6 @@ namespace SSIP.Controllers
                 }
                 else if (selected == 1)
                 {
-
                     con.Open();
                     using (SqlCommand com = new SqlCommand("[SpGetProducts]", con))
                     {

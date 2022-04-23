@@ -16,11 +16,8 @@ namespace SSIP.Controllers
     {
         #region declaration
         ConnectionDB db = new ConnectionDB();
-        DataTable dt = new DataTable();
-        DataSet ds = new DataSet();
         public AuditController()
         {
-
         }
         #endregion
 
@@ -29,7 +26,6 @@ namespace SSIP.Controllers
         {
             try
             {
-
                 using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     if (con.State == ConnectionState.Open)
@@ -59,9 +55,10 @@ namespace SSIP.Controllers
         }
         public DataTable GetAudits()
         {
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
             try
-            {
-
+            {                
                 using (SqlConnection con = new SqlConnection(db.ConString()))
                 {
                     using (SqlCommand com = new SqlCommand("[SpGetAudits]", con))

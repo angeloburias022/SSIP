@@ -31,9 +31,6 @@ namespace SSIP.UserformControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridMainPanel = new System.Windows.Forms.Panel();
             this.prodGrid = new System.Windows.Forms.DataGridView();
             this.tb_searchProd = new Guna.UI2.WinForms.Guna2TextBox();
@@ -100,8 +97,8 @@ namespace SSIP.UserformControls
             this.btn_placeOrder = new Guna.UI2.WinForms.Guna2Button();
             this.cartesianMonthChart1 = new LiveCharts.WinForms.CartesianChart();
             this.TypeAcPieChart = new LiveCharts.WinForms.PieChart();
-            this.salesGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.label15 = new System.Windows.Forms.Label();
+            this.salesGridView = new System.Windows.Forms.DataGridView();
             this.gridMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodGrid)).BeginInit();
             this.product_panel.SuspendLayout();
@@ -907,7 +904,7 @@ namespace SSIP.UserformControls
             this.tb_compute.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.tb_compute.ForeColor = System.Drawing.Color.White;
             this.tb_compute.HoverState.Parent = this.tb_compute;
-            this.tb_compute.Location = new System.Drawing.Point(751, 335);
+            this.tb_compute.Location = new System.Drawing.Point(748, 335);
             this.tb_compute.Name = "tb_compute";
             this.tb_compute.ShadowDecoration.Parent = this.tb_compute;
             this.tb_compute.Size = new System.Drawing.Size(111, 40);
@@ -1104,6 +1101,7 @@ namespace SSIP.UserformControls
             // chartTablePanel
             // 
             this.chartTablePanel.BackColor = System.Drawing.Color.Transparent;
+            this.chartTablePanel.Controls.Add(this.salesGridView);
             this.chartTablePanel.Controls.Add(this.label14);
             this.chartTablePanel.Controls.Add(this.label13);
             this.chartTablePanel.Controls.Add(this.tb_searchOrders);
@@ -1111,10 +1109,9 @@ namespace SSIP.UserformControls
             this.chartTablePanel.Controls.Add(this.btn_placeOrder);
             this.chartTablePanel.Controls.Add(this.cartesianMonthChart1);
             this.chartTablePanel.Controls.Add(this.TypeAcPieChart);
-            this.chartTablePanel.Controls.Add(this.salesGridView);
             this.chartTablePanel.Location = new System.Drawing.Point(733, 484);
             this.chartTablePanel.Name = "chartTablePanel";
-            this.chartTablePanel.Size = new System.Drawing.Size(950, 643);
+            this.chartTablePanel.Size = new System.Drawing.Size(1130, 643);
             this.chartTablePanel.TabIndex = 174;
             this.chartTablePanel.Visible = false;
             // 
@@ -1136,7 +1133,7 @@ namespace SSIP.UserformControls
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label13.Location = new System.Drawing.Point(498, 30);
+            this.label13.Location = new System.Drawing.Point(657, 16);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(449, 25);
             this.label13.TabIndex = 177;
@@ -1194,7 +1191,7 @@ namespace SSIP.UserformControls
             this.btn_placeOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_placeOrder.ForeColor = System.Drawing.Color.White;
             this.btn_placeOrder.HoverState.Parent = this.btn_placeOrder;
-            this.btn_placeOrder.Location = new System.Drawing.Point(813, 340);
+            this.btn_placeOrder.Location = new System.Drawing.Point(839, 360);
             this.btn_placeOrder.Name = "btn_placeOrder";
             this.btn_placeOrder.ShadowDecoration.Parent = this.btn_placeOrder;
             this.btn_placeOrder.Size = new System.Drawing.Size(120, 45);
@@ -1206,9 +1203,9 @@ namespace SSIP.UserformControls
             // cartesianMonthChart1
             // 
             this.cartesianMonthChart1.BackColorTransparent = true;
-            this.cartesianMonthChart1.Location = new System.Drawing.Point(184, 340);
+            this.cartesianMonthChart1.Location = new System.Drawing.Point(118, 340);
             this.cartesianMonthChart1.Name = "cartesianMonthChart1";
-            this.cartesianMonthChart1.Size = new System.Drawing.Size(576, 188);
+            this.cartesianMonthChart1.Size = new System.Drawing.Size(647, 188);
             this.cartesianMonthChart1.TabIndex = 2;
             this.cartesianMonthChart1.Text = "cartesianChart1";
             // 
@@ -1217,71 +1214,11 @@ namespace SSIP.UserformControls
             this.TypeAcPieChart.BackColor = System.Drawing.Color.White;
             this.TypeAcPieChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TypeAcPieChart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TypeAcPieChart.Location = new System.Drawing.Point(569, 68);
+            this.TypeAcPieChart.Location = new System.Drawing.Point(728, 54);
             this.TypeAcPieChart.Name = "TypeAcPieChart";
             this.TypeAcPieChart.Size = new System.Drawing.Size(317, 248);
             this.TypeAcPieChart.TabIndex = 1;
             this.TypeAcPieChart.Text = "pieChart1";
-            // 
-            // salesGridView
-            // 
-            this.salesGridView.AllowUserToAddRows = false;
-            this.salesGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
-            this.salesGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.salesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.salesGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.salesGridView.BackgroundColor = System.Drawing.Color.White;
-            this.salesGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.salesGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.salesGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.salesGridView.EnableHeadersVisualStyles = false;
-            this.salesGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.salesGridView.Location = new System.Drawing.Point(32, 77);
-            this.salesGridView.Name = "salesGridView";
-            this.salesGridView.ReadOnly = true;
-            this.salesGridView.RowHeadersVisible = false;
-            this.salesGridView.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.salesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.salesGridView.Size = new System.Drawing.Size(480, 239);
-            this.salesGridView.TabIndex = 0;
-            this.salesGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.GreenSea;
-            this.salesGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
-            this.salesGridView.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.salesGridView.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.salesGridView.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.salesGridView.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.salesGridView.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.salesGridView.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.salesGridView.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            this.salesGridView.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
-            this.salesGridView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.salesGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.salesGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.salesGridView.ThemeStyle.HeaderStyle.Height = 23;
-            this.salesGridView.ThemeStyle.ReadOnly = true;
-            this.salesGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
-            this.salesGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.salesGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.salesGridView.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.salesGridView.ThemeStyle.RowsStyle.Height = 22;
-            this.salesGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(191)))), ((int)(((byte)(173)))));
-            this.salesGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
             // label15
             // 
@@ -1295,6 +1232,14 @@ namespace SSIP.UserformControls
             this.label15.TabIndex = 8;
             this.label15.Text = "Customer Details:";
             this.label15.Visible = false;
+            // 
+            // salesGridView
+            // 
+            this.salesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.salesGridView.Location = new System.Drawing.Point(32, 96);
+            this.salesGridView.Name = "salesGridView";
+            this.salesGridView.Size = new System.Drawing.Size(614, 217);
+            this.salesGridView.TabIndex = 178;
             // 
             // SalesControl
             // 
@@ -1334,7 +1279,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.lbl_quantity);
             this.Controls.Add(this.lbl_grandTotal);
             this.Name = "SalesControl";
-            this.Size = new System.Drawing.Size(1743, 1175);
+            this.Size = new System.Drawing.Size(1930, 1175);
             this.Load += new System.EventHandler(this.SalesControl_Load);
             this.gridMainPanel.ResumeLayout(false);
             this.gridMainPanel.PerformLayout();
@@ -1414,12 +1359,12 @@ namespace SSIP.UserformControls
         private LiveCharts.WinForms.CartesianChart cartesianMonthChart1;
         private LiveCharts.WinForms.PieChart TypeAcPieChart;
         private Guna.UI2.WinForms.Guna2Button btn_placeOrder;
-        private Guna.UI2.WinForms.Guna2DataGridView salesGridView;
         private Guna.UI2.WinForms.Guna2TextBox tb_searchOrders;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DataGridView salesGridView;
     }
 }
