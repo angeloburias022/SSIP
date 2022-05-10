@@ -23,6 +23,7 @@ namespace SSIP.Forms
         #region declarations
         MainServiceControl ms = new MainServiceControl();
         AuditController aud = new AuditController();
+
         public Dashboard()
         {
             InitializeComponent();
@@ -997,13 +998,23 @@ namespace SSIP.Forms
                     Result = "Succeed",
                     Description = " "+ lbl_usernameee.Text+" logged out"
                 };
-
-                aud.Logs(logs);
                 this.Close();
+                aud.Logs(logs);
+
 
                 Login log = new Login();
                 log.Show(); 
             }
+        }
+
+        private void nav_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

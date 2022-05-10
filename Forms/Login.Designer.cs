@@ -36,14 +36,14 @@ namespace SSIP.Forms
             this.showPassword = new Guna.UI2.WinForms.Guna2CheckBox();
             this.forgotPassword = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.forgotpass_panel = new System.Windows.Forms.Panel();
+            this.forgotPassword1 = new SSIP.UserformControls.ForgotPassword();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.forgotPassword1 = new SSIP.UserformControls.ForgotPassword();
+            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btn_exit = new System.Windows.Forms.Button();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.forgotpass_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,7 +74,7 @@ namespace SSIP.Forms
             this.tb_pwd.SelectedText = "";
             this.tb_pwd.ShadowDecoration.Parent = this.tb_pwd;
             this.tb_pwd.Size = new System.Drawing.Size(226, 37);
-            this.tb_pwd.TabIndex = 7;
+            this.tb_pwd.TabIndex = 2;
             // 
             // tb_uname
             // 
@@ -102,7 +102,7 @@ namespace SSIP.Forms
             this.tb_uname.SelectedText = "";
             this.tb_uname.ShadowDecoration.Parent = this.tb_uname;
             this.tb_uname.Size = new System.Drawing.Size(226, 37);
-            this.tb_uname.TabIndex = 8;
+            this.tb_uname.TabIndex = 1;
             // 
             // btn_login
             // 
@@ -124,10 +124,11 @@ namespace SSIP.Forms
             this.btn_login.Name = "btn_login";
             this.btn_login.ShadowDecoration.Parent = this.btn_login;
             this.btn_login.Size = new System.Drawing.Size(115, 34);
-            this.btn_login.TabIndex = 6;
+            this.btn_login.TabIndex = 4;
             this.btn_login.Text = "Log-in";
             this.btn_login.UseTransparentBackground = true;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            this.btn_login.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_login_KeyDown);
             // 
             // showPassword
             // 
@@ -142,7 +143,7 @@ namespace SSIP.Forms
             this.showPassword.Location = new System.Drawing.Point(540, 261);
             this.showPassword.Name = "showPassword";
             this.showPassword.Size = new System.Drawing.Size(154, 24);
-            this.showPassword.TabIndex = 9;
+            this.showPassword.TabIndex = 3;
             this.showPassword.Text = "Show Password";
             this.showPassword.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.showPassword.UncheckedState.BorderRadius = 0;
@@ -159,18 +160,30 @@ namespace SSIP.Forms
             this.forgotPassword.Location = new System.Drawing.Point(566, 334);
             this.forgotPassword.Name = "forgotPassword";
             this.forgotPassword.Size = new System.Drawing.Size(112, 18);
-            this.forgotPassword.TabIndex = 10;
+            this.forgotPassword.TabIndex = 5;
             this.forgotPassword.Text = "Forgot Password?";
             this.forgotPassword.Click += new System.EventHandler(this.forgotPassword_Click);
             // 
             // forgotpass_panel
             // 
             this.forgotpass_panel.Controls.Add(this.forgotPassword1);
-            this.forgotpass_panel.Location = new System.Drawing.Point(740, 378);
+            this.forgotpass_panel.Location = new System.Drawing.Point(754, 384);
             this.forgotpass_panel.Name = "forgotpass_panel";
-            this.forgotpass_panel.Size = new System.Drawing.Size(65, 38);
+            this.forgotpass_panel.Size = new System.Drawing.Size(51, 32);
             this.forgotpass_panel.TabIndex = 12;
             this.forgotpass_panel.Visible = false;
+            // 
+            // forgotPassword1
+            // 
+            this.forgotPassword1.BackColor = System.Drawing.Color.White;
+            this.forgotPassword1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forgotPassword1.BackgroundImage")));
+            this.forgotPassword1.code = "code";
+            this.forgotPassword1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forgotPassword1.Location = new System.Drawing.Point(0, 0);
+            this.forgotPassword1.Name = "forgotPassword1";
+            this.forgotPassword1.Size = new System.Drawing.Size(51, 32);
+            this.forgotPassword1.TabIndex = 11;
+            this.forgotPassword1.username = "username";
             // 
             // guna2HtmlLabel1
             // 
@@ -207,17 +220,18 @@ namespace SSIP.Forms
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // forgotPassword1
+            // guna2HtmlLabel4
             // 
-            this.forgotPassword1.BackColor = System.Drawing.Color.White;
-            this.forgotPassword1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forgotPassword1.BackgroundImage")));
-            this.forgotPassword1.code = "code";
-            this.forgotPassword1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forgotPassword1.Location = new System.Drawing.Point(0, 0);
-            this.forgotPassword1.Name = "forgotPassword1";
-            this.forgotPassword1.Size = new System.Drawing.Size(65, 38);
-            this.forgotPassword1.TabIndex = 11;
-            this.forgotPassword1.username = "username";
+            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(98, 291);
+            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(207, 31);
+            this.guna2HtmlLabel4.TabIndex = 13;
+            this.guna2HtmlLabel4.Text = "Information System";
+            this.guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.guna2HtmlLabel4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // btn_exit
             // 
@@ -257,19 +271,6 @@ namespace SSIP.Forms
             this.guna2HtmlLabel3.TabIndex = 16;
             this.guna2HtmlLabel3.Text = "Password";
             this.guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // guna2HtmlLabel4
-            // 
-            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(98, 291);
-            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(207, 31);
-            this.guna2HtmlLabel4.TabIndex = 13;
-            this.guna2HtmlLabel4.Text = "Information System";
-            this.guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.guna2HtmlLabel4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Login
             // 

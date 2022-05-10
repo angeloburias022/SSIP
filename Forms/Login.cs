@@ -19,9 +19,11 @@ namespace SSIP.Forms
     {
         Dashboard dboard = new Dashboard();
         AccessController acc = new AccessController();
+      
         public Login()
         {
             InitializeComponent();
+            this.AcceptButton = btn_login;
         }
        
         public bool Log(string user)
@@ -29,8 +31,7 @@ namespace SSIP.Forms
 
             return true;
         }
-
-        private void btn_login_Click(object sender, EventArgs e)
+        private void Log_in()
         {
             var creds = new User
             {
@@ -51,7 +52,7 @@ namespace SSIP.Forms
                 {
                     var uname = acc.GetCurrentUserDetails(tb_uname.Text);
                     dboard.Show();
-                    dboard.LabelText = "Welcome \n \t \t" + uname;
+                    dboard.LabelText = uname;
                     dboard.Username = uname;
                     dboard.UserName = tb_uname.Text;
 
@@ -62,6 +63,10 @@ namespace SSIP.Forms
                     MessageBox.Show("Your password or Username might incorrect.");
                 }
             }
+        }
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            Log_in();
         }
 
 
@@ -87,11 +92,16 @@ namespace SSIP.Forms
         private void forgotPassword_Click(object sender, EventArgs e)
         {
             if (tb_uname.Text != "")
-            {           
+            {
+              
                 var result = acc.GetEmail(tb_uname.Text);
 
                 if (result.Length > 5)
                 {
+                    panel1.Visible = false;
+                    panel1.Dock = DockStyle.None;
+                    forgotpass_panel.BringToFront();
+
                     var code = GenerateCode.Code(10);
                     this.forgotPassword1.code = code;
                     this.forgotPassword1.username = tb_uname.Text;
@@ -124,5 +134,18 @@ namespace SSIP.Forms
         {
             Application.Exit();
         }
+
+        private void btn_login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //enter key has been pressed
+                // add your code
+                // this.btn_login.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownHandler);
+                Log_in();
+            }
+        }
+
+
     }
 }
