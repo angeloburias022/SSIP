@@ -119,5 +119,10 @@ namespace SSIP.Forms
                 MessageBox.Show("Enter your username first", "FORGOT PASSWORD", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
