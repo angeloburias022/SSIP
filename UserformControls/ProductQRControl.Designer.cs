@@ -64,8 +64,9 @@ namespace SSIP.UserformControls
             this.btn_close.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_close.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_close.DisabledState.Parent = this.btn_close;
+            this.btn_close.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_close.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_close.ForeColor = System.Drawing.Color.White;
+            this.btn_close.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_close.HoverState.Parent = this.btn_close;
             this.btn_close.Location = new System.Drawing.Point(23, 226);
             this.btn_close.Name = "btn_close";
@@ -78,8 +79,7 @@ namespace SSIP.UserformControls
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BackgroundImage = global::SSIP.Properties.Resources.bg;
+            this.panel2.BackColor = System.Drawing.Color.Gainsboro;
             this.panel2.Controls.Add(this.btn_close);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(325, 0);
@@ -92,7 +92,7 @@ namespace SSIP.UserformControls
             this.lbl_productName.AutoSize = true;
             this.lbl_productName.BackColor = System.Drawing.Color.Transparent;
             this.lbl_productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_productName.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_productName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_productName.Location = new System.Drawing.Point(21, 343);
             this.lbl_productName.Name = "lbl_productName";
             this.lbl_productName.Size = new System.Drawing.Size(127, 20);
@@ -104,7 +104,7 @@ namespace SSIP.UserformControls
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Honeydew;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(61, 309);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 20);
@@ -116,7 +116,7 @@ namespace SSIP.UserformControls
             this.productName.AutoSize = true;
             this.productName.BackColor = System.Drawing.Color.Transparent;
             this.productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productName.ForeColor = System.Drawing.Color.Honeydew;
+            this.productName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.productName.Location = new System.Drawing.Point(163, 343);
             this.productName.Name = "productName";
             this.productName.Size = new System.Drawing.Size(122, 20);
@@ -128,7 +128,7 @@ namespace SSIP.UserformControls
             this.displaycode.AutoSize = true;
             this.displaycode.BackColor = System.Drawing.Color.Transparent;
             this.displaycode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.displaycode.ForeColor = System.Drawing.Color.Honeydew;
+            this.displaycode.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.displaycode.Location = new System.Drawing.Point(166, 309);
             this.displaycode.Name = "displaycode";
             this.displaycode.Size = new System.Drawing.Size(82, 20);
@@ -153,7 +153,7 @@ namespace SSIP.UserformControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SSIP.Properties.Resources.bg;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.lbl_productName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.productName);

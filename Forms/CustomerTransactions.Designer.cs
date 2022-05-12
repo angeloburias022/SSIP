@@ -74,7 +74,7 @@ namespace SSIP.Forms
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(99, 182);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 24);
@@ -86,7 +86,7 @@ namespace SSIP.Forms
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Location = new System.Drawing.Point(99, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 24);
@@ -98,7 +98,7 @@ namespace SSIP.Forms
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label3.Location = new System.Drawing.Point(95, 261);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 24);
@@ -110,7 +110,7 @@ namespace SSIP.Forms
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label4.Location = new System.Drawing.Point(56, 297);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(148, 24);
@@ -122,7 +122,7 @@ namespace SSIP.Forms
             this.lbl_tel.AutoSize = true;
             this.lbl_tel.BackColor = System.Drawing.Color.Transparent;
             this.lbl_tel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_tel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_tel.Location = new System.Drawing.Point(222, 297);
             this.lbl_tel.Name = "lbl_tel";
             this.lbl_tel.Size = new System.Drawing.Size(148, 24);
@@ -134,7 +134,7 @@ namespace SSIP.Forms
             this.lbl_mobile.AutoSize = true;
             this.lbl_mobile.BackColor = System.Drawing.Color.Transparent;
             this.lbl_mobile.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mobile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_mobile.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_mobile.Location = new System.Drawing.Point(222, 261);
             this.lbl_mobile.Name = "lbl_mobile";
             this.lbl_mobile.Size = new System.Drawing.Size(109, 24);
@@ -146,7 +146,7 @@ namespace SSIP.Forms
             this.lbl_lname.AutoSize = true;
             this.lbl_lname.BackColor = System.Drawing.Color.Transparent;
             this.lbl_lname.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_lname.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_lname.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_lname.Location = new System.Drawing.Point(222, 219);
             this.lbl_lname.Name = "lbl_lname";
             this.lbl_lname.Size = new System.Drawing.Size(105, 24);
@@ -158,7 +158,7 @@ namespace SSIP.Forms
             this.lbl_fname.AutoSize = true;
             this.lbl_fname.BackColor = System.Drawing.Color.Transparent;
             this.lbl_fname.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_fname.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_fname.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_fname.Location = new System.Drawing.Point(222, 182);
             this.lbl_fname.Name = "lbl_fname";
             this.lbl_fname.Size = new System.Drawing.Size(67, 24);
@@ -176,8 +176,9 @@ namespace SSIP.Forms
             this.btn_newtransaction.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_newtransaction.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_newtransaction.DisabledState.Parent = this.btn_newtransaction;
+            this.btn_newtransaction.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_newtransaction.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_newtransaction.ForeColor = System.Drawing.Color.White;
+            this.btn_newtransaction.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_newtransaction.HoverState.Parent = this.btn_newtransaction;
             this.btn_newtransaction.Location = new System.Drawing.Point(804, 396);
             this.btn_newtransaction.Name = "btn_newtransaction";
@@ -192,11 +193,11 @@ namespace SSIP.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label5.Location = new System.Drawing.Point(403, 47);
+            this.label5.Location = new System.Drawing.Point(184, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(287, 29);
+            this.label5.Size = new System.Drawing.Size(530, 55);
             this.label5.TabIndex = 163;
             this.label5.Text = "Customer\'s Transaction";
             // 
@@ -205,7 +206,7 @@ namespace SSIP.Forms
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Honeydew;
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label6.Location = new System.Drawing.Point(752, 24);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 20);
@@ -244,7 +245,6 @@ namespace SSIP.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SSIP.Properties.Resources.bg;
             this.ClientSize = new System.Drawing.Size(959, 466);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmb_filter);

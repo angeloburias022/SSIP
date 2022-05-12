@@ -1,4 +1,5 @@
-﻿using SSIP.Controllers;
+﻿using SSIP.AddEditForms;
+using SSIP.Controllers;
 using SSIP.Helper;
 using SSIP.Models;
 using System;
@@ -20,6 +21,7 @@ namespace SSIP.UserformControls
     {
        
         public bool emp_setter { get; set; }
+        ComboBox combo;
 
         #region Declaration 
 
@@ -30,10 +32,12 @@ namespace SSIP.UserformControls
         {
             InitializeComponent();
 
-            btn_saveAcc.Visible = true;          
+               
         }
 
         #endregion
+
+
 
         #region Operator / user access
         private void tb_pass_Leave(object sender, EventArgs e)
@@ -49,8 +53,7 @@ namespace SSIP.UserformControls
             if (result != true)
             {
                 MessageBox.Show("Make sure your credentials is correct");
-                btn_saveAcc.Enabled = false;
-                btn_updateAccount.Enabled = false;
+                
                 btn_viewEmp.Enabled = false;
 
             }
@@ -58,9 +61,6 @@ namespace SSIP.UserformControls
             {
                 btn_newEmp.Enabled = true;
                 btn_viewEmp.Enabled = true;
-                btn_saveAcc.Enabled = true;
-           
-                
             }
         }
         private bool AccessLogin(User users)
@@ -69,18 +69,13 @@ namespace SSIP.UserformControls
             {
                 Username = users.Username,
                 Password = users.Password
-            };
-
-    
+            }; 
             var cfirm = new AccessController();
 
             var result = cfirm.ConfirmAccess(user);
 
             if (result == true)
             {
-                btn_saveAcc.Enabled = true;
-                btn_updateAccount.Enabled = true;
-
                 var accesslog = new AuditTrails
                 {
                     Username = user.Username,
@@ -110,7 +105,7 @@ namespace SSIP.UserformControls
         {
             var user = new User
             {
-                Username = tb_uname.Text,
+                Username = tb_unameAccess.Text,
                 Password = tb_pass.Text
             };
 
@@ -170,50 +165,50 @@ namespace SSIP.UserformControls
         #region others
         private void cmb_acctype_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmb_acctype.Text != "Employee")
-            {
-                employee_panel.Visible = true;
-            }
-            else
-            {
-                employee_panel.Visible = false;
-            }
+            //if (cmb_acctype.Text != "Employee")
+            //{
+            //    employee_panel.Visible = true;
+            //}
+            //else
+            //{
+            //    employee_panel.Visible = false;
+            //}
         }
         private void employeeGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                tb_uname.Visible = false;
-                tb_password.Visible = false;
-                lbl_username.Visible = false;
-                lbl_password.Visible = false;
+                //tb_uname.Visible = false;
+                //tb_password.Visible = false;
+                //lbl_username.Visible = false;
+                //lbl_password.Visible = false;
 
-                tb_datehired.Format = DateTimePickerFormat.Custom;
-                // Display the date as "Mon 27 Feb 2012". 
-                tb_datehired.CustomFormat = "ddd dd MMM yyyy";
-                tb_fname.Text = this.employeeGrid.CurrentRow.Cells[0].Value.ToString();
-                tb_lname.Text = this.employeeGrid.CurrentRow.Cells[1].Value.ToString();
-                tb_mobile.Text = this.employeeGrid.CurrentRow.Cells[2].Value.ToString();
-                tb_tel.Text = this.employeeGrid.CurrentRow.Cells[3].Value.ToString();
+                //tb_datehired.Format = DateTimePickerFormat.Custom;
+                //// Display the date as "Mon 27 Feb 2012". 
+                //tb_datehired.CustomFormat = "ddd dd MMM yyyy";
+                //tb_fname.Text = this.employeeGrid.CurrentRow.Cells[0].Value.ToString();
+                //tb_lname.Text = this.employeeGrid.CurrentRow.Cells[1].Value.ToString();
+                //tb_mobile.Text = this.employeeGrid.CurrentRow.Cells[2].Value.ToString();
+                //tb_tel.Text = this.employeeGrid.CurrentRow.Cells[3].Value.ToString();
 
-                tb_houseNo.Text = this.employeeGrid.CurrentRow.Cells[4].Value.ToString();
-                tb_street.Text = this.employeeGrid.CurrentRow.Cells[5].Value.ToString();
-                tb_barangay.Text = this.employeeGrid.CurrentRow.Cells[6].Value.ToString();
-                cmb_City.Text = this.employeeGrid.CurrentRow.Cells[7].Value.ToString();
+                //tb_houseNo.Text = this.employeeGrid.CurrentRow.Cells[4].Value.ToString();
+                //tb_street.Text = this.employeeGrid.CurrentRow.Cells[5].Value.ToString();
+                //tb_barangay.Text = this.employeeGrid.CurrentRow.Cells[6].Value.ToString();
+                //cmb_City.Text = this.employeeGrid.CurrentRow.Cells[7].Value.ToString();
 
-                cmb_empStatus.Text = this.employeeGrid.CurrentRow.Cells[8].Value.ToString();
-                tb_position.Text = this.employeeGrid.CurrentRow.Cells[9].Value.ToString();
-                tb_datehired.Value = Convert.ToDateTime(this.employeeGrid.CurrentRow.Cells[10].Value.ToString());
-                tb_email.Text = this.employeeGrid.CurrentRow.Cells[11].Value.ToString();
-                cmb_acctype.SelectedIndex = Convert.ToInt32(this.employeeGrid.CurrentRow.Cells[12].Value.ToString());
+                //cmb_empStatus.Text = this.employeeGrid.CurrentRow.Cells[8].Value.ToString();
+                //tb_position.Text = this.employeeGrid.CurrentRow.Cells[9].Value.ToString();
+                //tb_datehired.Value = Convert.ToDateTime(this.employeeGrid.CurrentRow.Cells[10].Value.ToString());
+                //tb_email.Text = this.employeeGrid.CurrentRow.Cells[11].Value.ToString();
+                //cmb_acctype.SelectedIndex = Convert.ToInt32(this.employeeGrid.CurrentRow.Cells[12].Value.ToString());
 
-                tb_empID.Text = this.employeeGrid.CurrentRow.Cells[13].Value.ToString();
-                tb_personID.Text = this.employeeGrid.CurrentRow.Cells[14].Value.ToString();
+                //tb_empID.Text = this.employeeGrid.CurrentRow.Cells[13].Value.ToString();
+                //tb_personID.Text = this.employeeGrid.CurrentRow.Cells[14].Value.ToString();
 
-                HideEmployeeGrid();
-                btn_updateAccount.Visible = true;
-                btn_updateAccount.Enabled = true;
-                btn_saveAcc.Visible = false;
+                //HideEmployeeGrid();
+                //btn_updateAccount.Visible = true;
+                //btn_updateAccount.Enabled = true;
+                //btn_saveAcc.Visible = false;
             }
             catch (Exception error)
             {
@@ -224,316 +219,23 @@ namespace SSIP.UserformControls
 
         #region main operation: add, update employee, get employees
       
-        private void SaveAcc()
-        {
-            if (HighAuthority())
-            {
-                #region fields
-
-                var qr = new QRCodeControl();          
-                var details = new Employee();
-
-                var user_info = new User
-                {
-                    Username = tb_uname.Text,
-                    Password = tb_password.Text,
-                    Firstname = tb_fname.Text,
-                    Lastname = tb_lname.Text,
-                    ContactNumber = tb_mobile.Text,
-                    TelephoneNo = tb_tel.Text
-                };
-
-                var addrss_info = new Address
-                {
-                    HouseNo = tb_houseNo.Text,
-                    Street = tb_street.Text,
-                    Barangay = tb_barangay.Text,
-                    City = cmb_City.Text
-                };
-
-                var email_info = new Email
-                {
-                    EmailAddress = tb_email.Text
-                };
-
-            
-
-              
-                #endregion
-
-                #region validations
-                if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info))
-                {
-                  
-
-                    details.user_info.Username = user_info.Username;
-                    details.user_info.Password = user_info.Password;
-                    details.user_info.Firstname = user_info.Firstname;
-                    details.user_info.Lastname = user_info.Lastname;
-                    details.user_info.ContactNumber = user_info.ContactNumber;
-                    details.user_info.TelephoneNo =user_info.TelephoneNo;
-
-                    details.email_info.EmailAddress = email_info.EmailAddress;
-
-                    details.address_info.HouseNo = addrss_info.HouseNo;
-                    details.address_info.Street =addrss_info.Street;
-                    details.address_info.Barangay =addrss_info.Barangay;
-                    details.address_info.City = addrss_info.City;
-
-                    details.DateHired = Convert.ToDateTime(tb_datehired.Text);
-                    details.Position = tb_position.Text;
-                    details.TypeOfContract = "None";
-                    details.AccountTypeID = cmb_acctype.SelectedIndex;
-                    details.EmployeeStatus = cmb_empStatus.Text;
-
-
-                    string randomCode = GenerateCode.Code(10);
-
-                    this.qrCodeControl1.GetDetails(randomCode, tb_fname.Text, tb_lname.Text, tb_position.Text);
-
-                    tb_qrcode.Text = randomCode;
-
-                    details.code = tb_qrcode.Text;
-
-                    var result = emp.AddEmployee(details);
-
-                    if (result != true)
-                    {
-                        MessageBox.Show("Something went wrong");
-
-                        var failed = new AuditTrails
-                        {
-                            Username = tb_unameAccess.Text,
-                            AuditActionTypeENUM = (Enums.ActionTypes)3,
-                            DateTimeStamp = DateTime.Now.ToString(),
-                            Result = "Failed",
-                            Description = "Failed to add new Employee"
-                        };
-
-                        aud.Logs(failed);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Added Successfully!");
-                        
-                        btn_saveAcc.Enabled = true;
-
-                        var addEmployee = new AuditTrails
-                        {
-                            Username = tb_unameAccess.Text,
-                            AuditActionTypeENUM = (Enums.ActionTypes)3,
-                            DateTimeStamp = DateTime.Now.ToString(),
-                            Result = "Succeed",
-                            Description = "Added new Employee"
-                        };
-
-
-                        this.qrCodeControl1.Visible = true;
-                        this.qrCodeControl1.Dock = DockStyle.Fill;
-                        this.qrCodeControl1.BringToFront();
-
-                        aud.Logs(addEmployee);
-                        UpdateGrids();
-                        ClearBoxes();
-                    } 
-                }
-                #endregion
-
-            }
-        }       
-        private void UpdateAcc()
-        {
-            if (HighAuthority())
-            {
-
-                var details = new Employee();
-
-                #region fields
-
-
-                #region fields
-
-                var user_info = new User
-                {
-                    UserID = Convert.ToInt32(tb_personID.Text),
-                    Username = tb_unameAccess.Text,
-                    Firstname = tb_fname.Text,
-                    Lastname = tb_lname.Text,
-                    ContactNumber = tb_mobile.Text,
-                    TelephoneNo = tb_tel.Text
-                };
-
-                var addrss_info = new Address
-                {
-                    HouseNo = tb_houseNo.Text,
-                    Street = tb_street.Text,
-                    Barangay = tb_barangay.Text,
-                    City = cmb_City.Text
-                };
-
-                var email_info = new Email
-                {
-                    EmailAddress = tb_email.Text
-                };
-
-                #endregion
-
-                details.EmployeeID = Convert.ToInt32(tb_empID.Text);
-                details.DateHired = Convert.ToDateTime(tb_datehired.Text);
-                details.Position = tb_position.Text;                
-                details.AccountTypeID = cmb_acctype.SelectedIndex;
-                details.EmployeeStatus = cmb_empStatus.Text;
-                          
-                #endregion
-
-                #region validations
-                if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info) && Valid.ValidateFields(details))
-                {
-                    details.user_info.UserID = user_info.UserID;
-                    details.user_info.Firstname = user_info.Firstname;
-                    details.user_info.Lastname = user_info.Lastname;
-                    details.user_info.ContactNumber = user_info.ContactNumber;
-                    details.user_info.TelephoneNo = user_info.TelephoneNo;
-
-                    details.address_info.HouseNo = addrss_info.HouseNo;
-                    details.address_info.Street = addrss_info.Street;
-                    details.address_info.Barangay = addrss_info.Barangay;
-                    details.address_info.City = addrss_info.City;
-                    details.email_info.EmailAddress = email_info.EmailAddress;
-
-                    var result = emp.UpdateEmployee(details, tb_unameAccess.Text);
-
-                    if (result != true)
-                    {
-                        MessageBox.Show("Failed to update");
-
-                        var addEmployee = new AuditTrails
-                        {
-                            Username = tb_unameAccess.Text,
-                            AuditActionTypeENUM = (Enums.ActionTypes)4,
-                            DateTimeStamp = DateTime.Now.ToString(),
-                            Result = "Failed",
-                            Description = "Failed to Update Employee ID: " + tb_empID.Text + " "
-                        };
-
-                        aud.Logs(addEmployee);
-                    }
-                    else
-                    {
-                        UpdateGrids();
-                        MessageBox.Show("Updated Successfully");
-
-                        var addEmployee = new AuditTrails
-                        {
-                            Username = tb_unameAccess.Text,
-                            AuditActionTypeENUM = (Enums.ActionTypes)4,
-                            DateTimeStamp = DateTime.Now.ToString(),
-                            Result = "Succeed",
-                            Description = "Updated Employee ID:" + tb_empID.Text + " "
-                        };
-
-                        aud.Logs(addEmployee);
-                    } 
-                }
-                #endregion
-
-            }
-        }
+      
         private void EmployeeControl_Load(object sender, EventArgs e)
         {       
-            employeeGrid.DataSource = emp.GetEmployees();   
+         
         }  
         #endregion
 
         #region disable fields, clear txtboxes and update grid
         void DisabledPersonInfoFields()
         {
-            tb_fname.Enabled = false;
-            tb_lname.Enabled = false;
-            tb_tel.Enabled = false;
-            tb_mobile.Enabled = false;
+            //tb_fname.Enabled = false;
+            //tb_lname.Enabled = false;
+            //tb_tel.Enabled = false;
+            //tb_mobile.Enabled = false;
         }
-        void UpdateGrids()
-        {
-            employeeGrid.DataSource = emp.GetEmployees();
-            employeeGrid.Update();
-
-            //dispatchListgrid.DataSource = GetDispatches();
-            //dispatchListgrid.Update();
-        }
-        void ClearBoxes()
-        {
-            tb_empID.Clear();
-            tb_personID.Clear();
-
-            tb_fname.Clear();
-            tb_lname.Clear();
-            tb_tel.Clear();
-            tb_mobile.Clear();
-
-            tb_houseNo.Clear();
-            tb_street.Clear();
-            tb_barangay.Clear();
-            //    cmb_City.ResetText();
-            cmb_City.SelectedItem = null;
-            cmb_City.SelectedText = "--select--";
-
-
-            cmb_empStatus.SelectedItem = null;
-            cmb_empStatus.SelectedText = "--select--";
-
-            cmb_acctype.SelectedItem = null;
-            cmb_acctype.SelectedText = "--select--";
-
-            tb_position.Clear();
-            tb_uname.Clear();
-            tb_password.Clear();
-            tb_email.Clear();
-
-        }
-
-        public void Reset()
-        {
-            tb_empID.Clear();
-            tb_personID.Clear();
-
-            tb_fname.Clear();
-            tb_lname.Clear();
-            tb_tel.Clear();
-            tb_mobile.Clear();
-
-            tb_houseNo.Clear();
-            tb_street.Clear();
-            tb_barangay.Clear();
-            //    cmb_City.ResetText();
-            cmb_City.SelectedItem = null;
-            cmb_City.SelectedText = "--select--";
-
-
-            cmb_empStatus.SelectedItem = null;
-            cmb_empStatus.SelectedText = "--select--";
-
-            cmb_acctype.SelectedItem = null;
-            cmb_acctype.SelectedText = "--select--";
-
-            tb_position.Clear();
-            tb_uname.Clear();
-            tb_password.Clear();
-            tb_email.Clear();
-
-
-            tb_unameAccess.Clear();
-            tb_pass.Clear();
-
-
-            employeeMainPanel.Visible = false;
-            employeeGrid.DataSource = null;
-            employeeGrid.Update();
-            tb_searchEmployees.Clear();
-
-
-            employeeMainPanel.Visible = false;
-        }
+   
+  
 
         #endregion
 
@@ -541,47 +243,28 @@ namespace SSIP.UserformControls
         private void AddEmployee()
         {
             HideEmployeeGrid();
-            btn_updateAccount.Visible = false;
-            btn_saveAcc.Visible = true;
+         
         }
         void ShowEmployeeGrid()
         {
-            employeeMainPanel.Visible = true;
-            employeeMainPanel.Dock = DockStyle.Fill;
-            employeeGrid.DataSource = emp.GetEmployees();
-            employeeMainPanel.BringToFront();
+            employeeGrid.DataSource = emp.GetEmployees();        
             employeeGrid.Update();
         }
         void HideEmployeeGrid()
         {
-            employeeMainPanel.Visible = false;
-            employeeMainPanel.Dock = DockStyle.None;
+            //employeeMainPanel.Visible = false;
+            //employeeMainPanel.Dock = DockStyle.None;
         }
         #endregion
 
         #region event handlers
-        private void btn_saveAcc_Click(object sender, EventArgs e)
-        {
-            SaveAcc();
-        }
-        private void btn_updateAccount_Click(object sender, EventArgs e)
-        {
-            if (tb_empID.Text != "0")
-            {
-                UpdateAcc();
-            }
-            else
-            {
-                btn_updateAccount.Enabled = false;
-            }         
-        }
+       
+  
         private void btn_newEmp_Click(object sender, EventArgs e)
         {
             if (HighAuthority())
             {
-                ClearBoxes();
-                btn_updateAccount.Enabled = false;
-                btn_saveAcc.Enabled = true;
+               
             }
         }
         private void btn_addEmployee_Click(object sender, EventArgs e)
@@ -593,7 +276,7 @@ namespace SSIP.UserformControls
             if (HighAuthority())
             {
                 ShowEmployeeGrid();
-                ClearBoxes();
+                
             }
         }
         private void tb_searchEmployees_TextChanged(object sender, EventArgs e)
@@ -609,6 +292,12 @@ namespace SSIP.UserformControls
                     UpdateGrids();
                 } 
             }
+        }
+
+        void UpdateGrids()
+        {
+            employeeGrid.DataSource = emp.GetEmployees();
+            employeeGrid.Update();
         }
         private void tb_searchEmployees_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -627,23 +316,97 @@ namespace SSIP.UserformControls
         }
         #endregion
 
-        private void tb_uname_TextChanged(object sender, EventArgs e)
-        {         
-            checkUsernameUniqueness();
+
+        private void employeesGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            combo = e.Control as ComboBox;
+            if (combo != null)
+            {
+                combo.SelectedIndexChanged -= new EventHandler(comboEmployee_SelectedIndexChanged);
+                combo.SelectedIndexChanged += comboEmployee_SelectedIndexChanged;
+            }
+
+        }
+        public void ClearGrid()
+        {
+            employeeGrid.DataSource = null;
+            employeeGrid.Update();
+        }
+        private void comboEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string selected = (sender as ComboBox).SelectedItem.ToString();
+
+                //  var action = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                if (selected == "Update")
+                {
+                  
+                    ManageEmployee mc = new ManageEmployee();
+                    mc.firstname = this.employeeGrid.CurrentRow.Cells[1].Value.ToString();
+                    mc.lastname = this.employeeGrid.CurrentRow.Cells[2].Value.ToString();
+                    mc.MobleNo = this.employeeGrid.CurrentRow.Cells[3].Value.ToString();
+                    mc.TelephoneNo = this.employeeGrid.CurrentRow.Cells[4].Value.ToString();
+
+                    mc.HouseNo = this.employeeGrid.CurrentRow.Cells[5].Value.ToString();
+                    mc.Street = this.employeeGrid.CurrentRow.Cells[6].Value.ToString();
+                    mc.Barangay = this.employeeGrid.CurrentRow.Cells[7].Value.ToString();
+                    mc.City = this.employeeGrid.CurrentRow.Cells[8].Value.ToString();
+
+                    mc.Status = this.employeeGrid.CurrentRow.Cells[9].Value.ToString();
+                    mc.Position = this.employeeGrid.CurrentRow.Cells[10].Value.ToString();
+                    mc.DateHired = this.employeeGrid.CurrentRow.Cells[11].Value.ToString();
+
+                    mc.Email = this.employeeGrid.CurrentRow.Cells[12].Value.ToString();
+                    mc.AccountType = Convert.ToInt32(this.employeeGrid.CurrentRow.Cells[13].Value.ToString());
+
+                    mc.EmployeeID = this.employeeGrid.CurrentRow.Cells[14].Value.ToString();
+
+                  
+                    mc.PersonID = this.employeeGrid.CurrentRow.Cells[15].Value.ToString();
+
+                    mc.ManageLabel = "Update Customer";
+                    mc.Username = tb_unameAccess.Text;
+                    mc.Password = tb_pass.Text;
+                    mc.HideSaveButton();
+                    mc.ShowDialog();
+                    ClearGrid();
+
+                }
+                else
+                {
+                    if (MessageBox.Show("Delete now", "This can't be undo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        //
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
         }
 
-        private void checkUsernameUniqueness()
+        private void btn_addNew_Click(object sender, EventArgs e)
         {
-            var result = ac.UsernameUnique(tb_uname.Text);
-            if (result.Count > 0)
+            if (HighAuthority())
             {
-                btn_saveAcc.Enabled = false;
-                MessageBox.Show("Username already exist", "Think another one", MessageBoxButtons.OK, MessageBoxIcon.Information);              
+                ManageEmployee me = new ManageEmployee();
+                me.ManageLabel = "Add new Employee";
+                me.Username = tb_unameAccess.Text;
+                me.Password = tb_pass.Text;
+                me.HideUpdateButton();
+                employeeGrid.DataSource = null;
+                employeeGrid.Update();
+                me.ShowDialog(); 
             }
-            else
-            {
-                btn_saveAcc.Enabled = true;               
-            }
+        }
+
+        public void Reset()
+        {
+            tb_pass.Clear();
+            tb_unameAccess.Clear();
+            ClearGrid();
         }
     }
 }

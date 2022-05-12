@@ -36,6 +36,7 @@ namespace SSIP.UserformControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AttendanceControl));
             this.pb_qrcode = new System.Windows.Forms.PictureBox();
             this.tb_lname = new Guna.UI2.WinForms.Guna2TextBox();
             this.tb_fname = new Guna.UI2.WinForms.Guna2TextBox();
@@ -72,6 +73,7 @@ namespace SSIP.UserformControls
             this.timein = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.tb_search = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_qrcode)).BeginInit();
             this.confirmAccessPanel.SuspendLayout();
             this.attendanceMainpanel.SuspendLayout();
@@ -82,12 +84,13 @@ namespace SSIP.UserformControls
             // 
             // pb_qrcode
             // 
-            this.pb_qrcode.Location = new System.Drawing.Point(431, 20);
+            this.pb_qrcode.Location = new System.Drawing.Point(683, 68);
             this.pb_qrcode.Name = "pb_qrcode";
             this.pb_qrcode.Size = new System.Drawing.Size(140, 120);
             this.pb_qrcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_qrcode.TabIndex = 0;
             this.pb_qrcode.TabStop = false;
+            this.pb_qrcode.Visible = false;
             // 
             // tb_lname
             // 
@@ -107,10 +110,10 @@ namespace SSIP.UserformControls
             this.tb_lname.ForeColor = System.Drawing.Color.Black;
             this.tb_lname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_lname.HoverState.Parent = this.tb_lname;
-            this.tb_lname.Location = new System.Drawing.Point(254, 172);
+            this.tb_lname.Location = new System.Drawing.Point(165, 232);
             this.tb_lname.Name = "tb_lname";
             this.tb_lname.PasswordChar = '\0';
-            this.tb_lname.PlaceholderText = "Lastname";
+            this.tb_lname.PlaceholderText = "Lastname here..";
             this.tb_lname.SelectedText = "";
             this.tb_lname.ShadowDecoration.Parent = this.tb_lname;
             this.tb_lname.Size = new System.Drawing.Size(165, 36);
@@ -134,10 +137,10 @@ namespace SSIP.UserformControls
             this.tb_fname.ForeColor = System.Drawing.Color.Black;
             this.tb_fname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_fname.HoverState.Parent = this.tb_fname;
-            this.tb_fname.Location = new System.Drawing.Point(68, 172);
+            this.tb_fname.Location = new System.Drawing.Point(165, 189);
             this.tb_fname.Name = "tb_fname";
             this.tb_fname.PasswordChar = '\0';
-            this.tb_fname.PlaceholderText = "Firstname";
+            this.tb_fname.PlaceholderText = "Firstname here..";
             this.tb_fname.SelectedText = "";
             this.tb_fname.ShadowDecoration.Parent = this.tb_fname;
             this.tb_fname.Size = new System.Drawing.Size(165, 36);
@@ -149,65 +152,70 @@ namespace SSIP.UserformControls
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Honeydew;
-            this.label6.Location = new System.Drawing.Point(222, 224);
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(206, 298);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 20);
             this.label6.TabIndex = 155;
             this.label6.Text = "TIME OUT:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Honeydew;
-            this.label5.Location = new System.Drawing.Point(252, 149);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(64, 242);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 20);
+            this.label5.Size = new System.Drawing.Size(93, 20);
             this.label5.TabIndex = 156;
-            this.label5.Text = "LastName:";
+            this.label5.Text = "Lastname:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Honeydew;
-            this.label12.Location = new System.Drawing.Point(67, 224);
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(67, 298);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 20);
             this.label12.TabIndex = 158;
             this.label12.Text = "TIME IN:";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Honeydew;
-            this.label4.Location = new System.Drawing.Point(64, 149);
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(63, 189);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 20);
+            this.label4.Size = new System.Drawing.Size(94, 20);
             this.label4.TabIndex = 157;
-            this.label4.Text = "FirstName:";
+            this.label4.Text = "Firstname:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // workdate
             // 
             this.workdate.Checked = true;
             this.workdate.CheckedState.Parent = this.workdate;
-            this.workdate.FillColor = System.Drawing.Color.LimeGreen;
+            this.workdate.FillColor = System.Drawing.Color.Green;
             this.workdate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.workdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.workdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.workdate.HoverState.Parent = this.workdate;
-            this.workdate.Location = new System.Drawing.Point(71, 325);
+            this.workdate.Location = new System.Drawing.Point(67, 387);
             this.workdate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.workdate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.workdate.Name = "workdate";
             this.workdate.ShadowDecoration.Parent = this.workdate;
-            this.workdate.Size = new System.Drawing.Size(125, 36);
+            this.workdate.Size = new System.Drawing.Size(129, 32);
             this.workdate.TabIndex = 163;
-            this.workdate.Value = new System.DateTime(2022, 2, 12, 0, 0, 0, 0);
+            this.workdate.Value = new System.DateTime(2022, 5, 10, 0, 0, 0, 0);
             this.workdate.Visible = false;
             // 
             // label1
@@ -215,13 +223,14 @@ namespace SSIP.UserformControls
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Honeydew;
-            this.label1.Location = new System.Drawing.Point(67, 302);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(67, 364);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 158;
             this.label1.Text = "Date:";
             this.label1.Visible = false;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btn_viewAttendances
             // 
@@ -234,10 +243,11 @@ namespace SSIP.UserformControls
             this.btn_viewAttendances.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewAttendances.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewAttendances.DisabledState.Parent = this.btn_viewAttendances;
+            this.btn_viewAttendances.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_viewAttendances.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_viewAttendances.ForeColor = System.Drawing.Color.White;
+            this.btn_viewAttendances.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_viewAttendances.HoverState.Parent = this.btn_viewAttendances;
-            this.btn_viewAttendances.Location = new System.Drawing.Point(451, 270);
+            this.btn_viewAttendances.Location = new System.Drawing.Point(371, 148);
             this.btn_viewAttendances.Name = "btn_viewAttendances";
             this.btn_viewAttendances.ShadowDecoration.Parent = this.btn_viewAttendances;
             this.btn_viewAttendances.Size = new System.Drawing.Size(120, 36);
@@ -260,7 +270,7 @@ namespace SSIP.UserformControls
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_save.ForeColor = System.Drawing.Color.White;
             this.btn_save.HoverState.Parent = this.btn_save;
-            this.btn_save.Location = new System.Drawing.Point(607, 117);
+            this.btn_save.Location = new System.Drawing.Point(703, 226);
             this.btn_save.Name = "btn_save";
             this.btn_save.ShadowDecoration.Parent = this.btn_save;
             this.btn_save.Size = new System.Drawing.Size(120, 36);
@@ -282,14 +292,15 @@ namespace SSIP.UserformControls
             this.btn_scan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_scan.DisabledState.Parent = this.btn_scan;
             this.btn_scan.Enabled = false;
+            this.btn_scan.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_scan.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_scan.ForeColor = System.Drawing.Color.White;
+            this.btn_scan.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_scan.HoverState.Parent = this.btn_scan;
             this.btn_scan.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.btn_scan.Location = new System.Drawing.Point(451, 232);
+            this.btn_scan.Location = new System.Drawing.Point(371, 103);
             this.btn_scan.Name = "btn_scan";
             this.btn_scan.ShadowDecoration.Parent = this.btn_scan;
-            this.btn_scan.Size = new System.Drawing.Size(120, 32);
+            this.btn_scan.Size = new System.Drawing.Size(120, 37);
             this.btn_scan.TabIndex = 164;
             this.btn_scan.Text = "SCAN QR CODE";
             this.btn_scan.UseTransparentBackground = true;
@@ -309,7 +320,7 @@ namespace SSIP.UserformControls
             this.cboDevice.HoverState.Parent = this.cboDevice;
             this.cboDevice.ItemHeight = 30;
             this.cboDevice.ItemsAppearance.Parent = this.cboDevice;
-            this.cboDevice.Location = new System.Drawing.Point(644, 45);
+            this.cboDevice.Location = new System.Drawing.Point(670, 26);
             this.cboDevice.Name = "cboDevice";
             this.cboDevice.ShadowDecoration.Parent = this.cboDevice;
             this.cboDevice.Size = new System.Drawing.Size(165, 36);
@@ -339,7 +350,7 @@ namespace SSIP.UserformControls
             this.tb_DisplayQR.ForeColor = System.Drawing.Color.Black;
             this.tb_DisplayQR.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_DisplayQR.HoverState.Parent = this.tb_DisplayQR;
-            this.tb_DisplayQR.Location = new System.Drawing.Point(71, 33);
+            this.tb_DisplayQR.Location = new System.Drawing.Point(58, 0);
             this.tb_DisplayQR.Name = "tb_DisplayQR";
             this.tb_DisplayQR.PasswordChar = '\0';
             this.tb_DisplayQR.PlaceholderText = "";
@@ -354,12 +365,13 @@ namespace SSIP.UserformControls
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Honeydew;
-            this.label2.Location = new System.Drawing.Point(67, 81);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(41, 149);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 20);
+            this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 158;
-            this.label2.Text = "EMPLOYEE ID";
+            this.label2.Text = "Employee ID:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // tb_employeeID
             // 
@@ -379,19 +391,19 @@ namespace SSIP.UserformControls
             this.tb_employeeID.ForeColor = System.Drawing.Color.Black;
             this.tb_employeeID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_employeeID.HoverState.Parent = this.tb_employeeID;
-            this.tb_employeeID.Location = new System.Drawing.Point(71, 104);
+            this.tb_employeeID.Location = new System.Drawing.Point(165, 146);
             this.tb_employeeID.Name = "tb_employeeID";
             this.tb_employeeID.PasswordChar = '\0';
             this.tb_employeeID.PlaceholderText = "Employee ID";
             this.tb_employeeID.SelectedText = "";
             this.tb_employeeID.ShadowDecoration.Parent = this.tb_employeeID;
-            this.tb_employeeID.Size = new System.Drawing.Size(89, 36);
+            this.tb_employeeID.Size = new System.Drawing.Size(73, 36);
             this.tb_employeeID.TabIndex = 162;
             // 
             // tb_totalHrs
             // 
             this.tb_totalHrs.BackColor = System.Drawing.Color.Transparent;
-            this.tb_totalHrs.BorderRadius = 4;
+            this.tb_totalHrs.BorderRadius = 1;
             this.tb_totalHrs.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_totalHrs.DefaultText = "";
             this.tb_totalHrs.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -406,7 +418,7 @@ namespace SSIP.UserformControls
             this.tb_totalHrs.ForeColor = System.Drawing.Color.Black;
             this.tb_totalHrs.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_totalHrs.HoverState.Parent = this.tb_totalHrs;
-            this.tb_totalHrs.Location = new System.Drawing.Point(226, 325);
+            this.tb_totalHrs.Location = new System.Drawing.Point(211, 387);
             this.tb_totalHrs.Name = "tb_totalHrs";
             this.tb_totalHrs.PasswordChar = '\0';
             this.tb_totalHrs.PlaceholderText = "Total Hours";
@@ -423,13 +435,14 @@ namespace SSIP.UserformControls
             this.lbl_totalworkhrs.AutoSize = true;
             this.lbl_totalworkhrs.BackColor = System.Drawing.Color.Transparent;
             this.lbl_totalworkhrs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_totalworkhrs.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_totalworkhrs.Location = new System.Drawing.Point(223, 302);
+            this.lbl_totalworkhrs.ForeColor = System.Drawing.Color.Black;
+            this.lbl_totalworkhrs.Location = new System.Drawing.Point(207, 364);
             this.lbl_totalworkhrs.Name = "lbl_totalworkhrs";
-            this.lbl_totalworkhrs.Size = new System.Drawing.Size(196, 20);
+            this.lbl_totalworkhrs.Size = new System.Drawing.Size(153, 20);
             this.lbl_totalworkhrs.TabIndex = 155;
-            this.lbl_totalworkhrs.Text = "TOTAL WORK HOURS:";
+            this.lbl_totalworkhrs.Text = "Total Work Hours:";
             this.lbl_totalworkhrs.Visible = false;
+            this.lbl_totalworkhrs.Click += new System.EventHandler(this.lbl_totalworkhrs_Click);
             // 
             // confirmAccessPanel
             // 
@@ -437,7 +450,7 @@ namespace SSIP.UserformControls
             this.confirmAccessPanel.Controls.Add(this.lbl_confirmAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_unameAccess);
             this.confirmAccessPanel.Controls.Add(this.tb_pass);
-            this.confirmAccessPanel.Location = new System.Drawing.Point(626, 198);
+            this.confirmAccessPanel.Location = new System.Drawing.Point(513, 321);
             this.confirmAccessPanel.Name = "confirmAccessPanel";
             this.confirmAccessPanel.Size = new System.Drawing.Size(183, 120);
             this.confirmAccessPanel.TabIndex = 166;
@@ -447,7 +460,7 @@ namespace SSIP.UserformControls
             this.lbl_confirmAccess.AutoSize = true;
             this.lbl_confirmAccess.BackColor = System.Drawing.Color.Transparent;
             this.lbl_confirmAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_confirmAccess.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_confirmAccess.ForeColor = System.Drawing.Color.Black;
             this.lbl_confirmAccess.Location = new System.Drawing.Point(24, 5);
             this.lbl_confirmAccess.Name = "lbl_confirmAccess";
             this.lbl_confirmAccess.Size = new System.Drawing.Size(134, 20);
@@ -513,7 +526,6 @@ namespace SSIP.UserformControls
             // 
             // attendanceMainpanel
             // 
-            this.attendanceMainpanel.BackgroundImage = global::SSIP.Properties.Resources.bg;
             this.attendanceMainpanel.ColumnCount = 3;
             this.attendanceMainpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.333333F));
             this.attendanceMainpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.22222F));
@@ -521,7 +533,7 @@ namespace SSIP.UserformControls
             this.attendanceMainpanel.Controls.Add(this.tb_searchAttendances, 1, 0);
             this.attendanceMainpanel.Controls.Add(this.btn_addAttendance, 1, 2);
             this.attendanceMainpanel.Controls.Add(this.attendanceGrid, 1, 1);
-            this.attendanceMainpanel.Location = new System.Drawing.Point(679, 376);
+            this.attendanceMainpanel.Location = new System.Drawing.Point(804, 326);
             this.attendanceMainpanel.Name = "attendanceMainpanel";
             this.attendanceMainpanel.RowCount = 3;
             this.attendanceMainpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
@@ -571,8 +583,9 @@ namespace SSIP.UserformControls
             this.btn_addAttendance.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_addAttendance.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_addAttendance.DisabledState.Parent = this.btn_addAttendance;
+            this.btn_addAttendance.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_addAttendance.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_addAttendance.ForeColor = System.Drawing.Color.White;
+            this.btn_addAttendance.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_addAttendance.HoverState.Parent = this.btn_addAttendance;
             this.btn_addAttendance.Location = new System.Drawing.Point(26, 257);
             this.btn_addAttendance.Name = "btn_addAttendance";
@@ -658,7 +671,7 @@ namespace SSIP.UserformControls
             this.btn_updateChanges.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_updateChanges.ForeColor = System.Drawing.Color.White;
             this.btn_updateChanges.HoverState.Parent = this.btn_updateChanges;
-            this.btn_updateChanges.Location = new System.Drawing.Point(488, 159);
+            this.btn_updateChanges.Location = new System.Drawing.Point(703, 268);
             this.btn_updateChanges.Name = "btn_updateChanges";
             this.btn_updateChanges.ShadowDecoration.Parent = this.btn_updateChanges;
             this.btn_updateChanges.Size = new System.Drawing.Size(120, 36);
@@ -670,7 +683,6 @@ namespace SSIP.UserformControls
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackgroundImage = global::SSIP.Properties.Resources.bg;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.333333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.22222F));
@@ -678,13 +690,13 @@ namespace SSIP.UserformControls
             this.tableLayoutPanel1.Controls.Add(this.guna2TextBox1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.guna2Button2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.guna2DataGridView1, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(679, 376);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(726, 446);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.24365F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.67513F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.33503F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(450, 328);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(563, 258);
             this.tableLayoutPanel1.TabIndex = 167;
             this.tableLayoutPanel1.Visible = false;
             // 
@@ -706,13 +718,13 @@ namespace SSIP.UserformControls
             this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Location = new System.Drawing.Point(26, 3);
+            this.guna2TextBox1.Location = new System.Drawing.Point(32, 3);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
             this.guna2TextBox1.PlaceholderText = "Search";
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.ShadowDecoration.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Size = new System.Drawing.Size(165, 36);
+            this.guna2TextBox1.Size = new System.Drawing.Size(165, 35);
             this.guna2TextBox1.TabIndex = 140;
             this.guna2TextBox1.TextChanged += new System.EventHandler(this.tb_searchAttendances_TextChanged);
             this.guna2TextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchAttendances_KeyPress);
@@ -728,10 +740,11 @@ namespace SSIP.UserformControls
             this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.DisabledState.Parent = this.guna2Button2;
+            this.guna2Button2.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.ForeColor = System.Drawing.Color.LimeGreen;
             this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Location = new System.Drawing.Point(26, 257);
+            this.guna2Button2.Location = new System.Drawing.Point(32, 202);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
             this.guna2Button2.Size = new System.Drawing.Size(112, 43);
@@ -771,12 +784,12 @@ namespace SSIP.UserformControls
             this.guna2DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(26, 56);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(32, 44);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(399, 195);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(500, 152);
             this.guna2DataGridView1.TabIndex = 141;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -806,16 +819,17 @@ namespace SSIP.UserformControls
             this.timeout.Checked = true;
             this.timeout.CheckedState.Parent = this.timeout;
             this.timeout.Enabled = false;
-            this.timeout.FillColor = System.Drawing.Color.LimeGreen;
+            this.timeout.FillColor = System.Drawing.Color.Green;
             this.timeout.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.timeout.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.timeout.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.timeout.HoverState.Parent = this.timeout;
-            this.timeout.Location = new System.Drawing.Point(211, 247);
+            this.timeout.Location = new System.Drawing.Point(211, 321);
             this.timeout.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.timeout.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.timeout.Name = "timeout";
             this.timeout.ShadowDecoration.Parent = this.timeout;
-            this.timeout.Size = new System.Drawing.Size(129, 36);
+            this.timeout.Size = new System.Drawing.Size(129, 32);
             this.timeout.TabIndex = 163;
             this.timeout.Value = new System.DateTime(2022, 3, 19, 12, 0, 0, 0);
             // 
@@ -824,16 +838,17 @@ namespace SSIP.UserformControls
             this.timein.Checked = true;
             this.timein.CheckedState.Parent = this.timein;
             this.timein.Enabled = false;
-            this.timein.FillColor = System.Drawing.Color.LimeGreen;
+            this.timein.FillColor = System.Drawing.Color.Green;
             this.timein.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.timein.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.timein.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.timein.HoverState.Parent = this.timein;
-            this.timein.Location = new System.Drawing.Point(68, 247);
+            this.timein.Location = new System.Drawing.Point(68, 321);
             this.timein.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.timein.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.timein.Name = "timein";
             this.timein.ShadowDecoration.Parent = this.timein;
-            this.timein.Size = new System.Drawing.Size(128, 36);
+            this.timein.Size = new System.Drawing.Size(128, 32);
             this.timein.TabIndex = 163;
             this.timein.Value = new System.DateTime(2022, 3, 19, 12, 0, 0, 0);
             // 
@@ -855,10 +870,10 @@ namespace SSIP.UserformControls
             this.tb_search.ForeColor = System.Drawing.Color.Black;
             this.tb_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_search.HoverState.Parent = this.tb_search;
-            this.tb_search.Location = new System.Drawing.Point(227, 56);
+            this.tb_search.Location = new System.Drawing.Point(165, 104);
             this.tb_search.Name = "tb_search";
             this.tb_search.PasswordChar = '\0';
-            this.tb_search.PlaceholderText = "Type here..";
+            this.tb_search.PlaceholderText = "QR Code here..";
             this.tb_search.SelectedText = "";
             this.tb_search.ShadowDecoration.Parent = this.tb_search;
             this.tb_search.Size = new System.Drawing.Size(165, 36);
@@ -870,19 +885,35 @@ namespace SSIP.UserformControls
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Honeydew;
-            this.label3.Location = new System.Drawing.Point(223, 33);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(72, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 20);
             this.label3.TabIndex = 168;
             this.label3.Text = "QR Code:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Green;
+            this.label7.Location = new System.Drawing.Point(302, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(268, 55);
+            this.label7.TabIndex = 168;
+            this.label7.Text = "Attendance";
+            this.label7.Click += new System.EventHandler(this.label3_Click);
             // 
             // AttendanceControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SSIP.Properties.Resources.bg;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.tb_search);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.attendanceMainpanel);
@@ -962,5 +993,6 @@ namespace SSIP.UserformControls
         private Guna.UI2.WinForms.Guna2DateTimePicker timein;
         private Guna.UI2.WinForms.Guna2TextBox tb_search;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -103,14 +103,13 @@ namespace SSIP.Forms
             this.tb_amount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_amount.DisabledState.Parent = this.tb_amount;
             this.tb_amount.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_amount.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_amount.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_amount.FocusedState.Parent = this.tb_amount;
             this.tb_amount.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_amount.ForeColor = System.Drawing.Color.Black;
             this.tb_amount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_amount.HoverState.Parent = this.tb_amount;
-            this.tb_amount.Location = new System.Drawing.Point(749, 445);
+            this.tb_amount.Location = new System.Drawing.Point(811, 465);
             this.tb_amount.Name = "tb_amount";
             this.tb_amount.PasswordChar = '\0';
             this.tb_amount.PlaceholderText = "Paid Amount";
@@ -126,8 +125,8 @@ namespace SSIP.Forms
             this.lbl_amount.AutoSize = true;
             this.lbl_amount.BackColor = System.Drawing.Color.Transparent;
             this.lbl_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_amount.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_amount.Location = new System.Drawing.Point(766, 422);
+            this.lbl_amount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_amount.Location = new System.Drawing.Point(828, 442);
             this.lbl_amount.Name = "lbl_amount";
             this.lbl_amount.Size = new System.Drawing.Size(83, 20);
             this.lbl_amount.TabIndex = 179;
@@ -157,10 +156,11 @@ namespace SSIP.Forms
             this.btn_viewScheds.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewScheds.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewScheds.DisabledState.Parent = this.btn_viewScheds;
+            this.btn_viewScheds.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_viewScheds.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_viewScheds.ForeColor = System.Drawing.Color.White;
+            this.btn_viewScheds.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_viewScheds.HoverState.Parent = this.btn_viewScheds;
-            this.btn_viewScheds.Location = new System.Drawing.Point(776, 152);
+            this.btn_viewScheds.Location = new System.Drawing.Point(838, 151);
             this.btn_viewScheds.Name = "btn_viewScheds";
             this.btn_viewScheds.ShadowDecoration.Parent = this.btn_viewScheds;
             this.btn_viewScheds.Size = new System.Drawing.Size(120, 45);
@@ -180,10 +180,11 @@ namespace SSIP.Forms
             this.btn_viewDispatches.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewDispatches.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewDispatches.DisabledState.Parent = this.btn_viewDispatches;
+            this.btn_viewDispatches.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_viewDispatches.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_viewDispatches.ForeColor = System.Drawing.Color.White;
+            this.btn_viewDispatches.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_viewDispatches.HoverState.Parent = this.btn_viewDispatches;
-            this.btn_viewDispatches.Location = new System.Drawing.Point(776, 101);
+            this.btn_viewDispatches.Location = new System.Drawing.Point(838, 100);
             this.btn_viewDispatches.Name = "btn_viewDispatches";
             this.btn_viewDispatches.ShadowDecoration.Parent = this.btn_viewDispatches;
             this.btn_viewDispatches.Size = new System.Drawing.Size(120, 45);
@@ -204,10 +205,11 @@ namespace SSIP.Forms
             this.btn_updateChanges.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_updateChanges.DisabledState.Parent = this.btn_updateChanges;
             this.btn_updateChanges.Enabled = false;
+            this.btn_updateChanges.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_updateChanges.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_updateChanges.ForeColor = System.Drawing.Color.White;
+            this.btn_updateChanges.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_updateChanges.HoverState.Parent = this.btn_updateChanges;
-            this.btn_updateChanges.Location = new System.Drawing.Point(776, 326);
+            this.btn_updateChanges.Location = new System.Drawing.Point(838, 325);
             this.btn_updateChanges.Name = "btn_updateChanges";
             this.btn_updateChanges.ShadowDecoration.Parent = this.btn_updateChanges;
             this.btn_updateChanges.Size = new System.Drawing.Size(120, 45);
@@ -228,10 +230,11 @@ namespace SSIP.Forms
             this.btn_save.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_save.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_save.DisabledState.Parent = this.btn_save;
+            this.btn_save.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_save.ForeColor = System.Drawing.Color.White;
+            this.btn_save.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_save.HoverState.Parent = this.btn_save;
-            this.btn_save.Location = new System.Drawing.Point(776, 377);
+            this.btn_save.Location = new System.Drawing.Point(838, 376);
             this.btn_save.Name = "btn_save";
             this.btn_save.ShadowDecoration.Parent = this.btn_save;
             this.btn_save.Size = new System.Drawing.Size(120, 45);
@@ -259,7 +262,7 @@ namespace SSIP.Forms
             "Repair",
             "Checkup"});
             this.cmb_svtype.ItemsAppearance.Parent = this.cmb_svtype;
-            this.cmb_svtype.Location = new System.Drawing.Point(33, 515);
+            this.cmb_svtype.Location = new System.Drawing.Point(22, 515);
             this.cmb_svtype.Name = "cmb_svtype";
             this.cmb_svtype.ShadowDecoration.Parent = this.cmb_svtype;
             this.cmb_svtype.Size = new System.Drawing.Size(165, 36);
@@ -313,7 +316,7 @@ namespace SSIP.Forms
             "Wall-mounted",
             "Floor-mounted"});
             this.tb_actype.ItemsAppearance.Parent = this.tb_actype;
-            this.tb_actype.Location = new System.Drawing.Point(207, 515);
+            this.tb_actype.Location = new System.Drawing.Point(196, 515);
             this.tb_actype.Name = "tb_actype";
             this.tb_actype.ShadowDecoration.Parent = this.tb_actype;
             this.tb_actype.Size = new System.Drawing.Size(165, 36);
@@ -339,7 +342,7 @@ namespace SSIP.Forms
             "Done / Not-paid",
             "Done / Paid"});
             this.cmb_Status.ItemsAppearance.Parent = this.cmb_Status;
-            this.cmb_Status.Location = new System.Drawing.Point(382, 374);
+            this.cmb_Status.Location = new System.Drawing.Point(371, 374);
             this.cmb_Status.Name = "cmb_Status";
             this.cmb_Status.ShadowDecoration.Parent = this.cmb_Status;
             this.cmb_Status.Size = new System.Drawing.Size(168, 36);
@@ -348,7 +351,7 @@ namespace SSIP.Forms
             // 
             // tb_tel
             // 
-            this.tb_tel.BackColor = System.Drawing.Color.Transparent;
+            this.tb_tel.BackColor = System.Drawing.Color.White;
             this.tb_tel.BorderRadius = 4;
             this.tb_tel.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_tel.DefaultText = "";
@@ -357,14 +360,13 @@ namespace SSIP.Forms
             this.tb_tel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_tel.DisabledState.Parent = this.tb_tel;
             this.tb_tel.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_tel.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_tel.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_tel.FocusedState.Parent = this.tb_tel;
             this.tb_tel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_tel.ForeColor = System.Drawing.Color.Black;
             this.tb_tel.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_tel.HoverState.Parent = this.tb_tel;
-            this.tb_tel.Location = new System.Drawing.Point(568, 140);
+            this.tb_tel.Location = new System.Drawing.Point(554, 140);
             this.tb_tel.Name = "tb_tel";
             this.tb_tel.PasswordChar = '\0';
             this.tb_tel.PlaceholderText = "Tel #";
@@ -376,7 +378,7 @@ namespace SSIP.Forms
             // 
             // tb_mobile
             // 
-            this.tb_mobile.BackColor = System.Drawing.Color.Transparent;
+            this.tb_mobile.BackColor = System.Drawing.Color.White;
             this.tb_mobile.BorderRadius = 4;
             this.tb_mobile.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_mobile.DefaultText = "";
@@ -385,7 +387,6 @@ namespace SSIP.Forms
             this.tb_mobile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_mobile.DisabledState.Parent = this.tb_mobile;
             this.tb_mobile.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_mobile.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_mobile.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_mobile.FocusedState.Parent = this.tb_mobile;
             this.tb_mobile.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -404,7 +405,7 @@ namespace SSIP.Forms
             // 
             // tb_lname
             // 
-            this.tb_lname.BackColor = System.Drawing.Color.Transparent;
+            this.tb_lname.BackColor = System.Drawing.Color.White;
             this.tb_lname.BorderRadius = 4;
             this.tb_lname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_lname.DefaultText = "";
@@ -413,7 +414,6 @@ namespace SSIP.Forms
             this.tb_lname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_lname.DisabledState.Parent = this.tb_lname;
             this.tb_lname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_lname.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_lname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_lname.FocusedState.Parent = this.tb_lname;
             this.tb_lname.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -441,14 +441,13 @@ namespace SSIP.Forms
             this.tb_brand.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_brand.DisabledState.Parent = this.tb_brand;
             this.tb_brand.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_brand.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_brand.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_brand.FocusedState.Parent = this.tb_brand;
             this.tb_brand.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_brand.ForeColor = System.Drawing.Color.Black;
             this.tb_brand.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_brand.HoverState.Parent = this.tb_brand;
-            this.tb_brand.Location = new System.Drawing.Point(33, 444);
+            this.tb_brand.Location = new System.Drawing.Point(22, 444);
             this.tb_brand.Name = "tb_brand";
             this.tb_brand.PasswordChar = '\0';
             this.tb_brand.PlaceholderText = "Brand";
@@ -468,14 +467,13 @@ namespace SSIP.Forms
             this.tb_quan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_quan.DisabledState.Parent = this.tb_quan;
             this.tb_quan.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_quan.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_quan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_quan.FocusedState.Parent = this.tb_quan;
             this.tb_quan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_quan.ForeColor = System.Drawing.Color.Black;
             this.tb_quan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_quan.HoverState.Parent = this.tb_quan;
-            this.tb_quan.Location = new System.Drawing.Point(207, 444);
+            this.tb_quan.Location = new System.Drawing.Point(196, 444);
             this.tb_quan.Name = "tb_quan";
             this.tb_quan.PasswordChar = '\0';
             this.tb_quan.PlaceholderText = "Quantity";
@@ -495,14 +493,13 @@ namespace SSIP.Forms
             this.tb_timeout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_timeout.DisabledState.Parent = this.tb_timeout;
             this.tb_timeout.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_timeout.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_timeout.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_timeout.FocusedState.Parent = this.tb_timeout;
             this.tb_timeout.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_timeout.ForeColor = System.Drawing.Color.Black;
             this.tb_timeout.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_timeout.HoverState.Parent = this.tb_timeout;
-            this.tb_timeout.Location = new System.Drawing.Point(564, 444);
+            this.tb_timeout.Location = new System.Drawing.Point(553, 444);
             this.tb_timeout.Name = "tb_timeout";
             this.tb_timeout.PasswordChar = '\0';
             this.tb_timeout.PlaceholderText = "Time in";
@@ -524,14 +521,13 @@ namespace SSIP.Forms
             this.tb_pass.DisabledState.Parent = this.tb_pass;
             this.tb_pass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_pass.Enabled = false;
-            this.tb_pass.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_pass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_pass.FocusedState.Parent = this.tb_pass;
             this.tb_pass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_pass.ForeColor = System.Drawing.Color.Black;
             this.tb_pass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_pass.HoverState.Parent = this.tb_pass;
-            this.tb_pass.Location = new System.Drawing.Point(749, 271);
+            this.tb_pass.Location = new System.Drawing.Point(811, 270);
             this.tb_pass.Name = "tb_pass";
             this.tb_pass.PasswordChar = '*';
             this.tb_pass.PlaceholderText = "Password";
@@ -552,14 +548,13 @@ namespace SSIP.Forms
             this.tb_recorded.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_recorded.DisabledState.Parent = this.tb_recorded;
             this.tb_recorded.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_recorded.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_recorded.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_recorded.FocusedState.Parent = this.tb_recorded;
             this.tb_recorded.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_recorded.ForeColor = System.Drawing.Color.Black;
             this.tb_recorded.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_recorded.HoverState.Parent = this.tb_recorded;
-            this.tb_recorded.Location = new System.Drawing.Point(749, 229);
+            this.tb_recorded.Location = new System.Drawing.Point(811, 228);
             this.tb_recorded.Name = "tb_recorded";
             this.tb_recorded.PasswordChar = '*';
             this.tb_recorded.PlaceholderText = "Username";
@@ -580,14 +575,13 @@ namespace SSIP.Forms
             this.tb_timein.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_timein.DisabledState.Parent = this.tb_timein;
             this.tb_timein.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_timein.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_timein.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_timein.FocusedState.Parent = this.tb_timein;
             this.tb_timein.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_timein.ForeColor = System.Drawing.Color.Black;
             this.tb_timein.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_timein.HoverState.Parent = this.tb_timein;
-            this.tb_timein.Location = new System.Drawing.Point(564, 374);
+            this.tb_timein.Location = new System.Drawing.Point(553, 374);
             this.tb_timein.Name = "tb_timein";
             this.tb_timein.PasswordChar = '\0';
             this.tb_timein.PlaceholderText = "Time in";
@@ -608,14 +602,13 @@ namespace SSIP.Forms
             this.tb_svtime.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_svtime.DisabledState.Parent = this.tb_svtime;
             this.tb_svtime.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_svtime.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_svtime.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_svtime.FocusedState.Parent = this.tb_svtime;
             this.tb_svtime.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tb_svtime.ForeColor = System.Drawing.Color.Black;
             this.tb_svtime.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_svtime.HoverState.Parent = this.tb_svtime;
-            this.tb_svtime.Location = new System.Drawing.Point(33, 374);
+            this.tb_svtime.Location = new System.Drawing.Point(22, 374);
             this.tb_svtime.Name = "tb_svtime";
             this.tb_svtime.PasswordChar = '\0';
             this.tb_svtime.PlaceholderText = "Service Time";
@@ -626,7 +619,7 @@ namespace SSIP.Forms
             // 
             // tb_fname
             // 
-            this.tb_fname.BackColor = System.Drawing.Color.Transparent;
+            this.tb_fname.BackColor = System.Drawing.Color.White;
             this.tb_fname.BorderRadius = 4;
             this.tb_fname.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_fname.DefaultText = "";
@@ -635,7 +628,6 @@ namespace SSIP.Forms
             this.tb_fname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_fname.DisabledState.Parent = this.tb_fname;
             this.tb_fname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_fname.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_fname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_fname.FocusedState.Parent = this.tb_fname;
             this.tb_fname.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -657,8 +649,8 @@ namespace SSIP.Forms
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Honeydew;
-            this.label22.Location = new System.Drawing.Point(376, 351);
+            this.label22.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label22.Location = new System.Drawing.Point(365, 351);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(131, 20);
             this.label22.TabIndex = 153;
@@ -669,7 +661,7 @@ namespace SSIP.Forms
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Honeydew;
+            this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label15.Location = new System.Drawing.Point(560, 229);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(44, 20);
@@ -681,8 +673,8 @@ namespace SSIP.Forms
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Honeydew;
-            this.label14.Location = new System.Drawing.Point(31, 492);
+            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label14.Location = new System.Drawing.Point(20, 492);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(116, 20);
             this.label14.TabIndex = 131;
@@ -693,8 +685,8 @@ namespace SSIP.Forms
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Honeydew;
-            this.label11.Location = new System.Drawing.Point(29, 351);
+            this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label11.Location = new System.Drawing.Point(18, 351);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(116, 20);
             this.label11.TabIndex = 139;
@@ -705,8 +697,8 @@ namespace SSIP.Forms
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Honeydew;
-            this.label17.Location = new System.Drawing.Point(31, 421);
+            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label17.Location = new System.Drawing.Point(20, 421);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 20);
             this.label17.TabIndex = 133;
@@ -717,8 +709,8 @@ namespace SSIP.Forms
             this.lbl_dispatchID.AutoSize = true;
             this.lbl_dispatchID.BackColor = System.Drawing.Color.Transparent;
             this.lbl_dispatchID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dispatchID.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_dispatchID.Location = new System.Drawing.Point(545, 56);
+            this.lbl_dispatchID.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_dispatchID.Location = new System.Drawing.Point(607, 55);
             this.lbl_dispatchID.Name = "lbl_dispatchID";
             this.lbl_dispatchID.Size = new System.Drawing.Size(109, 20);
             this.lbl_dispatchID.TabIndex = 137;
@@ -730,8 +722,8 @@ namespace SSIP.Forms
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Honeydew;
-            this.label1.Location = new System.Drawing.Point(427, 56);
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(489, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 136;
@@ -743,8 +735,8 @@ namespace SSIP.Forms
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Honeydew;
-            this.label19.Location = new System.Drawing.Point(311, 56);
+            this.label19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label19.Location = new System.Drawing.Point(373, 55);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(97, 20);
             this.label19.TabIndex = 135;
@@ -756,8 +748,8 @@ namespace SSIP.Forms
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Honeydew;
-            this.label18.Location = new System.Drawing.Point(766, 206);
+            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label18.Location = new System.Drawing.Point(828, 205);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(134, 20);
             this.label18.TabIndex = 138;
@@ -768,8 +760,8 @@ namespace SSIP.Forms
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Honeydew;
-            this.label16.Location = new System.Drawing.Point(207, 491);
+            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label16.Location = new System.Drawing.Point(196, 491);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(108, 20);
             this.label16.TabIndex = 143;
@@ -780,8 +772,8 @@ namespace SSIP.Forms
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Honeydew;
-            this.label7.Location = new System.Drawing.Point(205, 421);
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label7.Location = new System.Drawing.Point(194, 421);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 20);
             this.label7.TabIndex = 140;
@@ -792,8 +784,8 @@ namespace SSIP.Forms
             this.lbl_dispatchDate.AutoSize = true;
             this.lbl_dispatchDate.BackColor = System.Drawing.Color.Transparent;
             this.lbl_dispatchDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dispatchDate.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_dispatchDate.Location = new System.Drawing.Point(560, 490);
+            this.lbl_dispatchDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_dispatchDate.Location = new System.Drawing.Point(549, 490);
             this.lbl_dispatchDate.Name = "lbl_dispatchDate";
             this.lbl_dispatchDate.Size = new System.Drawing.Size(124, 20);
             this.lbl_dispatchDate.TabIndex = 141;
@@ -805,8 +797,8 @@ namespace SSIP.Forms
             this.lbl_timeout.AutoSize = true;
             this.lbl_timeout.BackColor = System.Drawing.Color.Transparent;
             this.lbl_timeout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timeout.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_timeout.Location = new System.Drawing.Point(560, 421);
+            this.lbl_timeout.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_timeout.Location = new System.Drawing.Point(549, 421);
             this.lbl_timeout.Name = "lbl_timeout";
             this.lbl_timeout.Size = new System.Drawing.Size(79, 20);
             this.lbl_timeout.TabIndex = 142;
@@ -818,7 +810,7 @@ namespace SSIP.Forms
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Honeydew;
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label9.Location = new System.Drawing.Point(562, 117);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 20);
@@ -830,7 +822,7 @@ namespace SSIP.Forms
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Honeydew;
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label5.Location = new System.Drawing.Point(194, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 20);
@@ -839,8 +831,9 @@ namespace SSIP.Forms
             // 
             // tb_dispatchID
             // 
+            this.tb_dispatchID.BackColor = System.Drawing.Color.White;
             this.tb_dispatchID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_dispatchID.Location = new System.Drawing.Point(549, 81);
+            this.tb_dispatchID.Location = new System.Drawing.Point(611, 80);
             this.tb_dispatchID.Multiline = true;
             this.tb_dispatchID.Name = "tb_dispatchID";
             this.tb_dispatchID.ReadOnly = true;
@@ -851,8 +844,9 @@ namespace SSIP.Forms
             // 
             // tb_customerID
             // 
+            this.tb_customerID.BackColor = System.Drawing.Color.White;
             this.tb_customerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_customerID.Location = new System.Drawing.Point(431, 81);
+            this.tb_customerID.Location = new System.Drawing.Point(493, 80);
             this.tb_customerID.Multiline = true;
             this.tb_customerID.Name = "tb_customerID";
             this.tb_customerID.ReadOnly = true;
@@ -866,8 +860,8 @@ namespace SSIP.Forms
             this.lbl_timein.AutoSize = true;
             this.lbl_timein.BackColor = System.Drawing.Color.Transparent;
             this.lbl_timein.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timein.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_timein.Location = new System.Drawing.Point(560, 351);
+            this.lbl_timein.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_timein.Location = new System.Drawing.Point(549, 351);
             this.lbl_timein.Name = "lbl_timein";
             this.lbl_timein.Size = new System.Drawing.Size(67, 20);
             this.lbl_timein.TabIndex = 144;
@@ -876,8 +870,9 @@ namespace SSIP.Forms
             // 
             // tb_schedID
             // 
+            this.tb_schedID.BackColor = System.Drawing.Color.White;
             this.tb_schedID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_schedID.Location = new System.Drawing.Point(315, 81);
+            this.tb_schedID.Location = new System.Drawing.Point(377, 80);
             this.tb_schedID.Multiline = true;
             this.tb_schedID.Name = "tb_schedID";
             this.tb_schedID.ReadOnly = true;
@@ -891,7 +886,7 @@ namespace SSIP.Forms
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Honeydew;
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label8.Location = new System.Drawing.Point(371, 117);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 20);
@@ -915,7 +910,7 @@ namespace SSIP.Forms
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Honeydew;
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label4.Location = new System.Drawing.Point(20, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 20);
@@ -927,8 +922,8 @@ namespace SSIP.Forms
             this.lbl_assign.AutoSize = true;
             this.lbl_assign.BackColor = System.Drawing.Color.Transparent;
             this.lbl_assign.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_assign.ForeColor = System.Drawing.Color.Honeydew;
-            this.lbl_assign.Location = new System.Drawing.Point(383, 421);
+            this.lbl_assign.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_assign.Location = new System.Drawing.Point(372, 421);
             this.lbl_assign.Name = "lbl_assign";
             this.lbl_assign.Size = new System.Drawing.Size(117, 20);
             this.lbl_assign.TabIndex = 147;
@@ -938,7 +933,7 @@ namespace SSIP.Forms
             // tb_assign1
             // 
             this.tb_assign1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_assign1.Location = new System.Drawing.Point(387, 444);
+            this.tb_assign1.Location = new System.Drawing.Point(376, 444);
             this.tb_assign1.Multiline = true;
             this.tb_assign1.Name = "tb_assign1";
             this.tb_assign1.Size = new System.Drawing.Size(168, 105);
@@ -949,7 +944,7 @@ namespace SSIP.Forms
             // 
             this.panelServices.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panelServices.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelServices.Location = new System.Drawing.Point(963, 271);
+            this.panelServices.Location = new System.Drawing.Point(978, 23);
             this.panelServices.Name = "panelServices";
             this.panelServices.Size = new System.Drawing.Size(476, 183);
             this.panelServices.TabIndex = 181;
@@ -959,8 +954,8 @@ namespace SSIP.Forms
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Honeydew;
-            this.label13.Location = new System.Drawing.Point(197, 352);
+            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label13.Location = new System.Drawing.Point(186, 352);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(117, 20);
             this.label13.TabIndex = 134;
@@ -968,7 +963,7 @@ namespace SSIP.Forms
             // 
             // tb_houseNo
             // 
-            this.tb_houseNo.BackColor = System.Drawing.Color.Transparent;
+            this.tb_houseNo.BackColor = System.Drawing.Color.White;
             this.tb_houseNo.BorderRadius = 4;
             this.tb_houseNo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_houseNo.DefaultText = "";
@@ -977,7 +972,6 @@ namespace SSIP.Forms
             this.tb_houseNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_houseNo.DisabledState.Parent = this.tb_houseNo;
             this.tb_houseNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_houseNo.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_houseNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_houseNo.FocusedState.Parent = this.tb_houseNo;
             this.tb_houseNo.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -996,7 +990,7 @@ namespace SSIP.Forms
             // 
             // tb_barangay
             // 
-            this.tb_barangay.BackColor = System.Drawing.Color.Transparent;
+            this.tb_barangay.BackColor = System.Drawing.Color.White;
             this.tb_barangay.BorderRadius = 4;
             this.tb_barangay.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_barangay.DefaultText = "";
@@ -1005,7 +999,6 @@ namespace SSIP.Forms
             this.tb_barangay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_barangay.DisabledState.Parent = this.tb_barangay;
             this.tb_barangay.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_barangay.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_barangay.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_barangay.FocusedState.Parent = this.tb_barangay;
             this.tb_barangay.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -1027,7 +1020,7 @@ namespace SSIP.Forms
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Honeydew;
+            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label10.Location = new System.Drawing.Point(371, 229);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 20);
@@ -1039,7 +1032,7 @@ namespace SSIP.Forms
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Honeydew;
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label6.Location = new System.Drawing.Point(196, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 20);
@@ -1051,7 +1044,7 @@ namespace SSIP.Forms
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Honeydew;
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label12.Location = new System.Drawing.Point(20, 232);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 20);
@@ -1060,7 +1053,7 @@ namespace SSIP.Forms
             // 
             // tb_street
             // 
-            this.tb_street.BackColor = System.Drawing.Color.Transparent;
+            this.tb_street.BackColor = System.Drawing.Color.White;
             this.tb_street.BorderRadius = 4;
             this.tb_street.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_street.DefaultText = "";
@@ -1069,7 +1062,6 @@ namespace SSIP.Forms
             this.tb_street.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_street.DisabledState.Parent = this.tb_street;
             this.tb_street.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_street.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_street.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_street.FocusedState.Parent = this.tb_street;
             this.tb_street.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -1121,7 +1113,7 @@ namespace SSIP.Forms
             this.sameAddress.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.sameAddress.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sameAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.sameAddress.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sameAddress.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.sameAddress.Location = new System.Drawing.Point(33, 209);
             this.sameAddress.Name = "sameAddress";
             this.sameAddress.Size = new System.Drawing.Size(145, 24);
@@ -1137,8 +1129,9 @@ namespace SSIP.Forms
             // 
             // tb_AddressID
             // 
+            this.tb_AddressID.BackColor = System.Drawing.Color.White;
             this.tb_AddressID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_AddressID.Location = new System.Drawing.Point(670, 81);
+            this.tb_AddressID.Location = new System.Drawing.Point(732, 80);
             this.tb_AddressID.Multiline = true;
             this.tb_AddressID.Name = "tb_AddressID";
             this.tb_AddressID.ReadOnly = true;
@@ -1152,8 +1145,8 @@ namespace SSIP.Forms
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.Honeydew;
-            this.label23.Location = new System.Drawing.Point(666, 56);
+            this.label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label23.Location = new System.Drawing.Point(728, 55);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(104, 20);
             this.label23.TabIndex = 137;
@@ -1162,7 +1155,7 @@ namespace SSIP.Forms
             // 
             // tb_servicedate
             // 
-            this.tb_servicedate.Location = new System.Drawing.Point(204, 375);
+            this.tb_servicedate.Location = new System.Drawing.Point(193, 375);
             this.tb_servicedate.Name = "tb_servicedate";
             this.tb_servicedate.Size = new System.Drawing.Size(168, 20);
             this.tb_servicedate.TabIndex = 184;
@@ -1170,7 +1163,7 @@ namespace SSIP.Forms
             // 
             // tb_dispatchDate
             // 
-            this.tb_dispatchDate.Location = new System.Drawing.Point(565, 513);
+            this.tb_dispatchDate.Location = new System.Drawing.Point(554, 513);
             this.tb_dispatchDate.Name = "tb_dispatchDate";
             this.tb_dispatchDate.Size = new System.Drawing.Size(168, 20);
             this.tb_dispatchDate.TabIndex = 184;
@@ -1181,8 +1174,7 @@ namespace SSIP.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SSIP.Properties.Resources.bg;
-            this.ClientSize = new System.Drawing.Size(937, 575);
+            this.ClientSize = new System.Drawing.Size(994, 575);
             this.Controls.Add(this.tb_dispatchDate);
             this.Controls.Add(this.tb_servicedate);
             this.Controls.Add(this.btn_save);

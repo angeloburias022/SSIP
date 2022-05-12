@@ -97,5 +97,10 @@ namespace SSIP.Forms
                 error.ToString();
             }
         }
+
+        private void rb_active_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

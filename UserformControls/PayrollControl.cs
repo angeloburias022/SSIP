@@ -787,5 +787,10 @@ namespace SSIP.UserformControls
         {
             ClearFields();
         }
+
+        private void payrollGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

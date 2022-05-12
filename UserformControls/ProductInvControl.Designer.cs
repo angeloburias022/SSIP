@@ -207,12 +207,13 @@ namespace SSIP.UserformControls
             this.lbl_height.AutoSize = true;
             this.lbl_height.BackColor = System.Drawing.Color.Transparent;
             this.lbl_height.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_height.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_height.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_height.Location = new System.Drawing.Point(278, 273);
             this.lbl_height.Name = "lbl_height";
             this.lbl_height.Size = new System.Drawing.Size(67, 20);
             this.lbl_height.TabIndex = 8;
             this.lbl_height.Text = "Height:";
+            this.lbl_height.Click += new System.EventHandler(this.lbl_height_Click);
             // 
             // tb_height
             // 
@@ -246,7 +247,7 @@ namespace SSIP.UserformControls
             this.lbl_hp.AutoSize = true;
             this.lbl_hp.BackColor = System.Drawing.Color.Transparent;
             this.lbl_hp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_hp.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_hp.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_hp.Location = new System.Drawing.Point(199, 407);
             this.lbl_hp.Name = "lbl_hp";
             this.lbl_hp.Size = new System.Drawing.Size(116, 20);
@@ -271,12 +272,13 @@ namespace SSIP.UserformControls
             this.lbl_quan.AutoSize = true;
             this.lbl_quan.BackColor = System.Drawing.Color.Transparent;
             this.lbl_quan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_quan.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_quan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_quan.Location = new System.Drawing.Point(199, 273);
             this.lbl_quan.Name = "lbl_quan";
             this.lbl_quan.Size = new System.Drawing.Size(81, 20);
             this.lbl_quan.TabIndex = 8;
             this.lbl_quan.Text = "Quantity:";
+            this.lbl_quan.Click += new System.EventHandler(this.lbl_quan_Click);
             // 
             // tb_quan
             // 
@@ -310,7 +312,7 @@ namespace SSIP.UserformControls
             this.lbl_actype.AutoSize = true;
             this.lbl_actype.BackColor = System.Drawing.Color.Transparent;
             this.lbl_actype.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_actype.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_actype.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_actype.Location = new System.Drawing.Point(14, 407);
             this.lbl_actype.Name = "lbl_actype";
             this.lbl_actype.Size = new System.Drawing.Size(108, 20);
@@ -545,96 +547,104 @@ namespace SSIP.UserformControls
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label9.Location = new System.Drawing.Point(14, 242);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(192, 20);
             this.label9.TabIndex = 8;
             this.label9.Text = "Description / Features:";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label8.Location = new System.Drawing.Point(199, 169);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(148, 20);
             this.label8.TabIndex = 8;
             this.label8.Text = "Product Category";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // lbl_length
             // 
             this.lbl_length.AutoSize = true;
             this.lbl_length.BackColor = System.Drawing.Color.Transparent;
             this.lbl_length.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_length.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_length.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_length.Location = new System.Drawing.Point(277, 342);
             this.lbl_length.Name = "lbl_length";
             this.lbl_length.Size = new System.Drawing.Size(70, 20);
             this.lbl_length.TabIndex = 8;
             this.lbl_length.Text = "Length:";
+            this.lbl_length.Click += new System.EventHandler(this.lbl_length_Click);
             // 
             // lbl_width
             // 
             this.lbl_width.AutoSize = true;
             this.lbl_width.BackColor = System.Drawing.Color.Transparent;
             this.lbl_width.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_width.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_width.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_width.Location = new System.Drawing.Point(199, 342);
             this.lbl_width.Name = "lbl_width";
             this.lbl_width.Size = new System.Drawing.Size(60, 20);
             this.lbl_width.TabIndex = 8;
             this.lbl_width.Text = "Width:";
+            this.lbl_width.Click += new System.EventHandler(this.lbl_width_Click);
             // 
             // lbl_code
             // 
             this.lbl_code.AutoSize = true;
             this.lbl_code.BackColor = System.Drawing.Color.Transparent;
             this.lbl_code.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_code.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_code.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_code.Location = new System.Drawing.Point(199, 108);
             this.lbl_code.Name = "lbl_code";
             this.lbl_code.Size = new System.Drawing.Size(123, 20);
             this.lbl_code.TabIndex = 8;
             this.lbl_code.Text = "Product Code:";
+            this.lbl_code.Click += new System.EventHandler(this.lbl_code_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label11.Location = new System.Drawing.Point(10, 172);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 20);
             this.label11.TabIndex = 8;
             this.label11.Text = "Unit Price:";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label12.Location = new System.Drawing.Point(10, 46);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(33, 20);
             this.label12.TabIndex = 8;
             this.label12.Text = "ID:";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // lbl_prodName
             // 
             this.lbl_prodName.AutoSize = true;
             this.lbl_prodName.BackColor = System.Drawing.Color.Transparent;
             this.lbl_prodName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_prodName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_prodName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_prodName.Location = new System.Drawing.Point(11, 108);
             this.lbl_prodName.Name = "lbl_prodName";
             this.lbl_prodName.Size = new System.Drawing.Size(127, 20);
             this.lbl_prodName.TabIndex = 8;
             this.lbl_prodName.Text = "Product Name:";
+            this.lbl_prodName.Click += new System.EventHandler(this.lbl_prodName_Click);
             // 
             // btn_addProduct
             // 
@@ -647,8 +657,9 @@ namespace SSIP.UserformControls
             this.btn_addProduct.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_addProduct.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_addProduct.DisabledState.Parent = this.btn_addProduct;
+            this.btn_addProduct.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_addProduct.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_addProduct.ForeColor = System.Drawing.Color.White;
+            this.btn_addProduct.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_addProduct.HoverState.Parent = this.btn_addProduct;
             this.btn_addProduct.Location = new System.Drawing.Point(11, 286);
             this.btn_addProduct.Name = "btn_addProduct";
@@ -669,8 +680,9 @@ namespace SSIP.UserformControls
             this.btn_update.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_update.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_update.DisabledState.Parent = this.btn_update;
-            this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_update.ForeColor = System.Drawing.Color.White;
+            this.btn_update.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_update.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_update.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_update.HoverState.Parent = this.btn_update;
             this.btn_update.Location = new System.Drawing.Point(11, 324);
             this.btn_update.Name = "btn_update";
@@ -729,10 +741,11 @@ namespace SSIP.UserformControls
             this.btn_viewProducts.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewProducts.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewProducts.DisabledState.Parent = this.btn_viewProducts;
-            this.btn_viewProducts.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_viewProducts.ForeColor = System.Drawing.Color.White;
+            this.btn_viewProducts.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_viewProducts.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_viewProducts.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_viewProducts.HoverState.Parent = this.btn_viewProducts;
-            this.btn_viewProducts.Location = new System.Drawing.Point(492, 286);
+            this.btn_viewProducts.Location = new System.Drawing.Point(363, 286);
             this.btn_viewProducts.Name = "btn_viewProducts";
             this.btn_viewProducts.ShadowDecoration.Parent = this.btn_viewProducts;
             this.btn_viewProducts.Size = new System.Drawing.Size(138, 32);
@@ -751,10 +764,11 @@ namespace SSIP.UserformControls
             this.btn_remove.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_remove.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_remove.DisabledState.Parent = this.btn_remove;
-            this.btn_remove.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_remove.ForeColor = System.Drawing.Color.White;
+            this.btn_remove.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_remove.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_remove.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_remove.HoverState.Parent = this.btn_remove;
-            this.btn_remove.Location = new System.Drawing.Point(492, 324);
+            this.btn_remove.Location = new System.Drawing.Point(363, 324);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.ShadowDecoration.Parent = this.btn_remove;
             this.btn_remove.Size = new System.Drawing.Size(138, 33);
@@ -768,7 +782,7 @@ namespace SSIP.UserformControls
             this.ProductGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductGrid.Location = new System.Drawing.Point(11, 79);
             this.ProductGrid.Name = "ProductGrid";
-            this.ProductGrid.Size = new System.Drawing.Size(619, 201);
+            this.ProductGrid.Size = new System.Drawing.Size(490, 201);
             this.ProductGrid.TabIndex = 1;
             this.ProductGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductGrid_CellDoubleClick);
             this.ProductGrid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ProductGrid_MouseDown);
@@ -789,7 +803,7 @@ namespace SSIP.UserformControls
             this.lbl_confirmAccess.AutoSize = true;
             this.lbl_confirmAccess.BackColor = System.Drawing.Color.Transparent;
             this.lbl_confirmAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_confirmAccess.ForeColor = System.Drawing.Color.Honeydew;
+            this.lbl_confirmAccess.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_confirmAccess.Location = new System.Drawing.Point(24, 5);
             this.lbl_confirmAccess.Name = "lbl_confirmAccess";
             this.lbl_confirmAccess.Size = new System.Drawing.Size(134, 20);
@@ -878,7 +892,7 @@ namespace SSIP.UserformControls
             this.gridMainPanel.Controls.Add(this.label3);
             this.gridMainPanel.Location = new System.Drawing.Point(435, 14);
             this.gridMainPanel.Name = "gridMainPanel";
-            this.gridMainPanel.Size = new System.Drawing.Size(649, 370);
+            this.gridMainPanel.Size = new System.Drawing.Size(648, 370);
             this.gridMainPanel.TabIndex = 17;
             // 
             // cmb_filter
@@ -900,7 +914,7 @@ namespace SSIP.UserformControls
             "All Products",
             "Insufficient no. of Products"});
             this.cmb_filter.ItemsAppearance.Parent = this.cmb_filter;
-            this.cmb_filter.Location = new System.Drawing.Point(422, 37);
+            this.cmb_filter.Location = new System.Drawing.Point(293, 37);
             this.cmb_filter.Name = "cmb_filter";
             this.cmb_filter.ShadowDecoration.Parent = this.cmb_filter;
             this.cmb_filter.Size = new System.Drawing.Size(208, 36);
@@ -931,8 +945,9 @@ namespace SSIP.UserformControls
             this.btn_showStats.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_showStats.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_showStats.DisabledState.Parent = this.btn_showStats;
+            this.btn_showStats.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_showStats.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_showStats.ForeColor = System.Drawing.Color.White;
+            this.btn_showStats.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_showStats.HoverState.Parent = this.btn_showStats;
             this.btn_showStats.Location = new System.Drawing.Point(691, 466);
             this.btn_showStats.Name = "btn_showStats";
@@ -1114,7 +1129,7 @@ namespace SSIP.UserformControls
             // 
             // stats_panel
             // 
-            this.stats_panel.BackColor = System.Drawing.Color.Transparent;
+            this.stats_panel.BackColor = System.Drawing.Color.Gainsboro;
             this.stats_panel.Controls.Add(this.dis_runningLow);
             this.stats_panel.Controls.Add(this.dis_currentStocks);
             this.stats_panel.Controls.Add(this.dis_newstocks);
@@ -1122,9 +1137,9 @@ namespace SSIP.UserformControls
             this.stats_panel.Controls.Add(this.label4);
             this.stats_panel.Controls.Add(this.label2);
             this.stats_panel.Controls.Add(this.btn_viewForm);
-            this.stats_panel.Location = new System.Drawing.Point(886, 573);
+            this.stats_panel.Location = new System.Drawing.Point(1396, 22);
             this.stats_panel.Name = "stats_panel";
-            this.stats_panel.Size = new System.Drawing.Size(2066, 787);
+            this.stats_panel.Size = new System.Drawing.Size(743, 440);
             this.stats_panel.TabIndex = 140;
             this.stats_panel.Visible = false;
             // 
@@ -1211,8 +1226,9 @@ namespace SSIP.UserformControls
             this.btn_viewForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_viewForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_viewForm.DisabledState.Parent = this.btn_viewForm;
+            this.btn_viewForm.FillColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_viewForm.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_viewForm.ForeColor = System.Drawing.Color.White;
+            this.btn_viewForm.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_viewForm.HoverState.Parent = this.btn_viewForm;
             this.btn_viewForm.Location = new System.Drawing.Point(450, 411);
             this.btn_viewForm.Name = "btn_viewForm";
@@ -1226,7 +1242,6 @@ namespace SSIP.UserformControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::SSIP.Properties.Resources.bg;
             this.Controls.Add(this.stats_panel);
             this.Controls.Add(this.QRcontrolpanel);
             this.Controls.Add(this.productMainPanel);

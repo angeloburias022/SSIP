@@ -641,5 +641,55 @@ namespace SSIP.UserformControls
                 ProductGrid.Update();
             }
         }
+
+        private void lbl_prodName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_code_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_quan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_width_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_length_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_height_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

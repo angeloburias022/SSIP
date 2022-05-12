@@ -21,7 +21,7 @@ namespace SSIP.UserformControls
         #region declarations
         InventoryController ic = new InventoryController();
         AuditController aud = new AuditController();
-        AccessController ac;
+        AccessController ac = new AccessController();
         public EquipInvControl()
         {
             InitializeComponent();

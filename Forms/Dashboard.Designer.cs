@@ -38,6 +38,9 @@ namespace SSIP.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.CityChart = new LiveCharts.WinForms.CartesianChart();
             this.logo_panel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_currentUser = new System.Windows.Forms.Label();
             this.btn_menu_cust = new System.Windows.Forms.Button();
             this.Customers_panel = new System.Windows.Forms.Panel();
             this.btn_managecus_sub = new System.Windows.Forms.Button();
@@ -49,7 +52,6 @@ namespace SSIP.Forms
             this.nav_panel = new System.Windows.Forms.Panel();
             this.userPanel = new System.Windows.Forms.Panel();
             this.btn_signout = new System.Windows.Forms.Label();
-            this.lbl_currentUser = new System.Windows.Forms.Label();
             this.lbl_time = new System.Windows.Forms.Label();
             this.settings_panel = new System.Windows.Forms.Panel();
             this.btn_viewchangePass = new System.Windows.Forms.Button();
@@ -65,17 +67,27 @@ namespace SSIP.Forms
             this.btn_equip_inv = new System.Windows.Forms.Button();
             this.btn_main_invent = new System.Windows.Forms.Button();
             this.dispatchFormPanel = new System.Windows.Forms.Panel();
+            this.mainServiceControl1 = new SSIP.UserForms.MainServiceControl();
             this.employeePanel = new System.Windows.Forms.Panel();
+            this.employeesControl1 = new SSIP.UserformControls.EmployeeControl();
             this.customersControl1Panel = new System.Windows.Forms.Panel();
+            this.customersControl1 = new SSIP.UserformControls.CustomersControl();
             this.attendanceControlpanel = new System.Windows.Forms.Panel();
+            this.attendanceControl1 = new SSIP.UserformControls.AttendanceControl();
             this.payroll_mainPanel = new System.Windows.Forms.Panel();
+            this.payrollControl1 = new SSIP.UserformControls.PayrollControl();
             this.productInvPanel = new System.Windows.Forms.Panel();
+            this.productInvControl1 = new SSIP.UserformControls.ProductInvControl();
             this.equipControlPanel = new System.Windows.Forms.Panel();
+            this.equipInvControl1 = new SSIP.UserformControls.EquipInvControl();
             this.auditControlPanel = new System.Windows.Forms.Panel();
+            this.auditControl1 = new SSIP.UserformControls.AuditControl();
             this.pos_controlPanel = new System.Windows.Forms.Panel();
+            this.salesControl1 = new SSIP.UserformControls.SalesControl();
             this.time_timer = new System.Windows.Forms.Timer(this.components);
             this.lbl_username = new System.Windows.Forms.Label();
             this.dispatchePanel = new System.Windows.Forms.Panel();
+            this.dispatchesControl1 = new SSIP.UserformControls.DispatchesControl();
             this.changePassPanel = new System.Windows.Forms.Panel();
             this.tb_current = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_check = new Guna.UI2.WinForms.Guna2Button();
@@ -89,19 +101,8 @@ namespace SSIP.Forms
             this.lbl_usernameee = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dispatchesControl1 = new SSIP.UserformControls.DispatchesControl();
-            this.salesControl1 = new SSIP.UserformControls.SalesControl();
-            this.auditControl1 = new SSIP.UserformControls.AuditControl();
-            this.equipInvControl1 = new SSIP.UserformControls.EquipInvControl();
-            this.productInvControl1 = new SSIP.UserformControls.ProductInvControl();
-            this.payrollControl1 = new SSIP.UserformControls.PayrollControl();
-            this.attendanceControl1 = new SSIP.UserformControls.AttendanceControl();
-            this.customersControl1 = new SSIP.UserformControls.CustomersControl();
-            this.employeesControl1 = new SSIP.UserformControls.EmployeeControl();
-            this.mainServiceControl1 = new SSIP.UserForms.MainServiceControl();
             this.logo_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Customers_panel.SuspendLayout();
             this.emp_panel.SuspendLayout();
             this.nav_panel.SuspendLayout();
@@ -121,7 +122,6 @@ namespace SSIP.Forms
             this.dispatchePanel.SuspendLayout();
             this.changePassPanel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Services_pie_chart
@@ -192,6 +192,40 @@ namespace SSIP.Forms
             this.logo_panel.Size = new System.Drawing.Size(170, 176);
             this.logo_panel.TabIndex = 0;
             this.logo_panel.Click += new System.EventHandler(this.logo_panel_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(40, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 79);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label6.Location = new System.Drawing.Point(39, 122);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 25);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Welcome";
+            // 
+            // lbl_currentUser
+            // 
+            this.lbl_currentUser.AutoSize = true;
+            this.lbl_currentUser.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_currentUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_currentUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_currentUser.Location = new System.Drawing.Point(70, 148);
+            this.lbl_currentUser.Name = "lbl_currentUser";
+            this.lbl_currentUser.Size = new System.Drawing.Size(131, 25);
+            this.lbl_currentUser.TabIndex = 9;
+            this.lbl_currentUser.Text = "Current user";
             // 
             // btn_menu_cust
             // 
@@ -364,18 +398,6 @@ namespace SSIP.Forms
             this.btn_signout.TabIndex = 10;
             this.btn_signout.Text = "SIGN OUT";
             this.btn_signout.Click += new System.EventHandler(this.btn_signout_Click);
-            // 
-            // lbl_currentUser
-            // 
-            this.lbl_currentUser.AutoSize = true;
-            this.lbl_currentUser.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_currentUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_currentUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbl_currentUser.Location = new System.Drawing.Point(70, 148);
-            this.lbl_currentUser.Name = "lbl_currentUser";
-            this.lbl_currentUser.Size = new System.Drawing.Size(131, 25);
-            this.lbl_currentUser.TabIndex = 9;
-            this.lbl_currentUser.Text = "Current user";
             // 
             // lbl_time
             // 
@@ -598,6 +620,17 @@ namespace SSIP.Forms
             this.dispatchFormPanel.TabIndex = 18;
             this.dispatchFormPanel.Visible = false;
             // 
+            // mainServiceControl1
+            // 
+            this.mainServiceControl1.BackColor = System.Drawing.Color.Gainsboro;
+            this.mainServiceControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainServiceControl1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.mainServiceControl1.Location = new System.Drawing.Point(0, 0);
+            this.mainServiceControl1.Name = "mainServiceControl1";
+            this.mainServiceControl1.Size = new System.Drawing.Size(76, 68);
+            this.mainServiceControl1.TabIndex = 17;
+            this.mainServiceControl1.Visible = false;
+            // 
             // employeePanel
             // 
             this.employeePanel.BackColor = System.Drawing.Color.Transparent;
@@ -608,6 +641,15 @@ namespace SSIP.Forms
             this.employeePanel.TabIndex = 19;
             this.employeePanel.Visible = false;
             // 
+            // employeesControl1
+            // 
+            this.employeesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeesControl1.emp_setter = false;
+            this.employeesControl1.Location = new System.Drawing.Point(0, 0);
+            this.employeesControl1.Name = "employeesControl1";
+            this.employeesControl1.Size = new System.Drawing.Size(73, 67);
+            this.employeesControl1.TabIndex = 0;
+            // 
             // customersControl1Panel
             // 
             this.customersControl1Panel.Controls.Add(this.customersControl1);
@@ -617,14 +659,34 @@ namespace SSIP.Forms
             this.customersControl1Panel.TabIndex = 21;
             this.customersControl1Panel.Visible = false;
             // 
+            // customersControl1
+            // 
+            this.customersControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customersControl1.Location = new System.Drawing.Point(0, 0);
+            this.customersControl1.Name = "customersControl1";
+            this.customersControl1.Size = new System.Drawing.Size(65, 67);
+            this.customersControl1.TabIndex = 20;
+            this.customersControl1.Visible = false;
+            // 
             // attendanceControlpanel
             // 
             this.attendanceControlpanel.Controls.Add(this.attendanceControl1);
-            this.attendanceControlpanel.Location = new System.Drawing.Point(1138, 253);
+            this.attendanceControlpanel.Location = new System.Drawing.Point(929, 325);
             this.attendanceControlpanel.Name = "attendanceControlpanel";
             this.attendanceControlpanel.Size = new System.Drawing.Size(69, 100);
             this.attendanceControlpanel.TabIndex = 22;
             this.attendanceControlpanel.Visible = false;
+            // 
+            // attendanceControl1
+            // 
+            this.attendanceControl1.BackColor = System.Drawing.Color.Transparent;
+            this.attendanceControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("attendanceControl1.BackgroundImage")));
+            this.attendanceControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.attendanceControl1.Location = new System.Drawing.Point(0, 0);
+            this.attendanceControl1.Name = "attendanceControl1";
+            this.attendanceControl1.Size = new System.Drawing.Size(69, 100);
+            this.attendanceControl1.TabIndex = 1;
+            this.attendanceControl1.Visible = false;
             // 
             // payroll_mainPanel
             // 
@@ -635,6 +697,15 @@ namespace SSIP.Forms
             this.payroll_mainPanel.TabIndex = 23;
             this.payroll_mainPanel.Visible = false;
             // 
+            // payrollControl1
+            // 
+            this.payrollControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.payrollControl1.Location = new System.Drawing.Point(0, 0);
+            this.payrollControl1.Name = "payrollControl1";
+            this.payrollControl1.Size = new System.Drawing.Size(54, 70);
+            this.payrollControl1.TabIndex = 24;
+            this.payrollControl1.UserFirstname = null;
+            // 
             // productInvPanel
             // 
             this.productInvPanel.Controls.Add(this.productInvControl1);
@@ -644,14 +715,31 @@ namespace SSIP.Forms
             this.productInvPanel.TabIndex = 24;
             this.productInvPanel.Visible = false;
             // 
+            // productInvControl1
+            // 
+            this.productInvControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.productInvControl1.Location = new System.Drawing.Point(0, 0);
+            this.productInvControl1.Name = "productInvControl1";
+            this.productInvControl1.Size = new System.Drawing.Size(85, 77);
+            this.productInvControl1.TabIndex = 25;
+            // 
             // equipControlPanel
             // 
             this.equipControlPanel.Controls.Add(this.equipInvControl1);
-            this.equipControlPanel.Location = new System.Drawing.Point(1147, 170);
+            this.equipControlPanel.Location = new System.Drawing.Point(899, 139);
             this.equipControlPanel.Name = "equipControlPanel";
             this.equipControlPanel.Size = new System.Drawing.Size(60, 50);
             this.equipControlPanel.TabIndex = 26;
             this.equipControlPanel.Visible = false;
+            // 
+            // equipInvControl1
+            // 
+            this.equipInvControl1.BackColor = System.Drawing.Color.Gainsboro;
+            this.equipInvControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.equipInvControl1.Location = new System.Drawing.Point(0, 0);
+            this.equipInvControl1.Name = "equipInvControl1";
+            this.equipInvControl1.Size = new System.Drawing.Size(60, 50);
+            this.equipInvControl1.TabIndex = 25;
             // 
             // auditControlPanel
             // 
@@ -662,6 +750,14 @@ namespace SSIP.Forms
             this.auditControlPanel.TabIndex = 27;
             this.auditControlPanel.Visible = false;
             // 
+            // auditControl1
+            // 
+            this.auditControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.auditControl1.Location = new System.Drawing.Point(0, 0);
+            this.auditControl1.Name = "auditControl1";
+            this.auditControl1.Size = new System.Drawing.Size(86, 83);
+            this.auditControl1.TabIndex = 0;
+            // 
             // pos_controlPanel
             // 
             this.pos_controlPanel.Controls.Add(this.salesControl1);
@@ -670,6 +766,16 @@ namespace SSIP.Forms
             this.pos_controlPanel.Size = new System.Drawing.Size(74, 61);
             this.pos_controlPanel.TabIndex = 28;
             this.pos_controlPanel.Visible = false;
+            // 
+            // salesControl1
+            // 
+            this.salesControl1.CurrentUser = null;
+            this.salesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.salesControl1.Location = new System.Drawing.Point(0, 0);
+            this.salesControl1.Name = "salesControl1";
+            this.salesControl1.Size = new System.Drawing.Size(74, 61);
+            this.salesControl1.TabIndex = 0;
+            this.salesControl1.user = null;
             // 
             // time_timer
             // 
@@ -692,11 +798,20 @@ namespace SSIP.Forms
             // dispatchePanel
             // 
             this.dispatchePanel.Controls.Add(this.dispatchesControl1);
-            this.dispatchePanel.Location = new System.Drawing.Point(1109, 50);
+            this.dispatchePanel.Location = new System.Drawing.Point(716, 122);
             this.dispatchePanel.Name = "dispatchePanel";
             this.dispatchePanel.Size = new System.Drawing.Size(85, 97);
             this.dispatchePanel.TabIndex = 30;
             this.dispatchePanel.Visible = false;
+            // 
+            // dispatchesControl1
+            // 
+            this.dispatchesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dispatchesControl1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dispatchesControl1.Location = new System.Drawing.Point(0, 0);
+            this.dispatchesControl1.Name = "dispatchesControl1";
+            this.dispatchesControl1.Size = new System.Drawing.Size(85, 97);
+            this.dispatchesControl1.TabIndex = 31;
             // 
             // changePassPanel
             // 
@@ -927,126 +1042,6 @@ namespace SSIP.Forms
             this.btn_exit.UseVisualStyleBackColor = false;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(40, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 79);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 35;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(39, 122);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 25);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Welcome";
-            // 
-            // dispatchesControl1
-            // 
-            this.dispatchesControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("dispatchesControl1.BackgroundImage")));
-            this.dispatchesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dispatchesControl1.Location = new System.Drawing.Point(0, 0);
-            this.dispatchesControl1.Name = "dispatchesControl1";
-            this.dispatchesControl1.Size = new System.Drawing.Size(85, 97);
-            this.dispatchesControl1.TabIndex = 31;
-            // 
-            // salesControl1
-            // 
-            this.salesControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("salesControl1.BackgroundImage")));
-            this.salesControl1.CurrentUser = null;
-            this.salesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.salesControl1.Location = new System.Drawing.Point(0, 0);
-            this.salesControl1.Name = "salesControl1";
-            this.salesControl1.Size = new System.Drawing.Size(74, 61);
-            this.salesControl1.TabIndex = 0;
-            this.salesControl1.user = null;
-            // 
-            // auditControl1
-            // 
-            this.auditControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("auditControl1.BackgroundImage")));
-            this.auditControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.auditControl1.Location = new System.Drawing.Point(0, 0);
-            this.auditControl1.Name = "auditControl1";
-            this.auditControl1.Size = new System.Drawing.Size(86, 83);
-            this.auditControl1.TabIndex = 0;
-            // 
-            // equipInvControl1
-            // 
-            this.equipInvControl1.BackColor = System.Drawing.Color.White;
-            this.equipInvControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("equipInvControl1.BackgroundImage")));
-            this.equipInvControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.equipInvControl1.Location = new System.Drawing.Point(0, 0);
-            this.equipInvControl1.Name = "equipInvControl1";
-            this.equipInvControl1.Size = new System.Drawing.Size(60, 50);
-            this.equipInvControl1.TabIndex = 25;
-            // 
-            // productInvControl1
-            // 
-            this.productInvControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("productInvControl1.BackgroundImage")));
-            this.productInvControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.productInvControl1.Location = new System.Drawing.Point(0, 0);
-            this.productInvControl1.Name = "productInvControl1";
-            this.productInvControl1.Size = new System.Drawing.Size(85, 77);
-            this.productInvControl1.TabIndex = 25;
-            // 
-            // payrollControl1
-            // 
-            this.payrollControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("payrollControl1.BackgroundImage")));
-            this.payrollControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.payrollControl1.Location = new System.Drawing.Point(0, 0);
-            this.payrollControl1.Name = "payrollControl1";
-            this.payrollControl1.Size = new System.Drawing.Size(54, 70);
-            this.payrollControl1.TabIndex = 24;
-            this.payrollControl1.UserFirstname = null;
-            // 
-            // attendanceControl1
-            // 
-            this.attendanceControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("attendanceControl1.BackgroundImage")));
-            this.attendanceControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.attendanceControl1.Location = new System.Drawing.Point(0, 0);
-            this.attendanceControl1.Name = "attendanceControl1";
-            this.attendanceControl1.Size = new System.Drawing.Size(69, 100);
-            this.attendanceControl1.TabIndex = 1;
-            this.attendanceControl1.Visible = false;
-            // 
-            // customersControl1
-            // 
-            this.customersControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customersControl1.BackgroundImage")));
-            this.customersControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customersControl1.Location = new System.Drawing.Point(0, 0);
-            this.customersControl1.Name = "customersControl1";
-            this.customersControl1.Size = new System.Drawing.Size(65, 67);
-            this.customersControl1.TabIndex = 20;
-            this.customersControl1.Visible = false;
-            // 
-            // employeesControl1
-            // 
-            this.employeesControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("employeesControl1.BackgroundImage")));
-            this.employeesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.employeesControl1.emp_setter = false;
-            this.employeesControl1.Location = new System.Drawing.Point(0, 0);
-            this.employeesControl1.Name = "employeesControl1";
-            this.employeesControl1.Size = new System.Drawing.Size(73, 67);
-            this.employeesControl1.TabIndex = 0;
-            // 
-            // mainServiceControl1
-            // 
-            this.mainServiceControl1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainServiceControl1.BackgroundImage")));
-            this.mainServiceControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainServiceControl1.Location = new System.Drawing.Point(0, 0);
-            this.mainServiceControl1.Name = "mainServiceControl1";
-            this.mainServiceControl1.Size = new System.Drawing.Size(76, 68);
-            this.mainServiceControl1.TabIndex = 17;
-            this.mainServiceControl1.Visible = false;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1085,6 +1080,7 @@ namespace SSIP.Forms
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.logo_panel.ResumeLayout(false);
             this.logo_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Customers_panel.ResumeLayout(false);
             this.emp_panel.ResumeLayout(false);
             this.nav_panel.ResumeLayout(false);
@@ -1107,7 +1103,6 @@ namespace SSIP.Forms
             this.changePassPanel.PerformLayout();
             this.confirmAccessPanel.ResumeLayout(false);
             this.confirmAccessPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

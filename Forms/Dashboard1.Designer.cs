@@ -39,6 +39,7 @@ namespace SSIP.Forms
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Action = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.side_panel = new System.Windows.Forms.Panel();
+            this.btn_newCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.access_panel = new System.Windows.Forms.Panel();
             this.tb_pass = new Guna.UI2.WinForms.Guna2TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@ namespace SSIP.Forms
             this.btn_prev = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_newCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.header_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.side_panel.SuspendLayout();
@@ -185,6 +185,28 @@ namespace SSIP.Forms
             this.side_panel.Name = "side_panel";
             this.side_panel.Size = new System.Drawing.Size(188, 377);
             this.side_panel.TabIndex = 3;
+            // 
+            // btn_newCustomer
+            // 
+            this.btn_newCustomer.BackColor = System.Drawing.Color.Transparent;
+            this.btn_newCustomer.BorderRadius = 2;
+            this.btn_newCustomer.CheckedState.Parent = this.btn_newCustomer;
+            this.btn_newCustomer.CustomImages.Parent = this.btn_newCustomer;
+            this.btn_newCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_newCustomer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_newCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_newCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_newCustomer.DisabledState.Parent = this.btn_newCustomer;
+            this.btn_newCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_newCustomer.ForeColor = System.Drawing.Color.White;
+            this.btn_newCustomer.HoverState.Parent = this.btn_newCustomer;
+            this.btn_newCustomer.Location = new System.Drawing.Point(34, 308);
+            this.btn_newCustomer.Name = "btn_newCustomer";
+            this.btn_newCustomer.ShadowDecoration.Parent = this.btn_newCustomer;
+            this.btn_newCustomer.Size = new System.Drawing.Size(120, 45);
+            this.btn_newCustomer.TabIndex = 175;
+            this.btn_newCustomer.Text = "ADD CUSTOMER";
+            this.btn_newCustomer.UseTransparentBackground = true;
             // 
             // access_panel
             // 
@@ -324,6 +346,7 @@ namespace SSIP.Forms
             this.rb_active.TabStop = true;
             this.rb_active.Text = "Active Customers";
             this.rb_active.UseVisualStyleBackColor = true;
+            this.rb_active.CheckedChanged += new System.EventHandler(this.rb_active_CheckedChanged);
             // 
             // grid_panel
             // 
@@ -408,28 +431,6 @@ namespace SSIP.Forms
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 74);
             this.panel3.TabIndex = 0;
-            // 
-            // btn_newCustomer
-            // 
-            this.btn_newCustomer.BackColor = System.Drawing.Color.Transparent;
-            this.btn_newCustomer.BorderRadius = 2;
-            this.btn_newCustomer.CheckedState.Parent = this.btn_newCustomer;
-            this.btn_newCustomer.CustomImages.Parent = this.btn_newCustomer;
-            this.btn_newCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_newCustomer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_newCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_newCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_newCustomer.DisabledState.Parent = this.btn_newCustomer;
-            this.btn_newCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_newCustomer.ForeColor = System.Drawing.Color.White;
-            this.btn_newCustomer.HoverState.Parent = this.btn_newCustomer;
-            this.btn_newCustomer.Location = new System.Drawing.Point(34, 308);
-            this.btn_newCustomer.Name = "btn_newCustomer";
-            this.btn_newCustomer.ShadowDecoration.Parent = this.btn_newCustomer;
-            this.btn_newCustomer.Size = new System.Drawing.Size(120, 45);
-            this.btn_newCustomer.TabIndex = 175;
-            this.btn_newCustomer.Text = "ADD CUSTOMER";
-            this.btn_newCustomer.UseTransparentBackground = true;
             // 
             // Dashboard1
             // 

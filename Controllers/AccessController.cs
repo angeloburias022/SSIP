@@ -26,7 +26,7 @@ namespace SSIP.Controllers
         }
 
         #region declations
-        private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        //private static string ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         ConnectionDB db = new ConnectionDB();
         PasswordEncryptor enc = new PasswordEncryptor();
         AuditController aud = new AuditController();
@@ -450,12 +450,12 @@ namespace SSIP.Controllers
                 string script = File.ReadAllText(@"\SSIP\sql_script\9421RFBScript.sql");
 
                 IEnumerable<string> commandStrings = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
-
+                ConnectionDB db = new ConnectionDB();
                 try
                 {
                     foreach (string commandString in commandStrings)
                     {
-                        using (SqlConnection con = new SqlConnection(ConString))
+                        using (SqlConnection con = new SqlConnection(db.ConString()))
                         {
                             con.Open();
                             if (commandString.Trim() != "")

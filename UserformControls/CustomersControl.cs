@@ -1,4 +1,5 @@
-﻿using SSIP.Controllers;
+﻿using SSIP.AddEditForms;
+using SSIP.Controllers;
 using SSIP.Forms;
 using SSIP.Helper;
 using SSIP.Models;
@@ -23,6 +24,7 @@ namespace SSIP.UserformControls
 
         AuditController aud = new AuditController();
         AccessController ac = new AccessController();
+        ComboBox combo;
         public CustomersControl()
         {
             InitializeComponent();
@@ -30,198 +32,7 @@ namespace SSIP.UserformControls
 
         #endregion
 
-        #region view, add, update, new buttons     
-        private void SaveCustomer()
-        {
-            var details = new CustomerModel();
-            
-            #region fields
-
-            var user_info = new User
-            {
-                Username = tb_unameAccess.Text,
-                Firstname = tb_fname.Text,
-                Lastname= tb_lname.Text,
-                ContactNumber = tb_mobile.Text,
-                TelephoneNo = tb_tel.Text
-            };
-
-            var addrss_info = new Address
-            {
-                HouseNo = tb_houseNo.Text,
-                Street = tb_street.Text,
-                Barangay = tb_barangay.Text,
-                City = cmb_City.Text
-            };
-
-            var email_info = new Email
-            {
-                EmailAddress = tb_email.Text
-            };
-         
-            #endregion
-
-            if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info))
-            {
-                details.user_info.Username = user_info.Username;
-                details.user_info.Firstname = user_info.Firstname;
-                details.user_info.Lastname = user_info.Lastname;
-                details.user_info.ContactNumber = user_info.ContactNumber;
-                details.user_info.TelephoneNo = user_info.TelephoneNo;
-
-                details.address_info.HouseNo = addrss_info.HouseNo;
-                details.address_info.Street = addrss_info.Street;
-                details.address_info.Barangay = addrss_info.Barangay;
-                details.address_info.City = addrss_info.City;
-
-                details.employee_info.EmployeeStatus = cmb_status.Text;
-                details.email_info.EmailAddress = email_info.EmailAddress;
-
-                var result = cusControl.AddCustomer(details);
-
-                if (result != true)
-                {
-                    MessageBox.Show("Add failed");
-
-                    // audit here
-                    var failed = new AuditTrails
-                    {
-                        Username = tb_unameAccess.Text,
-                        AuditActionTypeENUM = (Enums.ActionTypes)3,
-                        DateTimeStamp = DateTime.Now.ToString(),
-                        Result = "Failed",
-                        Description = "Failed to add new Customer"
-                    };
-
-                    aud.Logs(failed);
-                }
-                else
-                {
-                    MessageBox.Show("Successfully Added");
-
-                    // audit here
-                    var addEmployee = new AuditTrails
-                    {
-                        Username = tb_unameAccess.Text,
-                        AuditActionTypeENUM = (Enums.ActionTypes)3,
-                        DateTimeStamp = DateTime.Now.ToString(),
-                        Result = "Succeed",
-                        Description = "Added new Customer"
-                    };
-
-                    aud.Logs(addEmployee);
-
-                    tb_unameAccess.ReadOnly = true;
-                    tb_pass.ReadOnly = true;
-                    UpdateGrid();
-                }
-            }
-
-        }    
-        private void UpdateCustomer()
-        {
-            if (HighAuthority())
-            {
-                #region fields        
-
-                var details = new CustomerModel();
-
-          
-                var user_info = new User
-                {
-                    UserID = Convert.ToInt32(tb_personID.Text),
-                    Username = tb_unameAccess.Text,
-                    Firstname = tb_fname.Text,
-                    Lastname = tb_lname.Text,
-                    ContactNumber = tb_mobile.Text,
-                    TelephoneNo = tb_tel.Text
-                };
-
-                var addrss_info = new Address
-                {
-                    HouseNo = tb_houseNo.Text,
-                    Street = tb_street.Text,
-                    Barangay = tb_barangay.Text,
-                    City = cmb_City.Text
-                };
-
-                var email_info = new Email
-                {
-                    EmailAddress = tb_email.Text
-                };
-
-                #endregion
-
-                if (Valid.ValidateFields(user_info) && Valid.ValidateFields(addrss_info) && Valid.ValidateFields(email_info))
-                {
-
-                    details.user_info.UserID = user_info.UserID;
-                    details.user_info.Username = user_info.Username;
-                    details.user_info.Firstname = user_info.Firstname;
-                    details.user_info.Lastname = user_info.Lastname;
-                    details.user_info.ContactNumber = user_info.ContactNumber;
-                    details.user_info.TelephoneNo = user_info.TelephoneNo;
-
-                    details.address_info.HouseNo = addrss_info.HouseNo;
-                    details.address_info.Street = addrss_info.Street;
-                    details.address_info.Barangay = addrss_info.Barangay;
-                    details.address_info.City = addrss_info.City;
-
-                    details.employee_info.EmployeeStatus = cmb_status.Text;
-                    details.email_info.EmailAddress = email_info.EmailAddress;
-
-                    var result = cusControl.UpdateCustomer(details);
-
-                    if (result != true)
-                    {
-                        MessageBox.Show("Update failed");
-
-                        // audit here
-                        var failed = new AuditTrails
-                        {
-                            Username = tb_unameAccess.Text,
-                            AuditActionTypeENUM = (Enums.ActionTypes)3,
-                            DateTimeStamp = DateTime.Now.ToString(),
-                            Result = "Failed",
-                            Description = "Failed to Update Customer"
-                        };
-
-                        aud.Logs(failed);
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Successfully Updated");
-
-                        // audit here
-                        var addEmployee = new AuditTrails
-                        {
-                            Username = tb_unameAccess.Text,
-                            AuditActionTypeENUM = (Enums.ActionTypes)3,
-                            DateTimeStamp = DateTime.Now.ToString(),
-                            Result = "Succeed",
-                            Description = "Updated Customer ID: " + tb_personID.Text + " "
-                        };
-
-                        aud.Logs(addEmployee);
-
-                        tb_unameAccess.ReadOnly = true;
-                        tb_pass.ReadOnly = true;
-                        UpdateGrid();
-                    }
-                }
-            }
-        }
-        private void AddCustomer()
-        {
-            HideCustomersGrid();
-            ClearBoxes();
-            btn_saveCus.Visible = true;
-            btn_updateCus.Visible = false;
-          
-        }
-        #endregion
-
+     
         #region operator / security access
         private void tb_pass_Leave(object sender, EventArgs e)
         {
@@ -251,11 +62,9 @@ namespace SSIP.UserformControls
 
             if (result == true)
             {
-                btn_saveCus.Enabled = true;
-                btn_updateCus.Enabled = true;
+           
                 btn_viewCus.Enabled = true;
-                btn_saveCus.Enabled = true;
-
+        
                 var accesslog = new AuditTrails
                 {
                     Username = user.Username,
@@ -269,10 +78,8 @@ namespace SSIP.UserformControls
                 return true;
             }else
             {
-                btn_saveCus.Enabled = false;
-                btn_updateCus.Enabled = false;
+            
                 btn_viewCus.Enabled = false;
-                btn_saveCus.Enabled = false;
                    
                 var accesslog = new AuditTrails
                 {
@@ -362,101 +169,99 @@ namespace SSIP.UserformControls
         }
         private void CustomersControl_Load(object sender, EventArgs e)
         {
-       //     this.DoubleBuffered = true;
-            if (tb_personID.Text != "0")
+            
+        }
+
+        private void customersGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            combo = e.Control as ComboBox;
+            if (combo != null)
             {
-                btn_saveCus.Visible = true;
+                combo.SelectedIndexChanged -= new EventHandler(combo_SelectedIndexChanged);
+                combo.SelectedIndexChanged += combo_SelectedIndexChanged;
             }
 
-           
+        }
+
+        private void combo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string selected = (sender as ComboBox).SelectedItem.ToString();
+
+                //  var action = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                if (selected == "Update")
+                {
+
+                    ManageCustomer mc = new ManageCustomer();
+                    mc.firstname = this.customersGrid.CurrentRow.Cells[1].Value.ToString();
+                    mc.lastname = this.customersGrid.CurrentRow.Cells[2].Value.ToString();
+                    mc.MobleNo = this.customersGrid.CurrentRow.Cells[3].Value.ToString();
+                    mc.TelephoneNo = this.customersGrid.CurrentRow.Cells[4].Value.ToString();
+
+                    mc.HouseNo = this.customersGrid.CurrentRow.Cells[5].Value.ToString();
+                    mc.Street = this.customersGrid.CurrentRow.Cells[6].Value.ToString();
+                    mc.Barangay = this.customersGrid.CurrentRow.Cells[7].Value.ToString();
+                    mc.City = this.customersGrid.CurrentRow.Cells[8].Value.ToString();
+
+                    mc.Status = this.customersGrid.CurrentRow.Cells[9].Value.ToString();
+                    mc.Email = this.customersGrid.CurrentRow.Cells[10].Value.ToString();
+                    mc.PersonID = this.customersGrid.CurrentRow.Cells[11].Value.ToString();
+
+                    mc.ManageLabel = "Update Customer";
+                    mc.HideAddButton();
+                    mc.ShowDialog();
+                }
+                else
+                {
+                    if (MessageBox.Show("Delete now", "This can't be undo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                       //cusControl.del
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                error.ToString();
+            }
         }
         private void customersGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            HideCustomersGrid();
+           // HideCustomersGrid();
             // Display the date as "Mon 27 Feb 2012". 
 
-            tb_fname.Text = this.customersGrid.CurrentRow.Cells[0].Value.ToString();
-            tb_lname.Text = this.customersGrid.CurrentRow.Cells[1].Value.ToString();
-            tb_mobile.Text = this.customersGrid.CurrentRow.Cells[2].Value.ToString();
-            tb_tel.Text = this.customersGrid.CurrentRow.Cells[3].Value.ToString();
+            //tb_fname.Text = this.customersGrid.CurrentRow.Cells[0].Value.ToString();
+            //tb_lname.Text = this.customersGrid.CurrentRow.Cells[1].Value.ToString();
+            //tb_mobile.Text = this.customersGrid.CurrentRow.Cells[2].Value.ToString();
+            //tb_tel.Text = this.customersGrid.CurrentRow.Cells[3].Value.ToString();
 
-            tb_houseNo.Text = this.customersGrid.CurrentRow.Cells[4].Value.ToString();
-            tb_street.Text = this.customersGrid.CurrentRow.Cells[5].Value.ToString();
-            tb_barangay.Text = this.customersGrid.CurrentRow.Cells[6].Value.ToString();
-            cmb_City.Text = this.customersGrid.CurrentRow.Cells[7].Value.ToString();
+            //tb_houseNo.Text = this.customersGrid.CurrentRow.Cells[4].Value.ToString();
+            //tb_street.Text = this.customersGrid.CurrentRow.Cells[5].Value.ToString();
+            //tb_barangay.Text = this.customersGrid.CurrentRow.Cells[6].Value.ToString();
+            //cmb_City.Text = this.customersGrid.CurrentRow.Cells[7].Value.ToString();
 
-            cmb_status.Text = this.customersGrid.CurrentRow.Cells[8].Value.ToString();
-            tb_email.Text = this.customersGrid.CurrentRow.Cells[9].Value.ToString();
+            //cmb_status.Text = this.customersGrid.CurrentRow.Cells[8].Value.ToString();
+            //tb_email.Text = this.customersGrid.CurrentRow.Cells[9].Value.ToString();
 
-            tb_personID.Text = this.customersGrid.CurrentRow.Cells[10].Value.ToString();
+            //tb_personID.Text = this.customersGrid.CurrentRow.Cells[10].Value.ToString();
          
-            btn_updateCus.Visible = true;        
-            btn_saveCus.Visible = false;
-            tb_personID.Visible = true;
-            lbl_personID.Visible = true;
+            //btn_updateCus.Visible = true;        
+            //btn_saveCus.Visible = false;
+            //tb_personID.Visible = true;
+            //lbl_personID.Visible = true;
         }
 
         #endregion
 
         #region disable fields, clear txtboxes and update grid
-        void DisabledPersonInfoFields()
-        {
-            tb_fname.Enabled = false;
-            tb_lname.Enabled = false;
-            tb_tel.Enabled = false;
-            tb_mobile.Enabled = false;
-        }
       
-        void ClearBoxes()
-        {
-        
-            tb_personID.Clear();
-
-            tb_fname.Clear();
-            tb_lname.Clear();
-            tb_tel.Clear();
-            tb_mobile.Clear();
-
-            tb_houseNo.Clear();
-            tb_street.Clear();
-            tb_barangay.Clear();
-            //    cmb_City.ResetText();
-            cmb_City.SelectedItem = null;
-            cmb_City.SelectedText = "--select--";
-            cmb_status.SelectedItem = null;
-            cmb_status.SelectedText = "--select--";
-
-            tb_email.Clear();
-
-
-        }
 
         public void Reset()
         {
-            tb_personID.Clear();
-
-            tb_fname.Clear();
-            tb_lname.Clear();
-            tb_tel.Clear();
-            tb_mobile.Clear();
-
-            tb_houseNo.Clear();
-            tb_street.Clear();
-            tb_barangay.Clear();
-            //    cmb_City.ResetText();
-            cmb_City.SelectedItem = null;
-            cmb_City.SelectedText = "--select--";
-            cmb_status.SelectedItem = null;
-            cmb_status.SelectedText = "--select--";
-
-            tb_email.Clear();
-
+            customersGrid.DataSource = false;
             tb_unameAccess.Clear();
             tb_pass.Clear();
-
-            customersMainPanel.Visible = false;
-            customersGrid.DataSource = null;
-            btn_updateCus.Visible = false;
+            tb_pass.Enabled = false;
         }
 
         #endregion
@@ -465,8 +270,11 @@ namespace SSIP.UserformControls
      
         private void btn_viewEmp_Click(object sender, EventArgs e)
         {
-            ShowEmployeeGrid();
-            ClearBoxes();
+            if (HighAuthority())
+            {
+                ShowEmployeeGrid();
+
+            }
         }
 
         void ShowEmployeeGrid()
@@ -474,11 +282,7 @@ namespace SSIP.UserformControls
             customersMainPanel.Visible = true;
             customersMainPanel.Dock = DockStyle.Fill;
         }
-        void HideCustomersGrid()
-        {
-            customersMainPanel.Visible = false;
-            customersMainPanel.Dock = DockStyle.None;
-        }
+  
 
 
         #endregion
@@ -489,27 +293,10 @@ namespace SSIP.UserformControls
             if (HighAuthority())
             {
                 customersGrid.DataSource = cusControl.GetCustomers();
-                //customersMainPanel.Visible = true;
-                //customersMainPanel.Dock = DockStyle.Fill;
-                //customersMainPanel.BringToFront();
-                //ClearBoxes();
+                customersGrid.Update();
             }
         }
-        private void btn_saveCus_Click(object sender, EventArgs e)
-        {
-            if (Authorized())
-            {
-                SaveCustomer(); 
-            }
-        }
-        private void btn_addCus_Click(object sender, EventArgs e)
-        {
-            AddCustomer();
-        }     
-        private void btn_updateCus_Click(object sender, EventArgs e)
-        {
-            UpdateCustomer();
-        }
+      
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
             if (HighAuthority())
@@ -529,18 +316,7 @@ namespace SSIP.UserformControls
         }
         #endregion
 
-        private void tb_unameAccess_TextChanged(object sender, EventArgs e)
-        {
-            if (tb_unameAccess.Text == "")
-            {
-                tb_pass.Enabled = false;
-            }
-            else
-            {
-                tb_pass.Enabled = true;
-                tb_unameAccess.FillColor = Color.WhiteSmoke;
-            }
-        }
+    
 
         private void customersGrid_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {          
@@ -558,13 +334,218 @@ namespace SSIP.UserformControls
             his.ShowDialog();
         }
 
-        private void tb_pass_TextChanged(object sender, EventArgs e)
+  
+        #region unused
+
+  
+        private void label11_Click(object sender, EventArgs e)
         {
-            if (tb_pass.Text !="")
-            {
-                tb_pass.FillColor = Color.WhiteSmoke;
-            }
-           
+
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_personID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_personID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_email_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void confirmAccessPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb_City_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_tel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_barangay_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_mobile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_street_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_lname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_houseNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_fname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        private void btn_addNew_Click(object sender, EventArgs e)
+        {
+            if (HighAuthority())
+            {
+                ManageCustomer mc = new ManageCustomer();
+                mc.ManageLabel = "Add new Customer";
+                mc.Username = tb_unameAccess.Text;
+                mc.Password = tb_pass.Text;
+                mc.HideUpdateBtn();
+                customersGrid.DataSource = null;
+                customersGrid.Update();
+                mc.ShowDialog(); 
+            }                  
+        }
+
+     
+
+        private void tb_unameAccess_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_unameAccess.Text.Length > 0)
+            {
+                tb_pass.Enabled = true;
+            }
+            else
+            {
+                tb_pass.Enabled = false;
+            }
+        }
+
+        private void rb_both_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HighAuthority())
+            {
+                if (rb_both.Checked)
+                {
+                    customersGrid.DataSource = cusControl.GetCustomers();
+                    customersGrid.Update();
+                } 
+            }                  
+        }
+
+        private void rb_active_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HighAuthority())
+            {
+                if (rb_active.Checked)
+                {
+                    customersGrid.DataSource = cusControl.GetActiveCustomers();
+                    customersGrid.Update();
+                } 
+            }
+        }
+
+        private void rd_InActive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HighAuthority())
+            {
+                if (rd_InActive.Checked)
+                {
+                    customersGrid.DataSource = cusControl.GetInActiveCustomers();
+                    customersGrid.Update();
+                }
+            }
+        }
+
+
+        //tb_personID.Text = this.customersGrid.CurrentRow.Cells[10].Value.ToString();
     }
 }

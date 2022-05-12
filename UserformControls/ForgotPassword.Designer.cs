@@ -37,10 +37,10 @@ namespace SSIP.UserformControls
             this.changePassPanel = new System.Windows.Forms.Panel();
             this.confirmAccessPanel = new System.Windows.Forms.Panel();
             this.tb_confirm = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btn_confirm = new Guna.UI2.WinForms.Guna2Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_newPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_confirm = new Guna.UI2.WinForms.Guna2Button();
             this.changePassPanel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
             this.SuspendLayout();
@@ -106,8 +106,9 @@ namespace SSIP.UserformControls
             this.btn_enter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_enter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_enter.DisabledState.Parent = this.btn_enter;
+            this.btn_enter.FillColor = System.Drawing.Color.Black;
             this.btn_enter.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_enter.ForeColor = System.Drawing.Color.White;
+            this.btn_enter.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_enter.HoverState.Parent = this.btn_enter;
             this.btn_enter.Location = new System.Drawing.Point(329, 177);
             this.btn_enter.Name = "btn_enter";
@@ -164,7 +165,6 @@ namespace SSIP.UserformControls
             this.tb_confirm.DisabledState.Parent = this.tb_confirm;
             this.tb_confirm.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_confirm.Enabled = false;
-            this.tb_confirm.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_confirm.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_confirm.FocusedState.Parent = this.tb_confirm;
             this.tb_confirm.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -180,28 +180,6 @@ namespace SSIP.UserformControls
             this.tb_confirm.Size = new System.Drawing.Size(165, 36);
             this.tb_confirm.TabIndex = 127;
             this.tb_confirm.TextChanged += new System.EventHandler(this.tb_confirm_TextChanged);
-            // 
-            // btn_confirm
-            // 
-            this.btn_confirm.BackColor = System.Drawing.Color.Transparent;
-            this.btn_confirm.BorderRadius = 4;
-            this.btn_confirm.CheckedState.Parent = this.btn_confirm;
-            this.btn_confirm.CustomImages.Parent = this.btn_confirm;
-            this.btn_confirm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_confirm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_confirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_confirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_confirm.DisabledState.Parent = this.btn_confirm;
-            this.btn_confirm.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_confirm.ForeColor = System.Drawing.Color.White;
-            this.btn_confirm.HoverState.Parent = this.btn_confirm;
-            this.btn_confirm.Location = new System.Drawing.Point(176, 195);
-            this.btn_confirm.Name = "btn_confirm";
-            this.btn_confirm.ShadowDecoration.Parent = this.btn_confirm;
-            this.btn_confirm.Size = new System.Drawing.Size(165, 37);
-            this.btn_confirm.TabIndex = 144;
-            this.btn_confirm.Text = "CONFIRM PASSWORD";
-            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
             // 
             // label4
             // 
@@ -226,7 +204,6 @@ namespace SSIP.UserformControls
             this.tb_newPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tb_newPass.DisabledState.Parent = this.tb_newPass;
             this.tb_newPass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tb_newPass.FillColor = System.Drawing.Color.WhiteSmoke;
             this.tb_newPass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_newPass.FocusedState.Parent = this.tb_newPass;
             this.tb_newPass.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -255,12 +232,34 @@ namespace SSIP.UserformControls
             this.label3.TabIndex = 124;
             this.label3.Text = "New Password:";
             // 
+            // btn_confirm
+            // 
+            this.btn_confirm.BackColor = System.Drawing.Color.Transparent;
+            this.btn_confirm.BorderRadius = 4;
+            this.btn_confirm.CheckedState.Parent = this.btn_confirm;
+            this.btn_confirm.CustomImages.Parent = this.btn_confirm;
+            this.btn_confirm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_confirm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_confirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_confirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_confirm.DisabledState.Parent = this.btn_confirm;
+            this.btn_confirm.FillColor = System.Drawing.Color.Black;
+            this.btn_confirm.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_confirm.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btn_confirm.HoverState.Parent = this.btn_confirm;
+            this.btn_confirm.Location = new System.Drawing.Point(176, 195);
+            this.btn_confirm.Name = "btn_confirm";
+            this.btn_confirm.ShadowDecoration.Parent = this.btn_confirm;
+            this.btn_confirm.Size = new System.Drawing.Size(165, 37);
+            this.btn_confirm.TabIndex = 144;
+            this.btn_confirm.Text = "CONFIRM PASSWORD";
+            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
+            // 
             // ForgotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::SSIP.Properties.Resources.bg;
             this.Controls.Add(this.changePassPanel);
             this.Controls.Add(this.lbl_username);
             this.Controls.Add(this.btn_enter);
