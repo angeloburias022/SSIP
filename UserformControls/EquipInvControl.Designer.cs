@@ -743,7 +743,7 @@ namespace SSIP.UserformControls
             this.Equipstats_panel.Controls.Add(this.label3);
             this.Equipstats_panel.Controls.Add(this.label4);
             this.Equipstats_panel.Controls.Add(this.label2);
-            this.Equipstats_panel.Location = new System.Drawing.Point(828, 48);
+            this.Equipstats_panel.Location = new System.Drawing.Point(1033, 243);
             this.Equipstats_panel.Name = "Equipstats_panel";
             this.Equipstats_panel.Size = new System.Drawing.Size(728, 444);
             this.Equipstats_panel.TabIndex = 139;

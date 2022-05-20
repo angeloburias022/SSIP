@@ -145,7 +145,5 @@ namespace SSIP.Forms
                 Log_in();
             }
         }
-
-
     }
 }

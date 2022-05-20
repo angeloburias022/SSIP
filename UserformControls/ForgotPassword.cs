@@ -110,5 +110,10 @@ namespace SSIP.UserformControls
                 tb_confirm.Enabled = true;
             }
         }
+
+        private void ForgotPassword_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

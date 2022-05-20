@@ -41,6 +41,8 @@ namespace SSIP.UserformControls
             this.tb_newPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_confirm = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.changePassPanel.SuspendLayout();
             this.confirmAccessPanel.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +64,7 @@ namespace SSIP.UserformControls
             this.tb_Code.ForeColor = System.Drawing.Color.Black;
             this.tb_Code.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tb_Code.HoverState.Parent = this.tb_Code;
-            this.tb_Code.Location = new System.Drawing.Point(70, 177);
+            this.tb_Code.Location = new System.Drawing.Point(269, 216);
             this.tb_Code.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_Code.Name = "tb_Code";
             this.tb_Code.PasswordChar = '\0';
@@ -77,8 +79,8 @@ namespace SSIP.UserformControls
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(54, 123);
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(267, 173);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(358, 27);
             this.guna2HtmlLabel1.TabIndex = 11;
@@ -110,7 +112,7 @@ namespace SSIP.UserformControls
             this.btn_enter.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_enter.ForeColor = System.Drawing.Color.LimeGreen;
             this.btn_enter.HoverState.Parent = this.btn_enter;
-            this.btn_enter.Location = new System.Drawing.Point(329, 177);
+            this.btn_enter.Location = new System.Drawing.Point(544, 216);
             this.btn_enter.Name = "btn_enter";
             this.btn_enter.ShadowDecoration.Parent = this.btn_enter;
             this.btn_enter.Size = new System.Drawing.Size(96, 45);
@@ -133,9 +135,10 @@ namespace SSIP.UserformControls
             // changePassPanel
             // 
             this.changePassPanel.BackColor = System.Drawing.Color.Transparent;
+            this.changePassPanel.Controls.Add(this.guna2HtmlLabel3);
             this.changePassPanel.Controls.Add(this.confirmAccessPanel);
             this.changePassPanel.Controls.Add(this.btn_confirm);
-            this.changePassPanel.Location = new System.Drawing.Point(348, 263);
+            this.changePassPanel.Location = new System.Drawing.Point(449, 432);
             this.changePassPanel.Name = "changePassPanel";
             this.changePassPanel.Size = new System.Drawing.Size(521, 281);
             this.changePassPanel.TabIndex = 33;
@@ -186,7 +189,7 @@ namespace SSIP.UserformControls
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Honeydew;
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label4.Location = new System.Drawing.Point(3, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(158, 20);
@@ -225,7 +228,7 @@ namespace SSIP.UserformControls
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Honeydew;
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label3.Location = new System.Drawing.Point(25, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 20);
@@ -255,6 +258,28 @@ namespace SSIP.UserformControls
             this.btn_confirm.Text = "CONFIRM PASSWORD";
             this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
             // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(234, 45);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(406, 44);
+            this.guna2HtmlLabel2.TabIndex = 11;
+            this.guna2HtmlLabel2.Text = "FORGOT PASSWORD";
+            // 
+            // guna2HtmlLabel3
+            // 
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(29, 20);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(421, 27);
+            this.guna2HtmlLabel3.TabIndex = 145;
+            this.guna2HtmlLabel3.Text = "Enter your new desired password below";
+            // 
             // ForgotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,11 +289,14 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.lbl_username);
             this.Controls.Add(this.btn_enter);
             this.Controls.Add(this.lbl_code);
+            this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.tb_Code);
             this.Name = "ForgotPassword";
             this.Size = new System.Drawing.Size(869, 641);
+            this.Load += new System.EventHandler(this.ForgotPassword_Load);
             this.changePassPanel.ResumeLayout(false);
+            this.changePassPanel.PerformLayout();
             this.confirmAccessPanel.ResumeLayout(false);
             this.confirmAccessPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -290,5 +318,7 @@ namespace SSIP.UserformControls
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox tb_newPass;
         private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
     }
 }

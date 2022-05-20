@@ -351,6 +351,7 @@ namespace SSIP.Forms
             this.btn_payroll_sub.Text = "PayRoll";
             this.btn_payroll_sub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_payroll_sub.UseVisualStyleBackColor = false;
+            this.btn_payroll_sub.Visible = false;
             this.btn_payroll_sub.Click += new System.EventHandler(this.btn_payroll_sub_Click);
             // 
             // nav_panel
@@ -495,7 +496,7 @@ namespace SSIP.Forms
             this.btn_Dispatch.Size = new System.Drawing.Size(170, 46);
             this.btn_Dispatch.TabIndex = 28;
             this.btn_Dispatch.Text = "Dispatch";
-            this.btn_Dispatch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Dispatch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Dispatch.UseVisualStyleBackColor = false;
             this.btn_Dispatch.Click += new System.EventHandler(this.btn_Dispatch_Click);
             // 

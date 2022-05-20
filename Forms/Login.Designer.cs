@@ -36,7 +36,6 @@ namespace SSIP.Forms
             this.showPassword = new Guna.UI2.WinForms.Guna2CheckBox();
             this.forgotPassword = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.forgotpass_panel = new System.Windows.Forms.Panel();
-            this.forgotPassword1 = new SSIP.UserformControls.ForgotPassword();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -44,6 +43,7 @@ namespace SSIP.Forms
             this.btn_exit = new System.Windows.Forms.Button();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.forgotPassword1 = new SSIP.UserformControls.ForgotPassword();
             this.forgotpass_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -173,18 +173,6 @@ namespace SSIP.Forms
             this.forgotpass_panel.TabIndex = 12;
             this.forgotpass_panel.Visible = false;
             // 
-            // forgotPassword1
-            // 
-            this.forgotPassword1.BackColor = System.Drawing.Color.White;
-            this.forgotPassword1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forgotPassword1.BackgroundImage")));
-            this.forgotPassword1.code = "code";
-            this.forgotPassword1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.forgotPassword1.Location = new System.Drawing.Point(0, 0);
-            this.forgotPassword1.Name = "forgotPassword1";
-            this.forgotPassword1.Size = new System.Drawing.Size(51, 32);
-            this.forgotPassword1.TabIndex = 11;
-            this.forgotPassword1.username = "username";
-            // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
@@ -271,6 +259,17 @@ namespace SSIP.Forms
             this.guna2HtmlLabel3.TabIndex = 16;
             this.guna2HtmlLabel3.Text = "Password";
             this.guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // forgotPassword1
+            // 
+            this.forgotPassword1.BackColor = System.Drawing.Color.White;
+            this.forgotPassword1.code = "code";
+            this.forgotPassword1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forgotPassword1.Location = new System.Drawing.Point(0, 0);
+            this.forgotPassword1.Name = "forgotPassword1";
+            this.forgotPassword1.Size = new System.Drawing.Size(51, 32);
+            this.forgotPassword1.TabIndex = 11;
+            this.forgotPassword1.username = "username";
             // 
             // Login
             // 

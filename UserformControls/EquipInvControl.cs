@@ -356,12 +356,14 @@ namespace SSIP.UserformControls
         }
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
+            itemGrid.DataSource = null;
+            itemGrid.Update();
             if (Authorized())
             {
                 var result = ic.FindItem(tb_search.Text);
 
                 itemGrid.DataSource = result;
-
+                itemGrid.Update();
                 if (tb_search.Text == "")
                 {
                     UpdateGrid();
