@@ -603,7 +603,7 @@ namespace SSIP.UserformControls
             this.lbl_amountPaid.AutoSize = true;
             this.lbl_amountPaid.BackColor = System.Drawing.Color.Transparent;
             this.lbl_amountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_amountPaid.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_amountPaid.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_amountPaid.Location = new System.Drawing.Point(404, 400);
             this.lbl_amountPaid.Name = "lbl_amountPaid";
             this.lbl_amountPaid.Size = new System.Drawing.Size(135, 20);
@@ -615,7 +615,7 @@ namespace SSIP.UserformControls
             this.lbl_change.AutoSize = true;
             this.lbl_change.BackColor = System.Drawing.Color.Transparent;
             this.lbl_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_change.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_change.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_change.Location = new System.Drawing.Point(415, 446);
             this.lbl_change.Name = "lbl_change";
             this.lbl_change.Size = new System.Drawing.Size(89, 20);
@@ -627,7 +627,7 @@ namespace SSIP.UserformControls
             this.display_change.AutoSize = true;
             this.display_change.BackColor = System.Drawing.Color.Transparent;
             this.display_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.display_change.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.display_change.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.display_change.Location = new System.Drawing.Point(523, 446);
             this.display_change.Name = "display_change";
             this.display_change.Size = new System.Drawing.Size(19, 20);
@@ -1116,7 +1116,7 @@ namespace SSIP.UserformControls
             this.chartTablePanel.Controls.Add(this.TypeAcPieChart);
             this.chartTablePanel.Location = new System.Drawing.Point(733, 484);
             this.chartTablePanel.Name = "chartTablePanel";
-            this.chartTablePanel.Size = new System.Drawing.Size(1130, 643);
+            this.chartTablePanel.Size = new System.Drawing.Size(978, 643);
             this.chartTablePanel.TabIndex = 174;
             this.chartTablePanel.Visible = false;
             // 
@@ -1125,7 +1125,7 @@ namespace SSIP.UserformControls
             this.salesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.salesGridView.Location = new System.Drawing.Point(32, 85);
             this.salesGridView.Name = "salesGridView";
-            this.salesGridView.Size = new System.Drawing.Size(614, 217);
+            this.salesGridView.Size = new System.Drawing.Size(505, 217);
             this.salesGridView.TabIndex = 178;
             // 
             // label14
@@ -1146,7 +1146,7 @@ namespace SSIP.UserformControls
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label13.Location = new System.Drawing.Point(657, 16);
+            this.label13.Location = new System.Drawing.Point(491, 17);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(449, 25);
             this.label13.TabIndex = 177;
@@ -1228,7 +1228,7 @@ namespace SSIP.UserformControls
             this.TypeAcPieChart.BackColor = System.Drawing.Color.White;
             this.TypeAcPieChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TypeAcPieChart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TypeAcPieChart.Location = new System.Drawing.Point(728, 54);
+            this.TypeAcPieChart.Location = new System.Drawing.Point(567, 54);
             this.TypeAcPieChart.Name = "TypeAcPieChart";
             this.TypeAcPieChart.Size = new System.Drawing.Size(317, 248);
             this.TypeAcPieChart.TabIndex = 1;
@@ -1283,6 +1283,7 @@ namespace SSIP.UserformControls
             this.Controls.Add(this.itemsTotal);
             this.Controls.Add(this.lbl_quantity);
             this.Controls.Add(this.lbl_grandTotal);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "SalesControl";
             this.Size = new System.Drawing.Size(1930, 1175);
             this.Load += new System.EventHandler(this.SalesControl_Load);
